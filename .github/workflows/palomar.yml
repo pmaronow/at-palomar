@@ -1,0 +1,66 @@
+name: Palomar submission checks
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  metadata:
+    name: Local metadata and source preflight
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Install the metadata parser
+        run: python3 -m pip install PyYAML==6.0.3
+      - name: Check submission structure and completed metadata
+        # Missing human authors/maintainers or a chosen repository licence are
+        # real submission blockers. Do not replace them with template identities.
+        run: python3 tools/submission_check.py --report work/submission-preflight.json
+
+  lean:
+    name: Build, audit and compare the statement
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Check every submitted Lean source before installing/building
+        run: python3 tools/submission_check.py --sources-only
+      - uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
+        with:
+          build: false
+      - name: Fetch the pinned Mathlib cache
+        run: lake exe cache get
+      - name: Check exact local Mathlib and project toolchain consistency
+        run: python3 tools/submission_check.py --skip-metadata --require-local-mathlib
+      - name: Build the proof and Comparator modules
+        # Challenge intentionally contains statement holes. Its sorry warnings
+        # are expected; the proof audit and Comparator check the Solution.
+        run: lake build Paper Challenge Solution
+      - name: Audit project declarations and allowed axioms
+        run: python3 tools/audit.py --no-build
+      - name: Install bubblewrap for the Comparator sandbox
+        # Ubuntu restricts unprivileged user namespaces through AppArmor.
+        # This disposable runner must permit the namespaces bwrap needs.
+        run: |
+          sudo apt-get update -qq >/dev/null
+          sudo apt-get install -y -qq bubblewrap >/dev/null
+          sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+      - name: Compare Challenge and Solution with the bundled independent kernels
+        run: bash tools/verify_comparator.sh
+
+# These are local preparation checks. The Palomar verifier still authenticates
+# the source graph, checks the Challenge import closure, runs its protected
+# comparison configuration, and performs its separate editorial review.

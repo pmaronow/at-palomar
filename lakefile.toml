@@ -1,0 +1,75 @@
+name = "paperFormalization"
+version = "1.0.0"
+defaultTargets = ["Paper", "Challenge", "Solution"]
+
+[leanOptions]
+autoImplicit = false
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4.git"
+rev = "065356127b1dc0016f66b7283ce0ce2c4055aa55"
+
+[[lean_lib]]
+name = "Paper"
+
+[[lean_lib]]
+name = "StochasticCalculus"
+srcDir = "vendor/lean-stochastic-calculus"
+
+[[lean_lib]]
+name = "BrownianMotion"
+srcDir = "vendor/brownian-foundations"
+
+[lean_lib.leanOptions]
+autoImplicit = true
+
+[[lean_lib]]
+name = "Common"
+srcDir = "vendor/cole-hopf-foundations"
+
+[lean_lib.leanOptions]
+autoImplicit = false
+
+[[lean_lib]]
+name = "KolmogorovExtension4"
+srcDir = "vendor/brownian-foundations"
+
+[lean_lib.leanOptions]
+autoImplicit = true
+
+[[lean_lib]]
+name = "Lemmas"
+srcDir = "vendor/spin-glass-foundations"
+
+[lean_lib.leanOptions]
+autoImplicit = true
+
+[[lean_lib]]
+name = "ParisiFormula"
+srcDir = "vendor/spin-glass-foundations"
+
+[lean_lib.leanOptions]
+autoImplicit = true
+
+[[lean_lib]]
+name = "Targets"
+srcDir = "vendor/spin-glass-foundations"
+
+[lean_lib.leanOptions]
+autoImplicit = true
+
+[[lean_lib]]
+name = "SpinGlassFoundations"
+srcDir = "vendor/spin-glass-foundations"
+
+[lean_lib.leanOptions]
+autoImplicit = true
+
+[[lean_lib]]
+name = "Challenge"
+roots = ["Challenge"]
+
+[[lean_lib]]
+name = "Solution"
+roots = ["Solution"]

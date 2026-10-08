@@ -1,0 +1,14 @@
+Repository: https://github.com/qiangwu2/ParisiFormula
+Commit: 9fd12231429de72fa524b471c43f4a237553a711
+Dependency: https://github.com/njimaMath/research_public RSAT commit f3b34d2071d9cde5262c6672b6ebab132d4a7b43
+Toolchain: leanprover/lean4:v4.32.1
+Mathlib: 520045ab14e26149ee970e2e617ca04b09bde5d6
+Command: lake build Targets.TalagrandFinal Targets.GuerraAudit
+Exit code: 0
+
+info: Targets/TalagrandTheorem24.lean:97:0: 'SpinGlass.Targets.talagrand_theorem_2_4' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [8988/8990] Built Targets.TalagrandFinal (7.4s)
+info: Targets/TalagrandFinal.lean:41:0: 'SpinGlass.Targets.talagrand_theorem_2_2' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Targets/TalagrandFinal.lean:42:0: 'SpinGlass.Targets.parisi_formula' depends on axioms: [propext, Classical.choice, Quot.sound]
+✔ [8990/8990] Built Targets.GuerraAudit (15s)
+Build completed successfully (8990 jobs).

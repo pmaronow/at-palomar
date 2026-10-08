@@ -1,0 +1,2522 @@
+--- compatible-upstream/ItoMaximal.lean
++++ generic/ItoMaximal.lean
+@@ -41,7 +41,7 @@
+   mono' _ _ hkl := 𝓕.mono (hu hkl)
+   le' k := 𝓕.le (u k)
+ 
+-omit [IsFiniteMeasure μ] in
++omit [IsFiniteMeasure μ]  in
+ /-- Sigma-finiteness of every filtration slice is preserved by deterministic
+ monotone reindexing. -/
+ instance sigmaFiniteFiltration_monotoneReindex [Preorder ι] [Preorder κ]
+@@ -52,7 +52,7 @@
+     change SigmaFinite (μ.trim (𝓕.le (u k)))
+     infer_instance
+ 
+-omit [IsFiniteMeasure μ] in
++omit [IsFiniteMeasure μ]  in
+ /-- A martingale remains a martingale after a monotone deterministic time
+ change, with the filtration restricted along the same map. -/
+ theorem martingale_comp_monotone [Preorder ι] [Preorder κ]
+@@ -259,7 +259,7 @@
+   (Finset.range (2 ^ n + 1)).sup' Finset.nonempty_range_add_one
+     (fun k => (X (uniformPartitionTime t (2 ^ n) k) ω) ^ 2)
+ 
+-omit [IsFiniteMeasure μ] in
++omit [IsFiniteMeasure μ]  in
+ /-- Fixed-time almost-everywhere equality transfers to every dyadic-grid
+ maximum. -/
+ theorem dyadicPartitionSqMax_congr_ae
+@@ -341,7 +341,7 @@
+   norm_num [Nat.cast_pow]
+   rw [mul_div_assoc]
+ 
+-omit [MeasurableSpace Ω] in
++omit [MeasurableSpace Ω]  in
+ /-- Dyadic grid maxima increase with the refinement level. -/
+ theorem monotone_dyadicPartitionSqMax
+     (X : ℝ≥0 → Ω → ℝ) (t : ℝ≥0) (ω : Ω) :
+@@ -372,7 +372,7 @@
+           Finset.le_sup'
+             (fun j => (X (uniformPartitionTime t (2 ^ (m + 1)) j) ω) ^ 2) hk'
+ 
+-omit [MeasurableSpace Ω] in
++omit [MeasurableSpace Ω]  in
+ /-- A continuous path which exceeds a square threshold somewhere on
+ `[0,t]` exceeds the same threshold on some dyadic grid. -/
+ theorem exists_lt_dyadicPartitionSqMax_of_continuous
+@@ -398,10 +398,10 @@
+   simp only [Finset.mem_range]
+   exact Nat.lt_succ_of_le (dyadicApproxIndex_le_pow hst n)
+ 
+-variable {W : Type*} [NormedAddCommGroup W] [NormedSpace ℝ W]
+-  [CompleteSpace W] [MeasurableSpace W] [BorelSpace W]
+-  [SecondCountableTopology W]
+-  {P : Measure W} [IsGaussian P]
++variable {W : Type*}  
++   [MeasurableSpace W] 
++  
++  {P : Measure W} [IsProbabilityMeasure P]
+   {B : ℝ≥0 → W → ℝ}
+ 
+ /-- Uniform partition times are monotone in the grid index.  The analogous
+@@ -420,7 +420,6 @@
+   monotoneReindexFiltration 𝓕 (uniformPartitionTime t n)
+     (monotone_uniformPartitionTime_general t n)
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- Sampling the selected natural Itô process on a uniform deterministic
+ grid gives a discrete-time martingale for the sampled filtration. -/
+ theorem martingale_naturalItoProcessRepresentative_uniformPartition
+@@ -435,7 +434,6 @@
+     (martingale_naturalItoProcessRepresentative hB hsm rfl U)
+     (uniformPartitionTime t n) (monotone_uniformPartitionTime_general t n)
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- Every fixed-time value of the selected representative of a natural Itô
+ process has an integrable square. -/
+ theorem integrable_sq_naturalItoProcessRepresentative
+@@ -454,7 +452,6 @@
+     naturalItoProcessRepresentative hB hsm rfl U t ω at ht
+   rw [ht]
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- Representative-level fixed-time Itô isometry. -/
+ theorem integral_sq_naturalItoProcessRepresentative
+     (hB : IsPreBrownianReal B P) (hsm : ∀ t, StronglyMeasurable (B t))
+@@ -478,7 +475,6 @@
+     _ = ‖naturalItoProcess hB hsm rfl U t‖ ^ 2 :=
+       real_inner_self_eq_norm_sq _
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- Doob's `L²` estimate for the selected natural Itô process on every
+ uniform grid.  The right side is independent of the mesh size; this is the
+ key estimate needed for the elementary-density continuous-modification
+@@ -532,7 +528,6 @@
+       exact (sq_le_sq₀ (norm_nonneg _) (norm_nonneg _)).2
+         (norm_naturalItoProcess_le hB hsm rfl U t)
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- The mesh-independent maximal estimate on the nested dyadic grids. -/
+ theorem naturalItoProcessRepresentative_dyadicPartition_maximal_sq_ineq
+     (hB : IsPreBrownianReal B P) (hsm : ∀ t, StronglyMeasurable (B t))
+@@ -548,7 +543,6 @@
+     naturalItoProcessRepresentative_uniformPartition_maximal_sq_ineq
+       hB hsm U ε t (2 ^ n - 1)
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- Doob's estimate on the union of all nested dyadic-grid events.  This is
+ the countable event that becomes a compact-time supremum event for a
+ continuous representative. -/
+--- compatible-upstream/PredictableProcess.lean
++++ generic/PredictableProcess.lean
+@@ -69,17 +69,16 @@
+ 
+ namespace StochasticCalculus
+ 
+-variable {W : Type*} [NormedAddCommGroup W] [NormedSpace ℝ W]
+-  [CompleteSpace W] [MeasurableSpace W] [BorelSpace W]
+-  [SecondCountableTopology W]
+-  {P : Measure W} [IsGaussian P]
++variable {W : Type*}  
++   [MeasurableSpace W] 
++  
++  {P : Measure W} [IsProbabilityMeasure P]
+   {B : ℝ≥0 → W → ℝ}
+ 
+ /-- Square-integrable real processes on nonnegative time × sample space. -/
+ abbrev TimeProcessL2 (P : Measure W) :=
+   Lp ℝ 2 (nonnegativeLebesgueMeasure.prod P)
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- A product-`L²` representative has an `L²(P)` time section for almost every time.
+ The exceptional null set may depend on the representative, so this does not define evaluation
+ of a product-`L²` class at any prescribed time. -/
+@@ -94,8 +93,6 @@
+ abbrev PredictableProcessL2 (𝓕 : Filtration ℝ≥0 ‹MeasurableSpace W›) (P : Measure W) :=
+   lpMeas ℝ ℝ 𝓕.predictable 2 (nonnegativeLebesgueMeasure.prod P)
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] in
+ /-- The predictable sigma-algebra is contained in the ambient product sigma-algebra. -/
+ theorem predictable_le_prod (𝓕 : Filtration ℝ≥0 ‹MeasurableSpace W›) :
+     𝓕.predictable ≤ (inferInstance : MeasurableSpace (ℝ≥0 × W)) := by
+@@ -105,8 +102,8 @@
+   · intro t A hA
+     exact measurableSet_Ioi.prod (𝓕.le t A hA)
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ /-- The time coordinate is measurable from the predictable sigma-algebra. -/
+ theorem measurable_fst_predictable (𝓕 : Filtration ℝ≥0 ‹MeasurableSpace W›) :
+     @Measurable (ℝ≥0 × W) ℝ≥0 𝓕.predictable inferInstance Prod.fst := by
+@@ -136,7 +133,6 @@
+     Lp ℝ 2 nonnegativeLebesgueMeasure →ₗᵢ[ℝ] TimeProcessL2 P :=
+   Lp.compMeasurePreservingₗᵢ ℝ Prod.fst measurePreserving_fst
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- A deterministic time integrand is measurably predictable. -/
+ theorem deterministicTimeEmbedding_aestronglyMeasurable
+     (𝓕 : Filtration ℝ≥0 ‹MeasurableSpace W›)
+@@ -161,7 +157,6 @@
+   map_smul' c f := Subtype.ext (map_smul (deterministicTimeEmbedding (P := P)) c f)
+   norm_map' f := (deterministicTimeEmbedding (P := P)).norm_map f
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- A deterministic predictable integrand represents the function `(t, ω) ↦ f t`. -/
+ theorem deterministicPredictableEmbedding_coeFn
+     (𝓕 : Filtration ℝ≥0 ‹MeasurableSpace W›)
+@@ -177,8 +172,6 @@
+     (a b : ℝ≥0) (Z : W → ℝ) (p : ℝ≥0 × W) : ℝ :=
+   if p.1 ∈ Set.Ioc a b then Z p.2 else 0
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] in
+ /-- If `Z` is `𝓕_a`-measurable, then `(t, ω) ↦ 1_(a,b](t) Z(ω)` is predictable. -/
+ theorem stronglyMeasurable_elementaryRepresentative
+     (𝓕 : Filtration ℝ≥0 ‹MeasurableSpace W›) (a b : ℝ≥0)
+@@ -248,8 +241,8 @@
+     (stronglyMeasurable_elementaryRepresentative 𝓕 a b hZ.stronglyMeasurable_mk)
+       |>.aestronglyMeasurable.congr hV.symm⟩
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ /-- Forgetting predictability, an elementary process is the product-space tensor
+ `1_(a,b] ⊗ Z`. -/
+ theorem elementaryPredictable_coeLp [SFinite P]
+@@ -258,8 +251,8 @@
+     (elementaryPredictable 𝓕 a b Z : TimeProcessL2 P) =
+       tensor (iocIndicator a b) (Z : RandomL2 P) := rfl
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ /-- A pointwise representative of an elementary predictable process. -/
+ theorem elementaryPredictable_coeFn [SFinite P]
+     (𝓕 : Filtration ℝ≥0 ‹MeasurableSpace W›) (a b : ℝ≥0)
+@@ -286,7 +279,6 @@
+   ⟨Lp.const 2 P (1 : ℝ),
+     aestronglyMeasurable_const.congr (Lp.coeFn_const 2 P (1 : ℝ)).symm⟩
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- The one-step process with constant coefficient `1` on `(0,t]` is the deterministic
+ predictable embedding of `intervalIndicator t`. -/
+ theorem elementaryPredictable_adaptedOne
+@@ -312,7 +304,6 @@
+     TimeProcessL2 P →L[ℝ] PredictableProcessL2 𝓕 P :=
+   condExpL2 ℝ ℝ (predictable_le_prod 𝓕)
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- Predictable projection preserves integrals over predictable rectangles
+ `(a, b] × A` with `A ∈ 𝓕_a`.  This is the product-space conditional-expectation identity
+ available without choosing pointwise time sections. -/
+@@ -343,7 +334,6 @@
+     RandomL2 P →L[ℝ] RandomL2 P :=
+   (lpMeas ℝ ℝ (𝓕 t) 2 P).subtypeL.comp (condExpL2 ℝ ℝ (𝓕.le t))
+ 
+-omit [CompleteSpace W] [BorelSpace W] [SecondCountableTopology W] in
+ /-- The ambient representative of `filtrationCondExpL2` agrees almost everywhere with
+ Mathlib's function-valued conditional expectation. -/
+ theorem filtrationCondExpL2_ae_eq_condExp
+@@ -353,8 +343,8 @@
+     Submodule.subtypeL_apply, Lp.toLp_coeFn] using
+     (Lp.memLp F).condExpL2_ae_eq_condExp (𝕜 := ℝ) (𝓕.le t)
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ /-- Timewise `L²` conditional expectation is contractive. -/
+ theorem norm_filtrationCondExpL2_le
+     (𝓕 : Filtration ℝ≥0 ‹MeasurableSpace W›) (t : ℝ≥0) (F : RandomL2 P) :
+--- compatible-upstream/QuadraticVariationGrid.lean
++++ generic/QuadraticVariationGrid.lean
+@@ -34,8 +34,8 @@
+ representative-level bridge needed to obtain prefix limits on arbitrary
+ uniform grids, rather than only on common refinements. -/
+ theorem quadraticVariation_stopped_naturalItoProcessRepresentative
+-    [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W]
+-    [BorelSpace W] [SecondCountableTopology W] [IsGaussian P]
++      
++      [IsProbabilityMeasure P]
+     {B : ℝ≥0 → W → ℝ}
+     (hB : IsBrownianMotion B P) (hsm : ∀ t, StronglyMeasurable (B t))
+     (U : PredictableProcessL2 (Filtration.natural B hsm) P)
+@@ -56,8 +56,8 @@
+ /-- The bracket of a deterministically restricted integrand is the original
+ bracket stopped at the same deterministic time. -/
+ theorem predictableQuadraticVariation_timeRestrict_ae
+-    [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W]
+-    [BorelSpace W] [SecondCountableTopology W] [IsGaussian P]
++      
++      [IsProbabilityMeasure P]
+     {B : ℝ≥0 → W → ℝ}
+     (hsm : ∀ t, StronglyMeasurable (B t))
+     (U : PredictableProcessL2 (Filtration.natural B hsm) P)
+@@ -118,8 +118,8 @@
+ /-- A natural Itô integral stopped at `a` has its original bracket stopped at
+ `a`, on arbitrary uniform partitions of any terminal horizon `t`. -/
+ theorem quadraticVariation_stopped_naturalItoProcessRepresentative_bracket
+-    [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W]
+-    [BorelSpace W] [SecondCountableTopology W] [IsGaussian P]
++      
++      [IsProbabilityMeasure P]
+     {B : ℝ≥0 → W → ℝ}
+     (hB : IsBrownianMotion B P) (hsm : ∀ t, StronglyMeasurable (B t))
+     (U : PredictableProcessL2 (Filtration.natural B hsm) P)
+@@ -168,7 +168,7 @@
+   filter_upwards with omega
+   simp only [Finset.sum_apply]
+ 
+-omit [MeasurableSpace W] in
++omit [MeasurableSpace W]  in
+ /-- A completed coarse-block sum is exactly a fine-cell weighted quadratic
+ sum.  A fine cell is assigned to the unique coarse block containing its
+ right endpoint; using the right endpoint is what removes boundary cells. -/
+@@ -221,7 +221,7 @@
+     · simp only [r, a, b] at hra hrb ⊢
+       simp only [hra, hrb, and_false, ↓reduceIte, sub_self, zero_mul, mul_zero]
+ 
+-omit [MeasurableSpace W] in
++omit [MeasurableSpace W]  in
+ /-- The half-open right-endpoint blocks of a positive uniform partition form
+ a partition of `(0,t]`, expressed as a real-valued indicator identity. -/
+ theorem uniformPartition_rightEndpoint_blocks_sum_one
+@@ -265,7 +265,7 @@
+   simp only [F, htop, hzero, hrt, ite_true, not_le.mpr hr0, ite_false,
+     sub_zero]
+ 
+-omit [MeasurableSpace W] in
++omit [MeasurableSpace W]  in
+ /-- If a scalar is close to every active coarse right-endpoint block value,
+ then it is close to their indicator sum.  The preceding partition identity
+ means no factor depending on the number of coarse blocks is lost. -/
+@@ -364,7 +364,7 @@
+       simpa only [Finset.mul_sum, mul_ite, mul_one, mul_zero, ite_mul,
+         one_mul] using hscaled
+ 
+-omit [MeasurableSpace W] in
++omit [MeasurableSpace W]  in
+ /-- If a fine right endpoint lies in a coarse right-endpoint block, then its
+ fine left endpoint is within one fine mesh plus one coarse mesh of the
+ coarse left endpoint. -/
+@@ -405,7 +405,7 @@
+         dist_uniformPartitionTime_succ_eq t hn i,
+         dist_uniformPartitionTime_succ_eq t hk j]
+ 
+-omit [MeasurableSpace W] in
++omit [MeasurableSpace W]  in
+ /-- Once the fine-cell weight is uniformly close to its right-endpoint
+ coarse-step freezing, the actual weighted quadratic sum is close to the
+ completed coarse-block sum.  The error is controlled by the unweighted
+@@ -572,7 +572,7 @@
+   ∑ i ∈ uniformPartitionCrossingCells t n a,
+     (X a omega - X (uniformPartitionTime t n i) omega) ^ 2
+ 
+-omit [MeasurableSpace W] in
++omit [MeasurableSpace W]  in
+ /-- A stopped quadratic-variation sum is exactly the sum of its completed
+ cells and its (at most one) boundary-cell contribution. -/
+ theorem quadraticVariationApprox_stop_eq_before_add_crossing
+@@ -607,7 +607,7 @@
+         min_eq_right haleft, sub_self, ne_eq, OfNat.ofNat_ne_zero,
+         not_false_eq_true, zero_pow, add_zero]
+ 
+-omit [MeasurableSpace W] in
++omit [MeasurableSpace W]  in
+ /-- The boundary-cell term in the stopped-sum decomposition vanishes along
+ uniform partitions for every path continuous on the time interval. -/
+ theorem quadraticVariationCrossingStopApprox_tendsto_zero_of_continuousOn
+--- compatible-upstream/QuadraticVariationDensity.lean
++++ generic/QuadraticVariationDensity.lean
+@@ -25,14 +25,14 @@
+ 
+ namespace StochasticCalculus
+ 
+-variable {W : Type*} [NormedAddCommGroup W] [NormedSpace ℝ W]
+-  [CompleteSpace W] [MeasurableSpace W] [BorelSpace W]
+-  [SecondCountableTopology W]
+-  {P : Measure W} [IsGaussian P]
++variable {W : Type*}  
++   [MeasurableSpace W] 
++  
++  {P : Measure W} [IsProbabilityMeasure P]
+   {B : ℝ≥0 → W → ℝ}
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [MeasurableSpace W] [CompleteSpace W]
+-    [BorelSpace W] [SecondCountableTopology W] [IsGaussian P] in
++omit   [MeasurableSpace W] 
++      [IsProbabilityMeasure P]  in
+ theorem quadraticVariationApprox_sub_eq_covariation_sub_add
+     (X Y : ℝ≥0 → W → ℝ) (t : ℝ≥0) (n : ℕ) (ω : W) :
+     quadraticVariationApprox X t n ω - quadraticVariationApprox Y t n ω =
+@@ -45,7 +45,6 @@
+   intro i _hi
+   ring
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ theorem naturalItoProcessRepresentative_sub_ae
+     (hB : IsPreBrownianReal B P) (hsm : ∀ t, StronglyMeasurable (B t))
+     (U V : PredictableProcessL2 (Filtration.natural B hsm) P) (s : ℝ≥0) :
+@@ -72,7 +71,6 @@
+   rw [← hUω, ← hVω, ← hDω, hlin, hcoeω]
+   rfl
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ theorem naturalItoProcessRepresentative_add_ae
+     (hB : IsPreBrownianReal B P) (hsm : ∀ t, StronglyMeasurable (B t))
+     (U V : PredictableProcessL2 (Filtration.natural B hsm) P) (s : ℝ≥0) :
+@@ -99,7 +97,6 @@
+   rw [← hUω, ← hVω, ← hSω, hlin, hcoeω]
+   rfl
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ theorem integrable_quadraticVariationApprox_naturalItoProcessRepresentative
+     (hB : IsPreBrownianReal B P) (hsm : ∀ t, StronglyMeasurable (B t))
+     (U : PredictableProcessL2 (Filtration.natural B hsm) P)
+@@ -110,7 +107,6 @@
+   exact integrable_finsetSum (Finset.range n) (fun i _hi =>
+     integrable_sq_naturalItoProcessRepresentative_sub hB hsm U _ _)
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ theorem integral_abs_quadraticVariationApprox_sub_le
+     (hB : IsPreBrownianReal B P) (hsm : ∀ t, StronglyMeasurable (B t))
+     (U V : PredictableProcessL2 (Filtration.natural B hsm) P)
+@@ -264,8 +260,6 @@
+         (norm_naturalItoProcess_le hB hsm rfl (U + V) t)
+         (norm_nonneg _) (norm_nonneg _)
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W]
+-    [BorelSpace W] [SecondCountableTopology W] in
+ theorem integral_sq_predictableProcess_eq_norm_sq
+     (hsm : ∀ t, StronglyMeasurable (B t))
+     (U : PredictableProcessL2 (Filtration.natural B hsm) P) :
+@@ -282,7 +276,6 @@
+     _ = ‖(U : TimeProcessL2 P)‖ ^ 2 := real_inner_self_eq_norm_sq _
+     _ = ‖U‖ ^ 2 := rfl
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ theorem integrable_predictableQuadraticVariation
+     (hsm : ∀ t, StronglyMeasurable (B t))
+     (U : PredictableProcessL2 (Filtration.natural B hsm) P) (t : ℝ≥0) :
+@@ -300,8 +293,6 @@
+     ((U : ℝ≥0 × W → ℝ) (x, y)) ^ 2 ∂nonnegativeLebesgueMeasure) P
+   exact houter
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W]
+-    [BorelSpace W] [SecondCountableTopology W] in
+ theorem predictableProcess_coeFn_sub
+     (hsm : ∀ t, StronglyMeasurable (B t))
+     (U V : PredictableProcessL2 (Filtration.natural B hsm) P) :
+@@ -324,8 +315,6 @@
+       (V : TimeProcessL2 P)] with p hp
+   simpa only [Pi.sub_apply] using hp
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W]
+-    [BorelSpace W] [SecondCountableTopology W] in
+ theorem predictableProcess_coeFn_add
+     (hsm : ∀ t, StronglyMeasurable (B t))
+     (U V : PredictableProcessL2 (Filtration.natural B hsm) P) :
+@@ -348,7 +337,6 @@
+       (V : TimeProcessL2 P)] with p hp
+   simpa only [Pi.add_apply] using hp
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ theorem integral_abs_predictableQuadraticVariation_sub_le
+     (hsm : ∀ t, StronglyMeasurable (B t))
+     (U V : PredictableProcessL2 (Filtration.natural B hsm) P) (t : ℝ≥0) :
+@@ -474,8 +462,8 @@
+       rw [hFintSq, hGintSq]
+       norm_num [← Real.sqrt_eq_rpow, Real.sqrt_sq (norm_nonneg _)]
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W]
+-    [BorelSpace W] [SecondCountableTopology W] [IsGaussian P] in
++omit   
++      [IsProbabilityMeasure P]  in
+ /-- A convergence-together lemma in measure, with both approximation errors
+ controlled uniformly in `L¹`. -/
+ theorem tendstoInMeasure_of_uniform_integral_approx
+@@ -574,7 +562,6 @@
+   change dist (P.real E) 0 < δ
+   rwa [Real.dist_eq, sub_zero, abs_of_nonneg measureReal_nonneg]
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- The natural Itô integral process of an arbitrary predictable `L²`
+ integrand has the canonical bracket, by elementary density and the two
+ uniform `L¹` perturbation estimates. -/
+@@ -644,8 +631,8 @@
+     simpa only [G, g, a, Real.norm_eq_abs, abs_sub_comm] using
+       integral_abs_predictableQuadraticVariation_sub_le hsm U (Uk k) t
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W]
+-    [BorelSpace W] [SecondCountableTopology W] [IsGaussian P] in
++omit   
++      [IsProbabilityMeasure P]  in
+ theorem map_nonnegativeLebesgueMeasure_restrict_Ioc (t : ℝ≥0) :
+     Measure.map ((↑) : ℝ≥0 → ℝ)
+         (nonnegativeLebesgueMeasure.restrict (Set.Ioc 0 t)) =
+@@ -670,8 +657,8 @@
+   · intro hs
+     exact ⟨hs, hs.1.le⟩
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [MeasurableSpace W] [CompleteSpace W]
+-    [BorelSpace W] [SecondCountableTopology W] [IsGaussian P] in
++omit   [MeasurableSpace W] 
++      [IsProbabilityMeasure P]  in
+ theorem integral_nonnegative_Ioc_eq_real_Icc
+     (f : ℝ≥0 → W → ℝ) (t : ℝ≥0) (omega : W) :
+     (∫ s in Set.Ioc (0 : ℝ≥0) t, f s omega
+@@ -692,8 +679,8 @@
+     _ = ∫ r in Set.Icc (0 : ℝ) (t : ℝ), f r.toNNReal omega :=
+       MeasureTheory.integral_Icc_eq_integral_Ioc.symm
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [MeasurableSpace W] [CompleteSpace W]
+-    [BorelSpace W] [SecondCountableTopology W] [IsGaussian P] in
++omit   [MeasurableSpace W] 
++      [IsProbabilityMeasure P]  in
+ theorem integral_nonnegative_Ioc_sq_eq_real_Icc
+     (σ : ℝ≥0 → W → ℝ) (t : ℝ≥0) (ω : W) :
+     (∫ s in Set.Ioc (0 : ℝ≥0) t, (σ s ω) ^ 2
+--- compatible-upstream/ItoFormulaGeneral.lean
++++ generic/ItoFormulaGeneral.lean
+@@ -27,14 +27,13 @@
+ 
+ namespace StochasticCalculus
+ 
+-variable {W : Type*} [NormedAddCommGroup W] [NormedSpace ℝ W]
++variable {W : Type*}  
+   [MeasurableSpace W]
+   {P : Measure W} {B X μ σ : ℝ≥0 → W → ℝ}
+ 
+-variable [CompleteSpace W] [BorelSpace W] [SecondCountableTopology W]
+-  [IsGaussian P]
+-
+-omit [CompleteSpace W] [BorelSpace W] in
++variable   
++  [IsProbabilityMeasure P]
++
+ /-- A continuous modification of a natural Itô process satisfies Doob's
+ compact-time `L²` bound.  The proof first controls the increasing union of
+ dyadic-grid events, transfers those countably many values across the
+@@ -81,7 +80,6 @@
+       exact naturalItoProcessRepresentative_dyadicPartition_maximal_sq_iUnion
+         hB hsm U ε t
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- The difference of continuous modifications of two natural Itô processes
+ is a continuous modification of the natural Itô process of the integrand
+ difference.  Representative linearity is used only at fixed times, where it
+@@ -107,7 +105,6 @@
+       with omega hYU hYV
+     exact hYU.sub hYV
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- Compact-time Doob estimate for the difference of any two continuous
+ natural-Itô representatives.  This is the uniform-Cauchy estimate consumed
+ by the predictable-`L²` density construction. -/
+@@ -126,7 +123,6 @@
+   have hmod := naturalItoContinuousModification_sub hB hsm U V hU hV
+   exact hmod.naturalIto_compact_maximal_sq_ineq hB hsm (U - V) ε t
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- Borel--Cantelli consequence of the compact maximal estimate.  If the
+ normalized squared `L²` increments of a sequence of integrands are summable,
+ then the corresponding continuous representatives eventually have uniformly
+@@ -172,7 +168,6 @@
+     (Y : ℕ → ℝ≥0 → W → ℝ) : ℝ≥0 → W → ℝ :=
+   fun s omega => completeCauchySeqLimit (fun n => Y n s omega)
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- Closure of continuous natural-Itô modifications under a sufficiently
+ fast predictable-`L²` limit.  The two summability hypotheses are exactly the
+ probabilistic Borel--Cantelli bound and the deterministic uniform-Cauchy
+@@ -290,7 +285,6 @@
+     v x * (x.2.2 : W → ℝ) omega *
+       (B (min s x.2.1.1) omega - B (min s x.1) omega)
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- On the finite elementary predictable layer, the selected natural Itô
+ representative has an explicit continuous modification. -/
+ theorem elementaryFinsuppItoContinuousModification
+@@ -318,7 +312,6 @@
+       ((hBcontinuous.comp (continuous_id.min continuous_const)).sub
+         (hBcontinuous.comp (continuous_id.min continuous_const)))
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- Quantitative version of elementary density: the approximation rate may
+ be prescribed arbitrarily, as long as every requested radius is positive.
+ This is the form used to choose a Borel--Cantelli-fast sequence. -/
+@@ -343,7 +336,6 @@
+   intro n
+   exact elementaryFinsuppItoContinuousModification hB hsm (v n)
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- Every natural Itô process has a continuous modification.  Choose
+ elementary predictable integrands within `8⁻ⁿ` of the target.  Their
+ successive squared `L²` distances are dominated by `4 · 64⁻ⁿ`; with
+@@ -508,7 +500,7 @@
+     hMmeas t a ⟨bot_le, ha⟩
+       (predictableQuadraticVariation hsm U (min t a)) hstop
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [MeasurableSpace W] in
++omit   [MeasurableSpace W]  in
+ /-- Along a continuous path, the second-derivative weights at a fine left
+ endpoint and at the left endpoint of its active coarse block become uniformly
+ close as both meshes vanish. -/
+--- compatible-upstream/ItoConstruction.lean
++++ generic/ItoConstruction.lean
+@@ -33,10 +33,22 @@
+ 
+ namespace StochasticCalculus
+ 
+-variable {W : Type*} [NormedAddCommGroup W] [NormedSpace ℝ W]
+-  [CompleteSpace W] [MeasurableSpace W] [BorelSpace W]
+-  [SecondCountableTopology W]
+-  {P : Measure W} [IsGaussian P]
++/-- Expectation on scalar L2 over an arbitrary probability space. -/
++noncomputable def generalExpectationMap {S : Type*} [MeasurableSpace S]
++    (mu : Measure S) [IsProbabilityMeasure mu] : Lp ℝ 2 mu →L[ℝ] ℝ :=
++  ((ContinuousLinearMap.mul ℝ ℝ).lpPairing mu 2 2).flip (Lp.const 2 mu 1)
++
++@[simp] theorem generalExpectationMap_apply {S : Type*} [MeasurableSpace S]
++    (mu : Measure S) [IsProbabilityMeasure mu] (f : Lp ℝ 2 mu) :
++    generalExpectationMap mu f = ∫ x, f x ∂mu := by
++  rw [generalExpectationMap, ContinuousLinearMap.flip_apply,
++    ContinuousLinearMap.lpPairing_eq_integral]
++  simp only [Lp.const_val, AEEqFun.coeFn_const_eq, ContinuousLinearMap.mul_apply', mul_one]
++
++variable {W : Type*}  
++   [MeasurableSpace W] 
++  
++  {P : Measure W} [IsProbabilityMeasure P]
+   {B : ℝ≥0 → W → ℝ}
+ 
+ /-- Promote an adapted coefficient to a later sigma-algebra of the filtration. -/
+@@ -45,8 +57,8 @@
+     (Z : lpMeas ℝ ℝ (𝓕 a) 2 P) : lpMeas ℝ ℝ (𝓕 c) 2 P :=
+   ⟨Z.1, AEStronglyMeasurable.mono (𝓕.mono hac) (lpMeas.aestronglyMeasurable Z)⟩
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ /-- The promoted coefficient has the same ambient `L²` value. -/
+ theorem adaptedMono_coe
+     (𝓕 : Filtration ℝ≥0 ‹MeasurableSpace W›) {a c : ℝ≥0} (hac : a ≤ c)
+@@ -54,8 +66,8 @@
+     (adaptedMono 𝓕 hac Z : RandomL2 P) = (Z : RandomL2 P) :=
+   rfl
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ /-- An elementary Brownian value splits at an intermediate time. -/
+ theorem elementaryBrownianValue_split
+     (hB : IsPreBrownianReal B P) (hsm : ∀ t, StronglyMeasurable (B t))
+@@ -79,8 +91,8 @@
+       (Z : W → ℝ) w * (B b w - B c w)
+   ring
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ /-- An elementary predictable process splits at an intermediate time. -/
+ theorem elementaryPredictable_split [SFinite P]
+     (𝓕 : Filtration ℝ≥0 ‹MeasurableSpace W›)
+@@ -118,7 +130,6 @@
+         · exact hpac ⟨hp.1, hpc⟩
+       simp only [hpab, ↓reduceIte, hpac, hpcb, add_zero]
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- Arbitrary elementary Brownian values have the same cross inner product as their predictable
+ integrands, with no alignment or disjointness hypothesis on the two time intervals. -/
+ theorem inner_elementaryBrownianValue_eq_inner_elementaryPredictable
+@@ -231,8 +242,6 @@
+     (ElementaryPredictableIndex 𝓕 P →₀ ℝ) →ₗ[ℝ] RandomL2 P :=
+   Finsupp.linearCombination ℝ (elementaryBrownianGenerator hB hsm hnat)
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] in
+ /-- The predictable realization of a single formal generator. -/
+ theorem elementaryFinsuppToPredictable_single
+     (𝓕 : Filtration ℝ≥0 ‹MeasurableSpace W›) (P : Measure W) [SFinite P]
+@@ -241,8 +250,8 @@
+       c • elementaryPredictableGenerator 𝓕 P x :=
+   Finsupp.linearCombination_single _ _ _
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ /-- The Brownian realization of a single formal generator. -/
+ theorem elementaryFinsuppToBrownian_single
+     (hB : IsPreBrownianReal B P) (hsm : ∀ t, StronglyMeasurable (B t))
+@@ -253,7 +262,6 @@
+       c • elementaryBrownianGenerator hB hsm hnat x :=
+   Finsupp.linearCombination_single _ _ _
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- The arbitrary-pair cross identity, packaged for formal generators. -/
+ theorem inner_elementaryBrownianGenerator
+     (hB : IsPreBrownianReal B P) (hsm : ∀ t, StronglyMeasurable (B t))
+@@ -267,7 +275,6 @@
+   inner_elementaryBrownianValue_eq_inner_elementaryPredictable
+     hB hsm hnat x.2.1.2 y.2.1.2 x.2.2 y.2.2
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- Formal finite elementary combinations have matching Gram matrices. -/
+ theorem inner_elementaryFinsuppToBrownian
+     (hB : IsPreBrownianReal B P) (hsm : ∀ t, StronglyMeasurable (B t))
+@@ -287,7 +294,6 @@
+   intro y _hy
+   rw [inner_elementaryBrownianGenerator hB hsm hnat y x]
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- Formal finite elementary combinations have matching norms. -/
+ theorem norm_elementaryFinsuppToBrownian
+     (hB : IsPreBrownianReal B P) (hsm : ∀ t, StronglyMeasurable (B t))
+@@ -300,7 +306,6 @@
+   rw [real_inner_self_eq_norm_sq, real_inner_self_eq_norm_sq] at h
+   exact (sq_eq_sq₀ (norm_nonneg _) (norm_nonneg _)).mp h
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- Formal elementary combinations have dense range in predictable `L²`. -/
+ theorem denseRange_elementaryFinsuppToPredictable
+     (𝓕 : Filtration ℝ≥0 ‹MeasurableSpace W›) :
+@@ -334,7 +339,6 @@
+   exact (elementaryFinsuppToBrownian hB hsm hnat).extendOfNorm
+     (elementaryFinsuppToPredictable 𝓕 P)
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- The extended Itô integral agrees with the Brownian map on every formal finite
+ combination. -/
+ theorem naturalItoIntegral_elementaryFinsuppToPredictable
+@@ -348,7 +352,6 @@
+     (denseRange_elementaryFinsuppToPredictable (P := P) 𝓕)
+     ⟨1, fun v ↦ by rw [norm_elementaryFinsuppToBrownian hB hsm hnat, one_mul]⟩ v
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- On an elementary adapted process, the constructed integral is `Z (B_b - B_a)`. -/
+ theorem naturalItoIntegral_elementaryPredictable
+     (hB : IsPreBrownianReal B P) (hsm : ∀ t, StronglyMeasurable (B t))
+@@ -364,7 +367,6 @@
+     elementaryFinsuppToBrownian_single, one_smul, elementaryPredictableGenerator,
+     elementaryBrownianGenerator] using h
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- The constructed natural-filtration Itô integral preserves inner products. -/
+ theorem inner_naturalItoIntegral
+     (hB : IsPreBrownianReal B P) (hsm : ∀ t, StronglyMeasurable (B t))
+@@ -385,7 +387,6 @@
+       naturalItoIntegral_elementaryFinsuppToPredictable hB hsm hnat,
+       inner_elementaryFinsuppToBrownian hB hsm hnat]
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- The constructed natural-filtration Itô integral is norm preserving. -/
+ theorem norm_naturalItoIntegral
+     (hB : IsPreBrownianReal B P) (hsm : ∀ t, StronglyMeasurable (B t))
+@@ -406,8 +407,8 @@
+   ⟨(naturalItoIntegral hB hsm hnat).toLinearMap,
+     norm_naturalItoIntegral hB hsm hnat⟩
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ /-- Every elementary Brownian terminal value is centered. -/
+ theorem integral_elementaryBrownianValue
+     (hB : IsPreBrownianReal B P) (hsm : ∀ t, StronglyMeasurable (B t))
+@@ -427,21 +428,19 @@
+   rw [integral_sub (hB.integrable_eval b) (hB.integrable_eval a),
+     hB.integral_eval, hB.integral_eval, sub_zero, mul_zero]
+ 
+-omit [CompleteSpace W] [BorelSpace W] [SecondCountableTopology W] in
+ /-- Every formal finite combination of elementary Brownian values is centered. -/
+ theorem expectationMap_elementaryFinsuppToBrownian
+     (hB : IsPreBrownianReal B P) (hsm : ∀ t, StronglyMeasurable (B t))
+     {𝓕 : Filtration ℝ≥0 ‹MeasurableSpace W›}
+     (hnat : 𝓕 = Filtration.natural B hsm)
+     (v : ElementaryPredictableIndex 𝓕 P →₀ ℝ) :
+-    CameronMartin.expectationMap P (elementaryFinsuppToBrownian hB hsm hnat v) = 0 := by
++    generalExpectationMap P (elementaryFinsuppToBrownian hB hsm hnat v) = 0 := by
+   rw [elementaryFinsuppToBrownian, Finsupp.linearCombination_apply, Finsupp.sum, map_sum]
+   apply Finset.sum_eq_zero
+   intro i _hi
+-  rw [map_smul, elementaryBrownianGenerator, CameronMartin.expectationMap_apply,
++  rw [map_smul, elementaryBrownianGenerator, generalExpectationMap_apply,
+     integral_elementaryBrownianValue, smul_zero]
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- The constructed natural-filtration Itô integral is centered on every predictable process. -/
+ theorem integral_naturalItoIntegral
+     (hB : IsPreBrownianReal B P) (hsm : ∀ t, StronglyMeasurable (B t))
+@@ -449,13 +448,13 @@
+     (hnat : 𝓕 = Filtration.natural B hsm)
+     (U : PredictableProcessL2 𝓕 P) :
+     ∫ w, naturalItoIntegral hB hsm hnat U w ∂P = 0 := by
+-  rw [← CameronMartin.expectationMap_apply]
+-  let L := (CameronMartin.expectationMap P).comp (naturalItoIntegral hB hsm hnat)
++  rw [← generalExpectationMap_apply]
++  let L := (generalExpectationMap P).comp (naturalItoIntegral hB hsm hnat)
+   change L U = 0
+   refine (denseRange_elementaryFinsuppToPredictable (P := P) 𝓕).induction_on U
+     (isClosed_eq L.continuous continuous_const) ?_
+   intro v
+-  change CameronMartin.expectationMap P
++  change generalExpectationMap P
+     (naturalItoIntegral hB hsm hnat (elementaryFinsuppToPredictable 𝓕 P v)) = 0
+   rw [naturalItoIntegral_elementaryFinsuppToPredictable]
+   exact expectationMap_elementaryFinsuppToBrownian hB hsm hnat v
+@@ -466,16 +465,15 @@
+     (hB : IsPreBrownianReal B P) (hsm : ∀ t, StronglyMeasurable (B t))
+     {𝓕 : Filtration ℝ≥0 ‹MeasurableSpace W›}
+     (hnat : 𝓕 = Filtration.natural B hsm) :
+-    PredictableProcessL2 𝓕 P →ₗᵢ[ℝ] (CameronMartin.expectationMap P).ker where
++    PredictableProcessL2 𝓕 P →ₗᵢ[ℝ] (generalExpectationMap P).ker where
+   toLinearMap := (naturalItoIntegralIsometry hB hsm hnat).toLinearMap.codRestrict
+-    (CameronMartin.expectationMap P).ker fun U => by
++    (generalExpectationMap P).ker fun U => by
+       rw [LinearMap.mem_ker]
+-      change CameronMartin.expectationMap P (naturalItoIntegral hB hsm hnat U) = 0
+-      rw [CameronMartin.expectationMap_apply]
++      change generalExpectationMap P (naturalItoIntegral hB hsm hnat U) = 0
++      rw [generalExpectationMap_apply]
+       exact integral_naturalItoIntegral hB hsm hnat U
+   norm_map' := norm_naturalItoIntegral hB hsm hnat
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- The centered isometry has the same ambient value as `naturalItoIntegral`. -/
+ @[simp]
+ theorem centeredNaturalItoIntegralIsometry_apply
+--- compatible-upstream/ElementaryIto.lean
++++ generic/ElementaryIto.lean
+@@ -31,14 +31,14 @@
+ 
+ namespace StochasticCalculus
+ 
+-variable {W : Type*} [NormedAddCommGroup W] [NormedSpace ℝ W]
+-  [CompleteSpace W] [MeasurableSpace W] [BorelSpace W]
+-  [SecondCountableTopology W]
+-  {P : Measure W} [IsGaussian P]
++variable {W : Type*}  
++   [MeasurableSpace W] 
++  
++  {P : Measure W} [IsProbabilityMeasure P]
+   {B : ℝ≥0 → W → ℝ}
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ /-- Chronologically disjoint elementary predictable terms are orthogonal in product `L²`. -/
+ theorem inner_elementaryPredictable_eq_zero_of_le [SFinite P]
+     (𝓕 : Filtration ℝ≥0 ‹MeasurableSpace W›) {a b c d : ℝ≥0} (hbc : b ≤ c)
+@@ -82,8 +82,8 @@
+   Finset.univ.sum fun i ↦
+     elementaryPredictable 𝓕 (Q.t i.castSucc) (Q.t i.succ) (Z i)
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ /-- Future Brownian increments are independent of every random variable measurable for a
+ filtration identified with the natural Brownian filtration. -/
+ theorem indep_increment_of_natural_adapted
+@@ -116,8 +116,8 @@
+     (IndepFun_iff_Indep _ _ _).mpr hindZm
+   exact hfunZm.congr Filter.EventuallyEq.rfl hZ.ae_eq_mk.symm
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ /-- An adapted `L²` coefficient times a future Brownian increment is again in `L²`. -/
+ theorem memLp_natural_adapted_mul_increment
+     (hB : IsPreBrownianReal B P) (hsm : ∀ t, StronglyMeasurable (B t))
+@@ -155,8 +155,8 @@
+   (memLp_natural_adapted_mul_increment hB hsm hnat hab Z).toLp
+     (fun w ↦ (Z : W → ℝ) w * (B b w - B a w))
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ /-- A representative of the constructed elementary Brownian terminal value. -/
+ theorem coeFn_elementaryBrownianValue
+     (hB : IsPreBrownianReal B P) (hsm : ∀ t, StronglyMeasurable (B t))
+@@ -167,8 +167,8 @@
+       fun w ↦ (Z : W → ℝ) w * (B b w - B a w) :=
+   MemLp.coeFn_toLp _
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ /-- The elementary Brownian terminal value is additive in its adapted coefficient. -/
+ theorem elementaryBrownianValue_add
+     (hB : IsPreBrownianReal B P) (hsm : ∀ t, StronglyMeasurable (B t))
+@@ -193,8 +193,8 @@
+   rw [hZY, Pi.add_apply]
+   ring
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ /-- The elementary Brownian terminal value commutes with real scalar multiplication. -/
+ theorem elementaryBrownianValue_smul
+     (hB : IsPreBrownianReal B P) (hsm : ∀ t, StronglyMeasurable (B t))
+@@ -227,8 +227,8 @@
+   map_add' := elementaryBrownianValue_add hB hsm hnat hab
+   map_smul' := elementaryBrownianValue_smul hB hsm hnat hab
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ /-- The fixed-interval linear map evaluates to the elementary Brownian value. -/
+ @[simp]
+ theorem elementaryBrownianValueLinear_apply
+@@ -240,8 +240,8 @@
+       elementaryBrownianValue hB hsm hnat hab Z :=
+   rfl
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ /-- Constructed elementary Brownian values on chronologically disjoint intervals are
+ orthogonal. -/
+ theorem inner_elementaryBrownianValue_eq_zero_of_le
+@@ -292,8 +292,8 @@
+       rw [integral_sub (hB.integrable_eval d) (hB.integrable_eval c),
+         hB.integral_eval, hB.integral_eval, sub_zero, zero_mul]
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ /-- The cross-inner-product identity for chronologically disjoint constructed elementary
+ Brownian values. -/
+ theorem inner_elementaryBrownianValue_eq_inner_elementaryPredictable_of_le [SFinite P]
+@@ -309,7 +309,6 @@
+   rw [inner_elementaryBrownianValue_eq_zero_of_le hB hsm hnat hab hbc hcd Z Y,
+     inner_elementaryPredictable_eq_zero_of_le 𝓕 hbc Z Y]
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- The cross-inner-product identity for two constructed elementary Brownian values on the same
+ interval. -/
+ theorem inner_elementaryBrownianValue_eq_inner_elementaryPredictable_same
+@@ -390,7 +389,6 @@
+   Finset.univ.sum fun i ↦ elementaryBrownianValue hB hsm hnat
+     (Q.mono.monotone (Fin.castSucc_le_succ i)) (Z i)
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- The construction-level Itô inner-product identity for adapted step processes on a common
+ partition. -/
+ theorem inner_partitionElementaryBrownianValue
+@@ -434,7 +432,6 @@
+     · exact inner_elementaryBrownianValue_eq_inner_elementaryPredictable_of_le
+         hB hsm hnat hjord (partition_succ_le_castSucc Q hji) hiord (Z j) (Y i)
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- Construction-level Itô isometry for common-partition adapted `L²` step processes. -/
+ theorem norm_partitionElementaryBrownianValue
+     (hB : IsPreBrownianReal B P) (hsm : ∀ t, StronglyMeasurable (B t))
+--- compatible-upstream/QuadraticVariationElementary.lean
++++ generic/QuadraticVariationElementary.lean
+@@ -27,13 +27,12 @@
+ 
+ namespace StochasticCalculus
+ 
+-variable {W : Type*} [NormedAddCommGroup W] [NormedSpace ℝ W]
+-  [CompleteSpace W] [MeasurableSpace W] [BorelSpace W]
+-  [SecondCountableTopology W]
+-  {P : Measure W} [IsGaussian P]
++variable {W : Type*}  
++   [MeasurableSpace W] 
++  
++  {P : Measure W} [IsProbabilityMeasure P]
+   {B : ℝ≥0 → W → ℝ}
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- The natural Itô representative of a one-step elementary integrand is the
+ coefficient times the stopped Brownian increment, almost surely at each
+ time. -/
+@@ -71,7 +70,6 @@
+     rw [hω]
+     simp only [min_comm s b, min_eq_right has]
+ 
+-omit [CompleteSpace W] [BorelSpace W] [SecondCountableTopology W] in
+ /-- Covariation of two stopped Brownian blocks with `b ≤ c`: the sums converge
+ in probability to `t ∧ b`. -/
+ theorem tendstoInMeasure_stopped_brownian_stopped_brownian_covariation_of_le
+@@ -120,7 +118,6 @@
+   rw [NNReal.coe_sub (min_le_min le_rfl hbc)]
+   ring
+ 
+-omit [CompleteSpace W] [BorelSpace W] [SecondCountableTopology W] in
+ /-- Covariation of two stopped Brownian blocks converges in probability to `t ∧
+ b ∧ c`. -/
+ theorem tendstoInMeasure_stopped_brownian_stopped_brownian_covariation
+@@ -149,7 +146,6 @@
+   (min t (min b d) : ℝ≥0) - (min t (min b c) : ℝ≥0) -
+     (min t (min a d) : ℝ≥0) + (min t (min a c) : ℝ≥0)
+ 
+-omit [CompleteSpace W] [BorelSpace W] [SecondCountableTopology W] in
+ /-- Covariation of two Brownian interval increments converges in probability to
+ the clipped interval covariation. -/
+ theorem tendstoInMeasure_brownian_interval_interval_covariation
+@@ -222,7 +218,6 @@
+     NNReal.coe_sub (min_le_min le_rfl hab)]
+   ring
+ 
+-omit [CompleteSpace W] [BorelSpace W] [SecondCountableTopology W] in
+ /-- Covariation of two Brownian interval increments weighted by measurable
+ random coefficients converges in probability to the weighted clipped
+ covariation. -/
+@@ -253,7 +248,6 @@
+     tendstoInMeasure_quadraticCovariationApprox_timeConstant_mul
+       hbase hXmeas hYmeas r q hrMeas hqMeas
+ 
+-omit [CompleteSpace W] [BorelSpace W] [SecondCountableTopology W] in
+ /-- The quadratic sums of a finite sum of randomly weighted Brownian interval
+ increments converge in probability to the double sum of weighted clipped
+ covariations. -/
+@@ -357,8 +351,6 @@
+         rw [hsym]
+         ring
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] in
+ /-- The natural Itô process of a formal finite combination is the corresponding
+ combination of the natural Itô processes of its generators. -/
+ theorem naturalItoProcess_elementaryFinsuppToPredictable [SFinite P]
+@@ -378,7 +370,6 @@
+   rw [map_sum, map_sum]
+   simp only [map_smul, predictableTimeRestrictCLM_apply]
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- The natural Itô representative of a formal finite combination is the
+ weighted sum of coefficients times stopped Brownian increments, almost
+ surely at each time. -/
+@@ -431,7 +422,6 @@
+   intro x hx
+   exact htermω x hx
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- The natural Itô representative of a formal finite combination has quadratic
+ variation in probability given by the double sum of weighted clipped
+ covariations. -/
+@@ -675,8 +665,6 @@
+       rw [integral_nnrealIocIndicator_mul (hinterval i hi)
+         (hinterval j hj) t]
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] in
+ /-- A pointwise representative of the predictable realization of a formal finite
+ combination, almost everywhere on the product space. -/
+ theorem elementaryFinsuppToPredictable_coeFn [SFinite P]
+@@ -748,7 +736,6 @@
+   ∫ s in Set.Ioc (0 : ℝ≥0) t, ((U : ℝ≥0 × W → ℝ) (s, ω)) ^ 2
+     ∂nonnegativeLebesgueMeasure
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- The predictable bracket of a formal finite combination is, almost surely,
+ the double sum of weighted clipped covariations. -/
+ theorem predictableQuadraticVariation_elementaryFinsuppToPredictable
+@@ -803,7 +790,6 @@
+         (fun x hx => x.2.1.2)
+         (fun x => v x * (x.2.2 : W → ℝ) ω) t
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- The natural Itô representative of a formal finite combination has quadratic
+ variation in probability equal to its predictable bracket. -/
+ theorem quadraticVariation_naturalItoProcessRepresentative_elementaryFinsupp_bracket
+--- compatible-upstream/ItoProcess.lean
++++ generic/ItoProcess.lean
+@@ -25,26 +25,26 @@
+ 
+ namespace StochasticCalculus
+ 
+-variable {W : Type*} [NormedAddCommGroup W] [NormedSpace ℝ W]
+-  [CompleteSpace W] [MeasurableSpace W] [BorelSpace W]
+-  [SecondCountableTopology W]
+-  {P : Measure W} [IsGaussian P]
++variable {W : Type*}  
++   [MeasurableSpace W] 
++  
++  {P : Measure W} [IsProbabilityMeasure P]
+   {B : ℝ≥0 → W → ℝ}
+ 
+ /-- The product-space time frame `(0,t] × Ω`. -/
+ @[expose] def predictableTimeFrame (t : ℝ≥0) : Set (ℝ≥0 × W) :=
+   Set.Ioc 0 t ×ˢ Set.univ
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ /-- The initial time frame is measurable for the predictable sigma-algebra. -/
+ theorem measurableSet_predictableTimeFrame
+     (𝓕 : Filtration ℝ≥0 ‹MeasurableSpace W›) (t : ℝ≥0) :
+     MeasurableSet[𝓕.predictable] (predictableTimeFrame (W := W) t) := by
+   exact measurableSet_predictable_Ioc_prod 0 t MeasurableSet.univ
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ /-- Restrict a predictable product-`L²` process to the initial time frame `(0,t]`. -/
+ noncomputable def predictableTimeRestrict
+     (𝓕 : Filtration ℝ≥0 ‹MeasurableSpace W›) (t : ℝ≥0)
+@@ -70,8 +70,8 @@
+     by_cases hps : p ∈ S <;> simp [hps, hp]
+   exact hcut.congr (MemLp.coeFn_toLp hmem).symm
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ /-- The cutoff has its expected representative. -/
+ theorem predictableTimeRestrict_coeFn
+     (𝓕 : Filtration ℝ≥0 ‹MeasurableSpace W›) (t : ℝ≥0)
+@@ -91,8 +91,8 @@
+         S.indicator (U : ℝ≥0 × W → ℝ)
+   exact MemLp.coeFn_toLp hmem
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ /-- Cutting off in time cannot increase the product-`L²` norm. -/
+ theorem norm_predictableTimeRestrict_le
+     (𝓕 : Filtration ℝ≥0 ‹MeasurableSpace W›) (t : ℝ≥0)
+@@ -112,8 +112,8 @@
+         (nonnegativeLebesgueMeasure.prod P) :=
+       eLpNorm_indicator_le _ (measurableSet_Ioc.prod MeasurableSet.univ)
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ /-- Restriction to the empty initial frame is zero. -/
+ @[simp]
+ theorem predictableTimeRestrict_zero
+@@ -128,8 +128,8 @@
+   simp only [predictableTimeFrame, Set.Ioc_self, Set.empty_prod, Set.indicator_empty]
+   exact hzero.symm
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ /-- Restricting twice to nested initial frames keeps the smaller frame. -/
+ theorem predictableTimeRestrict_restrict
+     (𝓕 : Filtration ℝ≥0 ‹MeasurableSpace W›) {s t : ℝ≥0} (hst : s ≤ t)
+@@ -150,8 +150,8 @@
+       Set.indicator_of_mem hpt, Set.indicator_of_mem hps]
+   · rw [Set.indicator_of_notMem hps, hsp, Set.indicator_of_notMem hps]
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ /-- Restricting a process already supported on a smaller initial frame to a
+ larger frame leaves it unchanged. -/
+ theorem predictableTimeRestrict_of_le
+@@ -172,8 +172,8 @@
+       exact hps ⟨⟨hp.1.1, hp.1.2.trans hts⟩, hp.2⟩
+     rw [Set.indicator_of_notMem hps, ht, Set.indicator_of_notMem hpt]
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ /-- Nested predictable time restrictions intersect their initial frames. -/
+ theorem predictableTimeRestrict_min
+     (𝒽 : Filtration ℝ≥0 ‹MeasurableSpace W›) (s t : ℝ≥0)
+@@ -186,8 +186,8 @@
+   · rw [min_eq_right hts]
+     exact predictableTimeRestrict_of_le 𝒽 hts U
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ /-- Restriction commutes with subtraction. -/
+ theorem predictableTimeRestrict_sub
+     (𝓕 : Filtration ℝ≥0 ‹MeasurableSpace W›) (t : ℝ≥0)
+@@ -222,8 +222,8 @@
+   · rw [Set.indicator_of_notMem hp, hU, hV,
+       Set.indicator_of_notMem hp, Set.indicator_of_notMem hp, sub_zero]
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ /-- Restricting the zero predictable process gives zero. -/
+ @[simp]
+ theorem predictableTimeRestrict_zero_process
+@@ -231,8 +231,8 @@
+     predictableTimeRestrict (P := P) 𝓕 t 0 = 0 := by
+   simpa using predictableTimeRestrict_sub (P := P) 𝓕 t 0 0
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ /-- Time restriction commutes with negation. -/
+ theorem predictableTimeRestrict_neg
+     (𝓕 : Filtration ℝ≥0 ‹MeasurableSpace W›) (t : ℝ≥0)
+@@ -240,8 +240,8 @@
+     predictableTimeRestrict 𝓕 t (-U) = -predictableTimeRestrict 𝓕 t U := by
+   simpa using predictableTimeRestrict_sub 𝓕 t 0 U
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ /-- Time restriction commutes with addition. -/
+ theorem predictableTimeRestrict_add
+     (𝓕 : Filtration ℝ≥0 ‹MeasurableSpace W›) (t : ℝ≥0)
+@@ -251,8 +251,8 @@
+   rw [← sub_neg_eq_add, predictableTimeRestrict_sub,
+     predictableTimeRestrict_neg, sub_neg_eq_add]
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ /-- Time restriction commutes with real scalar multiplication. -/
+ theorem predictableTimeRestrict_smul
+     (𝓕 : Filtration ℝ≥0 ‹MeasurableSpace W›) (t : ℝ≥0) (c : ℝ)
+@@ -283,8 +283,8 @@
+     change 0 = c * (predictableTimeRestrict 𝓕 t U : ℝ≥0 × W → ℝ) p
+     rw [hU, Set.indicator_of_notMem hp, mul_zero]
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ /-- Time restriction as a contraction on predictable product `L²`. -/
+ @[expose] noncomputable def predictableTimeRestrictCLM
+     (𝓕 : Filtration ℝ≥0 ‹MeasurableSpace W›) (t : ℝ≥0) :
+@@ -295,8 +295,8 @@
+       map_smul' := predictableTimeRestrict_smul 𝓕 t }
+     1 fun U ↦ by simpa using norm_predictableTimeRestrict_le 𝓕 t U
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ @[simp]
+ theorem predictableTimeRestrictCLM_apply
+     (𝓕 : Filtration ℝ≥0 ‹MeasurableSpace W›) (t : ℝ≥0)
+@@ -312,8 +312,8 @@
+     (U : PredictableProcessL2 𝓕 P) (t : ℝ≥0) : RandomL2 P :=
+   naturalItoIntegral hB hsm hnat (predictableTimeRestrict 𝓕 t U)
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ /-- The Itô process starts from zero in `L²(P)`. -/
+ @[simp]
+ theorem naturalItoProcess_zero
+@@ -324,8 +324,8 @@
+     naturalItoProcess hB hsm hnat U 0 = 0 := by
+   simp [naturalItoProcess]
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ /-- Integrating a deterministically stopped predictable process up to `s`
+ equals integrating the original process up to `min s a`. -/
+ theorem naturalItoProcess_predictableTimeRestrict
+@@ -344,16 +344,16 @@
+     (U : PredictableProcessL2 𝓕 P) : PredictableProcessL2 𝓕 P :=
+   predictableTimeRestrict 𝓕 t U - predictableTimeRestrict 𝓕 s U
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ /-- Taking the part of a predictable process on `(s,t]` is continuous and linear. -/
+ @[expose] noncomputable def predictableTimeSliceCLM
+     (𝓕 : Filtration ℝ≥0 ‹MeasurableSpace W›) (s t : ℝ≥0) :
+     PredictableProcessL2 𝓕 P →L[ℝ] PredictableProcessL2 𝓕 P :=
+   predictableTimeRestrictCLM 𝓕 t - predictableTimeRestrictCLM 𝓕 s
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ @[simp]
+ theorem predictableTimeSliceCLM_apply
+     (𝓕 : Filtration ℝ≥0 ‹MeasurableSpace W›) (s t : ℝ≥0)
+@@ -361,8 +361,8 @@
+     predictableTimeSliceCLM 𝓕 s t U = predictableTimeSlice 𝓕 s t U :=
+   rfl
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ /-- Cutting an elementary process to `(s,t]` intersects its time interval with that slice. -/
+ theorem predictableTimeSlice_elementaryPredictable [SFinite P]
+     (𝓕 : Filtration ℝ≥0 ‹MeasurableSpace W›) {s t : ℝ≥0} (hst : s ≤ t)
+@@ -428,8 +428,8 @@
+     rw [Set.indicator_of_notMem hpt, Set.indicator_of_notMem hps, sub_zero]
+     rw [ite_eq_right hi]
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ /-- Stopping an elementary process at `t` shortens its right endpoint to `min b t`. -/
+ theorem predictableTimeRestrict_elementaryPredictable [SFinite P]
+     (𝓕 : Filtration ℝ≥0 ‹MeasurableSpace W›) (t a b : ℝ≥0)
+@@ -466,8 +466,8 @@
+         hi.2.trans (min_le_right b t)⟩, Set.mem_univ _⟩
+     rw [ite_eq_right hi]
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ /-- An elementary predictable process on an empty ordered interval is zero. -/
+ theorem elementaryPredictable_eq_zero_of_le [SFinite P]
+     (𝓕 : Filtration ℝ≥0 ‹MeasurableSpace W›) {a b : ℝ≥0} (hba : b ≤ a)
+@@ -480,8 +480,8 @@
+   rw [hp]
+   simpa [Set.Ioc_eq_empty_of_le hba] using hzero.symm
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ /-- A Brownian elementary integral beginning after `s` is orthogonal to every
+ `𝓕_s`-measurable square-integrable random variable. -/
+ theorem inner_elementaryBrownianValue_adapted_eq_zero
+@@ -518,8 +518,8 @@
+       rw [integral_sub (hB.integrable_eval b) (hB.integrable_eval a),
+         hB.integral_eval, hB.integral_eval, sub_zero, zero_mul]
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ /-- A future time slice is orthogonal in product `L²` to every integrand stopped at its
+ left endpoint. -/
+ theorem inner_predictableTimeSlice_timeRestrict
+@@ -550,8 +550,8 @@
+     simp [hps, hpt]
+   · simp [hps]
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ /-- Process increments are the fixed-horizon integral of the corresponding time slice. -/
+ theorem naturalItoProcess_sub
+     (hB : IsPreBrownianReal B P) (hsm : ∀ t, StronglyMeasurable (B t))
+@@ -562,7 +562,6 @@
+       naturalItoIntegral hB hsm hnat (predictableTimeSlice 𝓕 s t U) := by
+   exact ((naturalItoIntegral hB hsm hnat).map_sub _ _).symm
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- Every increment after `s` is orthogonal to every square-integrable random variable
+ measurable at time `s`. This is the full `L²` martingale-increment law. -/
+ theorem inner_naturalItoProcess_sub_adapted
+@@ -610,7 +609,6 @@
+       simpa only [L, ContinuousLinearMap.comp_apply, innerSL_apply_apply,
+         predictableTimeSliceCLM_apply, zero_apply] using happ
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- Every fixed-time `L²` value of the Itô process has an almost-everywhere representative
+ measurable for the natural filtration at that time. -/
+ theorem aestronglyMeasurable_naturalItoProcess
+@@ -679,7 +677,6 @@
+   ⟨naturalItoProcess hB hsm hnat U t,
+     aestronglyMeasurable_naturalItoProcess hB hsm hnat U t⟩
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ @[simp]
+ theorem naturalItoProcessLpMeas_coe
+     (hB : IsPreBrownianReal B P) (hsm : ∀ t, StronglyMeasurable (B t))
+@@ -690,7 +687,6 @@
+       naturalItoProcess hB hsm hnat U t :=
+   rfl
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- Conditional expectation of a later Itô value onto `𝓕_s` is the value stopped at `s`. -/
+ theorem condExpL2_naturalItoProcess
+     (hB : IsPreBrownianReal B P) (hsm : ∀ t, StronglyMeasurable (B t))
+@@ -718,7 +714,6 @@
+   (aestronglyMeasurable_naturalItoProcess hB hsm hnat U t).mk
+     (naturalItoProcess hB hsm hnat U t : W → ℝ)
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- The selected representative is strongly measurable at its own filtration time. -/
+ theorem stronglyMeasurable_naturalItoProcessRepresentative
+     (hB : IsPreBrownianReal B P) (hsm : ∀ t, StronglyMeasurable (B t))
+@@ -729,7 +724,6 @@
+       (naturalItoProcessRepresentative hB hsm hnat U t) :=
+   (aestronglyMeasurable_naturalItoProcess hB hsm hnat U t).stronglyMeasurable_mk
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- The selected pointwise process represents the quotient-valued Itô process almost surely
+ at every fixed time. -/
+ theorem naturalItoProcess_ae_eq_representative
+@@ -741,7 +735,6 @@
+       naturalItoProcessRepresentative hB hsm hnat U t :=
+   (aestronglyMeasurable_naturalItoProcess hB hsm hnat U t).ae_eq_mk
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- The selected representatives respect deterministic stopping at every
+ fixed time, up to the quotient's unavoidable almost-everywhere equality. -/
+ theorem naturalItoProcessRepresentative_predictableTimeRestrict_ae
+@@ -764,7 +757,6 @@
+     _ =ᵐ[P] naturalItoProcessRepresentative hB hsm hnat U (min s a) :=
+       naturalItoProcess_ae_eq_representative hB hsm hnat U (min s a)
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- The selected representatives satisfy the defining conditional-expectation identity. -/
+ theorem condExp_naturalItoProcessRepresentative
+     (hB : IsPreBrownianReal B P) (hsm : ∀ t, StronglyMeasurable (B t))
+@@ -791,7 +783,6 @@
+     _ =ᵐ[P] (Is : W → ℝ) := hprojection
+     _ =ᵐ[P] naturalItoProcessRepresentative hB hsm hnat U s := hs
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- The selected time-indexed Itô integral is a Mathlib martingale. -/
+ theorem martingale_naturalItoProcessRepresentative
+     (hB : IsPreBrownianReal B P) (hsm : ∀ t, StronglyMeasurable (B t))
+@@ -803,7 +794,6 @@
+   intro s t hst
+   exact condExp_naturalItoProcessRepresentative hB hsm hnat hst U
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- Every increment after `s` is orthogonal to every other natural Itô process stopped at `s`.
+ This is the intrinsic `L²` martingale law on the closed stochastic-integral range. -/
+ theorem inner_naturalItoProcess_sub_naturalItoProcess
+@@ -822,7 +812,6 @@
+   rw [inner_naturalItoIntegral]
+   exact inner_predictableTimeSlice_timeRestrict 𝓕 hst U V
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- Fixed-time Itô isometry in norm form. -/
+ theorem norm_naturalItoProcess
+     (hB : IsPreBrownianReal B P) (hsm : ∀ t, StronglyMeasurable (B t))
+@@ -832,7 +821,6 @@
+     ‖naturalItoProcess hB hsm hnat U t‖ = ‖predictableTimeRestrict 𝓕 t U‖ := by
+   exact norm_naturalItoIntegral hB hsm hnat _
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- A fixed-time value is bounded by the full predictable-process norm. -/
+ theorem norm_naturalItoProcess_le
+     (hB : IsPreBrownianReal B P) (hsm : ∀ t, StronglyMeasurable (B t))
+--- compatible-upstream/QuadraticVariationContract.lean
++++ generic/QuadraticVariationContract.lean
+@@ -27,7 +27,7 @@
+ 
+ namespace StochasticCalculus
+ 
+-variable {W : Type*} [NormedAddCommGroup W] [NormedSpace ℝ W] [MeasurableSpace W]
++variable {W : Type*}   [MeasurableSpace W]
+   {P : Measure W} {B X μ σ : ℝ≥0 → W → ℝ}
+ 
+ /-- `B` has quadratic variation `q` at `t` when its uniform-partition
+@@ -45,7 +45,6 @@
+     (fun n : ℕ ↦ quadraticVariationApprox X t (n + 1))
+     Filter.atTop q
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- Quadratic variation in probability is preserved by deterministic scalar
+ multiplication, including when the bracket is random. -/
+ theorem HasQuadraticVariationInProbabilityAt.const_mul
+@@ -66,7 +65,6 @@
+   filter_upwards with omega
+   rw [quadraticVariationApprox_const_mul]
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- A process with almost-everywhere continuous nondecreasing paths has zero
+ quadratic variation in probability at every fixed time. -/
+ theorem quadraticVariation_continuous_monotone_inProbability_zero
+@@ -85,7 +83,6 @@
+     exact tendsto_quadraticVariationApprox_zero_of_continuous_monotone
+       A t omega homega.1 homega.2
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- Quadratic variation in probability is scaled pointwise by the square of a
+ measurable random multiplier that is constant in time. -/
+ theorem HasQuadraticVariationInProbabilityAt.timeConstant_mul
+@@ -108,7 +105,6 @@
+   simpa only [Pi.pow_apply] using
+     (quadraticVariationApprox_timeConstant_mul c X t (n + 1) omega).symm
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- Literal `L²` quadratic variation implies quadratic variation in probability. -/
+ theorem HasQuadraticVariationAt.to_inProbability
+     {t : ℝ≥0} {q : ℝ} (hX : HasQuadraticVariationAt X P t q) :
+@@ -117,7 +113,6 @@
+   apply tendstoInMeasure_of_tendsto_eLpNorm (p := 2) (by norm_num)
+   exact hX
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- Uniform-partition quadratic-variation sums respect almost-everywhere
+ equality of the underlying process at each fixed time. -/
+ theorem quadraticVariationApprox_congr_ae
+@@ -138,7 +133,6 @@
+   intro i hi
+   rw [hn i hi, hp i hi]
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- Quadratic variation in probability is invariant under per-time
+ almost-everywhere changes of the process and an almost-everywhere change of
+ the proposed limit. -/
+@@ -151,7 +145,6 @@
+   exact hX.congr
+     (fun n => quadraticVariationApprox_congr_ae hXY t (n + 1)) hqr
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- If the quadratic variations of `X`, `Y`, and `X + Y` converge in
+ probability, polarization identifies the convergence-in-probability limit of
+ their quadratic-covariation sums. -/
+@@ -190,7 +183,6 @@
+     ring
+   · exact Filter.EventuallyEq.rfl
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- Quadratic covariation in probability is scaled pointwise by two measurable
+ random multipliers that are constant in time. -/
+ theorem tendstoInMeasure_quadraticCovariationApprox_timeConstant_mul
+@@ -219,7 +211,6 @@
+     (quadraticCovariationApprox_timeConstant_mul
+       c d X Y t (n + 1) omega).symm
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- The quadratic variation of a deterministic linear combination is obtained
+ from the quadratic variations of both summands and their covariation. -/
+ theorem HasQuadraticVariationInProbabilityAt.linearCombination
+@@ -266,7 +257,6 @@
+     rw [quadraticVariationApprox_linearCombination]
+   · exact Filter.EventuallyEq.rfl
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- Quadratic covariation in probability is linear in its first process
+ argument for deterministic coefficients. -/
+ theorem tendstoInMeasure_quadraticCovariationApprox_linearCombination_left
+@@ -308,7 +298,6 @@
+   intro i _hi
+   ring
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- Quadratic covariation in probability is linear in its second process
+ argument for deterministic coefficients. -/
+ theorem tendstoInMeasure_quadraticCovariationApprox_linearCombination_right
+@@ -350,7 +339,6 @@
+   intro i _hi
+   ring
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ private theorem tendstoInMeasure_quadraticCovariationApprox_zero_right
+     [IsFiniteMeasure P] {X : ℝ≥0 → W → ℝ} {t : ℝ≥0} :
+     TendstoInMeasure P
+@@ -374,7 +362,6 @@
+     rw [this]
+     exact tendsto_const_nhds
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- Quadratic covariation in probability with a deterministic finite linear
+ combination is the same finite linear combination of the component limits. -/
+ theorem tendstoInMeasure_quadraticCovariationApprox_finset_sum
+@@ -426,7 +413,6 @@
+           (c i) 1
+       simpa only [Finset.sum_insert hi, one_mul] using hCombined
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- Adding a random variable that is constant in time does not change
+ quadratic variation in probability. -/
+ theorem HasQuadraticVariationInProbabilityAt.add_timeConstant
+@@ -440,7 +426,6 @@
+       (quadraticVariationApprox_add_timeConstant Y c t (n + 1) ω).symm)
+     Filter.EventuallyEq.rfl
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- In probability, adding a zero-quadratic-variation process preserves the
+ quadratic variation of the other summand. -/
+ theorem HasQuadraticVariationInProbabilityAt.add_of_left_zero
+@@ -475,7 +460,6 @@
+     tendsto_quadraticVariationApprox_add_of_left_qv_zero
+       (fun i => ns (nsA (nsM i)) + 1) A M t ω (q ω) hAfinal hMfinal
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- A convenient measurable-process form of
+ `HasQuadraticVariationInProbabilityAt.add_of_left_zero`. -/
+ theorem HasQuadraticVariationInProbabilityAt.add_of_left_zero_of_aestronglyMeasurable
+@@ -491,7 +475,6 @@
+   exact aestronglyMeasurable_quadraticVariationApprox
+     (fun s => (hAmeas s).add (hMmeas s)) t (n + 1)
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- The drift integral has quadratic variation zero in probability on a
+ finite measure space. -/
+ theorem quadraticVariation_integratedDrift_inProbability
+@@ -605,7 +588,6 @@
+   filter_upwards with omega
+   rw [Real.norm_eq_abs, ← abs_pow, abs_of_nonneg (by positivity)]
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- The expected fourth variation of a pre-Brownian process on an `n`-step
+ uniform partition is exactly `3 * t² / n`. -/
+ theorem integral_fourthVariationApprox_preBrownianReal
+@@ -649,7 +631,6 @@
+       have hnR : (n : ℝ) ≠ 0 := by exact_mod_cast Nat.ne_of_gt hn
+       field_simp [hnR]
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- The fourth variation of a pre-Brownian process along increasingly fine
+ uniform partitions vanishes in probability.  Only the Gaussian increment
+ laws are used; no continuity of the chosen path version is required. -/
+@@ -857,7 +838,6 @@
+         hZ.integral_comp (f := fun x : ℝ ↦ (x ^ 2 - (v : ℝ)) ^ 2) (by fun_prop)
+     _ = 2 * (v : ℝ) ^ 2 := integral_centered_square_sq_gaussianReal v
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- Exact `L²` norm of the centered squared pre-Brownian increments along any
+ monotone deterministic finite time grid. This is the non-uniform partition
+ form of the finite-sum estimate behind Brownian quadratic variation. -/
+@@ -932,7 +912,6 @@
+     hIntegralSq]
+   rfl
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- Brownian specialization of the pre-Brownian finite-grid estimate. -/
+ theorem eLpNorm_brownian_centeredSquaredIncrementSum_eq
+     (hB : IsBrownianMotion B P) (τ : ℕ → ℝ≥0) (hτ : Monotone τ) (n : ℕ) :
+@@ -947,7 +926,6 @@
+   eLpNorm_preBrownian_centeredSquaredIncrementSum_eq
+     hB.toIsPreBrownianReal τ hτ n
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- A Brownian motion run on a continuous monotone deterministic clock `A`
+ with `A 0 = 0` has literal `L²` quadratic variation `A t` at time `t`. -/
+ theorem quadraticVariation_timeChanged_brownian
+--- compatible-upstream/UniformPartitionSums.lean
++++ generic/UniformPartitionSums.lean
+@@ -33,7 +33,7 @@
+     Prop :=
+   IsBrownianReal B P
+ 
+-variable {W : Type*} [NormedAddCommGroup W] [NormedSpace ℝ W] [MeasurableSpace W]
++variable {W : Type*}   [MeasurableSpace W]
+   {P : Measure W} {B X μ σ : ℝ≥0 → W → ℝ}
+ 
+ /-- The `i`-th point in the uniform `n`-step partition of `[0, t]`. -/
+@@ -185,7 +185,7 @@
+     (Y (uniformPartitionTime t n (i + 1)) ω -
+       Y (uniformPartitionTime t n i) ω)
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [MeasurableSpace W] in
++omit   [MeasurableSpace W]  in
+ /-- Quadratic-covariation approximants are symmetric. -/
+ theorem quadraticCovariationApprox_comm
+     (X Y : ℝ≥0 → W → ℝ) (t : ℝ≥0) (n : ℕ) (omega : W) :
+@@ -203,7 +203,7 @@
+     |X (uniformPartitionTime t n (i + 1)) ω -
+       X (uniformPartitionTime t n i) ω|
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [MeasurableSpace W] in
++omit   [MeasurableSpace W]  in
+ /-- Every squared-increment sum is nonnegative. -/
+ theorem quadraticVariationApprox_nonneg (X : ℝ≥0 → W → ℝ)
+     (t : ℝ≥0) (n : ℕ) (ω : W) :
+@@ -211,7 +211,7 @@
+   unfold quadraticVariationApprox
+   exact Finset.sum_nonneg fun _ _hi => sq_nonneg _
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [MeasurableSpace W] in
++omit   [MeasurableSpace W]  in
+ /-- Every fourth-variation approximant is nonnegative. -/
+ theorem fourthVariationApprox_nonneg (X : ℝ≥0 → W → ℝ)
+     (t : ℝ≥0) (n : ℕ) (ω : W) :
+@@ -219,7 +219,7 @@
+   unfold fourthVariationApprox
+   exact Finset.sum_nonneg fun _ _hi => by positivity
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [MeasurableSpace W] in
++omit   [MeasurableSpace W]  in
+ /-- Scaling a process scales every squared-increment sum by the square of
+ the scalar. -/
+ theorem quadraticVariationApprox_const_mul
+@@ -232,7 +232,7 @@
+   intro i _hi
+   ring
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [MeasurableSpace W] in
++omit   [MeasurableSpace W]  in
+ /-- Multiplication by a random variable that is constant in time scales each
+ squared-increment sum pointwise by the square of that random variable. -/
+ theorem quadraticVariationApprox_timeConstant_mul
+@@ -245,7 +245,7 @@
+   intro i _hi
+   ring
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [MeasurableSpace W] in
++omit   [MeasurableSpace W]  in
+ /-- Multiplying two processes by random variables that are constant in time
+ scales every quadratic-covariation sum pointwise by their product. -/
+ theorem quadraticCovariationApprox_timeConstant_mul
+@@ -260,7 +260,7 @@
+   intro i _hi
+   ring
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [MeasurableSpace W] in
++omit   [MeasurableSpace W]  in
+ /-- Exact polarization of the squared-increment sum of two processes. -/
+ theorem quadraticVariationApprox_add (X Y : ℝ≥0 → W → ℝ)
+     (t : ℝ≥0) (n : ℕ) (ω : W) :
+@@ -273,7 +273,7 @@
+   intro i _hi
+   ring
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [MeasurableSpace W] in
++omit   [MeasurableSpace W]  in
+ /-- Exact expansion of the squared-increment sum of a deterministic linear
+ combination of two processes. -/
+ theorem quadraticVariationApprox_linearCombination
+@@ -290,7 +290,7 @@
+   intro i _hi
+   ring
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [MeasurableSpace W] in
++omit   [MeasurableSpace W]  in
+ /-- Finite-sum Cauchy--Schwarz for the quadratic-covariation approximant. -/
+ theorem quadraticCovariationApprox_sq_le
+     (X Y : ℝ≥0 → W → ℝ) (t : ℝ≥0) (n : ℕ) (ω : W) :
+@@ -299,7 +299,7 @@
+   unfold quadraticCovariationApprox quadraticVariationApprox
+   exact Finset.sum_mul_sq_le_sq_mul_sq _ _ _
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [MeasurableSpace W] in
++omit   [MeasurableSpace W]  in
+ /-- A time-constant random summand does not change squared increments. -/
+ theorem quadraticVariationApprox_add_timeConstant
+     (X : ℝ≥0 → W → ℝ) (c : W → ℝ) (t : ℝ≥0) (n : ℕ) (ω : W) :
+@@ -310,7 +310,6 @@
+   intro i _hi
+   ring
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- Per-time almost-everywhere strong measurability of a process makes every
+ uniform-partition quadratic-variation sum almost-everywhere strongly
+ measurable. -/
+@@ -330,7 +329,6 @@
+   intro i _hi
+   ring
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- Per-time almost-everywhere strong measurability makes every uniform
+ fourth-variation sum almost-everywhere strongly measurable. -/
+ theorem aestronglyMeasurable_fourthVariationApprox
+@@ -344,7 +342,6 @@
+   funext omega
+   simp only [Finset.sum_apply, Pi.pow_apply, Pi.sub_apply]
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- Per-time almost-everywhere strong measurability of two processes makes
+ every uniform-partition quadratic-covariation sum almost-everywhere strongly
+ measurable. -/
+@@ -364,7 +361,7 @@
+   funext ω
+   simp only [Finset.sum_apply, Pi.mul_apply, Pi.sub_apply]
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [MeasurableSpace W] in
++omit   [MeasurableSpace W]  in
+ /-- If one process has vanishing quadratic-variation sums and another has
+ convergent quadratic-variation sums, then their covariation sums vanish along
+ the same index filter. -/
+@@ -391,7 +388,7 @@
+     have hsqrt := hprod.sqrt
+     simpa only [zero_mul, Real.sqrt_zero] using hsqrt
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [MeasurableSpace W] in
++omit   [MeasurableSpace W]  in
+ /-- Adding a process with vanishing quadratic variation does not change a
+ pathwise quadratic-variation limit. -/
+ theorem tendsto_quadraticVariationApprox_add_of_left_qv_zero
+@@ -412,7 +409,7 @@
+     rw [quadraticVariationApprox_add]
+   · norm_num
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [MeasurableSpace W] in
++omit   [MeasurableSpace W]  in
+ /-- A path continuous on `[0, t]` with uniformly bounded discrete total
+ variation has vanishing quadratic variation along the uniform partitions. -/
+ theorem tendsto_quadraticVariationApprox_zero_of_continuousOn_of_variation_le
+@@ -457,7 +454,7 @@
+       field_simp [ne_of_gt hC]
+     _ < ε := by linarith
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [MeasurableSpace W] in
++omit   [MeasurableSpace W]  in
+ /-- A continuous path with uniformly bounded discrete total variation has
+ vanishing quadratic variation along the uniform partitions. -/
+ theorem tendsto_quadraticVariationApprox_zero_of_continuous_of_variation_le
+@@ -469,7 +466,7 @@
+   tendsto_quadraticVariationApprox_zero_of_continuousOn_of_variation_le
+     X t ω C hC hcontinuous.continuousOn hvariation
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [MeasurableSpace W] in
++omit   [MeasurableSpace W]  in
+ /-- A continuous nondecreasing real path has vanishing quadratic variation
+ along the uniform partitions.  Monotonicity makes every discrete total
+ variation telescope to the endpoint increment. -/
+@@ -590,7 +587,7 @@
+   exact hreal.comp NNReal.continuous_coe.continuousOn fun x hx => by
+     exact ⟨by exact_mod_cast hx.1, by exact_mod_cast hx.2⟩
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [MeasurableSpace W] in
++omit   [MeasurableSpace W]  in
+ /-- The discrete total variation of an integrable primitive is bounded by
+ the integral of the absolute value of its integrand. -/
+ theorem totalVariationApprox_nnrealIntegralPrimitive_le
+@@ -649,7 +646,7 @@
+             hzero, sub_zero]
+           rfl
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [MeasurableSpace W] in
++omit   [MeasurableSpace W]  in
+ /-- The quadratic variation of an integrable primitive vanishes pathwise
+ along the uniform partitions. -/
+ theorem tendsto_quadraticVariationApprox_nnrealIntegralPrimitive_zero
+@@ -677,7 +674,7 @@
+     (μ : ℝ≥0 → W → ℝ) (t : ℝ≥0) (ω : W) : ℝ :=
+   ∫ s in Set.Icc (0 : ℝ) (t : ℝ), μ s.toNNReal ω
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [MeasurableSpace W] in
++omit   [MeasurableSpace W]  in
+ /-- The drift component has pathwise quadratic variation zero on every
+ horizon where the drift path is integrable. -/
+ theorem tendsto_quadraticVariationApprox_integratedDrift_zero
+@@ -694,7 +691,6 @@
+   unfold quadraticVariationApprox integratedDrift nnrealIntegralPrimitive
+   rfl
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- Joint measurability of the drift makes its integral at each fixed time a
+ strongly measurable random variable. -/
+ theorem stronglyMeasurable_integratedDrift
+@@ -721,7 +717,6 @@
+     · simp only [S, Set.indicator_of_mem hs, ite_eq_left hs]
+     · simp only [S, Set.indicator_of_notMem hs, ite_eq_right hs]
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- Every uniform-partition quadratic-variation sum of the drift component
+ is strongly measurable. -/
+ theorem stronglyMeasurable_quadraticVariationApprox_integratedDrift
+--- compatible-upstream/ItoFormulaPartition.lean
++++ generic/ItoFormulaPartition.lean
+@@ -39,7 +39,7 @@
+ 
+ namespace StochasticCalculus
+ 
+-variable {W : Type*} [NormedAddCommGroup W] [NormedSpace ℝ W]
++variable {W : Type*}  
+   [MeasurableSpace W]
+   {P : Measure W} {B X μ σ : ℝ≥0 → W → ℝ}
+ 
+@@ -88,7 +88,6 @@
+       (X (uniformPartitionTime t n (i + 1)) omega -
+         X (uniformPartitionTime t n i) omega) ^ 2
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- Fixed-time measurability of a process and continuity of the
+ second-derivative weight imply measurability of every weighted quadratic
+ partition sum. -/
+@@ -149,7 +148,6 @@
+       (X (uniformPartitionTime t n i) omega)
+       (X (uniformPartitionTime t n (i + 1)) omega)
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- Joint continuity of the function and its displayed partial derivatives,
+ together with fixed-time measurability of the process, makes every finite
+ general Taylor-remainder sum measurable. -/
+@@ -218,7 +216,7 @@
+     itoSpaceDerivative f s₀ x₀ * (x₁ - x₀) -
+     (1 / 2 : ℝ) * itoSpaceSecondDerivative f s₀ x₀ * (x₁ - x₀) ^ 2
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [MeasurableSpace W] in
++omit   [MeasurableSpace W]  in
+ /-- The frozen-time state component is exactly the ordinary one-variable
+ second-order Taylor remainder of the corresponding time slice. -/
+ theorem generalItoFrozenTimeStateRemainderIncrement_eq_itoTaylorRemainder
+@@ -229,7 +227,7 @@
+     itoSpaceDerivative itoSpaceSecondDerivative
+   ring
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [MeasurableSpace W] in
++omit   [MeasurableSpace W]  in
+ /-- Uniform second-order Taylor bound for all time slices on a compact
+ time/state rectangle.  Joint continuity of the second space derivative makes
+ the little-o modulus independent of the chosen time slice. -/
+@@ -321,7 +319,7 @@
+         gcongr
+     _ = ε * (x₁ - x₀) ^ 2 := by ring
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [MeasurableSpace W] in
++omit   [MeasurableSpace W]  in
+ /-- Joint continuity of the second space derivative makes the frozen-time
+ state Taylor little-o estimate uniform along every continuous compact
+ sample path. -/
+@@ -376,7 +374,7 @@
+   (itoTimeDerivative f s₀ x₁ - itoTimeDerivative f s₀ x₀) *
+     (s₁ - s₀)
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [MeasurableSpace W] in
++omit   [MeasurableSpace W]  in
+ /-- A frozen-state first-order time residual is controlled by the oscillation
+ of the time derivative on the corresponding time interval. -/
+ theorem abs_generalItoFrozenStateTimeRemainderIncrement_le
+@@ -413,7 +411,7 @@
+       (fun s hs => by
+         simpa only [D, Real.norm_eq_abs] using hbound s hs))
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [MeasurableSpace W] in
++omit   [MeasurableSpace W]  in
+ /-- Exact factorization of a genuinely two-variable one-step Itô residual.
+ It separates the two ordinary one-variable Taylor errors from the sole mixed
+ time/state cross term. -/
+@@ -462,7 +460,7 @@
+       (X (uniformPartitionTime t n i) omega)
+       (X (uniformPartitionTime t n (i + 1)) omega)
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [MeasurableSpace W] in
++omit   [MeasurableSpace W]  in
+ /-- The full accumulated residual is exactly the sum of its frozen-state
+ time, frozen-time state, and mixed cross components. -/
+ theorem generalItoRemainderApprox_eq_frozenTime_frozenState_cross
+@@ -480,7 +478,7 @@
+   exact generalItoRemainderIncrement_eq_frozenTime_frozenState_cross
+     f _ _ _ _
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [MeasurableSpace W] in
++omit   [MeasurableSpace W]  in
+ /-- Subsequence form of the frozen-time state closure, used when quadratic
+ variation in probability supplies almost-sure convergence only after taking
+ a subsubsequence. -/
+@@ -538,7 +536,7 @@
+       field_simp [hC.ne']
+     _ < ε := by linarith
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [MeasurableSpace W] in
++omit   [MeasurableSpace W]  in
+ /-- Uniformly small oscillation of the time derivative within every fine
+ partition interval forces the accumulated frozen-state time Taylor error to
+ vanish. -/
+@@ -619,7 +617,7 @@
+           dsimp only [δ]
+           exact div_mul_cancel₀ ε ht1.ne'
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [MeasurableSpace W] in
++omit   [MeasurableSpace W]  in
+ /-- On a continuous compact path, joint continuity of the time derivative
+ makes its oscillation uniformly small within each sufficiently fine time
+ interval, even though the frozen state varies from interval to interval. -/
+@@ -703,7 +701,7 @@
+   dsimp only [p, q] at hout
+   simpa only [Real.dist_eq] using hout.le
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [MeasurableSpace W] in
++omit   [MeasurableSpace W]  in
+ /-- The frozen-state time component of the general Itô remainder vanishes
+ pathwise for a jointly continuous time derivative and time-differentiable
+ test function along every continuous sample path. -/
+@@ -723,7 +721,7 @@
+   intro x
+   exact hdt.comp (continuous_id.prodMk continuous_const)
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [MeasurableSpace W] in
++omit   [MeasurableSpace W]  in
+ /-- If the time derivative changes uniformly little across every state
+ increment of a fine partition, then the accumulated mixed time/state cross
+ term vanishes.  Continuity of the derivative along a continuous compact path
+@@ -802,7 +800,7 @@
+           dsimp only [δ]
+           exact div_mul_cancel₀ ε ht1.ne'
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [MeasurableSpace W] in
++omit   [MeasurableSpace W]  in
+ /-- Joint continuity of the time derivative and continuity of one sample path
+ make the derivative uniformly insensitive to adjacent state increments on a
+ fixed compact horizon. -/
+@@ -860,7 +858,7 @@
+   dsimp only [p, q] at hout
+   simpa only [Real.dist_eq] using hout.le
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [MeasurableSpace W] in
++omit   [MeasurableSpace W]  in
+ /-- The mixed time/state component of the general Itô remainder vanishes
+ pathwise along every continuous path when the time derivative is jointly
+ continuous. -/
+@@ -877,7 +875,7 @@
+       (generalItoTimeDerivative_state_increments_eventually_small
+         f X t omega hdt hpath)
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [MeasurableSpace W] in
++omit   [MeasurableSpace W]  in
+ /-- Subsequence-stable form of the full pathwise remainder theorem. -/
+ theorem generalItoRemainderApprox_subseq_tendsto_zero_of_continuous_path
+     (f : ℝ → ℝ → ℝ) (X : ℝ≥0 → W → ℝ) (t : ℝ≥0) (omega : W)
+@@ -926,7 +924,6 @@
+         f X t (k n + 1) omega)
+   · simp only [zero_add]
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- For a measurable process with almost-everywhere continuous paths and
+ quadratic variation in probability, the full genuinely two-variable Taylor
+ remainder vanishes in probability. -/
+@@ -974,7 +971,6 @@
+   fixedTime_ae_eq : ∀ s, X s =ᵐ[P] Y s
+   continuous_paths : ∀ᵐ omega ∂P, Continuous (fun s => Y s omega)
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- A fixed-time modification agrees simultaneously at every point of all
+ uniform partitions of a fixed horizon.  Countability of the two natural-number
+ indices is the key distinction from an uncountable simultaneous-time claim. -/
+@@ -990,7 +986,6 @@
+   intro i
+   exact hXY (uniformPartitionTime t (n + 1) i)
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- For a process admitting a continuous modification, every deterministic
+ stopping boundary contributes vanishing quadratic mass in probability.  This
+ is the analytic boundary-error input for replacing stopped cumulative sums by
+@@ -1020,7 +1015,6 @@
+     (quadraticVariationCrossingStopApprox_ae_eq_of_fixedTime_ae_eq
+       hmod.fixedTime_ae_eq t (n + 1) a).symm
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- Once the stopped quadratic sums have a limit, continuity removes their
+ single partial boundary cell and gives the same limit for the completed cells
+ strictly before the stopping time. -/
+@@ -1051,7 +1045,6 @@
+     ring
+   simpa only [sub_zero] using hsub.congr_left hsource
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- A continuous modification also supplies a sample-dependent compact-range
+ bound simultaneously on every uniform partition point of a fixed horizon.
+ This is the pathwise localization datum used to bound derivatives on compact
+@@ -1075,7 +1068,6 @@
+   exact ⟨uniformPartitionTime t (n + 1) i,
+     uniformPartitionTime_mem_Icc_of_le t (Nat.zero_lt_succ n) hi, rfl⟩
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- A continuous modification localizes every continuous second-derivative
+ weight on the countable family of uniform grids.  The bound may depend on the
+ sample and horizon, but is simultaneous in the partition size and index. -/
+@@ -1112,7 +1104,6 @@
+   exact ⟨⟨by exact_mod_cast htime.1, by exact_mod_cast htime.2⟩,
+     hstate⟩
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- Fixed-time modifications give the same time partition term almost
+ everywhere for every fixed finite partition. -/
+ theorem generalItoTimeApprox_ae_eq_of_fixedTime_ae_eq
+@@ -1132,7 +1123,6 @@
+   intro i hi
+   rw [homega i hi]
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- Fixed-time modifications give the same explicit Taylor residual term
+ almost everywhere for every fixed finite partition. -/
+ theorem generalItoRemainderApprox_ae_eq_of_fixedTime_ae_eq
+@@ -1155,7 +1145,7 @@
+   intro i hi
+   rw [(homega i hi).1, (homega i hi).2]
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [MeasurableSpace W] in
++omit   [MeasurableSpace W]  in
+ /-- Exact four-term decomposition of a time-dependent function increment
+ along the uniform partition.  No differentiability or probability hypothesis
+ is needed: the remainder was defined to make this identity exact. -/
+@@ -1198,7 +1188,6 @@
+       unfold generalItoRemainderIncrement
+       ring
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- The general Itô formula reduced to convergence in probability of its
+ partition terms.  This is the analytic interface needed by any future
+ continuous-modification and localization layer. -/
+@@ -1257,7 +1246,6 @@
+   filter_upwards [hunique] with omega homega
+   linarith
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- Once the time, quadratic, and remainder sums have their intended limits,
+ the general Itô identity is equivalent to convergence of the concrete `dX`
+ left sums.  In particular, the stochastic term cannot be chosen independently
+@@ -1308,7 +1296,6 @@
+     filter_upwards [hformula] with omega homega
+     linarith
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- Once the other three partition terms converge, the exact decomposition
+ itself constructs the `dX`-sum limit.  This is useful when the theorem only
+ needs the stochastic first-order term existentially: its canonical value is
+@@ -1351,7 +1338,7 @@
+   ∫ s in Set.Icc (0 : ℝ) (t : ℝ),
+     itoTimeDerivative f s (X s.toNNReal omega)
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [MeasurableSpace W] in
++omit   [MeasurableSpace W]  in
+ /-- Along a continuous sample path, a jointly continuous time derivative has
+ the expected uniform-partition Riemann-sum limit. -/
+ theorem generalItoTimeApprox_tendsto_of_continuous_path
+@@ -1373,7 +1360,6 @@
+   simpa only [generalItoTimeApprox, generalItoTimeIntegral,
+     Real.toNNReal_coe] using hRiemann
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- If fixed-time process values are measurable and paths are almost
+ everywhere continuous, the generic time term converges in probability for
+ every jointly continuous time derivative. -/
+@@ -1414,7 +1400,6 @@
+   exact generalItoTimeApprox_tendsto_of_continuous_path
+     f hdt X t omega hpath
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- The time-term limit may be proved on a continuous modification and then
+ transported to the original fixed-time representative.  The limiting path
+ integral is naturally evaluated on that continuous modification. -/
+@@ -1452,7 +1437,7 @@
+   f x₁ - f x₀ - deriv f x₀ * (x₁ - x₀) -
+     (1 / 2 : ℝ) * deriv (deriv f) x₀ * (x₁ - x₀) ^ 2
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [MeasurableSpace W] in
++omit   [MeasurableSpace W]  in
+ theorem itoStateTaylorRemainder_eq_itoTaylorRemainder
+     (f : ℝ → ℝ) (x₀ x₁ : ℝ) :
+     itoStateTaylorRemainder f x₀ x₁ =
+@@ -1469,7 +1454,6 @@
+       (X (uniformPartitionTime t n i) omega)
+       (X (uniformPartitionTime t n (i + 1)) omega)
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- The accumulated state-only Taylor residual is invariant almost everywhere
+ under fixed-time modification of the process. -/
+ theorem itoStateTaylorRemainderApprox_ae_eq_of_fixedTime_ae_eq
+@@ -1492,7 +1476,6 @@
+   intro i hi
+   rw [(homega i hi).1, (homega i hi).2]
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- For any measurable process with almost-everywhere continuous paths and
+ quadratic variation in probability, the accumulated second-order state
+ Taylor residual vanishes in probability.  This is the Brownian-independent
+@@ -1552,7 +1535,6 @@
+   simpa only [itoStateTaylorRemainderApprox,
+     itoStateTaylorRemainder_eq_itoTaylorRemainder] using hrem
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- A continuous modification is enough to obtain state Taylor-remainder
+ convergence for the original representative, because both its quadratic sums
+ and its Taylor sums are invariant on each finite partition almost everywhere. -/
+@@ -1583,7 +1565,6 @@
+     (itoStateTaylorRemainderApprox_ae_eq_of_fixedTime_ae_eq
+       hmod.fixedTime_ae_eq f t (n + 1)).symm
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- A continuous modification upgrades the full genuinely two-variable
+ Taylor-remainder theorem back to the original fixed-time representative. -/
+ theorem IsContinuousProcessModification.generalRemainder_tendstoInMeasure
+--- compatible-upstream/PredictableDensity.lean
++++ generic/PredictableDensity.lean
+@@ -44,13 +44,13 @@
+ 
+ namespace StochasticCalculus
+ 
+-variable {W : Type*} [NormedAddCommGroup W] [NormedSpace ℝ W]
+-  [CompleteSpace W] [MeasurableSpace W] [BorelSpace W]
+-  [SecondCountableTopology W]
+-  {P : Measure W} [IsGaussian P]
+-
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++variable {W : Type*}  
++   [MeasurableSpace W] 
++  
++  {P : Measure W} [IsProbabilityMeasure P]
++
++omit    
++     [IsProbabilityMeasure P]  in
+ /-- The predictable-process subspace as the trimmed-measure `L²` model used by completion
+ constructions of the Itô integral. -/
+ noncomputable def predictableTrimEquiv
+@@ -60,8 +60,8 @@
+         ((nonnegativeLebesgueMeasure.prod P).trim (predictable_le_prod 𝓕)) :=
+   lpMeasToLpTrimLie ℝ ℝ 2 (nonnegativeLebesgueMeasure.prod P) (predictable_le_prod 𝓕)
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ /-- The trimmed representative agrees almost everywhere with the ambient representative. -/
+ theorem predictableTrimEquiv_ae_eq
+     (𝓕 : Filtration ℝ≥0 ‹MeasurableSpace W›) (u : PredictableProcessL2 𝓕 P) :
+@@ -76,8 +76,8 @@
+   {S | ∃ a b : ℝ≥0, ∃ F : Set W,
+     a < b ∧ MeasurableSet[𝓕 a] F ∧ S = (Set.Ioc a b ×ˢ F)}
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ lemma isPiSystem_predictableRectangle
+     (𝓕 : Filtration ℝ≥0 ‹MeasurableSpace W›) :
+     IsPiSystem (predictableRectangle 𝓕) := by
+@@ -111,8 +111,8 @@
+         (𝓕.mono (le_max_right a₁ a₂) _ hF₂)
+     · rw [Set.prod_inter_prod, Set.Ioc_inter_Ioc]
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ theorem generateFrom_predictableRectangle
+     (𝓕 : Filtration ℝ≥0 ‹MeasurableSpace W›) :
+     MeasurableSpace.generateFrom (predictableRectangle 𝓕) = 𝓕.predictable := by
+@@ -153,7 +153,6 @@
+   ⟨indicatorConstLp 2 (𝓕.le a F hF) (measure_ne_top P F) (1 : ℝ),
+     mem_lpMeas_indicatorConstLp (𝓕.le a) hF (measure_ne_top P F)⟩
+ 
+-omit [CompleteSpace W] [BorelSpace W] [SecondCountableTopology W] in
+ lemma adaptedIndicator_coeFn
+     (𝓕 : Filtration ℝ≥0 ‹MeasurableSpace W›) (a : ℝ≥0)
+     {F : Set W} (hF : MeasurableSet[𝓕 a] F) :
+@@ -162,7 +161,6 @@
+   indicatorConstLp_coeFn (p := 2) (hs := 𝓕.le a F hF)
+     (hμs := measure_ne_top P F) (c := (1 : ℝ))
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- An elementary process with an event-indicator coefficient is the indicator of its
+ predictable rectangle. -/
+ theorem elementaryPredictable_adaptedIndicator
+@@ -196,7 +194,6 @@
+   by_cases ht : p.1 ∈ Set.Ioc a b <;>
+     by_cases hw : p.2 ∈ F <;> simp [ht, hw]
+ 
+-omit [CompleteSpace W] [BorelSpace W] [SecondCountableTopology W] in
+ lemma inner_elementaryPredictable_adaptedIndicator [SFinite P]
+     (𝓕 : Filtration ℝ≥0 ‹MeasurableSpace W›) (a b : ℝ≥0)
+     {F : Set W} (hF : MeasurableSet[𝓕 a] F)
+@@ -232,8 +229,8 @@
+     ∃ _hab : a ≤ b, ∃ Z : lpMeas ℝ ℝ (𝓕 a) 2 P,
+       U = elementaryPredictable 𝓕 a b Z}
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [CompleteSpace W] [BorelSpace W]
+-    [SecondCountableTopology W] [IsGaussian P] in
++omit    
++     [IsProbabilityMeasure P]  in
+ lemma elementaryPredictable_mem_span [SFinite P]
+     (𝓕 : Filtration ℝ≥0 (inferInstance : MeasurableSpace W)) (a b : ℝ≥0)
+     (hab : a ≤ b)
+@@ -242,7 +239,6 @@
+   apply Submodule.subset_span
+   exact ⟨a, b, hab, Z, rfl⟩
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ lemma integral_rectangle_eq_zero_of_orthogonal
+     (𝓕 : Filtration ℝ≥0 (inferInstance : MeasurableSpace W))
+     (g : PredictableProcessL2 𝓕 P)
+@@ -259,7 +255,6 @@
+     exact horth _ (elementaryPredictable_mem_span 𝓕 a b hab.le
+       (adaptedIndicator (P := P) 𝓕 a hF))
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- Vanishing on generating rectangles propagates to every predictable set after restriction
+ to a finite time frame. -/
+ lemma integral_restrict_frame_eq_zero_of_rectangles
+@@ -320,7 +315,6 @@
+       hf hint.integrableOn]
+     simp only [hzero, tsum_zero]
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- Vanishing on the generating predictable rectangles implies vanishing on every
+ finite-measure predictable set. -/
+ lemma integral_set_eq_zero_of_rectangles
+@@ -390,7 +384,6 @@
+       exact hzs
+   exact (setIntegral_congr_set hset).trans hzeroUnion
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- A predictable process orthogonal to every one-step adapted process vanishes almost
+ everywhere. -/
+ lemma ae_eq_zero_of_orthogonal_elementaryPredictable
+@@ -408,7 +401,6 @@
+     exact integral_set_eq_zero_of_rectangles 𝓕 g
+       (integral_rectangle_eq_zero_of_orthogonal 𝓕 g horth) s hs hμs
+ 
+-omit [CompleteSpace W] [BorelSpace W] in
+ /-- Finite linear combinations of one-step adapted processes are dense in predictable `L²`. -/
+ theorem dense_elementaryPredictableSpan
+     (𝓕 : Filtration ℝ≥0 (inferInstance : MeasurableSpace W)) :
+--- compatible-upstream/Girsanov.lean
++++ generic/Girsanov.lean
+@@ -1419,10 +1419,10 @@
+ 
+ section PredictableIntegral
+ 
+-variable {W : Type*} [NormedAddCommGroup W] [NormedSpace ℝ W]
+-  [CompleteSpace W] [MeasurableSpace W] [BorelSpace W]
+-  [SecondCountableTopology W]
+-  {P : Measure W} [IsGaussian P]
++variable {W : Type*}  
++   [MeasurableSpace W] 
++  
++  {P : Measure W} [IsProbabilityMeasure P]
+   {B : ℝ≥0 → W → ℝ}
+ 
+ /-- A continuous modification of the natural Itô integral has the same
+--- compatible-upstream/QuadraticVariationTightness.lean
++++ generic/QuadraticVariationTightness.lean
+@@ -133,10 +133,10 @@
+ 
+ namespace StochasticCalculus
+ 
+-variable {W : Type*} [NormedAddCommGroup W] [NormedSpace ℝ W]
+-  [CompleteSpace W] [MeasurableSpace W] [BorelSpace W]
+-  [SecondCountableTopology W]
+-  {P : Measure W} [IsGaussian P]
++variable {W : Type*}  
++   [MeasurableSpace W] 
++  
++  {P : Measure W} [IsProbabilityMeasure P]
+   {B X mu sigma : ℝ≥0 → W → ℝ}
+ 
+ end StochasticCalculus
+--- compatible-upstream/QuadraticVariation.lean
++++ generic/QuadraticVariation.lean
+@@ -27,10 +27,9 @@
+ 
+ namespace StochasticCalculus
+ 
+-variable {W : Type*} [NormedAddCommGroup W] [NormedSpace ℝ W] [MeasurableSpace W]
++variable {W : Type*}   [MeasurableSpace W]
+   {P : Measure W} {B X μ σ : ℝ≥0 → W → ℝ}
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- The Brownian increment accumulated after a deterministic time `a` has
+ literal `L²` quadratic variation `t - a` at time `t`. -/
+ theorem quadraticVariation_brownian_after_time
+@@ -58,7 +57,6 @@
+   · have has : a ≤ s := le_of_not_ge hsa
+     rw [min_eq_right has, add_comm a, tsub_add_cancel_of_le has]
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- The quadratic variation after a deterministic time also converges in
+ probability. -/
+ theorem quadraticVariation_brownian_after_time_inProbability
+@@ -68,7 +66,6 @@
+       (fun _ ↦ (t - a : ℝ≥0)) := by
+   exact (quadraticVariation_brownian_after_time hB a t).to_inProbability
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- The Brownian increment accumulated on a deterministic interval `[a, b]`
+ has literal `L²` quadratic variation `min t b - min t a`. -/
+ theorem quadraticVariation_brownian_interval
+@@ -122,7 +119,6 @@
+         rw [min_eq_right (tsub_le_tsub_right hbt a), min_eq_right hbt]
+   simpa only [hAt] using hraw
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- The deterministic-interval Brownian bracket also converges in
+ probability. -/
+ theorem quadraticVariation_brownian_interval_inProbability
+@@ -132,7 +128,6 @@
+       (fun _ ↦ (min t b - min t a : ℝ≥0)) := by
+   exact (quadraticVariation_brownian_interval hB hab t).to_inProbability
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- A Brownian interval block multiplied by a measurable random variable that
+ is constant in time has its clipped interval bracket scaled pointwise by the
+ square of that multiplier. -/
+@@ -153,7 +148,6 @@
+         (hB.toIsPreBrownianReal.aemeasurable (min s a)).aestronglyMeasurable)
+     c hcMeas
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- Brownian increments accumulated on adjacent deterministic intervals have
+ zero quadratic covariation in probability. -/
+ theorem tendstoInMeasure_adjacent_brownian_interval_covariation_zero
+@@ -205,7 +199,6 @@
+   rw [NNReal.coe_sub hminAC, NNReal.coe_sub hminAB, NNReal.coe_sub hminBC]
+   ring
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- Brownian increment blocks accumulated on ordered disjoint deterministic
+ intervals have zero quadratic covariation in probability. -/
+ theorem tendstoInMeasure_disjoint_brownian_interval_covariation_zero
+@@ -268,7 +261,6 @@
+   · filter_upwards with omega
+     norm_num
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- A deterministic linear combination of two ordered disjoint Brownian
+ interval blocks has bracket equal to the sum of the two squared-coefficient
+ block lengths. -/
+@@ -427,7 +419,6 @@
+     _ = 2 * ((t / (n : ℝ≥0) : ℝ≥0) : ℝ) * (min t a : ℝ≥0) := by
+       rw [sum_stoppedUniformPartitionWidth t a hn]
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ private lemma eLpNorm_stoppedBrownian_qv_sub_eq
+     (hB : IsPreBrownianReal B P) (t a : ℝ≥0) {n : ℕ} (hn : 0 < n) :
+     eLpNorm
+@@ -466,7 +457,6 @@
+     simpa only [Real.sqrt_zero] using (Real.continuous_sqrt.tendsto 0).comp hdiv
+   simpa only [Real.sqrt_eq_rpow, one_div] using hsqrt
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- Pre-Brownian motion stopped at a deterministic time `a` has quadratic
+ variation `min t a` at time `t`, with literal `L²` convergence. -/
+ theorem quadraticVariation_stopped_preBrownianReal
+@@ -522,7 +512,6 @@
+     exact Real.rpow_le_rpow hsum0 hsumle (by positivity)
+   · exact tendsto_rpow_two_inv_const_div_add_one C
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- The deterministic stopped pre-Brownian bracket also converges in probability. -/
+ theorem quadraticVariation_stopped_preBrownianReal_inProbability
+     (hB : IsPreBrownianReal B P) (a t : ℝ≥0) :
+@@ -530,7 +519,6 @@
+       (fun s ω => B (min s a) ω) P t (fun _ => (min t a : ℝ≥0)) := by
+   exact (quadraticVariation_stopped_preBrownianReal hB a t).to_inProbability
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- Brownian specialization of the stopped bracket convergence in probability. -/
+ theorem quadraticVariation_stopped_brownian_inProbability
+     (hB : IsBrownianMotion B P) (a t : ℝ≥0) :
+@@ -539,7 +527,6 @@
+   quadraticVariation_stopped_preBrownianReal_inProbability
+     hB.toIsPreBrownianReal a t
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ private lemma eLpNorm_quadraticVariationApprox_sub_eq
+     (hB : IsPreBrownianReal B P) (t : ℝ≥0) {n : ℕ} (hn : 0 < n) :
+     eLpNorm (fun ω ↦ quadraticVariationApprox B t n ω - (t : ℝ)) 2 P =
+@@ -643,7 +630,6 @@
+     simpa only [Real.sqrt_zero] using (Real.continuous_sqrt.tendsto 0).comp hdiv
+   simpa only [ENNReal.ofReal_zero] using ENNReal.tendsto_ofReal hsqrt
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- Quadratic variation of Brownian motion: ⟨B⟩_t = t. -/
+ theorem quadraticVariation_brownianMotion
+     (hB : IsBrownianMotion B P) (t : ℝ≥0) :
+@@ -662,7 +648,6 @@
+   simpa only [Real.sqrt_eq_rpow, one_div] using
+     tendsto_ofReal_sqrt_const_div_add_one (2 * (t : ℝ) ^ 2)
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- The Brownian quadratic-variation theorem also gives convergence in
+ probability, matching the carrier used for general Itô processes. -/
+ theorem quadraticVariation_brownianMotion_inProbability
+@@ -670,7 +655,6 @@
+     HasQuadraticVariationInProbabilityAt B P t (fun _ => (t : ℝ)) := by
+   exact (quadraticVariation_brownianMotion hB t).to_inProbability
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- The uniform-partition quadratic variation calculation only uses the
+ finite-dimensional Brownian laws; path continuity is not needed. -/
+ theorem quadraticVariation_preBrownianReal
+@@ -689,7 +673,6 @@
+   simpa only [Real.sqrt_eq_rpow, one_div] using
+     tendsto_ofReal_sqrt_const_div_add_one (2 * (t : ℝ) ^ 2)
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- A pre-Brownian process has quadratic variation `t` in probability at
+ every deterministic time, independently of its choice of path version. -/
+ theorem quadraticVariation_preBrownianReal_inProbability
+@@ -697,7 +680,6 @@
+     HasQuadraticVariationInProbabilityAt B P t (fun _ ↦ (t : ℝ)) := by
+   exact (quadraticVariation_preBrownianReal hB t).to_inProbability
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- The stopped Brownian block and the Brownian increment accumulated after
+ the stopping time have vanishing quadratic covariation in probability. -/
+ theorem tendstoInMeasure_stopped_brownian_after_time_covariation_zero
+@@ -741,7 +723,6 @@
+     rw [min_eq_right hat, NNReal.coe_sub hat]
+     ring
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] in
+ /-- The stopped Brownian block has covariation `min t a` with the full
+ Brownian path. -/
+ theorem tendstoInMeasure_stopped_brownian_brownian_covariation
+@@ -794,7 +775,7 @@
+ This representative-level form is used to integrate quadratic-variation
+ approximants. -/
+ theorem integral_sq_naturalItoProcessRepresentative_sub
+-    [SecondCountableTopology W] [IsGaussian P]
++     [IsProbabilityMeasure P]
+     (hB : IsPreBrownianReal B P) (hsm : ∀ t, StronglyMeasurable (B t))
+     (U : PredictableProcessL2 (Filtration.natural B hsm) P)
+     (s t : ℝ≥0) :
+@@ -828,7 +809,7 @@
+ /-- Orthogonality of Itô-integral increments turns the squared norm of an
+ increment into a telescoping difference. -/
+ theorem norm_sq_naturalItoProcess_sub
+-    [SecondCountableTopology W] [IsGaussian P]
++     [IsProbabilityMeasure P]
+     (hB : IsPreBrownianReal B P) (hsm : ∀ t, StronglyMeasurable (B t))
+     (U : PredictableProcessL2 (Filtration.natural B hsm) P)
+     {s t : ℝ≥0} (hst : s ≤ t) :
+@@ -845,7 +826,7 @@
+ /-- The squared increments of the chosen representative of a natural Itô
+ integral process are integrable. -/
+ theorem integrable_sq_naturalItoProcessRepresentative_sub
+-    [SecondCountableTopology W] [IsGaussian P]
++     [IsProbabilityMeasure P]
+     (hB : IsPreBrownianReal B P) (hsm : ∀ t, StronglyMeasurable (B t))
+     (U : PredictableProcessL2 (Filtration.natural B hsm) P)
+     (s t : ℝ≥0) :
+@@ -875,7 +856,7 @@
+ identity is uniform in the partition size, which is the key estimate in the
+ `PredictableProcessL2` density argument. -/
+ theorem integral_quadraticVariationApprox_naturalItoProcessRepresentative
+-    [SecondCountableTopology W] [IsGaussian P]
++     [IsProbabilityMeasure P]
+     (hB : IsPreBrownianReal B P) (hsm : ∀ t, StronglyMeasurable (B t))
+     (U : PredictableProcessL2 (Filtration.natural B hsm) P)
+     (t : ℝ≥0) {n : ℕ} (hn : 0 < n) :
+--- compatible-upstream/ItoFormula.lean
++++ generic/ItoFormula.lean
+@@ -25,7 +25,7 @@
+ open ProbabilityTheory
+ open scoped BigOperators ENNReal NNReal Topology
+ 
+-variable {W : Type*} [NormedAddCommGroup W] [NormedSpace ℝ W] [MeasurableSpace W]
++variable {W : Type*}   [MeasurableSpace W]
+   {P : Measure W} {B : ℝ≥0 → W → ℝ}
+ 
+ namespace StochasticCalculus
+@@ -479,7 +479,7 @@
+ 
+ end CenteredWeightedQuadraticVariation
+ 
+-omit [NormedAddCommGroup W] [NormedSpace ℝ W] [MeasurableSpace W] in
++omit   [MeasurableSpace W]  in
+ /-- The continuous-path remainder argument is stable under any partition
+ subsequence tending to infinity. -/
+ theorem tendsto_subseq_uniformPartition_taylorRemainder_of_quadraticVariation

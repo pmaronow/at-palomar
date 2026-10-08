@@ -1,0 +1,148 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: v0.4
+project:
+  name: Replica symmetry up to the de Almeida–Thouless line in the Sherrington–Kirkpatrick model
+  description: A Lean formalization of the positive-field Sherrington–Kirkpatrick results in Patrick Lopatto's
+    arXiv:2604.11921v2. The selected registry claims are convergence of the expected finite-volume free
+    energy to the concrete replica-symmetric Gaussian formula for beta > 0, h > 0, and AT parameter at
+    most one, including equality; and an exact description of the positive-field AT boundary as a positive
+    strictly increasing smooth graph on beta > 1, tending to zero at beta = 1 from the right, together
+    with (1,0). The repository also contains the numbered PDE, stochastic-process, moment, and variational
+    results documented in COVERAGE.md and results.json.
+  authors:
+  - P. M. Aronow
+  - Patrick Lopatto
+  responsible_maintainers:
+  - P. M. Aronow
+  - Patrick Lopatto
+  license: MIT
+sources:
+- title: Replica symmetry up to the de Almeida–Thouless line in the Sherrington–Kirkpatrick model
+  authors:
+  - Patrick Lopatto
+  id: https://arxiv.org/abs/2604.11921v2
+  type: paper
+  location: Theorem 1.1 and Proposition 1.2; full numbered development described in COVERAGE.md
+  relationship: formalizes
+  license: arXiv non-exclusive distribution license; no open redistribution license asserted
+  author_endorsement: participated
+  note: P. M. Aronow and Patrick Lopatto are jointly responsible for the Lean formalization; Patrick Lopatto
+    is responsible for the paper. No separate human mathematical peer review is asserted. The manuscript
+    is cited rather than redistributed in this software repository.
+related_formalizations:
+- id: https://github.com/qiangwu2/ParisiFormula
+  relationship: builds-on
+  revision: 9fd12231429de72fa524b471c43f4a237553a711
+  note: Vendored finite-step Parisi formula dependency; provenance and compatibility patches in vendor/spin-glass-foundations.
+- id: https://github.com/njimaMath/research_public
+  relationship: builds-on
+  revision: f3b34d2071d9cde5262c6672b6ebab132d4a7b43
+  note: RSAT subtree; strict-AT theorem used by the selected main proof and extended to the boundary by
+    this project.
+- id: https://github.com/RemyDegenne/brownian-motion
+  relationship: builds-on
+  revision: 0d5b6eb928e616d3b1f774ad7d233c167d9f42c9
+  note: Canonical Brownian construction; vendored dependency closure with recorded compatibility edits.
+- id: https://github.com/RemyDegenne/kolmogorov_extension4
+  relationship: builds-on
+  revision: 7d76e184c3d2138a2741baf923b57e9a01b9cf25
+  note: Kolmogorov extension foundation for the canonical Brownian law.
+- id: https://github.com/savarin/lean-stochastic-calculus
+  relationship: builds-on
+  revision: bde839683ba3cf1bf149355a40e9de9522babe92
+  note: Vendored stochastic calculus closure and documented generic-sample-space adaptation.
+- id: https://github.com/or4nge19/SpinGlass
+  relationship: builds-on
+  revision: dc1d3820af6e443c09bd1177ec3e409cf0640d5c
+  note: Vendored Cole–Hopf proof foundations with namespace adaptation.
+classification:
+  arxiv:
+  - math.PR
+  - math-ph
+  msc2020:
+  - 82B44
+  - 60G15
+status:
+  scope: Two headline results selected by comparator.json. COVERAGE.md and results.json document the fifteen
+    numbered statements and the supporting development. The completed Solution proofs have no proof holes;
+    Challenge contains two deliberate theorem statement holes.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+  - propext
+  - Classical.choice
+  - Quot.sound
+  main_results:
+  - declaration: PalomarAT.replicaSymmetry
+    file: Solution.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Classical.choice
+    - Quot.sound
+    comparator_config: comparator.json
+    literature_dependencies: []
+  - declaration: PalomarAT.smoothATBoundary
+    file: Solution.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Classical.choice
+    - Quot.sound
+    comparator_config: comparator.json
+    literature_dependencies: []
+automation:
+  methods:
+  - method: agent
+    models:
+    - Sol 6.1
+    tool_setup: Sol 6.1 autoformalized the original Lean development. The original harness, cost, and
+      prompt history are not recorded.
+  - method: agent
+    models:
+    - GPT-6 (Codex)
+    framework: Codex
+    tool_setup: Codex and cooperating agents reviewed the statements and proof routes, created the independent
+      Mathlib-only Challenge and proved Solution interface, ported the compiler and module system, and
+      ran structural checks, builds, axiom audits, and independent-kernel Comparator verification. The
+      reproducible checks are in tools/ and .github/workflows/palomar.yml.
+  notes: The original Sol 6.1 autoformalization and subsequent Codex compatibility and registry-interface
+    work are disclosed separately. Prior human mathematical peer review, costs, and original prompt history
+    are not established.
+fidelity:
+  divergences: Theorem 1.1 is expressed as convergence of the expected finite free energy, which includes
+    existence of the limit. The overlap fixed point is an explicit universally quantified q; the boundary
+    uses an existential fixed point. The smooth function is represented on all real beta, with positivity,
+    smoothness and strict monotonicity restricted to beta > 1. The selected main proof uses a vendored
+    strict-AT theorem, a proved physical normalization bridge, and boundary approximation. The project's
+    separately formalized PDE/variational route follows the paper but is not the selected Solution proof.
+    General process results use a canonical Brownian realization with its natural filtration. No formal
+    transport to a completed right-continuous augmented filtration is asserted. HJB controls are bounded
+    continuous adapted controls of magnitude at most one. General time derivatives are weak; classical
+    Dirac time regularity excludes the interface q. Historical survey claims, including zero-field phases
+    and replica symmetry breaking above the AT line, are cited background and are not selected registry
+    claims.
+review:
+  status: agent-reviewed
+  reviewers:
+  - Codex automated review
+  notes: Automated inspection of the physical model, concrete expectations, closed targets, proof routes,
+    and scope disclosures. Local supported-toolchain builds, transitive axiom audits, numbered proof checks,
+    and Comparator verification with Lean, NanoDa, and con-ron passed. The verification scope and reproduction
+    commands are recorded in README.md and results.json. This is agent review; prior human mathematical
+    peer review is not established, and Palomar review has not occurred.
+alignment:
+  namespace: PalomarAT
+  statements:
+  - source: arXiv:2604.11921v2, Theorem 1.1
+    lean: PalomarAT.replicaSymmetry
+    module: Solution
+    status: proved
+    note: Independent statement in Challenge.lean; implementation is Paper.replicaSymmetry.
+  - source: arXiv:2604.11921v2, Proposition 1.2
+    lean: PalomarAT.smoothATBoundary
+    module: Solution
+    status: proved
+    note: Independent statement in Challenge.lean; implementation is Paper.smoothATBoundary.
+acknowledgements: Mathlib, Lean, and the cited proof foundations supply formal proof infrastructure. Vendored
+  sources retain their Apache-2.0 licenses, notices, exact upstream revisions, and adaptation records.

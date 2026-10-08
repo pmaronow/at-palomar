@@ -1,0 +1,175 @@
+--- upstream/BrownianMotion/Auxiliary/HasLaw.lean
++++ vendored/BrownianMotion/Auxiliary/HasLaw.lean
+@@ -14,9 +14,6 @@
+ 
+ variable {𝓧} {m𝓧 : MeasurableSpace 𝓧} {X : Ω → 𝓧} {μ : Measure 𝓧} {P : Measure Ω}
+ 
+-lemma hasLaw_map (hX : AEMeasurable X P) : HasLaw X (P.map X) P where
+-  aemeasurable := hX
+-  map_eq := rfl
+ 
+ section dirac
+ 
+--- upstream/BrownianMotion/Continuity/Chaining.lean
++++ vendored/BrownianMotion/Continuity/Chaining.lean
+@@ -170,10 +170,8 @@
+       ∑ i ∈ Finset.range (k - m),
+         edist (f (chainingSequence C x k (m + i))) (f (chainingSequence C x k (m + i + 1))) := by
+   simp only [Nat.add_assoc, edist_comm (f x)]
+-  convert edist_le_range_sum_edist (fun i => f (chainingSequence C x k (m + i))) (k - m)
+-  · rfl
+-  · simp
+-  · simp [(show m + (k - m) = k by lia)]
++  simpa [show m + (k - m) = k by omega] using
++    edist_le_range_sum_edist (fun i => f (chainingSequence C x k (m + i))) (k - m)
+ 
+ lemma edist_chainingSequence_le_sum_edist' {T : Type*} [PseudoEMetricSpace T] (f : E → T)
+     {m : ℕ} (hm : m ≤ k) :
+@@ -231,43 +229,26 @@
+         edist (X (chainingSequence C s k m)) (X (chainingSequence C t k m)))
+       + 2 * ⨆ (s : C k), edist (X s) (X (chainingSequence C s k m))
+       := by
+-  -- Introduce some notation to make the goals easier to read
+-  let Ck' (s : C k) := { t : C k // edist s t ≤ δ }
+-  have (s : C k) : Nonempty (Ck' s) := ⟨⟨s, by simp⟩⟩
+   let c (s : C k) := chainingSequence C s k m
+-  -- Trivial case: `C k` is empty
+-  refine (isEmpty_or_nonempty (C k)).elim (fun _ => by simp) (fun _ => ?_)
+-  calc ⨆ (s : C k) (t : Ck' s), edist (X s) (X t)
+-      ≤ ⨆ (s : C k) (t : Ck' s),
+-          edist (X s) (X (c s)) + edist (X (c s)) (X (c t)) + edist (X (c t)) (X t) := ?_
+-    _ = ⨆ (s : C k), edist (X s) (X (c s))
+-          + ⨆ (t : Ck' s), edist (X (c s)) (X (c t)) + edist (X (c t)) (X t) := ?_
+-    _ ≤ (⨆ (s : C k), edist (X s) (X (c s)))
+-          + ⨆ (s : C k) (t : Ck' s), edist (X (c s)) (X (c t)) + edist (X (c t)) (X t) := ?_
+-    _ = (⨆ (s : C k), edist (X s) (X (c s)))
+-          + ⨆ (s : C k) (t : Ck' s), edist (X (c t)) (X (c s)) + edist (X (c s)) (X s) := ?_
+-    _ = (⨆ (s : C k), edist (X s) (X (c s)))
+-          + ⨆ (s : C k), (⨆ (t : Ck' s), edist (X (c t)) (X (c s))) + edist (X (c s)) (X s) := ?_
+-    _ ≤ (⨆ (s : C k), edist (X s) (X (c s)))
+-          + (⨆ (s : C k) (t : Ck' s),
+-              edist (X (c t)) (X (c s))) + ⨆ (s : C k), edist (X (c s)) (X s) := ?_
+-    _ = (⨆ (s : C k) (t : Ck' s), edist (X (c s)) (X (c t)))
+-          + 2 * (⨆ (s : C k), edist (X s) (X (c s))) := ?_
+-  · gcongr with s t
+-    exact le_trans (edist_triangle _ (X (c t)) _) (by gcongr; apply edist_triangle)
+-  · simp only [ENNReal.add_iSup, add_assoc]
+-  · exact iSup_le (fun s => by gcongr <;> exact le_iSup (α := ENNReal) _ _)
+-  · congr 1
+-    conv_lhs => congr; ext s; rw [iSup_subtype]
+-    rw [iSup_comm]
+-    conv_lhs => congr; ext s; congr; ext t; simp only [edist_comm t s]
+-    conv_lhs => congr; ext s; rw [iSup_subtype']
+-  · simp only [ENNReal.iSup_add]
+-  · rw [add_assoc]
+-    exact add_le_add_right (iSup_le (fun s => by gcongr <;> exact le_iSup (α := ENNReal) _ _)) _
+-  · conv_lhs => right; congr; ext s; rw [edist_comm]
+-    conv_rhs => left; congr; ext s; congr; ext t; rw [edist_comm]
+-    ring
++  let A : ℝ≥0∞ := ⨆ s : C k, edist (X s) (X (c s))
++  let D : ℝ≥0∞ := ⨆ (s : C k) (t : { t : C k // edist s t ≤ δ }),
++    edist (X (c s)) (X (c t))
++  refine iSup_le fun s => iSup_le fun t => ?_
++  have hs : edist (X s) (X (c s)) ≤ A := le_iSup (fun s : C k => edist (X s) (X (c s))) s
++  have ht : edist (X (c t)) (X t) ≤ A := by
++    rw [edist_comm]
++    exact le_iSup (fun s : C k => edist (X s) (X (c s))) t.1
++  have hD : edist (X (c s)) (X (c t)) ≤ D :=
++    le_iSup_of_le s (le_iSup (fun t : { t : C k // edist s t ≤ δ } =>
++      edist (X (c s)) (X (c t))) t)
++  calc
++    edist (X s) (X t) ≤
++        edist (X s) (X (c s)) + edist (X (c s)) (X (c t)) +
++          edist (X (c t)) (X t) :=
++      (edist_triangle _ (X (c t)) _).trans
++        (add_le_add (edist_triangle _ (X (c s)) _) le_rfl)
++    _ ≤ A + D + A := add_le_add (add_le_add hs hD) ht
++    _ = D + 2 * A := by ring
+ 
+ lemma scale_change_rpow {F : Type*} [PseudoEMetricSpace F] (m : ℕ) (X : E → F)
+     (δ : ℝ≥0∞) (p : ℝ) (hp : 0 ≤ p) :
+--- upstream/BrownianMotion/Auxiliary/Algebra.lean
++++ vendored/BrownianMotion/Auxiliary/Algebra.lean
+@@ -5,11 +5,6 @@
+ @[expose] public section
+ 
+ -- TODO: remove if https://github.com/leanprover-community/mathlib4/pull/40909 has merged.
+-lemma Set.indicator_apply_apply {ι Ω M : Type*} [Zero M] (s : Set ι) (f : ι → Ω → M) (i : ι)
+-    (ω : Ω) :
+-    s.indicator f i ω = s.indicator (fun j ↦ f j ω) i := by
+-  by_cases h : i ∈ s <;> simp [h]
+-
+ /-- A finite sum of monotone functions is monotone. -/
+ lemma Monotone.finset_sum {ι κ M : Type*} [Preorder ι] [AddCommMonoid M] [Preorder M]
+     [AddLeftMono M] {s : Finset κ} {f : κ → ι → M} (hf : ∀ k ∈ s, Monotone (f k)) :
+--- upstream/BrownianMotion/Continuity/KolmogorovChentsov.lean
++++ vendored/BrownianMotion/Continuity/KolmogorovChentsov.lean
+@@ -336,8 +336,11 @@
+     HolderOnWith (C ω ^ p⁻¹).toNNReal β (fun (t : T') ↦ X t ω) {t' | (t' : T) ∈ U} := by
+   intro s hs t ht
+   have h_edist_lt_top : edist s t < ∞ := by
+-    calc edist s t ≤ Metric.ediam U := Metric.edist_le_ediam_of_mem hs ht
+-    _ < ∞ := hT.ediam_lt_top
++    calc
++      edist s t ≤ Metric.ediam U := by
++        change edist (s : T) (t : T) ≤ Metric.ediam U
++        exact Metric.edist_le_ediam_of_mem hs ht
++      _ < ∞ := hT.ediam_lt_top
+   have h_dist_top : edist s t ^ (β : ℝ) ≠ ∞ := by
+     simp only [ne_eq, ENNReal.rpow_eq_top_iff, NNReal.coe_pos, not_or, not_and, not_lt,
+       NNReal.zero_le_coe, implies_true, nonpos_iff_eq_zero, true_and]
+--- upstream/KolmogorovExtension4/KolmogorovExtension.lean
++++ vendored/KolmogorovExtension4/KolmogorovExtension.lean
+@@ -5,6 +5,7 @@
+ -/
+ module
+ 
++public import Mathlib.Topology.MetricSpace.Polish
+ public import KolmogorovExtension4.RegularContent
+ public import Mathlib.MeasureTheory.Constructions.ProjectiveFamilyContent
+ public import Mathlib.MeasureTheory.Measure.RegularityCompacts
+--- upstream/BrownianMotion/Gaussian/BrownianMotion.lean
++++ vendored/BrownianMotion/Gaussian/BrownianMotion.lean
+@@ -150,14 +150,12 @@
+   hasGaussianLaw I := by
+     have := (law ⊥).isProbabilityMeasure
+     obtain rfl | hI := I.eq_empty_or_nonempty
+-    · constructor
++    · refine ⟨AEMeasurable.of_eval (fun _ => (law _).aemeasurable), ?_⟩
+       have : P.map (fun ω ↦ Finset.restrict ∅ fun x ↦ X x ω) = .dirac Classical.ofNonempty := by
+         ext s -
+         apply Subsingleton.set_cases (p := fun s ↦ Measure.map _ _ s = _)
+         · simp
+         simp only [measure_univ]
+-        exact @measure_univ _ _ _
+-          (Measure.isProbabilityMeasure_map (aemeasurable_pi_lambda _ fun _ ↦ (law _).aemeasurable))
+       rw [this]
+       infer_instance
+     have := incrementsToRestrict_increments_ofFin'_ae_eq_restrict ℝ h_bot I
+@@ -486,7 +484,7 @@
+   -- as `ε → 0⁺`, and we can conclude by uniqueness of the limit.
+   refine tendsto_nhds_unique h1 ?_
+   refine Tendsto.congr' (f₁ := fun ε ↦ P.real A * ∫ ω, f (fun t ↦ X t ω - X ε ω) ∂P) ?_ ?_
+-  · apply eventually_nhdsGT (I.min' hI |>.2)
++  · apply eventually_nhdsGT (α := ℝ≥0) (a := 0) (b := (I.min' hI : ℝ≥0)) (I.min' hI |>.2)
+     rintro ε ⟨h1, h2⟩
+     exact (key ε h1 h2).symm
+   refine Filter.Tendsto.const_mul (b := P.real A) ?_
+@@ -505,7 +503,7 @@
+   fun_prop
+ 
+ lemma hasLaw_preBrownian : HasLaw (fun ω ↦ (preBrownian · ω)) gaussianLimit gaussianLimit where
+-  aemeasurable := (measurable_pi_lambda _ measurable_preBrownian).aemeasurable
++  aemeasurable := (measurable_pi_iff.mpr measurable_preBrownian).aemeasurable
+   map_eq := Measure.map_id
+ 
+ lemma isPreBrownianReal_preBrownian : IsPreBrownianReal preBrownian gaussianLimit :=
+@@ -590,7 +588,7 @@
+ 
+ lemma hasLaw_brownian : HasLaw (fun ω ↦ (brownian · ω)) gaussianLimit gaussianLimit :=
+   isBrownianReal_brownian.hasLaw_gaussianLimit
+-    (measurable_pi_lambda _ fun t ↦ measurable_brownian t).aemeasurable
++    (measurable_pi_iff.mpr (fun t ↦ measurable_brownian t)).aemeasurable
+ 
+ lemma hasLaw_brownian_eval {t : ℝ≥0} :
+     HasLaw (brownian t) (gaussianReal 0 t) gaussianLimit :=

@@ -1,0 +1,114 @@
+{
+  "repository": "https://github.com/or4nge19/SpinGlass",
+  "commit": "dc1d3820af6e443c09bd1177ec3e409cf0640d5c",
+  "license": "Apache-2.0",
+  "upstream_toolchain": "leanprover/lean4:v4.34.0-rc2",
+  "target_toolchain": "leanprover/lean4:v4.34.1",
+  "namespace_adaptation": "All source declarations nested in ColeHopfFoundation to avoid collisions with independently sourced RSAT Gaussian lemmas. Existing explicit _root_ declarations unchanged.",
+  "modules": [
+    {
+      "module": "Common.Mathlib.Analysis.Calculus.MeasurableParamDeriv",
+      "upstream_path": "Common/Mathlib/Analysis/Calculus/MeasurableParamDeriv.lean",
+      "upstream_sha256": "02c9af99577b079fdab6c0b30aadd0f4eee1b60602cf7d1c73dc6f4065206af2",
+      "adapted_sha256": "8efc6440ced612103d1752d13c164d5d247e866a3ce511ed9b5e75836653a66f"
+    },
+    {
+      "module": "Common.Mathlib.Probability.Distributions.Gaussian.CameronMartin",
+      "upstream_path": "Common/Mathlib/Probability/Distributions/Gaussian/CameronMartin.lean",
+      "upstream_sha256": "9d3cde9feb2a4359e25f2c424c5e8fb9b48a9ebc77cf4c97f3bb0636eee456dd",
+      "adapted_sha256": "52cf5bc862315df13bb7889ff1ffb880c0a17a0f4d5ba360fc184ec7989614ff"
+    },
+    {
+      "module": "Common.Mathlib.Probability.Distributions.Gaussian.CameronMartinFernique",
+      "upstream_path": "Common/Mathlib/Probability/Distributions/Gaussian/CameronMartinFernique.lean",
+      "upstream_sha256": "224ebc6034e146049c0f5bd244548bac75d5cbfab98b925910da0e9dc74c5f57",
+      "adapted_sha256": "a43dfc7ae868c91fb9a76567e36f3afdd7932c0ffef2ae2339ab5693c834d83c"
+    },
+    {
+      "module": "Common.Mathlib.Probability.Distributions.Gaussian.CameronMartinIBP",
+      "upstream_path": "Common/Mathlib/Probability/Distributions/Gaussian/CameronMartinIBP.lean",
+      "upstream_sha256": "c2a6a83f40e0da23da378c7cf8f8cef168ff60fc4ce6f7dd4a2f7d10b8df9f33",
+      "adapted_sha256": "54595f72624526a32af1c8ae43cade831c117e62e31b97007addb6f655969dc0"
+    },
+    {
+      "module": "Common.Mathlib.Probability.Distributions.Gaussian.CameronMartinIBPAnalytic",
+      "upstream_path": "Common/Mathlib/Probability/Distributions/Gaussian/CameronMartinIBPAnalytic.lean",
+      "upstream_sha256": "558dfbf2ebbd503458d20dcb4c9b3aa2c4e9a056811dc272949c9668df5c5330",
+      "adapted_sha256": "bf97647b5b1b6d36830a78ea9547f41cfa2650dbcd2eeb065e2e81b1cd7dc537"
+    },
+    {
+      "module": "Common.Mathlib.Probability.Distributions.Gaussian.CameronMartinIBPDeriv",
+      "upstream_path": "Common/Mathlib/Probability/Distributions/Gaussian/CameronMartinIBPDeriv.lean",
+      "upstream_sha256": "2565f4fc411d7343eb9478d9fecb57c75f25486f45313e39a81daad8abf6779c",
+      "adapted_sha256": "a9b8dc4a9994393bf81d92ad1e006000c3789535c72b732c929bc25945b4bc0c"
+    },
+    {
+      "module": "Common.Mathlib.Probability.Distributions.Gaussian.CameronMartinThm",
+      "upstream_path": "Common/Mathlib/Probability/Distributions/Gaussian/CameronMartinThm.lean",
+      "upstream_sha256": "70df588b067d2cce730f39b3f63330d769429ca6ddef923c1cd963fd23da7c6c",
+      "adapted_sha256": "8cb13da22d769eff8765ae85fea77b9ede37081a313f8130989b52af36f172b4"
+    },
+    {
+      "module": "Common.Mathlib.Probability.Distributions.Gaussian.CameronMartinTilt",
+      "upstream_path": "Common/Mathlib/Probability/Distributions/Gaussian/CameronMartinTilt.lean",
+      "upstream_sha256": "9c752d1597acc6c13c705b136ade20e589ca089302e63a8a5212268f84466b99",
+      "adapted_sha256": "93298c345f5e8c9f22f1f10964f5b0eaa2cbb6d8c96d732c10156a2884cabda5"
+    },
+    {
+      "module": "Common.Mathlib.Probability.Distributions.Gaussian.ColeHopf",
+      "upstream_path": "Common/Mathlib/Probability/Distributions/Gaussian/ColeHopf.lean",
+      "upstream_sha256": "a29586ab6d66c011734d59466684ccfac634d9efaeb467668f97c0506c26c789",
+      "adapted_sha256": "4790d5b4491cb9e26f38abf8ecbf2f7fa4b189f43b56077750ab9ba7fcfb585c"
+    },
+    {
+      "module": "Common.Mathlib.Probability.Distributions.Gaussian.CompletionResultsToBeMoved",
+      "upstream_path": "Common/Mathlib/Probability/Distributions/Gaussian/CompletionResultsToBeMoved.lean",
+      "upstream_sha256": "46bc3dd03224727c87384e4408466cb9dce39bb368a518ccf515a76366edc6fa",
+      "adapted_sha256": "23334016491a5bf4adb0a42031c918930af3c472dd8d4bd60d2d2b9aea2e3e3a"
+    },
+    {
+      "module": "Common.Mathlib.Probability.Distributions.Gaussian.ExpGrowth",
+      "upstream_path": "Common/Mathlib/Probability/Distributions/Gaussian/ExpGrowth.lean",
+      "upstream_sha256": "ffadf6aca7e9ee53eeb083dc4158e9ad72779b5558108d5adcc407f865e9d900",
+      "adapted_sha256": "f0bd636d721a53b3cdfec341ca3ea79947e3dec516e0eccb89919108f9ee3df9"
+    },
+    {
+      "module": "Common.Mathlib.Probability.Distributions.Gaussian.HeatSemigroup",
+      "upstream_path": "Common/Mathlib/Probability/Distributions/Gaussian/HeatSemigroup.lean",
+      "upstream_sha256": "db0a9953f171049459565decd340c23a7bc15b3a3d04e105a979d8e54572c1ce",
+      "adapted_sha256": "d7b145113d1a2f769ebc79785b60b52f06a98be992020718a14ac58c09b2f284"
+    },
+    {
+      "module": "Common.Mathlib.Probability.Distributions.Gaussian.IntegrationByParts",
+      "upstream_path": "Common/Mathlib/Probability/Distributions/Gaussian/IntegrationByParts.lean",
+      "upstream_sha256": "3ccf5ad9e59e1b6bb83218264b75790f3172b826366dc512b227b22f7da967c3",
+      "adapted_sha256": "a3fca6d878a52174fc857f22a7ce6cb44e55e3d22a3839e0395e662f981c5661"
+    },
+    {
+      "module": "Common.Mathlib.Probability.Distributions.Gaussian.TiltKernel",
+      "upstream_path": "Common/Mathlib/Probability/Distributions/Gaussian/TiltKernel.lean",
+      "upstream_sha256": "8fc5451902ef7b861bea6317771b46ddfd3d8ce3b466b53b481550b260d7198c",
+      "adapted_sha256": "ae12a9e453ba9e3b03588b6f3ad37a549b2980f9d8b5b99ef21211ad9923baed"
+    },
+    {
+      "module": "Common.Mathlib.Probability.Distributions.GaussianIntegrationByParts",
+      "upstream_path": "Common/Mathlib/Probability/Distributions/GaussianIntegrationByParts.lean",
+      "upstream_sha256": "5ad9197fbd047daeb6107dfef7b4e47f100626b4c6db454c315460f207a217d9",
+      "adapted_sha256": "d3cad84d8388d8fa9b702f14ab012522c008bc52014332b533fe3d1b7a57a260"
+    }
+  ],
+  "audit_status": "passed",
+  "validation": {
+    "command": "lake build Common.ColeHopfAudit",
+    "exit_code": 0,
+    "jobs": 3218,
+    "toolchain": "leanprover/lean4:v4.34.1",
+    "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+    "axioms_allowed": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "audit_log": "colehopf-434-audit.log"
+  }
+}

@@ -1,0 +1,10 @@
+info: Targets/TalagrandCore.lean:3387:0: 'SpinGlass.Targets.parisi_formula_of_theorem_2_2' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Targets/TalagrandTheorem24.lean:97:0: 'SpinGlass.Targets.talagrand_theorem_2_4' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Targets/TalagrandTheorem22Integration.lean:37:0: 'SpinGlass.Targets.talagrand_theorem_2_2_from_theorem_2_4' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Targets/TalagrandFinal.lean:41:0: 'SpinGlass.Targets.talagrand_theorem_2_2' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Targets/TalagrandFinal.lean:42:0: 'SpinGlass.Targets.parisi_formula' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: SpinGlassFoundations/Audit.lean:22:0: 'SpinGlass.Targets.parisi_formula' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: SpinGlassFoundations/Audit.lean:23:0: 'SpinGlass.AT.quantitative_strictAT_on_compact' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: SpinGlassFoundations/Audit.lean:24:0: 'quantitative_strictAT' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: SpinGlassFoundations/Audit.lean:25:0: 'SpinGlass.AT.eq_rsQ_of_isRSFixedPoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+Build completed successfully (9284 jobs).

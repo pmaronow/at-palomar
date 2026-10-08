@@ -1,0 +1,1295 @@
+{
+  "schema_version": 3,
+  "paper": {
+    "title": "Replica symmetry up to the de Almeida–Thouless line in the Sherrington–Kirkpatrick model",
+    "author": "Patrick Lopatto",
+    "source_tex": "https://arxiv.org/src/2604.11921v2",
+    "numbered_result_count": 15
+  },
+  "coverage_note": "All 15 numbered results and all 58 substantive supporting entries have closed Lean formalizations. Historical literature-survey assertions are listed separately as external background.",
+  "verification": {
+    "lean_version": "4.35.0-rc2",
+    "lean_commit": "11acb17ec6b07a8f9e9173e6845197929540936b",
+    "mathlib_commit": "065356127b1dc0016f66b7283ce0ce2c4055aa55",
+    "build_status": "passed",
+    "comparator_status": "passed",
+    "selected_registry_theorems": [
+      "PalomarAT.replicaSymmetry",
+      "PalomarAT.smoothATBoundary"
+    ],
+    "selected_theorem_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "note": "All 665 included Lean files compiled during local verification. The two selected Solution proofs use only the three permitted standard axioms. Verification reports can be regenerated with the listed commands.",
+    "lean_source_files": 665,
+    "verification_scope": "Local build, transitive axiom audit, numbered proof checks, and Comparator verification of the included Lean sources under the pinned environment. GitHub CI and Palomar verification are separate.",
+    "commands": [
+      "python3 tools/submission_check.py",
+      "lake build Paper Challenge Solution",
+      "python3 tools/audit.py --report work/final-audit-report.json",
+      "bash tools/verify_comparator.sh"
+    ],
+    "report_output": "work/ (generated locally; excluded from the source tree)"
+  },
+  "numbered_results": [
+    {
+      "id": "1.1",
+      "kind": "theorem",
+      "source_label": "t:main",
+      "source_line": 116,
+      "statement": "For β>0,h>0, an RS fixed point q∈[0,1], and α≤1, F(β,h)=Φ_RS(β,h).",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.Numbered.result_1_1",
+        "Paper.replicaSymmetry_via_parisiPDE",
+        "Paper.replicaSymmetry"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "lean_target_definition": "Paper.MainReplicaSymmetryTarget",
+      "proved_scope": "The actual finite SK free energy converges throughout the closed AT region. Both the complete actual PDE→G→JT→Parisi-formula proof following the paper and a separately audited strict-region approximation proof are available.",
+      "target_definition": "Paper.Numbered.Statement_1_1",
+      "numbered_proof": "Paper.Numbered.result_1_1",
+      "formal_statement_module": "Paper/NumberedResults.lean",
+      "verification_status": "typed_target_and_rejecting_axiom_audit_passed",
+      "legacy_conditional_or_supporting_declarations": [
+        "Paper.conditional_replica_symmetry",
+        "Paper.conditional_replica_symmetry_of_signs",
+        "Paper.dirac_minimizer_of_signs",
+        "Paper.parisi_infimum_eq_dirac",
+        "Paper.parisiFunctional_dirac_eq_rsFreeEnergy",
+        "Paper.integrable_log_skPartitionFunction"
+      ]
+    },
+    {
+      "id": "1.2",
+      "kind": "proposition",
+      "source_label": "prop:predicted-sk-at-smooth-graph",
+      "source_line": 124,
+      "statement": "The positive-field AT boundary is a strictly increasing C∞ graph on β>1, tending to zero at β=1+.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.Numbered.result_1_2",
+        "Paper.smoothATBoundary"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "lean_target_definition": "Paper.SmoothATBoundaryTarget",
+      "proved_scope": "Complete actual Gaussian boundary-set equality, C-infinity increasing positive-field graph on beta>1, and right endpoint limit zero. Smoothness is ContDiff order infinity, not analyticity.",
+      "target_definition": "Paper.Numbered.Statement_1_2",
+      "numbered_proof": "Paper.Numbered.result_1_2",
+      "formal_statement_module": "Paper/NumberedResults.lean",
+      "verification_status": "typed_target_and_rejecting_axiom_audit_passed",
+      "legacy_conditional_or_supporting_declarations": [
+        "Paper.atBoundary_eq_zero_image",
+        "Paper.gaussian_at_critical_gives_zero",
+        "Paper.gaussian_at_critical_beta_coordinate",
+        "Paper.gaussian_at_critical_beta_gt_one",
+        "Paper.gaussian_at_zero_reconstruction",
+        "Paper.hasDerivAt_gaussianA_field",
+        "Paper.hasDerivAt_gaussianC_field",
+        "Paper.gaussian_stein_of_bounded",
+        "Paper.at_exists_unique_positive_zero",
+        "Paper.at_curve_strictMono_of_derivative",
+        "Paper.at_C_curve_strictAnti_of_derivative",
+        "Paper.at_beta_bijOn",
+        "Paper.at_boundary_strictMono",
+        "Paper.gaussianC_variance_stein_relation",
+        "Paper.gaussian_zero_curve_gap_pos",
+        "Paper.gaussian_zero_curve_C_slope_neg",
+        "Paper.at_exists_unique_field_zero",
+        "Paper.atFieldRoot_strictMonoOn",
+        "Paper.continuousOn_atFieldRoot_nonneg",
+        "Paper.tendsto_atFieldRoot_zero_right",
+        "Paper.atBetaCurve_gt_one",
+        "Paper.tendsto_atBetaCurve_zero_right",
+        "Paper.tendsto_atBetaCurve_atTop",
+        "Paper.atBoundary_eq_curve_image"
+      ]
+    },
+    {
+      "id": "2.1",
+      "kind": "proposition",
+      "source_label": "p:PDE-wellposed",
+      "source_line": 171,
+      "statement": "Existence, uniqueness, regularity and derivative bounds for the weak Parisi PDE.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.Numbered.result_2_1",
+        "Paper.parisiPDE_wellPosed"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "proved_scope": "Unique continuous weak potential on the closed strip in the original admissible weak class; actual selected weak solution; all positive spatial derivatives jointly continuous and bounded; every weak time derivative of every spatial order measurable and uniformly bounded; sharp first/second derivative bounds. Measurable gradients are unique almost everywhere.",
+      "target_definition": "Paper.Numbered.Statement_2_1",
+      "numbered_proof": "Paper.Numbered.result_2_1",
+      "formal_statement_module": "Paper/NumberedResults.lean",
+      "verification_status": "typed_target_and_rejecting_axiom_audit_passed",
+      "legacy_conditional_or_supporting_declarations": []
+    },
+    {
+      "id": "2.2",
+      "kind": "theorem",
+      "source_label": "thm:Talagrand",
+      "source_line": 191,
+      "statement": "The SK thermodynamic free energy is the infimum of the Parisi functional.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.Numbered.result_2_2",
+        "Paper.physicalParisiFormula"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "proved_scope": "Physical finite-volume SK convergence to the infimum over ALL actual probability measures on [0,1] of the constructed weak-PDE functional. Finite-step Talagrand backend is bridged to arbitrary measures by actual probability quantization, CDF L1 estimates, global mild convergence, and exact finite-step functional identification.",
+      "target_definition": "Paper.Numbered.Statement_2_2",
+      "numbered_proof": "Paper.Numbered.result_2_2",
+      "formal_statement_module": "Paper/NumberedResults.lean",
+      "verification_status": "typed_target_and_rejecting_axiom_audit_passed",
+      "legacy_conditional_or_supporting_declarations": [
+        "Paper.finiteSKFreeEnergy",
+        "Paper.integrable_log_skPartitionFunction"
+      ]
+    },
+    {
+      "id": "2.3",
+      "kind": "proposition",
+      "source_label": "p:JT",
+      "source_line": 222,
+      "statement": "A Parisi measure minimizes the functional iff every support point minimizes its variational function.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.Numbered.result_2_3",
+        "Paper.parisiJT_support_criterion",
+        "Paper.hasDerivWithinAt_parisiPDEFunctional_mix_G"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "proved_scope": "For every actual probability measure, minimization of the actual PDE functional is equivalent to the actual topological support lying in the global argmin of the actual selected state-based G. Actual functional mixing convexity, HJB envelope, optimal-gradient martingale, first variation, and support deductions are all discharged.",
+      "target_definition": "Paper.Numbered.Statement_2_3",
+      "numbered_proof": "Paper.Numbered.result_2_3",
+      "formal_statement_module": "Paper/NumberedResults.lean",
+      "verification_status": "typed_target_and_rejecting_axiom_audit_passed"
+    },
+    {
+      "id": "3.1",
+      "kind": "proposition",
+      "source_label": "prop:explicit-RS",
+      "source_line": 299,
+      "statement": "Explicit piecewise PDE solution, state SDE and Gaussian law at time q for μ=δq.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.Numbered.result_3_1",
+        "Paper.parisiPotential_dirac_eq_explicit"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "proved_scope": "Actual arbitrary-measure PDE selector at delta_q equals both explicit heat/Cole-Hopf formulas, including gradient/Hessian and both closed endpoints. Actual selected general strong Brownian state equals the Dirac state path by path, satisfies both drift equations, and has the stated Gaussian interface law.",
+      "target_definition": "Paper.Numbered.Statement_3_1",
+      "numbered_proof": "Paper.Numbered.result_3_1",
+      "formal_statement_module": "Paper/NumberedResults.lean",
+      "verification_status": "typed_target_and_rejecting_axiom_audit_passed",
+      "legacy_conditional_or_supporting_declarations": [
+        "Paper.rsHardPotential",
+        "Paper.rsSoftPotential",
+        "Paper.rsSoftPotential_integrable",
+        "Paper.rsPotential_interface",
+        "Paper.rsHardPotential_terminal",
+        "Paper.deriv_rsHardPotential_spatial",
+        "Paper.deriv2_rsHardPotential_spatial",
+        "Paper.rsHardPotential_dirac_PDE",
+        "Paper.rsSoftPotential_zero",
+        "Paper.gaussianField_law",
+        "Paper.hasDerivAt_rsSoftPotential_spatial",
+        "Paper.deriv2_rsSoftPotential_spatial",
+        "Paper.hasDerivAt_rsSoftPotential_time",
+        "Paper.rsSoftPotential_PDE",
+        "Paper.rsSoftDxx_pos",
+        "Paper.rsSoftDxx_le_one",
+        "Paper.norm_rsSoftDx_le_one",
+        "Paper.tendsto_rsSoftDx_interface",
+        "Paper.tendsto_rsSoftDxx_interface"
+      ]
+    },
+    {
+      "id": "4.1",
+      "kind": "proposition",
+      "source_label": "prop:left-sign",
+      "source_line": 367,
+      "statement": "For 0≤t≤q, E[u_x(t,X_t)²]−t≥(1−α)(q−t)≥0.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.Numbered.result_4_1",
+        "Paper.diracSoftState_left_quantitative"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "proved_scope": "Exact quantitative lower bound for the actual selected PDE-gradient second moment along the actual Brownian state. No supplied Poincare or state-law premise.",
+      "target_definition": "Paper.Numbered.Statement_4_1",
+      "numbered_proof": "Paper.Numbered.result_4_1",
+      "formal_statement_module": "Paper/NumberedResults.lean",
+      "verification_status": "typed_target_and_rejecting_axiom_audit_passed",
+      "legacy_conditional_or_supporting_declarations": [
+        "Paper.left_quantitative_of_poincare_bound",
+        "Paper.left_sign_of_poincare_bound"
+      ]
+    },
+    {
+      "id": "5.1",
+      "kind": "proposition",
+      "source_label": "prop:m-diffusion",
+      "source_line": 419,
+      "statement": "dm=β(1−m²)dW and the second-moment derivative equals β²E[(1−m²)²], initially q.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.Numbered.result_5_1",
+        "Paper.canonicalMagnetizationItoApprox_tendstoInMeasure"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "proved_scope": "Actual selected-state magnetization change is the limit in probability of genuine adapted Brownian left sums with coefficient beta(1-m^2). Actual moment derivative on the entire closed interval, initial fixed-point moment, and literal right/left endpoint derivatives are proved.",
+      "target_definition": "Paper.Numbered.Statement_5_1",
+      "numbered_proof": "Paper.Numbered.result_5_1",
+      "formal_statement_module": "Paper/NumberedResults.lean",
+      "verification_status": "typed_target_and_rejecting_axiom_audit_passed",
+      "legacy_conditional_or_supporting_declarations": [
+        "Paper.tanh_diffusion_drift_zero",
+        "Paper.hasDerivAt_deriv_tanh"
+      ]
+    },
+    {
+      "id": "5.2",
+      "kind": "proposition",
+      "source_label": "prop:hard-small",
+      "source_line": 456,
+      "statement": "If β²(1−q)≤1 then E[m_t²]≤t on [q,1].",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.Numbered.result_5_2",
+        "Paper.physicalRSSecondMoment_right_of_small_variance"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "proved_scope": "Actual selected general-PDE Dirac moment is bounded by time under the exact small-complement and fixed-point inputs; no AT assumption.",
+      "target_definition": "Paper.Numbered.Statement_5_2",
+      "numbered_proof": "Paper.Numbered.result_5_2",
+      "formal_statement_module": "Paper/NumberedResults.lean",
+      "verification_status": "typed_target_and_rejecting_axiom_audit_passed",
+      "legacy_conditional_or_supporting_declarations": [
+        "Paper.hard_small_of_derivative_bounds",
+        "Paper.secondMoment_monotone",
+        "Paper.right_bound_of_deriv_le_one",
+        "Paper.gaussianDoobFourthMoment_le_one_sub_second",
+        "Paper.right_bound_of_doob_moment_inputs"
+      ]
+    },
+    {
+      "id": "5.3",
+      "kind": "proposition",
+      "source_label": "prop:h-less-beta2q",
+      "source_line": 489,
+      "statement": "If β²(1−q)>1 then h<β²q.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.Numbered.result_5_3",
+        "Paper.fixedPoint_structural_field_lt"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "proved_scope": "Exact structural strict field bound from actual positive-field fixed point and large complement variance; no AT assumption.",
+      "target_definition": "Paper.Numbered.Statement_5_3",
+      "numbered_proof": "Paper.Numbered.result_5_3",
+      "formal_statement_module": "Paper/NumberedResults.lean",
+      "verification_status": "typed_target_and_rejecting_axiom_audit_passed",
+      "legacy_conditional_or_supporting_declarations": [
+        "Paper.structural_field_lt",
+        "Paper.matchedField_tanh_moment",
+        "Paper.matchedField_secondMoment",
+        "Paper.matchedField_cauchySchwarz",
+        "Paper.gaussian_tanh_sq_mean_mono"
+      ]
+    },
+    {
+      "id": "5.4",
+      "kind": "proposition",
+      "source_label": "prop:Doob",
+      "source_line": 538,
+      "statement": "The post-q transition kernel is exp(−λ/2)Pλ(cosh·ψ)(x)/cosh x.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.Numbered.result_5_4",
+        "Paper.condExp_canonicalDiracItoState_after"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "proved_scope": "Conditional expectation for every bounded measurable observable of the actual selected state, in the actual Brownian natural filtration, equals the explicit normalized cosh-Gaussian transition expression, including elapsed time zero. The wrapper also asserts the genuine Markov probability kernel and its explicit integral formula for every starting x, including zero variance.",
+      "target_definition": "Paper.Numbered.Statement_5_4",
+      "numbered_proof": "Paper.Numbered.result_5_4",
+      "formal_statement_module": "Paper/NumberedResults.lean",
+      "verification_status": "typed_target_and_rejecting_axiom_audit_passed",
+      "legacy_conditional_or_supporting_declarations": [
+        "Paper.doobOperator",
+        "Paper.integral_cosh_gaussianReal",
+        "Paper.doobOperator_one",
+        "Paper.doobOperator_zero",
+        "Paper.doobOperator_eq_heat",
+        "Paper.cosh_generator_conjugation",
+        "Paper.hasDerivAt_cosh_mul_first"
+      ]
+    },
+    {
+      "id": "5.5",
+      "kind": "proposition",
+      "source_label": "prop:hard-hsmall",
+      "source_line": 595,
+      "statement": "For h≤β²q and α≤1, E[m_t²]≤t, strictly when t>q.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.Numbered.result_5_5",
+        "Paper.physicalRSSecondMoment_right_strict_of_small_field"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "proved_scope": "Actual selected general-PDE Dirac moment has the requested non-strict bound on the closed interval and strict bound after q under the explicit small-field hypothesis.",
+      "target_definition": "Paper.Numbered.Statement_5_5",
+      "numbered_proof": "Paper.Numbered.result_5_5",
+      "formal_statement_module": "Paper/NumberedResults.lean",
+      "verification_status": "typed_target_and_rejecting_axiom_audit_passed",
+      "legacy_conditional_or_supporting_declarations": [
+        "Paper.symmetrizedWeight_eq_radialWeight",
+        "Paper.symmetrizedWeight_strictAntiOn",
+        "Paper.integrable_symmetrizedWeight",
+        "Paper.gaussian_heat_double_integral_identity",
+        "Paper.radialWeight_heat_strict_contraction",
+        "Paper.integral_doobOperator_sech_fourth_eq_symmetrized",
+        "Paper.gaussian_doob_sech_fourth_exponential_decay",
+        "Paper.right_strict_bound_of_exp_deriv",
+        "Paper.secondMoment_le_exp_bound",
+        "Paper.hardFourthMoment_exponential_decay",
+        "Paper.right_strict_bound_of_doob_moment_inputs"
+      ]
+    },
+    {
+      "id": "5.6",
+      "kind": "proposition",
+      "source_label": "prop:hard-full",
+      "source_line": 666,
+      "statement": "For q≤t≤1, E[u_x(t,X_t)²]≤t.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.Numbered.result_5_6",
+        "Paper.physicalRSSecondMoment_right_sign"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "proved_scope": "Actual selected general-PDE Dirac moment is bounded by time in both regimes under the physical AT hypotheses.",
+      "target_definition": "Paper.Numbered.Statement_5_6",
+      "numbered_proof": "Paper.Numbered.result_5_6",
+      "formal_statement_module": "Paper/NumberedResults.lean",
+      "verification_status": "typed_target_and_rejecting_axiom_audit_passed",
+      "legacy_conditional_or_supporting_declarations": [
+        "Paper.hard_full_of_regime_bounds",
+        "Paper.fixedPoint_structural_field_lt",
+        "Paper.right_bound_of_doob_moment_inputs"
+      ]
+    },
+    {
+      "id": "6.1",
+      "kind": "proposition",
+      "source_label": "prop:G-min",
+      "source_line": 682,
+      "statement": "The Dirac variational function Gδq is globally minimized at q.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.Numbered.result_6_1",
+        "Paper.selectedParisiG_dirac_minimum"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "proved_scope": "The genuine arbitrary-measure selected observable G_delta_q has its global minimum at q. The separately proved minimum is strict away from q.",
+      "target_definition": "Paper.Numbered.Statement_6_1",
+      "numbered_proof": "Paper.Numbered.result_6_1",
+      "formal_statement_module": "Paper/NumberedResults.lean",
+      "verification_status": "typed_target_and_rejecting_axiom_audit_passed",
+      "legacy_conditional_or_supporting_declarations": [
+        "Paper.parisiG",
+        "Paper.parisiG_minimum_of_signs",
+        "Paper.parisiG_antitoneOn",
+        "Paper.parisiG_monotoneOn",
+        "Paper.parisiG_minimum_of_regime_bounds",
+        "Paper.parisiG_minimum_of_doob_moment_inputs"
+      ]
+    },
+    {
+      "id": "6.2",
+      "kind": "remark",
+      "source_label": null,
+      "source_line": 738,
+      "statement": "The unique Parisi minimizer is exactly δq.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.Numbered.result_6_2",
+        "Paper.parisiUniqueDirac"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "proved_scope": "The actual Dirac q is a PDE-functional minimizer, and every actual PDE-functional minimizer equals it under the physical closed AT hypotheses. Actual strict G minimum and mixing first variation prove uniqueness without assuming general functional strict convexity.",
+      "target_definition": "Paper.Numbered.Statement_6_2",
+      "numbered_proof": "Paper.Numbered.result_6_2",
+      "formal_statement_module": "Paper/NumberedResults.lean",
+      "verification_status": "typed_target_and_rejecting_axiom_audit_passed"
+    }
+  ],
+  "supporting_results": [
+    {
+      "id": "fixed_point_existence_uniqueness",
+      "statement": "For β>0,h>0 the scalar Gaussian fixed point exists uniquely.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.positive_field_fixedPoint_unique",
+        "Paper.exists_unique_rs_fixedPoint",
+        "Paper.continuous_overlapMap",
+        "Paper.exists_positive_field_fixedPoint",
+        "Paper.exists_rs_fixedPoint"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "verification_status": "closed_proof_compiled"
+    },
+    {
+      "id": "fixed_point_strict_bounds",
+      "statement": "A positive-field nonnegative fixed point satisfies 0<q<1.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.fixedPoint_pos",
+        "Paper.fixedPoint_lt_one"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": []
+    },
+    {
+      "id": "gaussian_integrability",
+      "statement": "The bounded tanh-square and sech-power Gaussian observables are integrable.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.integrable_gaussian_tanh_sq",
+        "Paper.integrable_gaussian_sech_pow",
+        "Paper.integrable_gaussian_cosh_affine",
+        "Paper.integrable_gaussian_logcosh_affine",
+        "Paper.integrable_rs_logcosh"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "verification_status": "axiom_audited"
+    },
+    {
+      "id": "overlap_bounds",
+      "statement": "0≤overlapMap<1, with overlapMap(β,h,0)=tanh²h.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.overlapMap_nonneg",
+        "Paper.overlapMap_lt_one",
+        "Paper.overlapMap_zero"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": []
+    },
+    {
+      "id": "alpha_bounds",
+      "statement": "For β≠0, 0<α≤β².",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.atParameter_pos",
+        "Paper.atParameter_le_beta_sq"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": []
+    },
+    {
+      "id": "tanh_sech_identity",
+      "statement": "tanh²x+sech²x=1.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.tanh_sq_add_sech_sq"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": []
+    },
+    {
+      "id": "tanh_derivative",
+      "statement": "(tanh)′=sech².",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.hasDerivAt_tanh"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": []
+    },
+    {
+      "id": "sech_derivatives",
+      "statement": "(sech)′=−sech·tanh and (sech²)′=−2tanh·sech².",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.hasDerivAt_sech",
+        "Paper.hasDerivAt_sech_sq"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": []
+    },
+    {
+      "id": "tanh_pointwise_gap",
+      "statement": "For y≠0, tanh(y)(tanh(y)−y sech²(y))>0.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.tanh_sub_mul_sech_sq_pos",
+        "Paper.tanh_mul_tanh_sub_mul_sech_sq_pos"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": []
+    },
+    {
+      "id": "scaled_tanh",
+      "statement": "For 0≤c≤1 and x≥0, c tanh(cx)≤tanh x.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.scaled_tanh_le"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": []
+    },
+    {
+      "id": "sech_cube_monotonicity",
+      "statement": "sech³ is even and decreasing with absolute value.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.sech_cube_antitoneOn",
+        "Paper.sech_cube_comonotone"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": []
+    },
+    {
+      "id": "heat_zero",
+      "statement": "P₀ is the identity.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.heatSemigroup_zero"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": []
+    },
+    {
+      "id": "pde_interface",
+      "statement": "The RS spatial derivatives agree continuously at q.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.rsPotential_interface",
+        "Paper.rsSoftDx_interface",
+        "Paper.rsSoftDxx_interface",
+        "Paper.continuous_rsSoftDx_joint",
+        "Paper.continuous_rsSoftDxx_joint",
+        "Paper.tendsto_rsSoftDx_interface",
+        "Paper.tendsto_rsSoftDxx_interface"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "proved_scope": "The actual explicit soft potential and its first two spatial derivatives match the hard formulas and extend continuously to the interface. This does not identify the weak PDE solution.",
+      "verification_status": "axiom_audited"
+    },
+    {
+      "id": "conditional_martingale",
+      "statement": "Before q, u_x(t,X_t)=E[tanh(X_q)|𝓕_t].",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.condExp_selectedParisiDirac_gradient_before",
+        "Paper.condExp_canonicalDiracState_before",
+        "Paper.martingale_selectedParisiGradient"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "verification_status": "closed_actual_theorem_and_rejecting_axiom_audit_passed",
+      "proved_scope": "Literal before-q conditional expectation of terminal tanh is the actual PDE gradient along the actual selected strong state. The general actual optimal-gradient process is also a genuine Mathlib martingale on the closed physical strip."
+    },
+    {
+      "id": "conditional_poincare",
+      "statement": "q−E[u_x(t,X_t)²]≤α(q−t).",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.condVar_selectedParisiDirac_tanh_before",
+        "Paper.selectedParisiDirac_variance_decomposition",
+        "Paper.gaussian_poincare_tanh"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "verification_status": "closed_actual_theorem_and_rejecting_axiom_audit_passed",
+      "proved_scope": "Literal conditional variance is bounded almost everywhere by beta²(q−t) times the actual conditional sech-fourth expectation. The exact total conditional-variance decomposition is proved for the actual selected state and actual PDE-gradient moment, including both endpoints."
+    },
+    {
+      "id": "moment_integral",
+      "statement": "E[m_t²]=q+β²∫q^tE[(1−m_s²)²]ds.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.hardSecondMoment_eq_fixedPoint_add_integral",
+        "Paper.canonicalDiracState_secondMoment_eq_fixedPoint_add_integral",
+        "Paper.selectedParisiSecondMoment_dirac_eq_fixedPoint_add_integral"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "verification_status": "closed_proof_compiled_and_axiom_audited"
+    },
+    {
+      "id": "shift_monotonicity",
+      "statement": "At every positive variance t, h ↦ E[tanh²(h+sqrt(t)Z)] is strictly increasing on h≥0.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.gaussian_tanh_sq_mean_mono",
+        "Paper.hasDerivAt_overlapTime_field",
+        "Paper.overlapTime_strictMonoOn_field"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "proved_scope": "Nondecrease is proved by density reflection; strict increase at positive variance is proved from the actual derivative and positive odd moment.",
+      "verification_status": "axiom_audited"
+    },
+    {
+      "id": "nishimori_weight",
+      "statement": "For Y=σ²+σZ, E[Y tanh Y]=σ².",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.matchedGaussian_weight_even",
+        "Paper.matchedGaussian_cancellation",
+        "Paper.matchedGaussian_tanh_moment",
+        "Paper.matchedField_tanh_moment"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "verification_status": "axiom_audited"
+    },
+    {
+      "id": "doob_generator",
+      "statement": "Lφ=(cosh·φ)″/(2cosh)−φ/2.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.cosh_generator_conjugation",
+        "Paper.canonicalDiracItoState_restricted_transitionLaw",
+        "Paper.hasDerivAt_cosh_mul",
+        "Paper.hasDerivAt_cosh_mul_first"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "verification_status": "closed_proof_compiled"
+    },
+    {
+      "id": "gaussian_cosh_moment",
+      "statement": "Pλ cosh=exp(λ/2)cosh.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.integrable_cosh_gaussianReal",
+        "Paper.integral_cosh_gaussianReal"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "verification_status": "axiom_audited"
+    },
+    {
+      "id": "symmetrized_weight_decay",
+      "statement": "w(x)=(p(x)+p(−x))/(2cosh x) decreases in |x| when h≤σ².",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.symmetrizedWeight_eq_radialWeight",
+        "Paper.symmetrizedWeight_strictAntiOn",
+        "Paper.symmetrizedWeight_sech_cube_comonotone"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "verification_status": "axiom_audited"
+    },
+    {
+      "id": "double_integral_identity",
+      "statement": "∫wk−∫wPλk=(1/2)∫∫φλ(x−y)(w(x)−w(y))(k(x)−k(y)).",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.symmetric_kernel_difference_identity",
+        "Paper.symmetric_kernel_double_integral_identity",
+        "Paper.gaussian_heat_double_integral_identity"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "verification_status": "axiom_audited"
+    },
+    {
+      "id": "double_integral_convergence",
+      "statement": "The double integral is absolutely convergent for integrable w and bounded k.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.kernel_weight_integrable",
+        "Paper.kernel_pair_integrable",
+        "Paper.symmetric_kernel_difference_integrable"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "verification_status": "axiom_audited"
+    },
+    {
+      "id": "double_integral_nonnegativity",
+      "statement": "Two functions decreasing with absolute value give a nonnegative difference product.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.even_radial_comonotone",
+        "Paper.comonotone_of_decreasing_abs",
+        "Paper.radialWeight_sech_cube_comonotone"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "verification_status": "axiom_audited"
+    },
+    {
+      "id": "exponential_sech_decay",
+      "statement": "a₂(λ)≤exp(−λ/2)a₂(0).",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.physicalHardFourthMoment_exponential_decay",
+        "Paper.gaussian_doob_sech_fourth_exponential_decay"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "verification_status": "closed_proof_compiled"
+    },
+    {
+      "id": "exponential_moment_bound",
+      "statement": "The actual hard and selected Dirac second moments satisfy the literal integrated exponential envelope q + (2 alpha / beta^2)(1-exp(-beta^2(t-q)/2)), yielding strict comparison after q.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.hardFourthMoment_exponential_decay_zero",
+        "Paper.hardFourthMoment_exponential_decay_of_nonneg",
+        "Paper.hardSecondMoment_le_exp_bound",
+        "Paper.physicalHardSecondMoment_le_exp_bound",
+        "Paper.canonicalDiracState_secondMoment_le_exp_bound",
+        "Paper.selectedParisiSecondMoment_dirac_le_exp_bound"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "verification_status": "closed_proof_compiled_and_standard_axiom_audited",
+      "proved_scope": "The concrete physical and selected-state exponential envelope is proved under beta nonzero, q in [0,1], h nonnegative, h <= beta^2*q and the actual fixed point. The q=0 boundary is included by a separate genuine heat bound."
+    },
+    {
+      "id": "dirac_value",
+      "statement": "P(δq)=Φ_RS through the exact correction integral.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.parisiPDEFunctional_dirac_eq_rsFreeEnergy",
+        "Paper.dirac_cdf_integral",
+        "Paper.dirac_correction_integral",
+        "Paper.parisiFunctional_dirac_eq_rsFreeEnergy",
+        "Paper.rsSoftPotential_zero"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "verification_status": "closed_proof_compiled"
+    },
+    {
+      "id": "appendix_gaussian_derivatives",
+      "statement": "A_h=−2u,C_h=−4v,A_t=2A−3C,C_t=2(hv−T)/t.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.hasDerivAt_gaussianA_field",
+        "Paper.hasDerivAt_gaussianC_field",
+        "Paper.hasDerivAt_gaussianA_variance",
+        "Paper.hasDerivAt_gaussianC_variance",
+        "Paper.hasDerivAt_gaussianC_variance_stein",
+        "Paper.hasDerivAt_atZeroFunction_variance"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "proved_scope": "All listed field and variance derivative identities are proved for the concrete Gaussian observables; variance derivatives require t>0.",
+      "verification_status": "axiom_audited"
+    },
+    {
+      "id": "appendix_AT_zero_coordinates",
+      "statement": "The AT equations correspond to tC+A−1=0, with β=1/√C and q=tC.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.gaussian_at_critical_gives_zero",
+        "Paper.gaussian_at_critical_beta_coordinate",
+        "Paper.gaussian_at_critical_beta_gt_one",
+        "Paper.gaussian_at_zero_reconstruction",
+        "Paper.atZeroToBoundary_mem",
+        "Paper.atBoundary_eq_zero_image"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "verification_status": "axiom_audited"
+    },
+    {
+      "id": "appendix_positive_moments",
+      "statement": "For h>0,t>0, u,v,B,T are positive; B−T>0.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.gaussianU_pos",
+        "Paper.gaussianV_pos",
+        "Paper.gaussianT_pos",
+        "Paper.gaussianB_pos",
+        "Paper.gaussianB_sub_gaussianT_pos"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "proved_scope": "Actual U,V are positive at positive h,t. Actual T,B,B-T are positive at positive t, with arbitrary h for the last three.",
+      "verification_status": "axiom_audited"
+    },
+    {
+      "id": "appendix_zero_curve_slopes",
+      "statement": "F_h<0,F_t>0 and h′>0 from the appendix sign identities.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.hasDerivAt_atFieldRoot",
+        "Paper.atFieldRoot_derivative_pos",
+        "Paper.atZeroFunction_field_derivative_neg",
+        "Paper.atZeroFunction_variance_derivative_pos",
+        "Paper.atFieldRoot_strictMonoOn",
+        "Paper.at_curve_slope_pos"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "verification_status": "closed_proof_compiled"
+    },
+    {
+      "id": "appendix_IBP_gap",
+      "statement": "On the zero set, 2tB−hu=tC−E[Yms]>0.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.gaussian_variance_stein",
+        "Paper.gaussianMixedSecond_stein",
+        "Paper.gaussian_zero_curve_gap_identity",
+        "Paper.gaussian_zero_curve_gap_pos"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "proved_scope": "The actual mixed-moment Stein identity and exact strictly positive zero-set gap are proved.",
+      "verification_status": "axiom_audited"
+    },
+    {
+      "id": "appendix_C_curve_derivative",
+      "statement": "dC/dt=−2[uT+v(2tB−hu)]/[t(u+2tv)]<0.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.hasDerivAt_atCOnCurve",
+        "Paper.atCOnCurveSlope_neg",
+        "Paper.at_curve_derivative_identity",
+        "Paper.gaussian_zero_curve_C_slope_neg"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "verification_status": "closed_proof_compiled"
+    },
+    {
+      "id": "appendix_curve_monotonicity",
+      "statement": "h(t) and β(t) increase strictly; C(h(t),t) decreases strictly.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.atBetaCurve_derivative_pos",
+        "Paper.atBetaCurve_strictMonoOn",
+        "Paper.atFieldRoot_strictMonoOn",
+        "Paper.gaussian_zero_curve_C_slope_neg",
+        "Paper.at_C_curve_strictAnti_of_derivative",
+        "Paper.at_beta_derivative_pos"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "verification_status": "closed_proof_compiled"
+    },
+    {
+      "id": "appendix_endpoints",
+      "statement": "h(t)→0 and β(t)→1 as t→0+; β(t)→∞ as t→∞.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.tendsto_atFieldRoot_zero_right",
+        "Paper.tendsto_atBetaCurve_zero_right",
+        "Paper.atBetaCurve_sq_gt_time",
+        "Paper.tendsto_atBetaCurve_atTop"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "proved_scope": "The actual selected field and beta curves satisfy all three stated endpoint limits and the bound beta(t)^2>t.",
+      "verification_status": "axiom_audited"
+    },
+    {
+      "id": "appendix_global_smooth_inverse",
+      "statement": "β maps (0,∞) smoothly and bijectively onto (1,∞), with smooth inverse.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.atBetaCurve_bijOn",
+        "Paper.contDiffOn_atTimeFromBeta",
+        "Paper.atTimeFromBeta_strictMonoOn"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "verification_status": "closed_proof_compiled"
+    },
+    {
+      "id": "gaussian_heat_normalization",
+      "statement": "The actual Gaussian heat kernel is measurable, symmetric, nonnegative, and has unit row mass at positive variance.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.heatKernel_eq_gaussianPDFReal",
+        "Paper.heatKernel_nonneg",
+        "Paper.measurable_heatKernel",
+        "Paper.heatKernel_symm",
+        "Paper.integral_heatKernel_eq_one"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "verification_status": "axiom_audited"
+    },
+    {
+      "id": "actual_heat_contraction",
+      "statement": "The actual paper weight and sech-cube satisfy Gaussian heat contraction, including strict radial contraction and the exact Gaussian Doob decay bound.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.radialWeight_heat_contraction",
+        "Paper.radialWeight_heat_strict_contraction",
+        "Paper.symmetrizedWeight_heat_contraction",
+        "Paper.integral_doobOperator_sech_fourth_eq_symmetrized",
+        "Paper.gaussian_doob_sech_fourth_exponential_decay"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "verification_status": "axiom_audited"
+    },
+    {
+      "id": "doob_normalization",
+      "statement": "The concrete Gaussian cosh transform is positive, constant-preserving, bounded on bounded measurable functions, identity at zero variance, and has the exact heat-kernel form.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.doobOperator_one",
+        "Paper.doobOperator_const",
+        "Paper.doobOperator_nonneg",
+        "Paper.norm_doobOperator_le",
+        "Paper.doobOperator_zero",
+        "Paper.doobOperator_eq_heat"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "verification_status": "axiom_audited"
+    },
+    {
+      "id": "gaussian_moments_and_cauchy_schwarz",
+      "statement": "For Y=s+sqrt(s)Z, mean/variance matching yields E[Y]=s, E[Y^2]=s+s^2, E[Y tanh Y]=s, and the actual expectation Cauchy-Schwarz bound.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.matchedField_law",
+        "Paper.matchedField_mean",
+        "Paper.matchedField_secondMoment",
+        "Paper.matchedField_tanh_moment",
+        "Paper.matchedField_cauchySchwarz"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "verification_status": "axiom_audited"
+    },
+    {
+      "id": "finite_SK_integrability",
+      "statement": "The concrete finite SK Hamiltonian, Boltzmann factors, partition function, and log partition are integrable, and the partition function is strictly positive.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.integrable_skHamiltonian",
+        "Paper.integrable_exp_skHamiltonian",
+        "Paper.skPartitionFunction_pos",
+        "Paper.integrable_skPartitionFunction",
+        "Paper.integrable_log_skPartitionFunction"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "verification_status": "axiom_audited"
+    },
+    {
+      "id": "actual_parisi_measures",
+      "statement": "Probability measures on [0,1], their CDF correction integrability, and exact Dirac CDF/support/correction are concrete and proved.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.parisiCDF_nonneg",
+        "Paper.parisiCDF_monotone",
+        "Paper.parisiCDF_le_one",
+        "Paper.parisiCorrection_intervalIntegrable",
+        "Paper.parisiCDF_dirac",
+        "Paper.support_diracOverlap",
+        "Paper.dirac_correction_integral"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "verification_status": "axiom_audited"
+    },
+    {
+      "id": "Gaussian_heat_derivatives_and_continuity",
+      "statement": "Dominated scale differentiation, Stein-based Gaussian variance differentiation, and joint continuity of A,C,F, including variance zero, are implemented without assumed derivative-exchange identities.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.hasDerivAt_gaussian_scale",
+        "Paper.hasDerivAt_gaussian_variance",
+        "Paper.continuous_gaussianA_joint",
+        "Paper.continuous_gaussianC_joint",
+        "Paper.continuous_atZeroFunction_joint",
+        "Paper.hasDerivAt_gaussianA_variance",
+        "Paper.hasDerivAt_gaussianC_variance"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "verification_status": "axiom_audited",
+      "proved_scope": "Complete concrete derivative-exchange and joint continuity proofs, including continuity at variance zero."
+    },
+    {
+      "id": "Gaussian_odd_positivity",
+      "statement": "Positive-mean Gaussian expectations of continuous odd positive-halfline observables are positive; the actual appendix u,v moments instantiate the theorem.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.gaussian_integral_odd_pos",
+        "Paper.gaussian_integral_odd_pos_of_bounded",
+        "Paper.integral_tanh_mul_sech_pow_gaussian_pos",
+        "Paper.gaussianU_pos",
+        "Paper.gaussianV_pos"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "verification_status": "axiom_audited",
+      "proved_scope": "Complete density-reflection and actual positive odd-observable expectation proofs."
+    },
+    {
+      "id": "actual_AT_root_and_boundary_parametrization",
+      "statement": "At each positive variance there is exactly one positive Gaussian zero; its field coordinate is strictly increasing and continuous, and the full boundary is its beta/field image plus (1,0).",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.smoothATBoundary",
+        "Paper.atBoundary_eq_field_graph",
+        "Paper.at_exists_unique_field_zero",
+        "Paper.atFieldRoot_unique",
+        "Paper.atFieldRoot_strictMonoOn",
+        "Paper.continuousOn_atFieldRoot_nonneg",
+        "Paper.positiveATZeroSet_eq_root_graph",
+        "Paper.atBoundary_eq_curve_image"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "verification_status": "closed_proof_compiled"
+    },
+    {
+      "id": "arbitrary_measure_weak_PDE_existence_uniqueness",
+      "statement": "Actual original admissible weak-class well-posedness, with potential equality everywhere on the closed strip and gradient equality almost everywhere.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.exists_unique_parisiWeakPotential",
+        "Paper.parisiWeakSolution_unique"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "verification_status": "closed_proof_compiled"
+    },
+    {
+      "id": "all_order_PDE_regularity",
+      "statement": "Every positive spatial derivative is jointly continuous and bounded, every spatial order has a bounded measurable weak time derivative, and sharp gradient/Hessian bounds hold.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.parisiPDE_wellPosed",
+        "Paper.parisiSpatialDerivatives_continuous_bounded",
+        "Paper.parisiPotential_all_weakTimeDerivatives_bounded"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "verification_status": "closed_proof_compiled"
+    },
+    {
+      "id": "general_strong_state",
+      "statement": "Actual canonical Brownian pathwise Picard solution with the actual Parisi gradient; all bounded Lipschitz/adapted/Ito premises discharged.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.selectedParisiState_integral_equation",
+        "Paper.boundedDriftItoCharacteristics_selectedParisiState",
+        "Paper.integrable_selectedParisiItoState",
+        "Paper.parisiStateReal_unique"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "verification_status": "closed_proof_compiled"
+    },
+    {
+      "id": "arbitrary_measure_finite_law_approximation",
+      "statement": "Actual finite atomic grid laws, CDF L1 mesh bound, global bounded mild gradient convergence, and potential/correction convergence.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.parisiCDF_grid_norm_integral_le",
+        "Paper.tendsto_actual_finiteParisiPotential",
+        "Paper.tendsto_parisiFiniteFunctional_grid"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "verification_status": "closed_proof_compiled"
+    },
+    {
+      "id": "all_measure_Parisi_formula_bridge",
+      "statement": "Finite-step Talagrand formula is identified with the actual arbitrary-measure weak PDE variational infimum and actual physical Hamiltonian signs/normalization.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.parisiPDEValue_eq_finiteStep",
+        "Paper.physicalParisiFormula"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "verification_status": "closed_proof_compiled"
+    },
+    {
+      "id": "actual_general_functional_convexity",
+      "statement": "The actual selected PDE functional is convex on every genuine mixing segment.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.convexOn_parisiPDEFunctional_mix"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "verification_status": "closed_proof_compiled"
+    },
+    {
+      "id": "actual_Dirac_identification",
+      "statement": "Actual general PDE selector, strong state, second moment, and G at Dirac law agree with their explicit RS counterparts.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.parisiPotential_dirac_eq_explicit",
+        "Paper.selectedParisiState_dirac_eq",
+        "Paper.selectedParisiSecondMoment_dirac_eq",
+        "Paper.selectedParisiG_dirac_eq"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "verification_status": "closed_proof_compiled"
+    },
+    {
+      "id": "actual_Dirac_strict_G_minimum",
+      "statement": "The actual state-based G at Dirac q has a strict unique minimum at q under physical AT hypotheses, sufficient for the unique-minimizer remark once the first variation is proved.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.selectedParisiG_dirac_eq_minimum_iff"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "verification_status": "closed_proof_compiled"
+    },
+    {
+      "id": "bounded_measurable_heat_source_regularization",
+      "statement": "Volterra heat potential and its actual spatial derivative are jointly continuous on the physical strip for merely measurable uniformly bounded source, recovering the original weak class without assuming source-time continuity.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.continuous_boundedVolterraPotential",
+        "Paper.hasDerivAt_boundedVolterraPotential_spatial",
+        "Paper.continuousOn_boundedVolterraGradient"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "verification_status": "closed_proof_compiled"
+    },
+    {
+      "id": "general_time_HJB_value_representation",
+      "statement": "For every physical starting time t and spatial point x, the actual weak PDE potential u_mu(t,x) is the value of the corresponding stochastic control problem.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.parisiTimeControlObjective_le_potential",
+        "Paper.parisiTimeControlObjective_feedback_eq_potential",
+        "Paper.parisiPotential_all_time_control_representation",
+        "Paper.parisiPotential_isGreatest_controlValues",
+        "Paper.parisiPotential_eq_sup_controlValues",
+        "Paper.parisiPotential_all_time_HJB"
+      ],
+      "proved_scope": "For every actual probability measure, beta nonzero, starting time a in [0,1] and x real, the actual potential equals the supremum of the explicitly integrated fresh-Brownian objectives over bounded continuous adapted controls. Its actual restarted PDE feedback is admissible and attains the value. The terminal starting time a=1 is included.",
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "verification_status": "closed_proof_compiled_and_standard_axiom_audited"
+    },
+    {
+      "id": "general_optimal_gradient_martingale",
+      "statement": "For every actual measure, the selected optimal PDE gradient along its selected strong state is a genuine martingale; all later gradients have conditional expectation equal to the earlier gradient.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.condExp_selectedParisiGradientProcess",
+        "Paper.martingale_selectedParisiGradient"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "verification_status": "closed_actual_theorem_compiled"
+    },
+    {
+      "id": "actual_general_first_variation",
+      "statement": "The actual PDE functional along every genuine probability mixing path has right derivative equal to the integral of actual selected state-based G against nu minus mu.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.hasDerivWithinAt_parisiPDEFunctional_mix_G"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "verification_status": "closed_actual_theorem_compiled_and_axiom_audited"
+    },
+    {
+      "id": "dirac_classical_off_interface",
+      "statement": "The actual Dirac Parisi potential is classical C^{1,2} on each side of q, with physical one-sided time derivatives at the strip endpoints and continuous spatial derivatives across q.",
+      "status": "proved",
+      "lean_declarations": [
+        "Paper.hasDerivAt_parisiPotential_dirac_time_soft",
+        "Paper.hasDerivAt_parisiPotential_dirac_time_hard",
+        "Paper.hasDerivWithinAt_parisiPotential_dirac_time_soft",
+        "Paper.hasDerivWithinAt_parisiPotential_dirac_time_hard",
+        "Paper.parisiDirac_classical_regular"
+      ],
+      "remaining_work": [],
+      "explicit_hypotheses_or_dependencies": [],
+      "proved_scope": "Actual selected potential, beta>0 and q in [0,1]. First time derivatives are jointly continuous on the two open pieces, with genuine within-strip derivatives at t=0 and t=1 when off-interface. Actual spatial C-infinity strengthens the C^2 requirement. No time derivative at q is asserted.",
+      "verification_status": "closed_proof_compiled_and_standard_axiom_audited"
+    }
+  ],
+  "external_background_not_proved": [
+    "Historical zero-field RS/RSB phase classification cited in the introduction",
+    "Historical replica symmetry breaking when alpha>1 cited in the introduction",
+    "Historical sufficient replica-symmetry regions and general mixed-p-spin counterexamples cited in the literature survey"
+  ],
+  "status_meanings": {
+    "proved": "Closed theorem about the actual objects; no unproved mathematical theory supplied as an extra premise. Typed numbered target and rejecting transitive kernel audit where indicated.",
+    "unproved_target": "Concrete compiled Prop definition, no proof asserted.",
+    "in_progress": "A separate supporting display is being completed; its containing numbered statement may already have a closed proof by an equivalent argument.",
+    "not_formalized": "No proof claimed.",
+    "partial": "Only the stated supporting scope is checked, not a full original statement.",
+    "historical_background": "A cited literature-survey fact, separately inventoried and not claimed as a newly proved paper result."
+  },
+  "summary": {
+    "numbered_statement_count": 15,
+    "fully_proved_numbered_statements": [
+      "1.1",
+      "1.2",
+      "2.1",
+      "2.2",
+      "2.3",
+      "3.1",
+      "4.1",
+      "5.1",
+      "5.2",
+      "5.3",
+      "5.4",
+      "5.5",
+      "5.6",
+      "6.1",
+      "6.2"
+    ],
+    "unproved_numbered_statements": [],
+    "unproved_top_level_target_definitions": [],
+    "remark_6_2_counted": true,
+    "supporting_inventory_count": 58,
+    "final_aggregate_audit": "passed",
+    "fully_proved_supporting_statements": 58,
+    "unproved_supporting_statements": [],
+    "final_aggregate_build": "passed",
+    "public_theorem_count": 1931,
+    "public_declaration_count": 2309
+  },
+  "cited_theory_status": {
+    "positive_field_fixed_point": "proved",
+    "Parisi_PDE_well_posedness": "proved",
+    "strong_state_SDE": "proved",
+    "Talagrand_Parisi_formula": "proved_via_audited_vendored_finite_step_theorem_and_actual_PDE_bridge",
+    "Jagannath_Tobasco_criterion": "proved_actual_PDE_state_first_variation_and_support_criterion",
+    "Auffinger_Chen_general_strict_convexity": "not_needed_for_the_numbered_Dirac_uniqueness_remark; strict_G_Dirac_first_variation_route_used"
+  }
+}

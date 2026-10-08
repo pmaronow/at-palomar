@@ -1,0 +1,929 @@
+--- upstream/Lemmas/AT/PsiContinuity.lean
++++ adapted/Lemmas/AT/PsiContinuity.lean
+@@ -1,3 +1,4 @@
++/- Compatibility adaptation: current Set.domRestrict continuity interface. -/
+ import Lemmas.GuerraTalagrand.Gaussian
+ import Lemmas.AT.FixedPoint
+ 
+@@ -217,7 +218,7 @@
+ private lemma continuousOn_upperBranch :
+     ContinuousOn (fun w : P × ℝ => upperBranch w.1 w.2)
+       {w | 0 < w.1.2.1} := by
+-  rw [continuousOn_iff_continuous_restrict]
++  rw [continuousOn_iff_continuous_domRestrict]
+   let Q := {w : P × ℝ // 0 < w.1.2.1}
+   let toPPos : Q → PPos := fun w => ⟨w.1.1, w.2⟩
+   have htoPPos : Continuous toPPos := by fun_prop
+@@ -331,13 +332,13 @@
+         (w.1.1.1.2, w.1.1.1.2) - w.1.2 * w.1.1.2.2.2 -
+           gtCorrection w.1.1.1.1 w.1.1.2.1 w.1.1.2.2.1 :=
+     ((hconst.add heval').sub hlamv).sub hcorr
+-  have heq : ({w : P × ℝ | 0 < w.1.2.1}.restrict
++  have heq : ({w : P × ℝ | 0 < w.1.2.1}.domRestrict
+       (fun w => upperBranch w.1 w.2)) =
+       fun w : Q => 2 * Real.log 2 + F5 (toPPos w) w.1.2
+         (w.1.1.1.2, w.1.1.1.2) - w.1.2 * w.1.1.2.2.2 -
+           gtCorrection w.1.1.1.1 w.1.1.2.1 w.1.1.2.2.1 := by
+     funext w
+-    unfold Set.restrict upperBranch
++    unfold Set.domRestrict upperBranch
+     rw [hF5]
+   rw [heq]
+   exact hbase
+@@ -380,7 +381,7 @@
+       admissible := continuousOn_upperBranch.mono (by
+     intro w hw
+     exact hw.1)
+-  rw [continuousOn_iff_continuous_restrict] at huOn ⊢
++  rw [continuousOn_iff_continuous_domRestrict] at huOn ⊢
+   have hl : Continuous (fun w : admissible => lowerBranch w.1.1 w.1.2) :=
+     continuous_lowerBranch.comp continuous_subtype_val
+   have hq : Continuous (fun w : admissible => w.1.1.2.1) := by fun_prop
+--- upstream/Lemmas/Cavity/Estimates.lean
++++ adapted/Lemmas/Cavity/Estimates.lean
+@@ -1,3 +1,5 @@
++/- Compatibility adaptation: allow finite normalization to finish before optional residual simplification. -/
++/- Adapted for the paper formalization: replaced 18 native decision tactics with kernel decide. Original source and pinned revision are recorded in PROVENANCE.json. -/
+ import Lemmas.Cavity.Interpolation
+ import Lemmas.SmartPath.Interpolation
+ import Mathlib.Tactic
+@@ -76,7 +78,7 @@
+     (F := inferInstanceAs (Fintype (ReplicaEdge 4))) E (by simp [E]) T
+   rw [← hsum]
+   norm_num [E, T, Finset.sum_filter, Fintype.sum_prod_type, Fin.sum_univ_succ]
+-  simp (disch := decide)
++  try simp (disch := decide)
+   ring
+ 
+ def ee01 : ReplicaEdge 6 := ⟨(0,1), by decide⟩
+@@ -97,7 +99,7 @@
+     (symmDiff (edgeFinset6 e) (edgeFinset6 f)).card =
+       match edgeRelation e f with
+       | .equal => 0 | .sharesOne => 2 | .disjoint => 4 := by
+-  native_decide +revert
++  decide +revert
+ 
+ noncomputable def edgeSpin6 {N : ℕ} (i : Fin N) (e : ReplicaEdge 6)
+     (σs : Replicas N 6) : ℝ :=
+@@ -374,19 +376,19 @@
+           (p (canonicalEdge6 (edgeRelation ee01 e)).1.2) e.1.1 e.1.2 := by
+   fin_cases e
+   all_goals first
+-    | exact ⟨Equiv.refl _, by native_decide⟩
+-    | exact ⟨Equiv.swap 2 3, by native_decide⟩
+-    | exact ⟨Equiv.swap 2 4, by native_decide⟩
+-    | exact ⟨Equiv.swap 2 5, by native_decide⟩
+-    | exact ⟨Equiv.swap 0 1, by native_decide⟩
+-    | exact ⟨(Equiv.swap 0 1).trans (Equiv.swap 2 3), by native_decide⟩
+-    | exact ⟨(Equiv.swap 0 1).trans (Equiv.swap 2 4), by native_decide⟩
+-    | exact ⟨(Equiv.swap 0 1).trans (Equiv.swap 2 5), by native_decide⟩
+-    | exact ⟨Equiv.swap 3 4, by native_decide⟩
+-    | exact ⟨Equiv.swap 3 5, by native_decide⟩
+-    | exact ⟨(Equiv.swap 3 4).trans (Equiv.swap 2 3), by native_decide⟩
+-    | exact ⟨(Equiv.swap 3 5).trans (Equiv.swap 2 3), by native_decide⟩
+-    | exact ⟨(Equiv.swap 2 4).trans (Equiv.swap 3 5), by native_decide⟩
++    | exact ⟨Equiv.refl _, by decide⟩
++    | exact ⟨Equiv.swap 2 3, by decide⟩
++    | exact ⟨Equiv.swap 2 4, by decide⟩
++    | exact ⟨Equiv.swap 2 5, by decide⟩
++    | exact ⟨Equiv.swap 0 1, by decide⟩
++    | exact ⟨(Equiv.swap 0 1).trans (Equiv.swap 2 3), by decide⟩
++    | exact ⟨(Equiv.swap 0 1).trans (Equiv.swap 2 4), by decide⟩
++    | exact ⟨(Equiv.swap 0 1).trans (Equiv.swap 2 5), by decide⟩
++    | exact ⟨Equiv.swap 3 4, by decide⟩
++    | exact ⟨Equiv.swap 3 5, by decide⟩
++    | exact ⟨(Equiv.swap 3 4).trans (Equiv.swap 2 3), by decide⟩
++    | exact ⟨(Equiv.swap 3 5).trans (Equiv.swap 2 3), by decide⟩
++    | exact ⟨(Equiv.swap 2 4).trans (Equiv.swap 3 5), by decide⟩
+ 
+ lemma cavityOverlapAt_comm_test {N n : ℕ} (q : ℝ) (i : Fin N)
+     (σs : Replicas N n) (a b : Fin n) :
+@@ -1043,7 +1045,7 @@
+       _ = _ := canonicalCube6_eq_test path i u
+   have h := normalizedScore_average_bound_test path i P
+     (cavityCube4_nonneg path i u) hterm
+-  have hcard : Fintype.card (ReplicaEdge 4) = 6 := by native_decide
++  have hcard : Fintype.card (ReplicaEdge 4) = 6 := by decide
+   norm_num [hcard] at h ⊢
+   simpa [P] using h
+ 
+@@ -1215,7 +1217,7 @@
+   have ht (e : ReplicaEdge 6) :
+       |L (fun τs => cavityInteractionAt q i (τs e.1.1) (τs e.1.2))| ≤ M := hterm e
+   have h := linearMap_normalizedScore_bound_test i L hM ht
+-  have hcard : Fintype.card (ReplicaEdge 4) = 6 := by native_decide
++  have hcard : Fintype.card (ReplicaEdge 4) = 6 := by decide
+   norm_num [hcard] at h ⊢
+   exact h
+ 
+@@ -1318,7 +1320,7 @@
+       _ = _ := by ring
+   have hout := normalizedScore_average_bound_test path i Base
+     (mul_nonneg (by norm_num) (cavityCube4_nonneg path i u)) houter
+-  have hcard : Fintype.card (ReplicaEdge 6) = 15 := by native_decide
++  have hcard : Fintype.card (ReplicaEdge 6) = 15 := by decide
+   norm_num [hcard] at hout ⊢
+   calc
+     _ ≤ 72 * (64 * cavityCube4 (s := s) path i u) := by simpa [Base] using hout
+@@ -1690,7 +1692,7 @@
+       apply replicaGibbsAverage_nonneg
+       intro σs
+       exact abs_nonneg _)) hterm
+-  have hcard : Fintype.card (ReplicaEdge 4) = 6 := by native_decide
++  have hcard : Fintype.card (ReplicaEdge 4) = 6 := by decide
+   norm_num [hcard] at hscore ⊢
+   unfold cavityDiagonalDeriv4_test
+   change |s * β ^ 2 * lastSiteQuenchedAverage (s := s) path i u
+@@ -1960,19 +1962,19 @@
+       momentCoeff, ee01, ee02, ee03, ee12, ee13, ee23, ee04, ee14, ee24,
+       ee34, ee45, edgeRelation, decoupledSpinCoefficient, cavityMatrix,
+       Matrix.mulVec, dotProduct, Fin.sum_univ_succ]
+-    simp (disch := decide)
++    try simp (disch := decide)
+     ring
+   · norm_num [targetEdge4_test, scoreInternal_e4_02_test, abstractRow, abstractTerm,
+       momentCoeff, ee01, ee02, ee03, ee12, ee13, ee23, ee04, ee14, ee24,
+       ee34, ee45, edgeRelation, decoupledSpinCoefficient, cavityMatrix,
+       Matrix.mulVec, dotProduct, Fin.sum_univ_succ]
+-    simp (disch := decide)
++    try simp (disch := decide)
+     ring
+   · norm_num [targetEdge4_test, scoreInternal_e4_23_test, abstractRow, abstractTerm,
+       momentCoeff, ee01, ee02, ee03, ee12, ee13, ee23, ee04, ee14, ee24,
+       ee34, ee45, edgeRelation, decoupledSpinCoefficient, cavityMatrix,
+       Matrix.mulVec, dotProduct, Fin.sum_univ_succ]
+-    simp (disch := decide)
++    try simp (disch := decide)
+     ring
+ 
+ lemma cavityOffdiagDeriv4_zero_eq_matrix_test
+@@ -2023,7 +2025,7 @@
+     norm_num [targetEdge4_test, scoreInternal_e4_01_test, scoreInternal_e4_02_test,
+       scoreInternal_e4_23_test, ee01, ee02, ee23, edgeRelation,
+       decoupledSpinCoefficient, theta] <;>
+-    simp (disch := decide)
++    try simp (disch := decide)
+ 
+ lemma fullCenteredMoment4_target_eq_test
+     {Ω : Type*} [MeasureSpace Ω] [IsProbabilityMeasure (volume : Measure Ω)]
+--- upstream/Lemmas/Cavity/Interpolation.lean
++++ adapted/Lemmas/Cavity/Interpolation.lean
+@@ -1,3 +1,5 @@
++/- Compatibility adaptation: current coordinatewise measurability and ordered real-product interfaces where applicable. -/
++/- Adapted for the paper formalization: replaced 1 native decision tactics with kernel decide. Original source and pinned revision are recorded in PROVENANCE.json. -/
+ import Lemmas.AT.Definitions
+ import Lemmas.SpinGlass.Replicas
+ import Lemmas.SmartPath.IndependentGaussianAffineIBP
+@@ -1312,7 +1314,7 @@
+       rw [abs_mul, abs_of_nonneg (Finset.prod_nonneg fun a _ =>
+         SpinGlass.gibbs_pmf_nonneg N H (σs a))]
+       have hp : ∏ a, SpinGlass.gibbs_pmf N H (σs a) ≤ 1 := by
+-        exact Finset.prod_le_one (fun a _ => SpinGlass.gibbs_pmf_nonneg N H (σs a))
++        exact Finset.prod_le_one₀ (fun a _ => SpinGlass.gibbs_pmf_nonneg N H (σs a))
+           (fun a _ => SpinGlass.gibbs_pmf_le_one N H (σs a))
+       exact mul_le_of_le_one_left (abs_nonneg _) hp
+ 
+@@ -2603,7 +2605,7 @@
+         intro e _
+         exact abs_cavityInteractionAt_le_two hN hq i _ _
+       _ = 12 := by
+-        have hcard : Fintype.card (ReplicaEdge 4) = 6 := by native_decide
++        have hcard : Fintype.card (ReplicaEdge 4) = 6 := by decide
+         simp [hcard, nsmul_eq_mul]
+         norm_num
+   have hvertex : |∑ a : Fin 4, Y a| ≤ 8 := by
+@@ -2873,9 +2875,7 @@
+     rw [hFw, hwapp, hsapp] at happ
+     unfold replicaEnergyScore gibbsEnergyMean at happ ⊢
+     simp only [energyPointwiseMul_apply] at happ ⊢
+-    convert happ using 1
+-    · congr 1
+-    · ring
++    convert happ using 1 <;> first | rfl | (congr 1 <;> ring) | ring
+   simp_rw [hterm]
+   unfold gibbsReplicaSecondVariation replicaGibbsAverage
+   apply Finset.sum_congr rfl
+--- upstream/Lemmas/Concentration/Transport.lean
++++ adapted/Lemmas/Concentration/Transport.lean
+@@ -1,3 +1,4 @@
++/- Compatibility adaptation: current coordinatewise measurability and ordered real-product interfaces where applicable. -/
+ import Lemmas.Concentration.Coupled
+ import Mathlib.Probability.Distributions.Gaussian.Multivariate
+ import Mathlib.Probability.Distributions.Gaussian.HasGaussianLaw.Independence
+@@ -829,7 +830,7 @@
+       ({v : ℝ // v ∈ attainableOverlaps N} → ℝ) :=
+     fun H v => Real.log (constrainedPartition H v.1)
+   have hPhi : Measurable Phi := by
+-    apply measurable_pi_lambda
++    apply Measurable.of_eval
+     intro v
+     unfold Phi constrainedPartition
+     apply Measurable.log
+@@ -909,7 +910,7 @@
+   let Phi : SpinGlass.EnergySpace N → I → ℝ :=
+     fun H v => Real.log (constrainedPartition H v.1)
+   have hPhi : Measurable Phi := by
+-    apply measurable_pi_lambda
++    apply Measurable.of_eval
+     intro v
+     unfold Phi constrainedPartition
+     apply Measurable.log
+--- upstream/Lemmas/Concentration/Weak.lean
++++ adapted/Lemmas/Concentration/Weak.lean
+@@ -1,3 +1,4 @@
++/- Compatibility adaptation: state the already-reduced set-membership goal directly. -/
+ import Lemmas.Concentration.Transport
+ import Lemmas.GuerraTalagrand.Flatness
+ import Lemmas.GuerraTalagrand.Bound
+@@ -1156,7 +1157,7 @@
+         {omega | Y omega - ∫ eta, Y eta ∂volume > a / 4} := by
+       intro omega homega
+       dsimp [bad] at homega
+-      dsimp only [Set.mem_setOf_eq]
++      change Y omega - (∫ eta, Y eta ∂volume) > a / 4
+       linarith
+     have hconc := quadraticCoupled_log_ratio_upper_tail_path
+       data hN hp s path rho (a / 4) (by positivity)
+--- upstream/Lemmas/Gaussian/CanonicalModel.lean
++++ adapted/Lemmas/Gaussian/CanonicalModel.lean
+@@ -1,4 +1,6 @@
+-import Lemmas.MainResult
++/- Dependency adaptation: import only SK/Gaussian-law foundations for this Gaussian constructor, avoiding an unnecessary dependency on the strict-AT main theorem. -/
++import Lemmas.SpinGlass.SKModel
++import Mathlib.Probability.Distributions.Gaussian.HasGaussianLaw.Independence
+ import Mathlib.Analysis.InnerProductSpace.Positive
+ import Mathlib.Probability.Distributions.Gaussian.Multivariate
+ import Mathlib.Probability.Independence.InfinitePi
+--- upstream/Lemmas/Gaussian/ConcreteModel.lean
++++ adapted/Lemmas/Gaussian/ConcreteModel.lean
+@@ -1,4 +1,6 @@
++/- Dependency adaptation: MainResult is imported here after narrowing the Gaussian constructor module to its actual dependencies. -/
+ import Lemmas.Gaussian.CanonicalModel
++import Lemmas.MainResult
+ 
+ /-!
+ # Concrete Gaussian realization of the strict Almeida-Thouless theorem
+--- upstream/Lemmas/GuerraTalagrand/Bound/Endpoint.lean
++++ adapted/Lemmas/GuerraTalagrand/Bound/Endpoint.lean
+@@ -1,3 +1,4 @@
++/- Compatibility adaptation: current coordinatewise measurability and ordered real-product interfaces where applicable. -/
+ import Lemmas.GuerraTalagrand.Bound.Comparison
+ import Lemmas.GuerraTalagrand.Bound.Transport
+ import Lemmas.GuerraTalagrand.Bound.FiniteStep
+@@ -56,7 +57,7 @@
+   apply Measure.pi_eq
+   intro sets hsets
+   have hm : Measurable gtFourGaussianTuple := by
+-    apply measurable_pi_lambda
++    apply Measurable.of_eval
+     intro i
+     fin_cases i <;> simp [gtFourGaussianTuple] <;> fun_prop
+   rw [Measure.map_apply hm (MeasurableSet.univ_pi hsets)]
+@@ -86,7 +87,7 @@
+   let μ := (gaussianReal 0 1).prod ((gaussianReal 0 1).prod
+     ((gaussianReal 0 1).prod (gaussianReal 0 1)))
+   have hm : Measurable gtFourGaussianTuple := by
+-    apply measurable_pi_lambda
++    apply Measurable.of_eval
+     intro i
+     fin_cases i <;> simp [gtFourGaussianTuple] <;> fun_prop
+   have hfm : Integrable f (Measure.map gtFourGaussianTuple μ) := by
+--- upstream/Lemmas/GuerraTalagrand/Bound/HalfEndpoint.lean
++++ adapted/Lemmas/GuerraTalagrand/Bound/HalfEndpoint.lean
+@@ -1,3 +1,4 @@
++/- Compatibility adaptation: current coordinatewise measurability and ordered real-product interfaces where applicable. -/
+ import Lemmas.GuerraTalagrand.Bound.Endpoint
+ import Lemmas.GuerraTalagrand.Bound.HalfCalculus
+ 
+@@ -791,7 +792,7 @@
+   apply Measure.pi_eq
+   intro sets hsets
+   have hm : Measurable gtTwoGaussianTuple := by
+-    apply measurable_pi_lambda
++    apply Measurable.of_eval
+     intro i
+     fin_cases i <;> simp [gtTwoGaussianTuple] <;> fun_prop
+   rw [Measure.map_apply hm (MeasurableSet.univ_pi hsets)]
+@@ -815,7 +816,7 @@
+         ∂gaussianReal 0 1 ∂gaussianReal 0 1 := by
+   let μ := (gaussianReal 0 1).prod (gaussianReal 0 1)
+   have hm : Measurable gtTwoGaussianTuple := by
+-    apply measurable_pi_lambda
++    apply Measurable.of_eval
+     intro i
+     fin_cases i <;> simp [gtTwoGaussianTuple] <;> fun_prop
+   have hfm : Integrable f (Measure.map gtTwoGaussianTuple μ) := by
+--- upstream/Lemmas/GuerraTalagrand/Flatness/Core.lean
++++ adapted/Lemmas/GuerraTalagrand/Flatness/Core.lean
+@@ -1,3 +1,4 @@
++/- Compatibility adaptation: apply matrix evaluation lemmas before unfolding matrix definitions. -/
+ -- Canonical implementation module for the shared GT-flatness theory.
+ import Lemmas.AT.PsiContinuity
+ import Lemmas.AT.Definitions
+@@ -2555,7 +2556,8 @@
+   ext i j
+   fin_cases i <;> fin_cases j
+   all_goals
+-    simp [flatnessPriceMatM, flatnessPriceMatN, flatnessTildeGCov, Matrix.mul_apply, Fin.sum_univ_two]
++    simp only [Matrix.add_apply, Matrix.mul_apply, Matrix.transpose_apply, Fin.sum_univ_two]
++    simp [flatnessPriceMatM, flatnessPriceMatN, flatnessTildeGCov]
+     ring_nf
+     simp only [hc, hs', ha, hb]
+     ring
+--- upstream/Lemmas/Price/Cosh.lean
++++ adapted/Lemmas/Price/Cosh.lean
+@@ -1,3 +1,4 @@
++/- Compatibility adaptation: supply measurable law to the Gaussian moment-generating theorem. -/
+ import Lemmas.Price.Deriv
+ import Mathlib.Analysis.SpecialFunctions.Trigonometric.DerivHyp
+ import Mathlib.Probability.Distributions.Gaussian.Real
+@@ -36,7 +37,9 @@
+     exact covarianceBilin_multivariateGaussian hS a a
+   have hmap : μ.map L = gaussianReal 0 ((a ⬝ᵥ S *ᵥ a).toNNReal) := by
+     simpa [hmean, hvar] using (IsGaussian.map_eq_gaussianReal (μ := μ) L)
+-  have hmgf := mgf_gaussianReal hmap 1
++  have hlaw : HasLaw L (gaussianReal 0 ((a ⬝ᵥ S *ᵥ a).toNNReal)) μ :=
++    { aemeasurable := L.continuous.measurable.aemeasurable, map_eq := hmap }
++  have hmgf := mgf_gaussianReal hlaw 1
+   rw [mgf] at hmgf
+   have hq : 0 ≤ a ⬝ᵥ S *ᵥ a := hS.dotProduct_mulVec_nonneg a
+   simpa [μ, L, Real.coe_toNNReal _ hq] using hmgf
+--- upstream/Lemmas/Price/Gaussian.lean
++++ adapted/Lemmas/Price/Gaussian.lean
+@@ -1,3 +1,4 @@
++/- Compatibility adaptation: use current probability-map instance. -/
+ import Lemmas.Price.Sqrt
+ import Mathlib.Probability.Distributions.Gaussian.Multivariate
+ 
+@@ -75,7 +76,7 @@
+ instance instIsProbabilityMeasureStdGaussian (n : Type*) [Fintype n] :
+     IsProbabilityMeasure (stdGaussian n) := by
+   unfold stdGaussian
+-  exact MeasureTheory.Measure.isProbabilityMeasure_map (by fun_prop)
++  infer_instance
+ 
+ theorem euclid_norm_sq {n : Type*} [Fintype n] (t : EuclideanSpace ℝ n) :
+     ‖t‖ ^ 2 = ∑ i, (t i) ^ 2 := by
+@@ -150,7 +151,7 @@
+ instance (mean : EuclideanSpace ℝ n) (S : Matrix n n ℝ) :
+     IsProbabilityMeasure (multivariateGaussian mean S) := by
+   unfold multivariateGaussian
+-  exact MeasureTheory.Measure.isProbabilityMeasure_map (by fun_prop)
++  infer_instance
+ 
+ theorem multivariateGaussian_zero_eq (S : Matrix n n ℝ) :
+     multivariateGaussian (0 : EuclideanSpace ℝ n) S
+--- upstream/Lemmas/SpinGlass/GaussianIntegrationByParts.lean
++++ adapted/Lemmas/SpinGlass/GaussianIntegrationByParts.lean
+@@ -1,3 +1,5 @@
++/- Compatibility adaptation: explicitly import measurable absolute-value lemmas removed from an upstream transitive import. -/
++import Mathlib.MeasureTheory.Order.Group.Lattice
+ /-
+ Copyright (c) 2025 Matteo Cipollina. All rights reserved.
+ Released under Apache 2.0 license as described in the file LICENSE.
+--- upstream/Lemmas/SpinGlass/Gaussian_IBP_Hilbert.lean
++++ adapted/Lemmas/SpinGlass/Gaussian_IBP_Hilbert.lean
+@@ -1,3 +1,4 @@
++/- Compatibility adaptation: fully qualified integral scalar-linearity lemma. -/
+ /-
+ Copyright (c) 2025 Matteo Cipollina. All rights reserved.
+ Released under Apache 2.0 license as described in the file LICENSE.
+@@ -2104,7 +2105,7 @@
+       (vτ : ℝ) *
+       ∫ p, deriv (fun t => F (CoordLine.buildAlong (w := w) (i := i) p.1 t)) p.2
+         ∂(μY.prod (ProbabilityTheory.gaussianReal 0 vτ)) := by
+-      simp [integral_const_mul]
++      exact MeasureTheory.integral_const_mul _ _
+ 
+ namespace ProbabilityTheory
+ 
+--- upstream/Lemmas/SpinGlass/Replicas.lean
++++ adapted/Lemmas/SpinGlass/Replicas.lean
+@@ -1,3 +1,5 @@
++/- Compatibility adaptation: retain NNReal constructor type under coercion simplification. -/
++/- Compatibility adaptation: current coordinatewise measurability and ordered real-product interfaces where applicable. -/
+ import Lemmas.SpinGlass.SKModel
+ import Lemmas.SpinGlass.GuerraBound
+ import Lemmas.SpinGlass.Calculus
+@@ -107,7 +109,7 @@
+   have h1 : ProbabilityTheory.iIndepFun (fun b ω => (X b · ω)) (ℙ : Measure Ω) := by
+     -- We derive independence of the coordinate-tuples from independence of `(U,V)` by composition.
+     have hφ : Measurable (fun u : EnergySpace N => fun i : hU.ι => inner ℝ u (hU.w i)) := by
+-      refine measurable_pi_lambda _ ?_
++      refine Measurable.of_eval ?_
+       intro i
+       have hcont : Continuous (fun u : EnergySpace N => inner ℝ u (hU.w i)) := by
+         have hpair : Continuous (fun u : EnergySpace N => (u, hU.w i)) :=
+@@ -117,7 +119,7 @@
+         exact continuous_inner.comp hpair
+       exact hcont.measurable
+     have hψ : Measurable (fun v : EnergySpace N => fun j : hV.ι => inner ℝ v (hV.w j)) := by
+-      refine measurable_pi_lambda _ ?_
++      refine Measurable.of_eval ?_
+       intro j
+       have hcont : Continuous (fun v : EnergySpace N => inner ℝ v (hV.w j)) := by
+         have hpair : Continuous (fun v : EnergySpace N => (v, hV.w j)) :=
+@@ -346,11 +348,11 @@
+ 
+ /-- The `n`-replica Gibbs weight (as `ℝ≥0`): \(\prod_{l=1}^n \mathrm{gibbs\_pmf}(H,\sigma^l)\). -/
+ noncomputable def replicaGibbsWeightNNReal (H : EnergySpace N) (σs : ReplicaSpace N n) : ℝ≥0 :=
+-  ⟨∏ l, gibbs_pmf N H (σs l), by
++  NNReal.mk (∏ l, gibbs_pmf N H (σs l)) (by
+     classical
+     refine Finset.prod_nonneg ?_
+     intro l _hl
+-    exact gibbs_pmf_nonneg (N := N) (H := H) (σ := σs l)⟩
++    exact gibbs_pmf_nonneg (N := N) (H := H) (σ := σs l))
+ 
+ /-- The `n`-replica Gibbs measure as an explicit finite atomic measure on `ReplicaSpace N n`. -/
+ noncomputable def replicaGibbsMeasure (H : EnergySpace N) : Measure (ReplicaSpace N n) :=
+@@ -391,7 +393,7 @@
+         have := (div_le_one hZpos).2 hterm_le
+         simpa [SpinGlass.gibbs_pmf] using this
+       simpa using
+-        (Finset.prod_le_one (s := (Finset.univ : Finset (Fin n)))
++        (Finset.prod_le_one₀ (s := (Finset.univ : Finset (Fin n)))
+           (f := fun l => gibbs_pmf N H (σs l))
+           (fun l _hl => SpinGlass.gibbs_pmf_nonneg (N := N) (H := H) (σ := σs l))
+           (fun l _hl => hfac l))
+@@ -616,7 +618,7 @@
+                       ≤ (1 : ℝ) := by
+                   classical
+                   simpa using
+-                    (Finset.prod_le_one (s := (Finset.univ : Finset (Fin n)))
++                    (Finset.prod_le_one₀ (s := (Finset.univ : Finset (Fin n)))
+                       (f := fun l =>
+                         gibbs_pmf N
+                           (H_t (N := N) (β := β) (h := h) (q := q) (sk := sk) (sim := sim) t w) (σs l))
+@@ -1071,7 +1073,7 @@
+         intro l
+         exact SpinGlass.gibbs_pmf_nonneg (N := N) (H := H) (σ := σs l)
+       simpa using
+-        (Finset.prod_le_one (s := (Finset.univ : Finset (Fin n)))
++        (Finset.prod_le_one₀ (s := (Finset.univ : Finset (Fin n)))
+           (f := fun l => gibbs_pmf N H (σs l))
+           (fun l _hl => hnonneg l) (fun l _hl => hfac l))
+     have hEval_le : ∀ τ : Config N, |v τ| ≤ ‖v‖ := by
+--- upstream/Lemmas/SpinGlass/gaussian_concentration.lean
++++ adapted/Lemmas/SpinGlass/gaussian_concentration.lean
+@@ -1,3 +1,4 @@
++/- Compatibility adaptation: current probability-map instance, measurable-pi constructor and Gaussian-law elaboration annotations. -/
+ import Mathlib.Analysis.Calculus.BumpFunction.Convolution
+ import Mathlib.Analysis.Calculus.Deriv.Pi
+ import Mathlib.Analysis.Calculus.Gradient.Basic
+@@ -60,8 +61,7 @@
+     {ι : Type*} [Fintype ι] :
+     IsProbabilityMeasure (standardGaussianMeasureOnEuclidean ι) := by
+   unfold standardGaussianMeasureOnEuclidean
+-  exact Measure.isProbabilityMeasure_map
+-    (WithLp.measurable_toLp 2 (ι → ℝ)).aemeasurable
++  infer_instance
+ 
+ /-- The finite product of standard real Gaussians is a Gaussian measure. -/
+ instance isGaussian_pi_gaussianReal {ι : Type*} [Fintype ι] :
+@@ -79,7 +79,7 @@
+         = gaussianReal 0 1 := (measurePreserving_eval (fun _ : ι => gaussianReal 0 1) i).map_eq
+     have : IsGaussian ((Measure.pi fun _ : ι => gaussianReal 0 1).map (fun ω => ω i)) := by
+       rw [show (fun ω : ι → ℝ => ω i) = Function.eval i from rfl, h0]; infer_instance
+-    exact IsGaussian.hasGaussianLaw
++    exact IsGaussian.hasGaussianLaw (P := Measure.pi fun _ : ι => gaussianReal 0 1) (X := fun ω : ι → ℝ => ω i) (measurable_pi_apply i).aemeasurable
+   have h2 : IsGaussian ((Measure.pi fun _ : ι => gaussianReal 0 1).map (fun ω i => ω i)) :=
+     (hindep.hasGaussianLaw hlaw).isGaussian_map
+   simpa using h2
+@@ -552,13 +552,13 @@
+             rw [ MeasureTheory.Measure.pi_pi, MeasureTheory.Measure.pi_pi ];
+             exact Finset.prod_congr rfl fun i _ => by rw [ ← MeasureTheory.Measure.map_apply ( measurable_neg ) ( hs i ), h_gauss_symm _ rfl ] ;
+           · exact fun i => by infer_instance;
+-        · exact measurable_pi_lambda _ fun _ => measurable_neg.comp ( measurable_pi_apply _ );
++        · exact Measurable.of_eval fun _ => measurable_neg.comp ( measurable_pi_apply _ );
+         · exact MeasurableSet.univ_pi hs;
+       convert congr_arg ( MeasureTheory.Measure.map ( WithLp.toLp 2 ) ) h_gauss_symm.symm using 1;
+       rw [ MeasureTheory.Measure.map_map ];
+       · congr! 1;
+       · exact WithLp.measurable_toLp 2 _;
+-      · exact measurable_pi_lambda _ fun _ => measurable_neg.comp ( measurable_pi_apply _ );
++      · exact Measurable.of_eval fun _ => measurable_neg.comp ( measurable_pi_apply _ );
+     · exact measurable_id.neg;
+     · fun_prop;
+   apply_fun ( fun μ => ∫ x, x ∂μ ) at h_symm;
+@@ -689,7 +689,7 @@
+           simp +decide [MeasureTheory.Measure.prod_prod]
+           refine' congr rfl ( Finset.prod_bij ( fun j _ => j ) _ _ _ _ ) <;> simp +decide;
+         · grind;
+-      · refine' measurable_pi_lambda _ _;
++      · refine' Measurable.of_eval _;
+         intro j; by_cases hj : j = i <;> simp +decide [ hj ] ;
+         · exact measurable_fst;
+         · exact measurable_pi_apply _ |> Measurable.comp <| measurable_snd;
+@@ -703,12 +703,12 @@
+         · rfl;
+         · exact h_split ▸ h_integrable.1.aestronglyMeasurable;
+         · refine' Measurable.aemeasurable _;
+-          refine' measurable_pi_lambda _ _;
++          refine' Measurable.of_eval _;
+           intro j; by_cases hj : j = i <;> simp +decide [ hj ] ;
+           · exact measurable_fst;
+           · exact measurable_pi_apply _ |> Measurable.comp <| measurable_snd;
+     · refine' Measurable.aemeasurable _;
+-      refine' measurable_pi_lambda _ _;
++      refine' Measurable.of_eval _;
+       intro j; by_cases hj : j = i <;> simp +decide [ hj ] ;
+       · exact measurable_fst;
+       · exact measurable_pi_apply _ |> Measurable.comp <| measurable_snd;
+@@ -723,7 +723,7 @@
+           simp +decide [MeasureTheory.Measure.prod_prod]
+           refine' congr rfl ( Finset.prod_bij ( fun j _ => j ) _ _ _ _ ) <;> simp +decide;
+         · grind;
+-      · refine' measurable_pi_lambda _ _;
++      · refine' Measurable.of_eval _;
+         intro j; by_cases hj : j = i <;> simp +decide [ hj ] ;
+         · exact measurable_fst;
+         · exact measurable_pi_apply _ |> Measurable.comp <| measurable_snd;
+@@ -734,7 +734,7 @@
+       have hmap : Measurable
+           (fun p : ℝ × ({j // j ≠ i} → ℝ) ↦
+             Function.update (fun j ↦ if h : j = i then 0 else p.2 ⟨j, h⟩) i p.1) := by
+-        refine measurable_pi_lambda _ fun j ↦ ?_
++        refine Measurable.of_eval fun j ↦ ?_
+         by_cases hj : j = i
+         · simpa [hj] using measurable_fst
+         · have hm : Measurable
+@@ -745,7 +745,7 @@
+       convert h_integrable.2.comp_measurable hmap using 1
+       rfl
+     · refine' Measurable.aemeasurable _;
+-      refine' measurable_pi_lambda _ _;
++      refine' Measurable.of_eval _;
+       intro j; by_cases hj : j = i <;> simp +decide [ hj ] ;
+       · exact measurable_fst;
+       · exact measurable_pi_apply _ |> Measurable.comp <| measurable_snd;
+--- upstream/ParisiFormula/AnnealedBound.lean
++++ adapted/ParisiFormula/AnnealedBound.lean
+@@ -1,3 +1,4 @@
++/- Compatibility adaptation: supply measurable Gaussian coordinate laws to the moment-generating theorem. -/
+ /-
+ # Target 1a — the annealed bound
+ 
+@@ -167,8 +168,8 @@
+       mgf (fun ω => ⟪hg.w i, v⟫_ℝ * hg.c i ω) (ℙ : Measure Ω) 1
+         = Real.exp ((hg.τ i : ℝ) * ⟪hg.w i, v⟫_ℝ ^ 2 / 2) := by
+     intro i
+-    have hlaw : Measure.map (hg.c i) (ℙ : Measure Ω) = gaussianReal 0 (hg.τ i) :=
+-      hg.c_gauss i
++    have hlaw : HasLaw (hg.c i) (gaussianReal 0 (hg.τ i)) (ℙ : Measure Ω) :=
++      { aemeasurable := (hg.c_meas i).aemeasurable, map_eq := hg.c_gauss i }
+     rw [mgf_const_mul, mgf_gaussianReal hlaw]
+     congr 1
+     ring
+--- upstream/ParisiFormula/GuerraToninelli.lean
++++ adapted/ParisiFormula/GuerraToninelli.lean
+@@ -1,3 +1,5 @@
++/- Compatibility adaptation: configuration restriction abbreviations preserve decidable-instance transparency. -/
++/- Compatibility adaptation: normalize spin-product conditional multiplication explicitly. -/
+ /-
+ PROVENANCE (ParisiFormula project):
+   Ported verbatim from njimaMath/research_public, path
+@@ -66,11 +68,11 @@
+ variable (N M : ℕ)
+ 
+ /-- Restrict a configuration on `N+M` spins to the first `N` coordinates. -/
+-def cfgLeft (γ : Config (N + M)) : Config N :=
++abbrev cfgLeft (γ : Config (N + M)) : Config N :=
+   fun i => γ (Fin.castAdd M i)
+ 
+ /-- Restrict a configuration on `N+M` spins to the last `M` coordinates. -/
+-def cfgRight (γ : Config (N + M)) : Config M :=
++abbrev cfgRight (γ : Config (N + M)) : Config M :=
+   fun j => γ (Fin.natAdd N j)
+ 
+ /-- Concatenate two configurations `(α,σ)` into a configuration on `N+M` spins. -/
+@@ -674,14 +676,16 @@
+           simp [overlap]
+       | succ M =>
+           have hM0 : (M.succ : ℝ) ≠ 0 := by exact_mod_cast (Nat.succ_ne_zero M)
+-          simp [overlap, cfgLeft, cfgRight, spin, Fin.sum_univ_add]
++          dsimp [overlap, cfgLeft, cfgRight, spin]
++          simp [Fin.sum_univ_add]
+           field_simp [hM0]
+   | succ N =>
+       cases M with
+       | zero =>
+           have hN0 : (N.succ : ℝ) ≠ 0 := by exact_mod_cast (Nat.succ_ne_zero N)
+-          simp [overlap, cfgLeft, cfgRight, spin, Fin.sum_univ_add]
+-          field_simp [hN0]
++          dsimp [overlap, cfgLeft, cfgRight, spin]
++          simp [Fin.sum_univ_add]
++          field_simp [hN0] <;> simp only [mul_ite, mul_one, mul_neg_one]
+       | succ M =>
+           have hN0 : (N.succ : ℝ) ≠ 0 := by exact_mod_cast (Nat.succ_ne_zero N)
+           have hM0 : (M.succ : ℝ) ≠ 0 := by exact_mod_cast (Nat.succ_ne_zero M)
+@@ -690,8 +694,9 @@
+           have hNM0 : ((N.succ + M.succ : ℕ) : ℝ) ≠ 0 := by exact_mod_cast hNMnat
+           -- Expand overlaps and split the `Fin (N+M)` sum into the two blocks.
+           -- `simp` also rewrites the spins of the restricted configurations.
+-          simp [overlap, cfgLeft, cfgRight, spin, Fin.sum_univ_add]
+-          field_simp [hN0, hM0, hNM0]
++          dsimp [overlap, cfgLeft, cfgRight, spin]
++          simp [Fin.sum_univ_add]
++          field_simp [hN0, hM0, hNM0] <;> simp only [mul_ite, mul_one, mul_neg_one]
+ 
+ private lemma sq_le_weighted_sq (a b x y : ℝ) (ha : 0 ≤ a) (hb : 0 ≤ b) (hab : a + b = 1) :
+     (a * x + b * y) ^ 2 ≤ a * x ^ 2 + b * y ^ 2 := by
+--- upstream/Targets/CascadeDerivPi.lean
++++ adapted/Targets/CascadeDerivPi.lean
+@@ -1,3 +1,4 @@
++/- Compatibility adaptation: current coordinatewise measurability and ordered real-product interfaces where applicable. -/
+ /-
+ # The tilted chain rule for an `N`-site cascade level
+ 
+@@ -34,7 +35,7 @@
+ 
+ theorem measurable_shift (v : ℝ) (x : Fin n → ℝ) :
+     Measurable (fun z : Fin n → ℝ => fun i => x i + Real.sqrt v * z i) :=
+-  measurable_pi_lambda _ (fun i => measurable_const.add (measurable_const.mul (measurable_pi_apply i)))
++  Measurable.of_eval (fun i => measurable_const.add (measurable_const.mul (measurable_pi_apply i)))
+ 
+ theorem integrable_exp_l1 (c : ℝ) :
+     Integrable (fun z : Fin n → ℝ => Real.exp (c * l1 z)) (piGauss n) := by
+--- upstream/Targets/CoupledConcentration.lean
++++ adapted/Targets/CoupledConcentration.lean
+@@ -1,3 +1,4 @@
++/- Compatibility adaptation: set-membership reduction may already be complete after modern elaboration. -/
+ /-
+ # Gaussian concentration for the coupled pressure gap
+ 
+@@ -253,7 +254,7 @@
+     (a := ε * n / 2) (by positivity)
+   have hset : {z | -(ε * n / 2) ≤ F z} ⊆ {z | ε * n / 2 ≤ F z - ∫ w, F w ∂μ} := by
+     intro z hz
+-    dsimp only [Set.mem_setOf_eq] at hz ⊢
++    try dsimp only [Set.mem_ofPred_eq] at hz ⊢
+     change (∫ z, F z ∂μ) ≤ -ε * n at hmean
+     linarith
+   have hmass : s.m 1 / 2 ≤ coupledMass s d (k + 1) := by
+--- upstream/Targets/CoupledGaussianLaw.lean
++++ adapted/Targets/CoupledGaussianLaw.lean
+@@ -1,3 +1,4 @@
++/- Compatibility adaptation: current coordinatewise measurability and ordered real-product interfaces where applicable. -/
+ /-
+ # Change of Gaussian coordinates for the coupled cascade
+ 
+@@ -32,7 +33,7 @@
+   let C : Ω → (sk.hU.ι → ℝ) := fun ω i => sk.hU.c i ω
+   let S : (sk.hU.ι → ℝ) → (sk.hU.ι → ℝ) := fun z i => Real.sqrt (sk.hU.τ i) * z i
+   let W : (sk.hU.ι → ℝ) → EnergySpace n := fun z => ∑ i, z i • sk.hU.w i
+-  have hC : Measurable C := measurable_pi_lambda _ sk.hU.c_meas
++  have hC : Measurable C := Measurable.of_eval sk.hU.c_meas
+   have hS : Measurable S := by dsimp [S]; fun_prop
+   have hW : Measurable W := by dsimp [W]; fun_prop
+   have hClaw : (ℙ : Measure Ω).map C = Measure.pi (fun i => gaussianReal 0 (sk.hU.τ i)) := by
+--- upstream/Targets/Milestones.lean
++++ adapted/Targets/Milestones.lean
+@@ -1,3 +1,4 @@
++/- Adapted for the paper formalization: removed off-path unfinished declaration Φ_monotoneOn; removed off-path unfinished declaration free_entropy_tendsto; removed off-path unfinished declaration parisiFunctional_lipschitz. Original source and pinned revision are recorded in PROVENANCE.json. -/
+ import ParisiFormula.GuerraToninelli
+ import ParisiFormula.AnnealedBound
+ import ParisiFormula.GaussianCosh
+@@ -77,7 +78,7 @@
+       ≤ Real.log 2 + β ^ 2 / 4 + |h| :=
+   _root_.SpinGlass.free_entropy_le_annealed hN β h sk
+ 
+-/-- **Target 1b (Gaussian comparison).**  The Guerra–Toninelli interpolation
++/- **Target 1b (Gaussian comparison).**  The Guerra–Toninelli interpolation
+ `Φ(t) = E log Z_{N+M}(√t · K_{N+M} + √(1-t) · (K_N ⊕ K_M))` is non-decreasing on `[0,1]`.
+ 
+ Proof plan (blueprint, Chapter 1): differentiate under the expectation (dominated
+@@ -92,24 +93,11 @@
+ 
+ Reference: Guerra–Toninelli (2002); Talagrand Vol. I, Theorem 1.3.7 (in the 2nd edition:
+ Section 1.3, "the Guerra–Toninelli argument"). -/
+-theorem Φ_monotoneOn {N M : ℕ} (hN : 0 < N) (hM : 0 < M) (β h : ℝ) (hβ : 0 < β)
+-    (skL : SKDisorder (Ω := Ω) (N + M) β h)
+-    (skN : SKDisorder (Ω := Ω) N β h)
+-    (skM : SKDisorder (Ω := Ω) M β h)
+-    (hindep : IndepTriple skL skN skM) :
+-    MonotoneOn
+-      (Φ (N := N) (M := M) (β := β) (h := h) (skL := skL) (skN := skN) (skM := skM))
+-      (Set.Icc (0 : ℝ) 1) := by
+-  sorry
+-
+-/-- **Target 1c (thermodynamic limit).**  Assembles 1a and 1b with the already-formalised
++/- Legacy unfinished declaration removed from this trusted dependency slice. -/
++
++/- **Target 1c (thermodynamic limit).**  Assembles 1a and 1b with the already-formalised
+ Fekete argument `free_entropy_tendsto_of_bddAbove`. -/
+-theorem free_entropy_tendsto (β h : ℝ) (hβ : 0 < β)
+-    (sk : ∀ N : ℕ, SKDisorder (Ω := Ω) N β h)
+-    (hindep : ∀ N M : ℕ, IndepTriple (sk (N + M)) (sk N) (sk M)) :
+-    ∃ ℓ : ℝ, Tendsto (fun N => free_entropy (Ω := Ω) (N := N) (β := β) (h := h) (sk N).U)
+-      atTop (𝓝 ℓ) := by
+-  sorry
++/- Legacy unfinished declaration removed from this trusted dependency slice. -/
+ 
+ /-! ## Milestone 2 — the finite-step Parisi functional (no PDE)
+ 
+@@ -1775,7 +1763,7 @@
+     schemeOfPair_m, schemeOfPair_q]
+   exact hmin s'.toPair_mem
+ 
+-/-- **Target 2b (Lipschitz continuity in the scheme).**  Guerra's estimate:
++/- **Target 2b (Lipschitz continuity in the scheme).**  Guerra's estimate:
+ 
+   `|𝒫_k(m,q) - 𝒫_k(m',q')| ≤ C(β,h) · ∑_p (|m_p - m'_p| + |q_p - q'_p|)`,
+ 
+@@ -1800,11 +1788,7 @@
+ This retained target is not a claim that the Annals proof uses this particular `ℓ¹`
+ estimate. Any future work on it should audit its intended purpose separately from
+ the current Theorem 2.2 task. -/
+-theorem parisiFunctional_lipschitz (β h : ℝ) :
+-    ∃ C : ℝ, 0 ≤ C ∧ ∀ (k : ℕ) (s s' : RSBScheme k),
+-      |parisiFunctional s β h - parisiFunctional s' β h|
+-        ≤ C * ∑ p ∈ Finset.range (k + 3), (|s.m p - s'.m p| + |s.q p - s'.q p|) := by
+-  sorry
++/- Legacy unfinished declaration removed from this trusted dependency slice. -/
+ 
+ /-! ## Milestone 3 — Guerra's replica-symmetry-breaking bound -/
+ 
+--- upstream/Targets/RSBMassPiSemigroup.lean
++++ adapted/Targets/RSBMassPiSemigroup.lean
+@@ -1,3 +1,4 @@
++/- Compatibility adaptation: current coordinatewise measurability and ordered real-product interfaces where applicable. -/
+ /-
+ # The N-site Parisi semigroup at arbitrary mass
+ 
+@@ -26,7 +27,7 @@
+   have hf : Measurable (fun z : Fin n → ℝ => Real.exp (m * A (x + z))) :=
+     ((hA.measurable.comp (measurable_const.add measurable_id)).const_mul m).exp
+   apply (integrable_map_measure hf.aestronglyMeasurable
+-    ((measurable_pi_lambda _ fun i => (measurable_pi_apply i).const_mul _).aemeasurable)).mpr
++    ((Measurable.of_eval fun i => (measurable_pi_apply i).const_mul _).aemeasurable)).mpr
+   obtain ⟨C, D, hD, hb⟩ := hA.bound
+   exact integrable_exp_shift_pi hD hb hA.measurable x
+ 
+--- upstream/Targets/RSBSchemeOverlapReduction.lean
++++ adapted/Targets/RSBSchemeOverlapReduction.lean
+@@ -1,3 +1,4 @@
++/- Adaptation for Lean 4.34.1: proof elaboration and API compatibility only; original theorem statements are retained. Source revisions and exact patch are recorded in PROVENANCE.json and COMPATIBILITY.patch. -/
+ import Targets.Section4EndpointOptimality
+ 
+ /-!
+@@ -54,11 +55,15 @@
+   rw [guerraPsi, guerraPsi, parisiF_raiseMass_zero_variance s β p hp0 hp m hm hq le_rfl,
+     parisiCorrection_raiseMass_zero_variance s β p hp0 hp m hm hq]
+ 
++theorem RSBScheme.nextMass_mem {k : ℕ} (s : RSBScheme k) (p : ℕ) (hp : p ≤ k) :
++    s.m (p + 1) ∈ Set.Icc (s.m p) (s.m (p + 1)) :=
++  ⟨s.m_mono p hp, le_rfl⟩
++
+ /-- Remove a repeated interior overlap by making its irrelevant mass equal
+ to the next one and applying the checked equal-mass reduction. -/
+ noncomputable def RSBScheme.mergeEqualOverlap {k : ℕ} (s : RSBScheme (k + 1))
+     (p : ℕ) (hp0 : 1 ≤ p) (hp : p ≤ k + 1) (_hq : s.q (p + 1) = s.q p) : RSBScheme k :=
+-  (s.raiseMass p hp0 hp (s.m (p + 1)) ⟨s.m_mono p hp, le_rfl⟩).mergeEqualMass p hp
++  (s.raiseMass p hp0 hp (s.m (p + 1)) (s.nextMass_mem p hp)).mergeEqualMass p hp
+     (by simp [RSBScheme.raiseMass])
+ 
+ /-- The remaining masses are an unchanged subsequence of the original list. -/
+--- upstream/Targets/RSBZeroMassPiSemigroup.lean
++++ adapted/Targets/RSBZeroMassPiSemigroup.lean
+@@ -1,3 +1,4 @@
++/- Compatibility adaptation: current coordinatewise measurability and ordered real-product interfaces where applicable. -/
+ /-
+ # The N-site zero-mass smoothing semigroup
+ 
+@@ -57,7 +58,7 @@
+     hA.comp (measurable_const.add measurable_id)
+   have H := integral_map (μ := piGauss n)
+     (φ := fun z i => Real.sqrt (v : ℝ) * z i)
+-    ((measurable_pi_lambda _ fun i => (measurable_pi_apply i).const_mul _).aemeasurable)
++    ((Measurable.of_eval fun i => (measurable_pi_apply i).const_mul _).aemeasurable)
+     hf.aestronglyMeasurable
+   simpa only [parisiStepPi, if_pos rfl, Pi.add_apply] using! H.symm
+ 
+@@ -68,7 +69,7 @@
+   have hf : Measurable (fun z : Fin n → ℝ => A (x + z)) :=
+     hA.measurable.comp (measurable_const.add measurable_id)
+   apply (integrable_map_measure hf.aestronglyMeasurable
+-    ((measurable_pi_lambda _ fun i => (measurable_pi_apply i).const_mul _).aemeasurable)).mpr
++    ((Measurable.of_eval fun i => (measurable_pi_apply i).const_mul _).aemeasurable)).mpr
+   obtain ⟨C, D, hD, hb⟩ := hA.bound
+   exact integrable_shift_pi hD hb hA.measurable x
+ 
+--- upstream/Targets/Section4StationarityInterior.lean
++++ adapted/Targets/Section4StationarityInterior.lean
+@@ -1,3 +1,4 @@
++/- Adaptation for Lean 4.34.1: proof elaboration and API compatibility only; original theorem statements are retained. Source revisions and exact patch are recorded in PROVENANCE.json and COMPATIBILITY.patch. -/
+ import Targets.Section4Stationarity
+ 
+ /-!
+@@ -108,8 +109,10 @@
+   rw [parisiFunctional_mergeEqualMass] at H
+   change parisiFunctional s β h ≤ parisiFunctional
+     (b.insertLevel (r + 1) (by omega) (by omega) (s.m r) u hm hu) β h at H
+-  rw [parisiFunctional_insertLevel] at H
+-  exact hb.trans_le H
++  have hu' : u ∈ Set.Icc (b.q (r + 1 - 1)) (b.q (r + 1)) := hu
++  exact hb.trans_le (H.trans_eq
++    (parisiFunctional_insertLevel b β h (r + 1) (by omega) (by omega)
++      (s.m r) u hm hu'))
+ 
+ /-- A minimum at the left endpoint has a nonnegative inward derivative. -/
+ theorem derivative_nonneg_of_min_at_left {f : ℝ → ℝ} {a b d : ℝ}
+--- upstream/Targets/Section5InterleavedScalarContinuity.lean
++++ adapted/Targets/Section5InterleavedScalarContinuity.lean
+@@ -1,3 +1,4 @@
++/- Adaptation for Lean 4.34.1: proof elaboration and API compatibility only; original theorem statements are retained. Source revisions and exact patch are recorded in PROVENANCE.json and COMPATIBILITY.patch. -/
+ import Targets.Section5InterleavedScalarCore
+ 
+ /-!
+@@ -174,10 +175,10 @@
+     exact (section5InterleavedScalarChart_zero_sign s β r hj hq t ℓ (h, h)).symm
+   have H := (hc false).if_le (hc true) continuous_const
+     (show Continuous (fun z : S => z.1.2) by fun_prop) hglue
+-  rw [continuousOn_iff_continuous_restrict]
++  rw [continuousOn_iff_continuous_domRestrict]
+   apply H.congr
+   intro z
+-  dsimp only [Set.restrict]
++  dsimp only [Set.domRestrict]
+   rw [section5InterleavedScalarV_eq_chart]
+   by_cases hu : 0 ≤ z.1.2
+   · simp only [if_pos hu, show ¬z.1.2 < 0 from not_lt_of_ge hu, decide_false]
+--- upstream/Targets/Section5InterleavedScalarCore.lean
++++ adapted/Targets/Section5InterleavedScalarCore.lean
+@@ -1,3 +1,4 @@
++/- Adaptation for Lean 4.34.1: proof elaboration and API compatibility only; original theorem statements are retained. Source revisions and exact patch are recorded in PROVENANCE.json and COMPATIBILITY.patch. -/
+ import Targets.Section5InterleavedEndpoint
+ import Targets.Section5ScalarIdentification
+ 
+@@ -70,11 +71,17 @@
+       section5TagScalarMass s r j tag := by
+   cases tag with
+   | inl p =>
+-    simp only [section5TaggedMode, section5TagScalarMass, section5TagShared, Sum.elim_inl]
+-    split_ifs <;> rfl
++    by_cases hp : p.val < r
++    · simp [section5TaggedMode, section5TagScalarMass, section5TagShared,
++        Section5GaussianMode.scalarMass, hp]
++    · simp [section5TaggedMode, section5TagScalarMass, section5TagShared,
++        Section5GaussianMode.scalarMass, hp]
+   | inr p =>
+-    simp only [section5TaggedMode, section5TagScalarMass, section5TagShared, Sum.elim_inr]
+-    split_ifs <;> rfl
++    by_cases hp : p.val < j
++    · cases negative <;> simp [section5TaggedMode, section5TagScalarMass,
++        section5TagShared, Section5GaussianMode.scalarMass, hp]
++    · simp [section5TaggedMode, section5TagScalarMass, section5TagShared,
++        Section5GaussianMode.scalarMass, hp]
+ 
+ theorem section5TaggedMode_eq_independent_iff {k : ℕ} (r j : ℕ)
+     (negative : Bool) (tag : Section5MassTag k) :
+--- upstream/Targets/Section5InterleavingFilter.lean
++++ adapted/Targets/Section5InterleavingFilter.lean
+@@ -1,3 +1,4 @@
++/- Compatibility adaptation: explicitly unfold sum-tag list filtering. -/
+ import Targets.Section5Interleaving
+ 
+ /-!
+@@ -100,14 +101,14 @@
+       (l.filterMap (Sum.elim some (fun _ => none))).map Sum.inl := by
+   induction l with
+   | nil => rfl
+-  | cons a l ih => cases a <;> simp [ih]
++  | cons a l ih => cases a <;> simp [List.filter_cons, List.filterMap_cons, Sum.isLeft, Sum.isRight, ih]
+ 
+ private theorem filter_isRight_eq_map_filterMap {α β : Type*} (l : List (α ⊕ β)) :
+     l.filter Sum.isRight =
+       (l.filterMap (Sum.elim (fun _ => none) some)).map Sum.inr := by
+   induction l with
+   | nil => rfl
+-  | cons a l ih => cases a <;> simp [ih]
++  | cons a l ih => cases a <;> simp [List.filter_cons, List.filterMap_cons, Sum.isLeft, Sum.isRight, ih]
+ 
+ /-- Keeping the physical tags, rather than projecting them, recovers the
+ original tagged physical list. This form directly matches operator deletion. -/
+--- upstream/Targets/TalagrandCore.lean
++++ adapted/Targets/TalagrandCore.lean
+@@ -1,3 +1,4 @@
++/- Compatibility adaptation: current coordinatewise measurability and ordered real-product interfaces where applicable. -/
+ /-
+ # Core definitions and upper bound from Talagrand's §2, in Lean
+ 
+@@ -562,7 +563,7 @@
+ /-- Joint measurability of the shift `(x, z) ↦ x + √v z`. -/
+ theorem measurable_shift_prod (n : ℕ) (v : ℝ) :
+     Measurable (fun p : (Fin n → ℝ) × (Fin n → ℝ) => fun i => p.1 i + Real.sqrt v * p.2 i) :=
+-  measurable_pi_lambda _ fun i =>
++  Measurable.of_eval fun i =>
+     ((measurable_pi_apply i).comp measurable_fst).add
+       (measurable_const.mul ((measurable_pi_apply i).comp measurable_snd))
+ 
+@@ -824,7 +825,7 @@
+ theorem measurable_shift_joint (v : ℝ) :
+     Measurable (fun q : (EnergySpace n × (Fin n → ℝ)) × (Fin n → ℝ) =>
+       fun i => q.1.2 i + Real.sqrt v * q.2 i) :=
+-  measurable_pi_lambda _ fun i =>
++  Measurable.of_eval fun i =>
+     ((measurable_pi_apply i).comp measurable_fst.snd).add
+       (measurable_const.mul ((measurable_pi_apply i).comp measurable_snd))
+ 

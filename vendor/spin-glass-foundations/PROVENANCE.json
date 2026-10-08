@@ -1,0 +1,2786 @@
+{
+  "roots": [
+    "Targets.TalagrandFinal",
+    "Lemmas.Gaussian.ConcreteModel",
+    "Lemmas.MainResult"
+  ],
+  "source_repositories": [
+    {
+      "repository": "https://github.com/qiangwu2/ParisiFormula",
+      "commit": "9fd12231429de72fa524b471c43f4a237553a711",
+      "license": "Apache-2.0"
+    },
+    {
+      "repository": "https://github.com/njimaMath/research_public",
+      "commit": "f3b34d2071d9cde5262c6672b6ebab132d4a7b43",
+      "subdir": "RSAT",
+      "license": "Apache-2.0"
+    }
+  ],
+  "upstream_toolchain": "leanprover/lean4:v4.32.1",
+  "upstream_mathlib": "520045ab14e26149ee970e2e617ca04b09bde5d6",
+  "target_toolchain": "leanprover/lean4:v4.34.1",
+  "target_mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+  "modules": [
+    {
+      "module": "Lemmas.AT.Definitions",
+      "upstream_path": "RSAT/Lemmas/AT/Definitions.lean",
+      "upstream_sha256": "8c8033ee68a2e7e0b54079fa7bd656be5d2238afc1e609af2ffb8e90efddb6f5",
+      "adapted_sha256": "8c8033ee68a2e7e0b54079fa7bd656be5d2238afc1e609af2ffb8e90efddb6f5",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.AT.FixedPoint",
+      "upstream_path": "RSAT/Lemmas/AT/FixedPoint.lean",
+      "upstream_sha256": "3eeb9aabd8e6faeb3e930bffc53fa10552f17325e119d2283cab9dcfc9d6795b",
+      "adapted_sha256": "3eeb9aabd8e6faeb3e930bffc53fa10552f17325e119d2283cab9dcfc9d6795b",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.AT.Interpolation",
+      "upstream_path": "RSAT/Lemmas/AT/Interpolation.lean",
+      "upstream_sha256": "6500fcf94d4520508ac27048b2c7aa645430f01b929c94de003aa6ff10676f62",
+      "adapted_sha256": "6500fcf94d4520508ac27048b2c7aa645430f01b929c94de003aa6ff10676f62",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.AT.PropertyOfG",
+      "upstream_path": "RSAT/Lemmas/AT/PropertyOfG.lean",
+      "upstream_sha256": "367f3839b074b72024ba641bedec02884162f8b577fd8bf873a953132d0b126c",
+      "adapted_sha256": "367f3839b074b72024ba641bedec02884162f8b577fd8bf873a953132d0b126c",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.AT.PsiContinuity",
+      "upstream_path": "RSAT/Lemmas/AT/PsiContinuity.lean",
+      "upstream_sha256": "ee1c62548b37f01b899f5fc69b08fac8c14254112e763fac5e0c0ab79565a7e9",
+      "adapted_sha256": "034a2e38b8b8cf6e31961319700dd34f083d8261bc81ca66869a41a28935bc8f",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.Cavity.Estimates",
+      "upstream_path": "RSAT/Lemmas/Cavity/Estimates.lean",
+      "upstream_sha256": "1c367f366b6a8f0a1d18a7155a916fce80b9698a978748a73882d9e6d601cafe",
+      "adapted_sha256": "e55cb3846626cefadff8861e0578f97b8c244edc5a45689d74a29d378251f458",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.Cavity.Interpolation",
+      "upstream_path": "RSAT/Lemmas/Cavity/Interpolation.lean",
+      "upstream_sha256": "16c25e6f9639758b812200b4fda40df98f6a39c4fc9b1d43963498c8b08ab4db",
+      "adapted_sha256": "cf820200c40c4be5687e126659e0dbb65f99c48e47aa8efde60d6d7d2bba70a1",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.Cavity.TalagrandCavity",
+      "upstream_path": "RSAT/Lemmas/Cavity/TalagrandCavity.lean",
+      "upstream_sha256": "e4819eef835309cc5eed616a37b0a9f91512e5e1168c3c8b2bfe5fd624aab2e7",
+      "adapted_sha256": "e4819eef835309cc5eed616a37b0a9f91512e5e1168c3c8b2bfe5fd624aab2e7",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.Concentration.Coupled",
+      "upstream_path": "RSAT/Lemmas/Concentration/Coupled.lean",
+      "upstream_sha256": "40450481028607aadcf80ac6890677369d6bd849c707fbb06e43c2a1a8d55e1c",
+      "adapted_sha256": "40450481028607aadcf80ac6890677369d6bd849c707fbb06e43c2a1a8d55e1c",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.Concentration.Transport",
+      "upstream_path": "RSAT/Lemmas/Concentration/Transport.lean",
+      "upstream_sha256": "d5bbde76d4dedd7d616a78a8949d82833c51dd38b666d84f97b42dfca709f604",
+      "adapted_sha256": "f2eafb39092c41bce70e799012ad6bb92ede074ddba7c99e3629d9a811c9a801",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.Concentration.Weak",
+      "upstream_path": "RSAT/Lemmas/Concentration/Weak.lean",
+      "upstream_sha256": "3e35c8688bc7945c449d62102a5d9e97fdadef827e193278702500b15e94b527",
+      "adapted_sha256": "05184db78dac42895c0e1c7e4154f167c4166dcce2f20db4810d1e420a080944",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.Gaussian.CanonicalModel",
+      "upstream_path": "RSAT/Lemmas/Gaussian/CanonicalModel.lean",
+      "upstream_sha256": "4e31f934fd03659cc3a3c4744b76c539b8a5e44efe3cb4bb4f33290ad9cd228a",
+      "adapted_sha256": "0a2d65602d5f19105d3362c1f0cbe69cffb0aa14be8b0752002df89fd501fc4b",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.Gaussian.ConcreteModel",
+      "upstream_path": "RSAT/Lemmas/Gaussian/ConcreteModel.lean",
+      "upstream_sha256": "1c3b700337cb3c09c0ad39ff6613a95d736f48711a615ade68b1594631c7f279",
+      "adapted_sha256": "2e37aaa4b54f8a9007dbc33913ab7b56e7c545f8bc77a030d0b02cdc6bf3b6d1",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.Gaussian.Max",
+      "upstream_path": "RSAT/Lemmas/Gaussian/Max.lean",
+      "upstream_sha256": "687d8f4d95d332e24c5c0a6ac8554bffbe619d3c001b75d4c3d6df8511cad57f",
+      "adapted_sha256": "687d8f4d95d332e24c5c0a6ac8554bffbe619d3c001b75d4c3d6df8511cad57f",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.GuerraTalagrand.Bound",
+      "upstream_path": "RSAT/Lemmas/GuerraTalagrand/Bound.lean",
+      "upstream_sha256": "be687ccca36e99ab8ee79aa7bc027d20067ef09acae13fa7a9ace362df77cdbf",
+      "adapted_sha256": "be687ccca36e99ab8ee79aa7bc027d20067ef09acae13fa7a9ace362df77cdbf",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.GuerraTalagrand.Bound.Basic",
+      "upstream_path": "RSAT/Lemmas/GuerraTalagrand/Bound/Basic.lean",
+      "upstream_sha256": "2fe23d15e06966842f39b1c60aa8f8f9ce6e403b81800d33d7ee3479d879ee4d",
+      "adapted_sha256": "2fe23d15e06966842f39b1c60aa8f8f9ce6e403b81800d33d7ee3479d879ee4d",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.GuerraTalagrand.Bound.Comparison",
+      "upstream_path": "RSAT/Lemmas/GuerraTalagrand/Bound/Comparison.lean",
+      "upstream_sha256": "96bd1477d5bdd4ee103260ba2e1ae4407f1db03d8826113a9f18c52c56ee28d5",
+      "adapted_sha256": "96bd1477d5bdd4ee103260ba2e1ae4407f1db03d8826113a9f18c52c56ee28d5",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.GuerraTalagrand.Bound.Endpoint",
+      "upstream_path": "RSAT/Lemmas/GuerraTalagrand/Bound/Endpoint.lean",
+      "upstream_sha256": "c6dddc7dfa4901c864c593167a91347772c35a5f284c9d411a94111a5900d7f9",
+      "adapted_sha256": "12353774ee2c20f990f0778ff7bfc09004130f363e8bc4dbe3830061f1aa34eb",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.GuerraTalagrand.Bound.FiniteState",
+      "upstream_path": "RSAT/Lemmas/GuerraTalagrand/Bound/FiniteState.lean",
+      "upstream_sha256": "86c06efa772596187361e7c04aaf6ab0f480bca6bc6d32b61ba6763da02cdde7",
+      "adapted_sha256": "86c06efa772596187361e7c04aaf6ab0f480bca6bc6d32b61ba6763da02cdde7",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.GuerraTalagrand.Bound.FiniteStep",
+      "upstream_path": "RSAT/Lemmas/GuerraTalagrand/Bound/FiniteStep.lean",
+      "upstream_sha256": "63e586e09e7242bf37153971b7564b4ea9f7a53baf94e08a3e677f20d009fece",
+      "adapted_sha256": "63e586e09e7242bf37153971b7564b4ea9f7a53baf94e08a3e677f20d009fece",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.GuerraTalagrand.Bound.HalfCalculus",
+      "upstream_path": "RSAT/Lemmas/GuerraTalagrand/Bound/HalfCalculus.lean",
+      "upstream_sha256": "f9c32ff31420f702b5a3dff9bd5cec02b3a2eedde982fa4c350af57d50bc34c4",
+      "adapted_sha256": "f9c32ff31420f702b5a3dff9bd5cec02b3a2eedde982fa4c350af57d50bc34c4",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.GuerraTalagrand.Bound.HalfComparison",
+      "upstream_path": "RSAT/Lemmas/GuerraTalagrand/Bound/HalfComparison.lean",
+      "upstream_sha256": "f714848553230d5dfcb4c9acb4d4676f38dd0d9b4d067128f9174c82fe14c5ba",
+      "adapted_sha256": "f714848553230d5dfcb4c9acb4d4676f38dd0d9b4d067128f9174c82fe14c5ba",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.GuerraTalagrand.Bound.HalfEndpoint",
+      "upstream_path": "RSAT/Lemmas/GuerraTalagrand/Bound/HalfEndpoint.lean",
+      "upstream_sha256": "1f7913a1a47db3a33180f8c69c1dd38d41f6564fd4f01b1f3fd0452ff60eb217",
+      "adapted_sha256": "4dae7315a5609dd53e63ada227ca43943ce9a0cef90f5c20b4b4819624246980",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.GuerraTalagrand.Bound.HalfStep",
+      "upstream_path": "RSAT/Lemmas/GuerraTalagrand/Bound/HalfStep.lean",
+      "upstream_sha256": "ede1f58fdca5333da580f3540212235b80959204221f852669cee94c14b8c134",
+      "adapted_sha256": "ede1f58fdca5333da580f3540212235b80959204221f852669cee94c14b8c134",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.GuerraTalagrand.Bound.Interpolation",
+      "upstream_path": "RSAT/Lemmas/GuerraTalagrand/Bound/Interpolation.lean",
+      "upstream_sha256": "cbca35de110a6753b5d8485c70352709e11a53f2a28c968293c184385ae7b10d",
+      "adapted_sha256": "cbca35de110a6753b5d8485c70352709e11a53f2a28c968293c184385ae7b10d",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.GuerraTalagrand.Bound.Transport",
+      "upstream_path": "RSAT/Lemmas/GuerraTalagrand/Bound/Transport.lean",
+      "upstream_sha256": "b526ccec7cd6b9f7ca2ca3ee03cc744c075ab28265e724fa384f25df44d7cd62",
+      "adapted_sha256": "b526ccec7cd6b9f7ca2ca3ee03cc744c075ab28265e724fa384f25df44d7cd62",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.GuerraTalagrand.Flatness",
+      "upstream_path": "RSAT/Lemmas/GuerraTalagrand/Flatness.lean",
+      "upstream_sha256": "1ba1853fa8c36b6b0017179f245b800e8da792dae84fe6bf1d88c273092dcd61",
+      "adapted_sha256": "1ba1853fa8c36b6b0017179f245b800e8da792dae84fe6bf1d88c273092dcd61",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.GuerraTalagrand.Flatness.Cases",
+      "upstream_path": "RSAT/Lemmas/GuerraTalagrand/Flatness/Cases.lean",
+      "upstream_sha256": "ba2a5e2b03ef56e3cf25cecea52670b31f81241e81ffa7cbf84a1ea14420c584",
+      "adapted_sha256": "ba2a5e2b03ef56e3cf25cecea52670b31f81241e81ffa7cbf84a1ea14420c584",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.GuerraTalagrand.Flatness.Cases.Endpoints",
+      "upstream_path": "RSAT/Lemmas/GuerraTalagrand/Flatness/Cases/Endpoints.lean",
+      "upstream_sha256": "e1bd6c5ef856bfccbaa2c9baad21dbe988f6145b079c1a55601991f0383f3b7c",
+      "adapted_sha256": "e1bd6c5ef856bfccbaa2c9baad21dbe988f6145b079c1a55601991f0383f3b7c",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.GuerraTalagrand.Flatness.Cases.LargeNegative",
+      "upstream_path": "RSAT/Lemmas/GuerraTalagrand/Flatness/Cases/LargeNegative.lean",
+      "upstream_sha256": "695921889b5e6b8d1cc297253e050ba8ed97f66c8b29b1897842a9177d2f6db4",
+      "adapted_sha256": "695921889b5e6b8d1cc297253e050ba8ed97f66c8b29b1897842a9177d2f6db4",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.GuerraTalagrand.Flatness.Cases.LargePositive",
+      "upstream_path": "RSAT/Lemmas/GuerraTalagrand/Flatness/Cases/LargePositive.lean",
+      "upstream_sha256": "b875d5d1373b21ee1cfcee80de216a1b6e21ef7d226ba7992981f0f60e2d65d7",
+      "adapted_sha256": "b875d5d1373b21ee1cfcee80de216a1b6e21ef7d226ba7992981f0f60e2d65d7",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.GuerraTalagrand.Flatness.Cases.SmallNegative",
+      "upstream_path": "RSAT/Lemmas/GuerraTalagrand/Flatness/Cases/SmallNegative.lean",
+      "upstream_sha256": "a825f96c9329f65af7f114d59b7202f76fb5219d63609bf2ece06a02df99fa3b",
+      "adapted_sha256": "a825f96c9329f65af7f114d59b7202f76fb5219d63609bf2ece06a02df99fa3b",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.GuerraTalagrand.Flatness.Cases.SmallPositive",
+      "upstream_path": "RSAT/Lemmas/GuerraTalagrand/Flatness/Cases/SmallPositive.lean",
+      "upstream_sha256": "2ef9436aa2747c72e1eed585203c244ac99ae3c3488d514da6e577576782a528",
+      "adapted_sha256": "2ef9436aa2747c72e1eed585203c244ac99ae3c3488d514da6e577576782a528",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.GuerraTalagrand.Flatness.Core",
+      "upstream_path": "RSAT/Lemmas/GuerraTalagrand/Flatness/Core.lean",
+      "upstream_sha256": "76b3767b761bbc25f1264a25c187909a2a93cd2039d6afb544f70ec484c313d8",
+      "adapted_sha256": "c71ba77aa3713e3e076d3f47e2b09eedff12a0f82067d39745b597d178d8b28b",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.GuerraTalagrand.Gaussian",
+      "upstream_path": "RSAT/Lemmas/GuerraTalagrand/Gaussian.lean",
+      "upstream_sha256": "42139d9a73ad18684c76a43db2599ad4e25492092a6dbd8c5c495455e92d88f3",
+      "adapted_sha256": "42139d9a73ad18684c76a43db2599ad4e25492092a6dbd8c5c495455e92d88f3",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.GuerraTalagrand.LatalaGuerra",
+      "upstream_path": "RSAT/Lemmas/GuerraTalagrand/LatalaGuerra.lean",
+      "upstream_sha256": "62d6c48449c49359dabc0d2bfd74471a314133d943d31ee37e16740fcfb6969e",
+      "adapted_sha256": "62d6c48449c49359dabc0d2bfd74471a314133d943d31ee37e16740fcfb6969e",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.MainResult",
+      "upstream_path": "RSAT/Lemmas/MainResult.lean",
+      "upstream_sha256": "b5bb4fd6c3e9aa3249edf62f34cc0928645f122c96d19072d7643d25ceb34841",
+      "adapted_sha256": "b5bb4fd6c3e9aa3249edf62f34cc0928645f122c96d19072d7643d25ceb34841",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.Price.Cosh",
+      "upstream_path": "RSAT/Lemmas/Price/Cosh.lean",
+      "upstream_sha256": "69a03d30506974901e4c76e5a30fd8407b2f20cfd25609cac7b14fd412982a20",
+      "adapted_sha256": "f29946f86f3a6fa234cb727daf1b24dd2dd857dcc79365f144ab5b114147cc3d",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.Price.Deriv",
+      "upstream_path": "RSAT/Lemmas/Price/Deriv.lean",
+      "upstream_sha256": "eab4cedd97980f3751a4dd464ef290943272e603623d2df529b81ec4d6ffc27e",
+      "adapted_sha256": "eab4cedd97980f3751a4dd464ef290943272e603623d2df529b81ec4d6ffc27e",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.Price.Gaussian",
+      "upstream_path": "RSAT/Lemmas/Price/Gaussian.lean",
+      "upstream_sha256": "fce8d03b1b5c8ee46347b703511b43be68c7b0468e57ef2cbe51d44c2dc605d7",
+      "adapted_sha256": "a1ed122dc03ed242683ade26033c57e66782587922cdd349940babf83586c19f",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.Price.Key",
+      "upstream_path": "RSAT/Lemmas/Price/Key.lean",
+      "upstream_sha256": "aa6e0de6c662625ac123c6764fe1682e6f7bbd30d56be0d66431e6d910d18ea7",
+      "adapted_sha256": "aa6e0de6c662625ac123c6764fe1682e6f7bbd30d56be0d66431e6d910d18ea7",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.Price.Moments",
+      "upstream_path": "RSAT/Lemmas/Price/Moments.lean",
+      "upstream_sha256": "dbbb749f56370844f77e2d2773ef460119ed34f0a901098c1d21b8899076c647",
+      "adapted_sha256": "dbbb749f56370844f77e2d2773ef460119ed34f0a901098c1d21b8899076c647",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.Price.Price",
+      "upstream_path": "RSAT/Lemmas/Price/Price.lean",
+      "upstream_sha256": "e7b24fde949db9ca7cf8a4e725cf2ce57f20d760051d36142a58582d60ef5498",
+      "adapted_sha256": "e7b24fde949db9ca7cf8a4e725cf2ce57f20d760051d36142a58582d60ef5498",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.Price.Sqrt",
+      "upstream_path": "RSAT/Lemmas/Price/Sqrt.lean",
+      "upstream_sha256": "b990643ac3d4ac6cd0a45bad491b5659e8011afa4d1b2135b3e48dbc6dee8915",
+      "adapted_sha256": "b990643ac3d4ac6cd0a45bad491b5659e8011afa4d1b2135b3e48dbc6dee8915",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.Price.Taylor",
+      "upstream_path": "RSAT/Lemmas/Price/Taylor.lean",
+      "upstream_sha256": "47d91e3eb642c37721d3847d59e64bc4e29dd3c0c764c1370c21dd77d5f9a84c",
+      "adapted_sha256": "47d91e3eb642c37721d3847d59e64bc4e29dd3c0c764c1370c21dd77d5f9a84c",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.SmartPath.IndependentEndpoint",
+      "upstream_path": "RSAT/Lemmas/SmartPath/IndependentEndpoint.lean",
+      "upstream_sha256": "c5a5523833eedf31326d5c01bfccd42be8dd1ce8b59e55827558c7d83a66e162",
+      "adapted_sha256": "c5a5523833eedf31326d5c01bfccd42be8dd1ce8b59e55827558c7d83a66e162",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.SmartPath.IndependentGaussianAffineIBP",
+      "upstream_path": "RSAT/Lemmas/SmartPath/IndependentGaussianAffineIBP.lean",
+      "upstream_sha256": "eb57a44eedafa2578b896440304708a24fe60bc95a5ba3de60e9ed8f86abe6dc",
+      "adapted_sha256": "eb57a44eedafa2578b896440304708a24fe60bc95a5ba3de60e9ed8f86abe6dc",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.SmartPath.Interpolation",
+      "upstream_path": "RSAT/Lemmas/SmartPath/Interpolation.lean",
+      "upstream_sha256": "1f43a519f9f296817a6c12d03d0d54911bd47f8ae539adede422a688d8296aa5",
+      "adapted_sha256": "1f43a519f9f296817a6c12d03d0d54911bd47f8ae539adede422a688d8296aa5",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.SmartPath.KSInequality",
+      "upstream_path": "RSAT/Lemmas/SmartPath/KSInequality.lean",
+      "upstream_sha256": "4605670ff7dc8ff318344cf08e5afb34ffaf596b5a7a26fc5ec02805868bebe6",
+      "adapted_sha256": "4605670ff7dc8ff318344cf08e5afb34ffaf596b5a7a26fc5ec02805868bebe6",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.SpinGlass.Calculus",
+      "upstream_path": "RSAT/Lemmas/SpinGlass/Calculus.lean",
+      "upstream_sha256": "56ebf67803c7f1ecfa1f7a4c46aff452ac9d4f745e3ef36ebe1bff2fa84405c1",
+      "adapted_sha256": "56ebf67803c7f1ecfa1f7a4c46aff452ac9d4f745e3ef36ebe1bff2fa84405c1",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.SpinGlass.Defs",
+      "upstream_path": "RSAT/Lemmas/SpinGlass/Defs.lean",
+      "upstream_sha256": "3f89bdd838bf8f11d166c02d277bdf1c8c5b820acbc3056161493fea6d909856",
+      "adapted_sha256": "3f89bdd838bf8f11d166c02d277bdf1c8c5b820acbc3056161493fea6d909856",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.SpinGlass.GaussianIntegrationByParts",
+      "upstream_path": "RSAT/Lemmas/SpinGlass/GaussianIntegrationByParts.lean",
+      "upstream_sha256": "f31dbb439282fc09d164cd18939950a93528c145fe4a6bbd10572fea6f27079b",
+      "adapted_sha256": "bc76b96ee6cb132d1f78023e8d7886a60921d1c40362eaeb07b0512ef45b351e",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.SpinGlass.Gaussian_IBP_Hilbert",
+      "upstream_path": "RSAT/Lemmas/SpinGlass/Gaussian_IBP_Hilbert.lean",
+      "upstream_sha256": "2b7aae09e9937a9c2416b5867d2008c4be678c5aab8d61715562691d4c26df7d",
+      "adapted_sha256": "040e9ff96247766166fdafaaae648e0db42ae201a226bb42f5d0c610c39d76fd",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.SpinGlass.GuerraBound",
+      "upstream_path": "RSAT/Lemmas/SpinGlass/GuerraBound.lean",
+      "upstream_sha256": "68590cd902893547e41fb2042db6f50a46ea1e2c627e016d6a3b01b535073f37",
+      "adapted_sha256": "68590cd902893547e41fb2042db6f50a46ea1e2c627e016d6a3b01b535073f37",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.SpinGlass.Replicas",
+      "upstream_path": "RSAT/Lemmas/SpinGlass/Replicas.lean",
+      "upstream_sha256": "ebd51eb282004a5d8e0e2acc72b05bd29e1e416d2ba73d1d6666e8547127f94f",
+      "adapted_sha256": "93c1a1fbd6c93fb14adc68dfe64bb6d6907b5815a62ffcf67983dd84db5ba45a",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.SpinGlass.SKModel",
+      "upstream_path": "RSAT/Lemmas/SpinGlass/SKModel.lean",
+      "upstream_sha256": "470747038fb0f242ec91f7fbe8ebf68f767e88ddceba57628f115329d808fc1d",
+      "adapted_sha256": "470747038fb0f242ec91f7fbe8ebf68f767e88ddceba57628f115329d808fc1d",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "Lemmas.SpinGlass.gaussian_concentration",
+      "upstream_path": "RSAT/Lemmas/SpinGlass/gaussian_concentration.lean",
+      "upstream_sha256": "95e3058d48178b18fef85baef8d45ab16796f4a91a5d3d2a98a1513d6ccb4bab",
+      "adapted_sha256": "04d7e42befd4e6ae636cbbb1ab8d3d32e9a290255d6bbe8e47550de852ba5e34",
+      "upstream_repository": "https://github.com/njimaMath/research_public"
+    },
+    {
+      "module": "ParisiFormula.AnnealedBound",
+      "upstream_path": "ParisiFormula/AnnealedBound.lean",
+      "upstream_sha256": "11d619e5cada5e20b22c90fbb170aca161587d8bba9a01685a72b4af8f79b314",
+      "adapted_sha256": "abd3302582e59466333524ba14ce7f2dfbd420a1b92e2c8b0bef95f57ae0f6f0",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "ParisiFormula.CoordStein",
+      "upstream_path": "ParisiFormula/CoordStein.lean",
+      "upstream_sha256": "be966f9d6703a21747e8efb711731a973c636dfe403dd6554c0b69079b3e2bed",
+      "adapted_sha256": "be966f9d6703a21747e8efb711731a973c636dfe403dd6554c0b69079b3e2bed",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "ParisiFormula.GaussianConcentration1D",
+      "upstream_path": "ParisiFormula/GaussianConcentration1D.lean",
+      "upstream_sha256": "dcc67b9deb276551c5c5595f45872045446f03af01b196e62d85f993e95728f9",
+      "adapted_sha256": "dcc67b9deb276551c5c5595f45872045446f03af01b196e62d85f993e95728f9",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "ParisiFormula.GaussianCosh",
+      "upstream_path": "ParisiFormula/GaussianCosh.lean",
+      "upstream_sha256": "f32d7d66a0ee482278c3ecf7323fe57154f6c2ae14df3749bda77572034a59f8",
+      "adapted_sha256": "f32d7d66a0ee482278c3ecf7323fe57154f6c2ae14df3749bda77572034a59f8",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "ParisiFormula.GaussianExpCompare",
+      "upstream_path": "ParisiFormula/GaussianExpCompare.lean",
+      "upstream_sha256": "627ea376614f3209133b9c2d2d7bdd808d15ed2d2dfbfec93ebe4c3c9f69d9da",
+      "adapted_sha256": "627ea376614f3209133b9c2d2d7bdd808d15ed2d2dfbfec93ebe4c3c9f69d9da",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "ParisiFormula.GaussianStein",
+      "upstream_path": "ParisiFormula/GaussianStein.lean",
+      "upstream_sha256": "89205a1328f3f54e1cbeb2dac15845336c076be39d55e871574a5c5c841fb0e3",
+      "adapted_sha256": "89205a1328f3f54e1cbeb2dac15845336c076be39d55e871574a5c5c841fb0e3",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "ParisiFormula.GuerraToninelli",
+      "upstream_path": "ParisiFormula/GuerraToninelli.lean",
+      "upstream_sha256": "d453a124d5dfe433bca8d2f2179622fb14c967e145d69683678f2749b03748b0",
+      "adapted_sha256": "00b4e0cc101b31e8a27eff94a2a8ce869bdddd4f96bd114ae00a6b566ad59d1a",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "ParisiFormula.ParisiOperator",
+      "upstream_path": "ParisiFormula/ParisiOperator.lean",
+      "upstream_sha256": "7347e6bd05f4a7d7bebd1a3f87970a48fd5f102db01e1b9b2250cd2266a66d93",
+      "adapted_sha256": "7347e6bd05f4a7d7bebd1a3f87970a48fd5f102db01e1b9b2250cd2266a66d93",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "ParisiFormula.ParisiOperatorGrowth",
+      "upstream_path": "ParisiFormula/ParisiOperatorGrowth.lean",
+      "upstream_sha256": "7da875890e4c3194928de719305c9e9445c9ac4532a36f719aacb697799cf2fb",
+      "adapted_sha256": "7da875890e4c3194928de719305c9e9445c9ac4532a36f719aacb697799cf2fb",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "ParisiFormula.PiStein",
+      "upstream_path": "ParisiFormula/PiStein.lean",
+      "upstream_sha256": "972ce45d7473a5cf986ffe54a3ea9eaac8e5c1a066f981b5a2679278976d0259",
+      "adapted_sha256": "972ce45d7473a5cf986ffe54a3ea9eaac8e5c1a066f981b5a2679278976d0259",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.CascadeContinuityPi",
+      "upstream_path": "Targets/CascadeContinuityPi.lean",
+      "upstream_sha256": "f2fc0cfc7dada3698f6f62f73bfeab562e9befea9eee4affd75b65ab28ecf42c",
+      "adapted_sha256": "f2fc0cfc7dada3698f6f62f73bfeab562e9befea9eee4affd75b65ab28ecf42c",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.CascadeDeriv",
+      "upstream_path": "Targets/CascadeDeriv.lean",
+      "upstream_sha256": "46e573eaf9909fe6da39c7bbeeea2749a37341a6ecbef7f2195a58c3c4d19a16",
+      "adapted_sha256": "46e573eaf9909fe6da39c7bbeeea2749a37341a6ecbef7f2195a58c3c4d19a16",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.CascadeDerivPi",
+      "upstream_path": "Targets/CascadeDerivPi.lean",
+      "upstream_sha256": "e917fc04a84428ecd1e2c080616d528fb1634a1c7acf95fff41d0030ccef26be",
+      "adapted_sha256": "d24080ffb8ee1e04d81219256a116e9832ea1c43a54a5d5cb73ad1213404974e",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.CascadeEndpoint",
+      "upstream_path": "Targets/CascadeEndpoint.lean",
+      "upstream_sha256": "eb3f029a6b91242993de78c65163f045b5cbe0da1e2d5636cdb6fef596ccbd17",
+      "adapted_sha256": "eb3f029a6b91242993de78c65163f045b5cbe0da1e2d5636cdb6fef596ccbd17",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.CascadeEventBound",
+      "upstream_path": "Targets/CascadeEventBound.lean",
+      "upstream_sha256": "0a7982593edbb26fc19eca7c0547e72cdb1b19e47ec230b309b0d42788a3a198",
+      "adapted_sha256": "0a7982593edbb26fc19eca7c0547e72cdb1b19e47ec230b309b0d42788a3a198",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.CascadeFieldPi",
+      "upstream_path": "Targets/CascadeFieldPi.lean",
+      "upstream_sha256": "b714ece98a000f103a15339cc2d11cc493e304db4821b7197f6b12c7449f1141",
+      "adapted_sha256": "b714ece98a000f103a15339cc2d11cc493e304db4821b7197f6b12c7449f1141",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.CascadeSecondPi",
+      "upstream_path": "Targets/CascadeSecondPi.lean",
+      "upstream_sha256": "fec4caea947534bf91c8e2ed1a8a381ecf4f608a568a7d5b24755b67cc1fbd55",
+      "adapted_sha256": "fec4caea947534bf91c8e2ed1a8a381ecf4f608a568a7d5b24755b67cc1fbd55",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.ConstrainedCascade",
+      "upstream_path": "Targets/ConstrainedCascade.lean",
+      "upstream_sha256": "572d14fb56948c6dcb7d3162656e2e4d93fb36cd313da134facd94c67070fab6",
+      "adapted_sha256": "572d14fb56948c6dcb7d3162656e2e4d93fb36cd313da134facd94c67070fab6",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.ConstrainedFiniteState",
+      "upstream_path": "Targets/ConstrainedFiniteState.lean",
+      "upstream_sha256": "0c79741947002b09ecb02ee9874fe5738c0fcc8fff57d35190720ca7c7c70267",
+      "adapted_sha256": "0c79741947002b09ecb02ee9874fe5738c0fcc8fff57d35190720ca7c7c70267",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.ConstrainedJointTerminal",
+      "upstream_path": "Targets/ConstrainedJointTerminal.lean",
+      "upstream_sha256": "74b7b9dfb162e333a57cdf478d484bbae141e6c4258d0a264dda5d2d4592c07e",
+      "adapted_sha256": "74b7b9dfb162e333a57cdf478d484bbae141e6c4258d0a264dda5d2d4592c07e",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.ConstrainedPathContinuity",
+      "upstream_path": "Targets/ConstrainedPathContinuity.lean",
+      "upstream_sha256": "10a6649eb8e1f4c5139c203671258c0862d94c41ed53476db49190935ff7d151",
+      "adapted_sha256": "10a6649eb8e1f4c5139c203671258c0862d94c41ed53476db49190935ff7d151",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.CoupledCascade",
+      "upstream_path": "Targets/CoupledCascade.lean",
+      "upstream_sha256": "a33c24e940449acba8b40c8c1d3b5fcc6c6dc58e196ae584c99c7b7c24126b84",
+      "adapted_sha256": "a33c24e940449acba8b40c8c1d3b5fcc6c6dc58e196ae584c99c7b7c24126b84",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.CoupledCascadeDeriv",
+      "upstream_path": "Targets/CoupledCascadeDeriv.lean",
+      "upstream_sha256": "f3bc183ebf8bda0fc69848262ceb6801f3f13610f0764eb715e47efd5e4c4ae9",
+      "adapted_sha256": "f3bc183ebf8bda0fc69848262ceb6801f3f13610f0764eb715e47efd5e4c4ae9",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.CoupledCascadeField",
+      "upstream_path": "Targets/CoupledCascadeField.lean",
+      "upstream_sha256": "caed6a56819ab62494031f420a0ea4beb99c03df90edde5ad515285fb21d2e1d",
+      "adapted_sha256": "caed6a56819ab62494031f420a0ea4beb99c03df90edde5ad515285fb21d2e1d",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.CoupledCascadeSecond",
+      "upstream_path": "Targets/CoupledCascadeSecond.lean",
+      "upstream_sha256": "fb0ebe8cfb86885219e5ff1c76820eb57a6bef9b1a88fc7478659ae5b27f03dd",
+      "adapted_sha256": "fb0ebe8cfb86885219e5ff1c76820eb57a6bef9b1a88fc7478659ae5b27f03dd",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.CoupledCascadeVariance",
+      "upstream_path": "Targets/CoupledCascadeVariance.lean",
+      "upstream_sha256": "4aa3265c92f1fa9cf997083bb99f71905137011b1b52f21c4fb928013eec0b6f",
+      "adapted_sha256": "4aa3265c92f1fa9cf997083bb99f71905137011b1b52f21c4fb928013eec0b6f",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.CoupledConcentration",
+      "upstream_path": "Targets/CoupledConcentration.lean",
+      "upstream_sha256": "d1acae02fc7a723a6659ec192f191dc03e3e429023ba9590b7b6817599bf62b5",
+      "adapted_sha256": "4320fb50aae7ea45e942e7c162483bf6184c7f692b40e7d67603368c4224ba43",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.CoupledCovariance",
+      "upstream_path": "Targets/CoupledCovariance.lean",
+      "upstream_sha256": "cb8615ee49d1b9b5b20e2a05f711be76dd2ff6d538825c5fc6cf76672a89fca5",
+      "adapted_sha256": "cb8615ee49d1b9b5b20e2a05f711be76dd2ff6d538825c5fc6cf76672a89fca5",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.CoupledCovarianceTelescope",
+      "upstream_path": "Targets/CoupledCovarianceTelescope.lean",
+      "upstream_sha256": "faf0b70ef44e7b447295bafc40a88e2bbbb99d80c81262994d8d02e0b142a594",
+      "adapted_sha256": "faf0b70ef44e7b447295bafc40a88e2bbbb99d80c81262994d8d02e0b142a594",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.CoupledDisorderInterpolation",
+      "upstream_path": "Targets/CoupledDisorderInterpolation.lean",
+      "upstream_sha256": "9c443b088788beb003591b8426d5a6a56ecc1602d3fef5cead7c1e2dc655928c",
+      "adapted_sha256": "9c443b088788beb003591b8426d5a6a56ecc1602d3fef5cead7c1e2dc655928c",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.CoupledEndpoint",
+      "upstream_path": "Targets/CoupledEndpoint.lean",
+      "upstream_sha256": "7abaaf2d5950f12274e5e133496e1e416ee34165e076b9ed023d8d67e0f2c671",
+      "adapted_sha256": "7abaaf2d5950f12274e5e133496e1e416ee34165e076b9ed023d8d67e0f2c671",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.CoupledFiniteStep",
+      "upstream_path": "Targets/CoupledFiniteStep.lean",
+      "upstream_sha256": "4f69fd080a426e4236eaad295a965408fe427665e3577d19f99a8f6e3eac4459",
+      "adapted_sha256": "4f69fd080a426e4236eaad295a965408fe427665e3577d19f99a8f6e3eac4459",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.CoupledGaussianLaw",
+      "upstream_path": "Targets/CoupledGaussianLaw.lean",
+      "upstream_sha256": "8b24b8f9b25abc400917ba1a043ce94e539a61b23f78f3dfba07a901ef7de7a2",
+      "adapted_sha256": "19deeb868b261278979aadcc852bc6059b3b273073b10460ccf64d7f75d1069f",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.CoupledGrowth",
+      "upstream_path": "Targets/CoupledGrowth.lean",
+      "upstream_sha256": "3392a1bbaf515c06cbecaddcf4f9438996a45c4442ab5236342818e6213672c1",
+      "adapted_sha256": "3392a1bbaf515c06cbecaddcf4f9438996a45c4442ab5236342818e6213672c1",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.CoupledJointInterpolation",
+      "upstream_path": "Targets/CoupledJointInterpolation.lean",
+      "upstream_sha256": "2ae7a04bb76e8f8ed2de214cb610b478a15e9ca0344bec82d7b56a1a402bd462",
+      "adapted_sha256": "2ae7a04bb76e8f8ed2de214cb610b478a15e9ca0344bec82d7b56a1a402bd462",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.CoupledLambda",
+      "upstream_path": "Targets/CoupledLambda.lean",
+      "upstream_sha256": "b130dbfd3e553e36327aee859ea130b4054e7ec2a39c27253bcf3cd1a71065e5",
+      "adapted_sha256": "b130dbfd3e553e36327aee859ea130b4054e7ec2a39c27253bcf3cd1a71065e5",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.CoupledLambdaCurvature",
+      "upstream_path": "Targets/CoupledLambdaCurvature.lean",
+      "upstream_sha256": "73dd17deed599e0d0bc24e42ec9264c09e427c7408a6c3ddbb6a46375eebd847",
+      "adapted_sha256": "73dd17deed599e0d0bc24e42ec9264c09e427c7408a6c3ddbb6a46375eebd847",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.CoupledLipschitz",
+      "upstream_path": "Targets/CoupledLipschitz.lean",
+      "upstream_sha256": "fabd75d821b9f2240e92dc6fb559acdd0af11d99d9432babc0d472645028b61a",
+      "adapted_sha256": "fabd75d821b9f2240e92dc6fb559acdd0af11d99d9432babc0d472645028b61a",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.CoupledMeasurability",
+      "upstream_path": "Targets/CoupledMeasurability.lean",
+      "upstream_sha256": "975ed23b11cb74757dd7e2a796f888bd1bcc4c40077ba7cee83fc2eca8cab245",
+      "adapted_sha256": "975ed23b11cb74757dd7e2a796f888bd1bcc4c40077ba7cee83fc2eca8cab245",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.CoupledNestedVariance",
+      "upstream_path": "Targets/CoupledNestedVariance.lean",
+      "upstream_sha256": "e3a1ba5ea031d29702a96709cc9b535a6cf47431aec66ed0a5f7ffacde87abbd",
+      "adapted_sha256": "e3a1ba5ea031d29702a96709cc9b535a6cf47431aec66ed0a5f7ffacde87abbd",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.CoupledOuterExpectation",
+      "upstream_path": "Targets/CoupledOuterExpectation.lean",
+      "upstream_sha256": "a335159beb22609ef69a5535702c978d39344753c6ec536b5f72ee87117bfe5a",
+      "adapted_sha256": "a335159beb22609ef69a5535702c978d39344753c6ec536b5f72ee87117bfe5a",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.CoupledPathContinuity",
+      "upstream_path": "Targets/CoupledPathContinuity.lean",
+      "upstream_sha256": "4c33c87c953b13638f3305907cd62081216e16d9636bdcdf6ef13a46c47bab1f",
+      "adapted_sha256": "4c33c87c953b13638f3305907cd62081216e16d9636bdcdf6ef13a46c47bab1f",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.CoupledPathDecomposition",
+      "upstream_path": "Targets/CoupledPathDecomposition.lean",
+      "upstream_sha256": "20e4baabfc08568f2e86e0bc83bc77fa5454db36fd782492b28448a1999f5eee",
+      "adapted_sha256": "20e4baabfc08568f2e86e0bc83bc77fa5454db36fd782492b28448a1999f5eee",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.CoupledPathPressure",
+      "upstream_path": "Targets/CoupledPathPressure.lean",
+      "upstream_sha256": "71a7b418b10021fec515e8eb8828cfa5bf43b107b8e7160c60baad59cf914159",
+      "adapted_sha256": "71a7b418b10021fec515e8eb8828cfa5bf43b107b8e7160c60baad59cf914159",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.CoupledPathPressureFormula",
+      "upstream_path": "Targets/CoupledPathPressureFormula.lean",
+      "upstream_sha256": "6fec0ebe9df18f9d02b23ed48347194a41d959f411a0c362e5d3c9200154f6e9",
+      "adapted_sha256": "6fec0ebe9df18f9d02b23ed48347194a41d959f411a0c362e5d3c9200154f6e9",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.CoupledReindex",
+      "upstream_path": "Targets/CoupledReindex.lean",
+      "upstream_sha256": "6c4065493b9311df88c5d5019692ebbf36204d6e4dedf81bee74e43079795b62",
+      "adapted_sha256": "6c4065493b9311df88c5d5019692ebbf36204d6e4dedf81bee74e43079795b62",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.CoupledReplicaAverage",
+      "upstream_path": "Targets/CoupledReplicaAverage.lean",
+      "upstream_sha256": "b3b1fba5f76399003bd1e81555cfd6aed5557e42bc6a2815a8acd5a2652ad6da",
+      "adapted_sha256": "b3b1fba5f76399003bd1e81555cfd6aed5557e42bc6a2815a8acd5a2652ad6da",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.CoupledReplicaField",
+      "upstream_path": "Targets/CoupledReplicaField.lean",
+      "upstream_sha256": "b37ec59e5a0c5024d3b7c5908e01246194ec11223510d5d6dc2ae8ff4fefec3b",
+      "adapted_sha256": "b37ec59e5a0c5024d3b7c5908e01246194ec11223510d5d6dc2ae8ff4fefec3b",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.CoupledReplicaHeat",
+      "upstream_path": "Targets/CoupledReplicaHeat.lean",
+      "upstream_sha256": "6f5a506c25f552c1be72f922526184dd7029693ad04636a17e48ccf4dd8fd9eb",
+      "adapted_sha256": "6f5a506c25f552c1be72f922526184dd7029693ad04636a17e48ccf4dd8fd9eb",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.CoupledReplicaHessian",
+      "upstream_path": "Targets/CoupledReplicaHessian.lean",
+      "upstream_sha256": "230438ff46d258077c1a96934a2d2e450f9266ba28d6a3ead73bfbd121397b98",
+      "adapted_sha256": "230438ff46d258077c1a96934a2d2e450f9266ba28d6a3ead73bfbd121397b98",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.CoupledReplicaTrace",
+      "upstream_path": "Targets/CoupledReplicaTrace.lean",
+      "upstream_sha256": "d73163dcef3656c3f74ee52e41dd9fa132ddbd04557c2b51546e5da31ac4d33c",
+      "adapted_sha256": "d73163dcef3656c3f74ee52e41dd9fa132ddbd04557c2b51546e5da31ac4d33c",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.CoupledReplicaWeights",
+      "upstream_path": "Targets/CoupledReplicaWeights.lean",
+      "upstream_sha256": "6889c8374323ec01ece7eeaf37c398b840353eb16c7e54b3e7f3162cbc29edf8",
+      "adapted_sha256": "6889c8374323ec01ece7eeaf37c398b840353eb16c7e54b3e7f3162cbc29edf8",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.CoupledSharedInsertion",
+      "upstream_path": "Targets/CoupledSharedInsertion.lean",
+      "upstream_sha256": "880ebd5b9a160e6fb98252a5804b43d04929d8cf13d0d870b9ea0fc667f1391b",
+      "adapted_sha256": "880ebd5b9a160e6fb98252a5804b43d04929d8cf13d0d870b9ea0fc667f1391b",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.CoupledVariancePressure",
+      "upstream_path": "Targets/CoupledVariancePressure.lean",
+      "upstream_sha256": "65a1743aaacb59a9d524b744f5e8b92ab59662e4a1e3f2b57151c7e21df1a08f",
+      "adapted_sha256": "65a1743aaacb59a9d524b744f5e8b92ab59662e4a1e3f2b57151c7e21df1a08f",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.GaussianCauchySchwarzEquality",
+      "upstream_path": "Targets/GaussianCauchySchwarzEquality.lean",
+      "upstream_sha256": "f8fce65e7232ead55e1f975e17e5fbf31b09836b1d76e91be7663e3d767f7f2e",
+      "adapted_sha256": "f8fce65e7232ead55e1f975e17e5fbf31b09836b1d76e91be7663e3d767f7f2e",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Milestones",
+      "upstream_path": "Targets/Milestones.lean",
+      "upstream_sha256": "36eb4a7354403c41e4c88d152a511f3e2a2c89222dfdfebf6334fd31ceea34d8",
+      "adapted_sha256": "e78428e745d04cd2c2d104c5b1b9198ad4c879e797b517fee08f7406808fe98c",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.MixedCascadeContinuity",
+      "upstream_path": "Targets/MixedCascadeContinuity.lean",
+      "upstream_sha256": "19b2d5d719302c5a053614e314401f6612e84b567c4893763b6112e70baba79e",
+      "adapted_sha256": "19b2d5d719302c5a053614e314401f6612e84b567c4893763b6112e70baba79e",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.MixedCascadeDeriv",
+      "upstream_path": "Targets/MixedCascadeDeriv.lean",
+      "upstream_sha256": "51835e1e478149ba7365754f9a61f77df3986d5057053eb66199edb442012647",
+      "adapted_sha256": "51835e1e478149ba7365754f9a61f77df3986d5057053eb66199edb442012647",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.MixedCascadeGrowth",
+      "upstream_path": "Targets/MixedCascadeGrowth.lean",
+      "upstream_sha256": "49e605b79f55123f8ac4dd631f89da74a400a99cbec1352f07ea2dcf91768372",
+      "adapted_sha256": "49e605b79f55123f8ac4dd631f89da74a400a99cbec1352f07ea2dcf91768372",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.MixedCascadeSecond",
+      "upstream_path": "Targets/MixedCascadeSecond.lean",
+      "upstream_sha256": "aeaa99fb5524a5fb14ec58f0cb2236fa4dc522e055d1ec673a81be73dc69a5ce",
+      "adapted_sha256": "aeaa99fb5524a5fb14ec58f0cb2236fa4dc522e055d1ec673a81be73dc69a5ce",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.MixedCascadeVariance",
+      "upstream_path": "Targets/MixedCascadeVariance.lean",
+      "upstream_sha256": "f74e226a407423b849236a48b6fb1f8b382b424f576f356863d1c9ca692fa064",
+      "adapted_sha256": "f74e226a407423b849236a48b6fb1f8b382b424f576f356863d1c9ca692fa064",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.MixedCovarianceTelescope",
+      "upstream_path": "Targets/MixedCovarianceTelescope.lean",
+      "upstream_sha256": "5f41aac1711caad3efc2a232aa5394f0a68432bb4bf878a52870ffd7a894b3a7",
+      "adapted_sha256": "5f41aac1711caad3efc2a232aa5394f0a68432bb4bf878a52870ffd7a894b3a7",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.MixedDisorderInterpolation",
+      "upstream_path": "Targets/MixedDisorderInterpolation.lean",
+      "upstream_sha256": "5d0937b5f0ac46fe087748c0d51109b5440aed87759427711705aa6cd2bd31ea",
+      "adapted_sha256": "5d0937b5f0ac46fe087748c0d51109b5440aed87759427711705aa6cd2bd31ea",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.MixedJointInterpolation",
+      "upstream_path": "Targets/MixedJointInterpolation.lean",
+      "upstream_sha256": "47a22a5391c1770170cdfe912375d8d7735ed9a445e1684d7015735c1a7abb55",
+      "adapted_sha256": "47a22a5391c1770170cdfe912375d8d7735ed9a445e1684d7015735c1a7abb55",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.MixedNestedVariance",
+      "upstream_path": "Targets/MixedNestedVariance.lean",
+      "upstream_sha256": "e67cfced45767d40f9302da9034057e9d8558fe0c68e51e1c8fabbaa3df7fd77",
+      "adapted_sha256": "e67cfced45767d40f9302da9034057e9d8558fe0c68e51e1c8fabbaa3df7fd77",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.MixedPathDecomposition",
+      "upstream_path": "Targets/MixedPathDecomposition.lean",
+      "upstream_sha256": "6b5b35b62912b6900b7b2e11c32a10e353242156471aae96977263098824badd",
+      "adapted_sha256": "6b5b35b62912b6900b7b2e11c32a10e353242156471aae96977263098824badd",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.MixedPathPressure",
+      "upstream_path": "Targets/MixedPathPressure.lean",
+      "upstream_sha256": "9af6e119a95bb9cd4a313da13f9b4b0817c013cee7877d108975a6207ea78a7f",
+      "adapted_sha256": "9af6e119a95bb9cd4a313da13f9b4b0817c013cee7877d108975a6207ea78a7f",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.MixedPathPressureFormula",
+      "upstream_path": "Targets/MixedPathPressureFormula.lean",
+      "upstream_sha256": "5f777db0a1335d4ff9a11a2e5d5a4698621fb4e586a8c5743f349ae66aae5044",
+      "adapted_sha256": "5f777db0a1335d4ff9a11a2e5d5a4698621fb4e586a8c5743f349ae66aae5044",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.MixedReplicaAverage",
+      "upstream_path": "Targets/MixedReplicaAverage.lean",
+      "upstream_sha256": "411a9848248c430267f4f3debd4b5a2481498f3b4a2912735a3437159461f1c5",
+      "adapted_sha256": "411a9848248c430267f4f3debd4b5a2481498f3b4a2912735a3437159461f1c5",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.MixedReplicaField",
+      "upstream_path": "Targets/MixedReplicaField.lean",
+      "upstream_sha256": "130f67b2756fe917d2bdf9c6898310583dc0a34435c02ace071dab8fdd0802a8",
+      "adapted_sha256": "130f67b2756fe917d2bdf9c6898310583dc0a34435c02ace071dab8fdd0802a8",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.MixedReplicaHeat",
+      "upstream_path": "Targets/MixedReplicaHeat.lean",
+      "upstream_sha256": "2928fc8f8449d5ba0646ff6830b38ba6175b09478bc78a7523886eaf0f1ea3b1",
+      "adapted_sha256": "2928fc8f8449d5ba0646ff6830b38ba6175b09478bc78a7523886eaf0f1ea3b1",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.MixedReplicaHessian",
+      "upstream_path": "Targets/MixedReplicaHessian.lean",
+      "upstream_sha256": "b0d6b86abbfa533c091c379345e31afe96f48d4dc607a7549784c111e04568e4",
+      "adapted_sha256": "b0d6b86abbfa533c091c379345e31afe96f48d4dc607a7549784c111e04568e4",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.MixedReplicaMoments",
+      "upstream_path": "Targets/MixedReplicaMoments.lean",
+      "upstream_sha256": "bd8cb4605fa0e0cbe7c2aae98d5dbdf923f78c16191136f6f08eefad1d7b6911",
+      "adapted_sha256": "bd8cb4605fa0e0cbe7c2aae98d5dbdf923f78c16191136f6f08eefad1d7b6911",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.MixedReplicaPressure",
+      "upstream_path": "Targets/MixedReplicaPressure.lean",
+      "upstream_sha256": "316cec7979ef25c777973460d871a6943d8dd0c6747955a76614bf5bafe98aae",
+      "adapted_sha256": "316cec7979ef25c777973460d871a6943d8dd0c6747955a76614bf5bafe98aae",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.MixedReplicaTrace",
+      "upstream_path": "Targets/MixedReplicaTrace.lean",
+      "upstream_sha256": "b18f9027d7f3d9e927513bd2ad150eb0994373a235ab2025f4df4ee44373e89b",
+      "adapted_sha256": "b18f9027d7f3d9e927513bd2ad150eb0994373a235ab2025f4df4ee44373e89b",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.MixedReplicaWeights",
+      "upstream_path": "Targets/MixedReplicaWeights.lean",
+      "upstream_sha256": "b11d4f75e26ae578f4e0a0ad7b2ad85123daa17a2894d724b44aedac37593f64",
+      "adapted_sha256": "b11d4f75e26ae578f4e0a0ad7b2ad85123daa17a2894d724b44aedac37593f64",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.MixedVariancePressure",
+      "upstream_path": "Targets/MixedVariancePressure.lean",
+      "upstream_sha256": "f094ac1d37e00a173f5a01a19408ce008cfff3318b8a4e3a6926874e0200c71b",
+      "adapted_sha256": "f094ac1d37e00a173f5a01a19408ce008cfff3318b8a4e3a6926874e0200c71b",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.OneSidedCurvature",
+      "upstream_path": "Targets/OneSidedCurvature.lean",
+      "upstream_sha256": "e044728fe8d34f9fd93e41f13d0990fac32a0fd26df2b2601c133445ba95cf61",
+      "adapted_sha256": "e044728fe8d34f9fd93e41f13d0990fac32a0fd26df2b2601c133445ba95cf61",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.ParisiCascadeIdentification",
+      "upstream_path": "Targets/ParisiCascadeIdentification.lean",
+      "upstream_sha256": "7251252ca5c76241f980b081443bd43088155d9619079ea430eb74045cca0676",
+      "adapted_sha256": "7251252ca5c76241f980b081443bd43088155d9619079ea430eb74045cca0676",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.ParisiCascadeSorting",
+      "upstream_path": "Targets/ParisiCascadeSorting.lean",
+      "upstream_sha256": "e7c3d24c74f7cff26e1d3eaddb51f0d824d07ef85da375ca1d933c7907fb8c05",
+      "adapted_sha256": "e7c3d24c74f7cff26e1d3eaddb51f0d824d07ef85da375ca1d933c7907fb8c05",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.ParisiCascadeStrictSorting",
+      "upstream_path": "Targets/ParisiCascadeStrictSorting.lean",
+      "upstream_sha256": "12f1b3470a8f48c7c6fc7b7a911d7321e0e0fb4ade78aa5785534e06ed3bee4f",
+      "adapted_sha256": "12f1b3470a8f48c7c6fc7b7a911d7321e0e0fb4ade78aa5785534e06ed3bee4f",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.ParisiFourthUniform",
+      "upstream_path": "Targets/ParisiFourthUniform.lean",
+      "upstream_sha256": "44d3c3688c8a0efbcb211eb2f353de4250e243e9aafe2fff2cb1e2d5e279fc6b",
+      "adapted_sha256": "44d3c3688c8a0efbcb211eb2f353de4250e243e9aafe2fff2cb1e2d5e279fc6b",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.ParisiHessianSquareFlow",
+      "upstream_path": "Targets/ParisiHessianSquareFlow.lean",
+      "upstream_sha256": "48fd159933997d960358bd597d6b31c1e57f306d556b9234327864aa6f90257f",
+      "adapted_sha256": "48fd159933997d960358bd597d6b31c1e57f306d556b9234327864aa6f90257f",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.ParisiHessianVariance",
+      "upstream_path": "Targets/ParisiHessianVariance.lean",
+      "upstream_sha256": "df671c70bb57284eb709a89aa4559fbdc93d31eef50c63911cb799c2748ecb08",
+      "adapted_sha256": "df671c70bb57284eb709a89aa4559fbdc93d31eef50c63911cb799c2748ecb08",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.ParisiHessianVarianceBound",
+      "upstream_path": "Targets/ParisiHessianVarianceBound.lean",
+      "upstream_sha256": "7b7c10436108a51feaef69afeef1d9f34f38e677ced8b52fb5d8d7d54bc75a66",
+      "adapted_sha256": "7b7c10436108a51feaef69afeef1d9f34f38e677ced8b52fb5d8d7d54bc75a66",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.ParisiJointMassContinuity",
+      "upstream_path": "Targets/ParisiJointMassContinuity.lean",
+      "upstream_sha256": "719ac97eef68327a3f661deb1cab116d7149cd2bfc3341cf6193f9d281e13202",
+      "adapted_sha256": "719ac97eef68327a3f661deb1cab116d7149cd2bfc3341cf6193f9d281e13202",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.ParisiListRegularity",
+      "upstream_path": "Targets/ParisiListRegularity.lean",
+      "upstream_sha256": "51af0e71146d7f6ad85f0104ec2badd7402235765377e07bda697729165a3c3f",
+      "adapted_sha256": "51af0e71146d7f6ad85f0104ec2badd7402235765377e07bda697729165a3c3f",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.ParisiMassDerivative",
+      "upstream_path": "Targets/ParisiMassDerivative.lean",
+      "upstream_sha256": "dc61a004c8429a5eda71be7122d0c99c1e7126e1acee9c920dca09009a6b8915",
+      "adapted_sha256": "dc61a004c8429a5eda71be7122d0c99c1e7126e1acee9c920dca09009a6b8915",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.ParisiMassLocal",
+      "upstream_path": "Targets/ParisiMassLocal.lean",
+      "upstream_sha256": "118f15129cf9863f8d411c7f708635c6e9133a7a41ef324a306e881ce3bc7f20",
+      "adapted_sha256": "118f15129cf9863f8d411c7f708635c6e9133a7a41ef324a306e881ce3bc7f20",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.ParisiMassUniform",
+      "upstream_path": "Targets/ParisiMassUniform.lean",
+      "upstream_sha256": "77131b7ae96e144a6b024551baf243967758c1399929f2559a56950d70823118",
+      "adapted_sha256": "77131b7ae96e144a6b024551baf243967758c1399929f2559a56950d70823118",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.ParisiMassZero",
+      "upstream_path": "Targets/ParisiMassZero.lean",
+      "upstream_sha256": "fc417992ea16190361439bd362413b8573dbe0c31b2decc2e2282c48ed196999",
+      "adapted_sha256": "fc417992ea16190361439bd362413b8573dbe0c31b2decc2e2282c48ed196999",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.ParisiSlopeVariance",
+      "upstream_path": "Targets/ParisiSlopeVariance.lean",
+      "upstream_sha256": "7ea8761db6f1a9ae14bf785202fabd3ca3668f9f956ea9e5649a2767c4d47ea0",
+      "adapted_sha256": "7ea8761db6f1a9ae14bf785202fabd3ca3668f9f956ea9e5649a2767c4d47ea0",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.ParisiStepInterchange",
+      "upstream_path": "Targets/ParisiStepInterchange.lean",
+      "upstream_sha256": "461f879a769d418a156c473242d11a12ddad033aaab406b2e4d6905661439e2c",
+      "adapted_sha256": "461f879a769d418a156c473242d11a12ddad033aaab406b2e4d6905661439e2c",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.ParisiStepSemigroup",
+      "upstream_path": "Targets/ParisiStepSemigroup.lean",
+      "upstream_sha256": "c15317917a4b39003479b12cb46f7e6141605a5adcc02d5a2651705f64c945e8",
+      "adapted_sha256": "c15317917a4b39003479b12cb46f7e6141605a5adcc02d5a2651705f64c945e8",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.ParisiStepStrictInterchange",
+      "upstream_path": "Targets/ParisiStepStrictInterchange.lean",
+      "upstream_sha256": "1e0b76836c4b6cabea57e4d9f5e367df14273e570285b8bff5c1f4cdea23358b",
+      "adapted_sha256": "1e0b76836c4b6cabea57e4d9f5e367df14273e570285b8bff5c1f4cdea23358b",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.ParisiStrictConvexity",
+      "upstream_path": "Targets/ParisiStrictConvexity.lean",
+      "upstream_sha256": "582d35adfb839dd80815e88adfdb374770a9fad2ad1321e3c6e23d7b57f34bb6",
+      "adapted_sha256": "582d35adfb839dd80815e88adfdb374770a9fad2ad1321e3c6e23d7b57f34bb6",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.ParisiStrictVariance",
+      "upstream_path": "Targets/ParisiStrictVariance.lean",
+      "upstream_sha256": "a8f1889a4d7c0303247907fe4981a23ce628c69aaa288bebb5cee438c71170a9",
+      "adapted_sha256": "a8f1889a4d7c0303247907fe4981a23ce628c69aaa288bebb5cee438c71170a9",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.ParisiThirdSpatial",
+      "upstream_path": "Targets/ParisiThirdSpatial.lean",
+      "upstream_sha256": "082575f57595e43fda85c43c6bb962495c87d9d17edc01371e317264d176fbaf",
+      "adapted_sha256": "082575f57595e43fda85c43c6bb962495c87d9d17edc01371e317264d176fbaf",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.ParisiThirdUniform",
+      "upstream_path": "Targets/ParisiThirdUniform.lean",
+      "upstream_sha256": "f34e9f491e8e7640beb761b479c2bed778a40fda134c1a96c6a6502fee6bf2ba",
+      "adapted_sha256": "f34e9f491e8e7640beb761b479c2bed778a40fda134c1a96c6a6502fee6bf2ba",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.ParisiVarianceDerivative",
+      "upstream_path": "Targets/ParisiVarianceDerivative.lean",
+      "upstream_sha256": "4c443eddca0234a60b11dd2f1efa93528ad336ec8175d67adaac380fd25f52e8",
+      "adapted_sha256": "4c443eddca0234a60b11dd2f1efa93528ad336ec8175d67adaac380fd25f52e8",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.ParisiZeroOverlapDerivative",
+      "upstream_path": "Targets/ParisiZeroOverlapDerivative.lean",
+      "upstream_sha256": "4741cb5103ee150c4ae0cdfe42228c938a58b493626b68fd9cc00b9a2f312c44",
+      "adapted_sha256": "4741cb5103ee150c4ae0cdfe42228c938a58b493626b68fd9cc00b9a2f312c44",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.RSBMassPiSemigroup",
+      "upstream_path": "Targets/RSBMassPiSemigroup.lean",
+      "upstream_sha256": "6d05eae58d814fff0d2b080af5acc984e1d29896be546084460078bf843211da",
+      "adapted_sha256": "94c0d3a7f54a33f20bc77c53761d3bf12efbf5e6a22bec9100295814b0d1b776",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.RSBSchemeMassReduction",
+      "upstream_path": "Targets/RSBSchemeMassReduction.lean",
+      "upstream_sha256": "9b7fa629b9397821330c396b0cb7ec162f57e371b6f3ff98c47849517ccec1ae",
+      "adapted_sha256": "9b7fa629b9397821330c396b0cb7ec162f57e371b6f3ff98c47849517ccec1ae",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.RSBSchemeOverlapReduction",
+      "upstream_path": "Targets/RSBSchemeOverlapReduction.lean",
+      "upstream_sha256": "13e874fca9a0c205184c457f17e67a101eb5af901ecafe1abd172d2c9f455451",
+      "adapted_sha256": "5ab36378d39791b8b7639a3667d73bb82a0a18f716bd67087610e516f7227100",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.RSBSchemeReduction",
+      "upstream_path": "Targets/RSBSchemeReduction.lean",
+      "upstream_sha256": "2e2e19e2a6878fa159198aa979a79f06e790887f62e0d7adfcf5adee0cfbc493",
+      "adapted_sha256": "2e2e19e2a6878fa159198aa979a79f06e790887f62e0d7adfcf5adee0cfbc493",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.RSBSchemeTerminalPadding",
+      "upstream_path": "Targets/RSBSchemeTerminalPadding.lean",
+      "upstream_sha256": "c2032dd2fbface05080530a936c6f17c4034058dabeda8dd7fec40ef9c500e9e",
+      "adapted_sha256": "c2032dd2fbface05080530a936c6f17c4034058dabeda8dd7fec40ef9c500e9e",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.RSBZeroMassPiSemigroup",
+      "upstream_path": "Targets/RSBZeroMassPiSemigroup.lean",
+      "upstream_sha256": "4f364a832d91565aade09e28f306174bd7a1b3f46b318039b14c46249b32084d",
+      "adapted_sha256": "327b935078c5e6ee9c2154a5218b65ab3599e06fd7e4d465a02dec1ec7007e53",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.ReplicaMeasure",
+      "upstream_path": "Targets/ReplicaMeasure.lean",
+      "upstream_sha256": "8a3d632760fe7d9655b3eb750c5b611773d10b8b292f53e9a4534f68595b908d",
+      "adapted_sha256": "8a3d632760fe7d9655b3eb750c5b611773d10b8b292f53e9a4534f68595b908d",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.RightInterpolationAlgebra",
+      "upstream_path": "Targets/RightInterpolationAlgebra.lean",
+      "upstream_sha256": "cb305e4537b5633ba27db4022312e6cb395a4fbe0903d9d44543f13af21580a6",
+      "adapted_sha256": "cb305e4537b5633ba27db4022312e6cb395a4fbe0903d9d44543f13af21580a6",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.SKSpinFlip",
+      "upstream_path": "Targets/SKSpinFlip.lean",
+      "upstream_sha256": "ebcf5fa7d4d108bc5693e0df87cd34592fdabbdb85b5bfa1b266b49b61f35799",
+      "adapted_sha256": "ebcf5fa7d4d108bc5693e0df87cd34592fdabbdb85b5bfa1b266b49b61f35799",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.SecondInterpolationAlgebra",
+      "upstream_path": "Targets/SecondInterpolationAlgebra.lean",
+      "upstream_sha256": "fa0e709a6e59233af8ae221d3e43e63e2d0d61dac9735629b174fb3e32b2bc77",
+      "adapted_sha256": "fa0e709a6e59233af8ae221d3e43e63e2d0d61dac9735629b174fb3e32b2bc77",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4Concavity",
+      "upstream_path": "Targets/Section4Concavity.lean",
+      "upstream_sha256": "541a68bb4172a0256e7082b974278d603d90ab5b3499e3681489cf65c9b9f17f",
+      "adapted_sha256": "541a68bb4172a0256e7082b974278d603d90ab5b3499e3681489cf65c9b9f17f",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4CubicTaylor",
+      "upstream_path": "Targets/Section4CubicTaylor.lean",
+      "upstream_sha256": "2d269c5577285bf90a8cfcb9f71cbc2fdccd8551bacd10f1631322c22d6d2d6b",
+      "adapted_sha256": "2d269c5577285bf90a8cfcb9f71cbc2fdccd8551bacd10f1631322c22d6d2d6b",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4Curvature",
+      "upstream_path": "Targets/Section4Curvature.lean",
+      "upstream_sha256": "68f0fbb5ee88b88370f2553b52169b4aca7094c2df67b06f6116c2391f31a764",
+      "adapted_sha256": "68f0fbb5ee88b88370f2553b52169b4aca7094c2df67b06f6116c2391f31a764",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4CurvatureRegularity",
+      "upstream_path": "Targets/Section4CurvatureRegularity.lean",
+      "upstream_sha256": "51996dbaa720ab8cfd829277cd44211936d94c9f8b44f35b146e6a65c34f2046",
+      "adapted_sha256": "51996dbaa720ab8cfd829277cd44211936d94c9f8b44f35b146e6a65c34f2046",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4CurvatureUniform",
+      "upstream_path": "Targets/Section4CurvatureUniform.lean",
+      "upstream_sha256": "789b9c8f4e39d7cfad09d36e7c11f5c7cf204153381139b01ed8a86ca38746fd",
+      "adapted_sha256": "789b9c8f4e39d7cfad09d36e7c11f5c7cf204153381139b01ed8a86ca38746fd",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4EndpointOptimality",
+      "upstream_path": "Targets/Section4EndpointOptimality.lean",
+      "upstream_sha256": "219279fc68a6294862e63aa4549945cae5a957b257f7ef3696bd49161c783cc5",
+      "adapted_sha256": "219279fc68a6294862e63aa4549945cae5a957b257f7ef3696bd49161c783cc5",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4FirstVariation",
+      "upstream_path": "Targets/Section4FirstVariation.lean",
+      "upstream_sha256": "fd1bc93198e26301ed9129b4d043af78072b03681bb4f22b7a9de1e5060748c1",
+      "adapted_sha256": "fd1bc93198e26301ed9129b4d043af78072b03681bb4f22b7a9de1e5060748c1",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4HessianDerivative",
+      "upstream_path": "Targets/Section4HessianDerivative.lean",
+      "upstream_sha256": "5c8a86566077d00d577eac2eb04c08add002fdaf8941ab8a9ef14793dc53c793",
+      "adapted_sha256": "5c8a86566077d00d577eac2eb04c08add002fdaf8941ab8a9ef14793dc53c793",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4HessianLipschitz",
+      "upstream_path": "Targets/Section4HessianLipschitz.lean",
+      "upstream_sha256": "69b97a789638539ee516abcf7aef42b622eda0da1ea7699d8de83566562dfa0c",
+      "adapted_sha256": "69b97a789638539ee516abcf7aef42b622eda0da1ea7699d8de83566562dfa0c",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4HessianRegularity",
+      "upstream_path": "Targets/Section4HessianRegularity.lean",
+      "upstream_sha256": "dd56c9709fc24171d869b66c33f0b227136c5f40f2d527f18c625ea2873a4f9f",
+      "adapted_sha256": "dd56c9709fc24171d869b66c33f0b227136c5f40f2d527f18c625ea2873a4f9f",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4HessianUniform",
+      "upstream_path": "Targets/Section4HessianUniform.lean",
+      "upstream_sha256": "76b95cb222ca6d1b3bcc0d4cd4ef0227cb1a010fed2fba821e6bd5b9a1ca24cb",
+      "adapted_sha256": "76b95cb222ca6d1b3bcc0d4cd4ef0227cb1a010fed2fba821e6bd5b9a1ca24cb",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4InitialCurvature",
+      "upstream_path": "Targets/Section4InitialCurvature.lean",
+      "upstream_sha256": "dc184124e83dbcd952db646bfc6270f3d148a09183ad91589e66736d135cdbbc",
+      "adapted_sha256": "dc184124e83dbcd952db646bfc6270f3d148a09183ad91589e66736d135cdbbc",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4InitialHessian",
+      "upstream_path": "Targets/Section4InitialHessian.lean",
+      "upstream_sha256": "5812de38cf578666e7387eeb7a283827c24f84dd4e4bd1365503f4d8d17239f8",
+      "adapted_sha256": "5812de38cf578666e7387eeb7a283827c24f84dd4e4bd1365503f4d8d17239f8",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4InsertedScheme",
+      "upstream_path": "Targets/Section4InsertedScheme.lean",
+      "upstream_sha256": "52bc45cf3dd1c4c9fe69fb579e0ace09f62f03df12d8d04ae9f726adf2ab8b64",
+      "adapted_sha256": "52bc45cf3dd1c4c9fe69fb579e0ace09f62f03df12d8d04ae9f726adf2ab8b64",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4MassDerivative",
+      "upstream_path": "Targets/Section4MassDerivative.lean",
+      "upstream_sha256": "ec91198e95ab4fa816e6b1ce4e3d168dc05d4607b9de878ca05cd12afdac9fa9",
+      "adapted_sha256": "ec91198e95ab4fa816e6b1ce4e3d168dc05d4607b9de878ca05cd12afdac9fa9",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4MassSecond",
+      "upstream_path": "Targets/Section4MassSecond.lean",
+      "upstream_sha256": "989f8ed04a3ae416cd77ec61fdebca2d5023de5ed4563807d12e8a93ffdf6456",
+      "adapted_sha256": "989f8ed04a3ae416cd77ec61fdebca2d5023de5ed4563807d12e8a93ffdf6456",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4MassSecondInvariant",
+      "upstream_path": "Targets/Section4MassSecondInvariant.lean",
+      "upstream_sha256": "bbb3f1500d374ad1bfe35f00c1875176a42d41a78c910f731f73d69d89c34eec",
+      "adapted_sha256": "bbb3f1500d374ad1bfe35f00c1875176a42d41a78c910f731f73d69d89c34eec",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4MassSecondLocal",
+      "upstream_path": "Targets/Section4MassSecondLocal.lean",
+      "upstream_sha256": "ad0091993a23eef11b203c0f6b42158c5f4e64630d844da9bdb04477c71bede1",
+      "adapted_sha256": "ad0091993a23eef11b203c0f6b42158c5f4e64630d844da9bdb04477c71bede1",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4MassTaylor",
+      "upstream_path": "Targets/Section4MassTaylor.lean",
+      "upstream_sha256": "fb2645dd5843cb5e16d8923a2b7aaaede9eac295de4ea4635cd63c063ee69b58",
+      "adapted_sha256": "fb2645dd5843cb5e16d8923a2b7aaaede9eac295de4ea4635cd63c063ee69b58",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4MassUniform",
+      "upstream_path": "Targets/Section4MassUniform.lean",
+      "upstream_sha256": "7bd5a569cdf555e35d77dde33e77b956740eac157da105e158fe233c67ddfba1",
+      "adapted_sha256": "7bd5a569cdf555e35d77dde33e77b956740eac157da105e158fe233c67ddfba1",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4NeighborFactors",
+      "upstream_path": "Targets/Section4NeighborFactors.lean",
+      "upstream_sha256": "de677c42ddc268be47e5cddd884e4fa465b1fdb1b86c4fb09673679893868e3d",
+      "adapted_sha256": "de677c42ddc268be47e5cddd884e4fa465b1fdb1b86c4fb09673679893868e3d",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4NestedDerivative",
+      "upstream_path": "Targets/Section4NestedDerivative.lean",
+      "upstream_sha256": "52ef0392db0d101d94ee98c0e92e36d8d13e9333fca0b47a1116fe8db66d1af5",
+      "adapted_sha256": "52ef0392db0d101d94ee98c0e92e36d8d13e9333fca0b47a1116fe8db66d1af5",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4NestedMonotone",
+      "upstream_path": "Targets/Section4NestedMonotone.lean",
+      "upstream_sha256": "c6c8ecf8c9ec11bf28b77f50d7816230f74395a275755412603e32420f1f965d",
+      "adapted_sha256": "c6c8ecf8c9ec11bf28b77f50d7816230f74395a275755412603e32420f1f965d",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4QuantitativeOptimality",
+      "upstream_path": "Targets/Section4QuantitativeOptimality.lean",
+      "upstream_sha256": "96a29b55168464c85e99915e4053979010bb06f76ab99b7b36ef658b89ff7dcb",
+      "adapted_sha256": "96a29b55168464c85e99915e4053979010bb06f76ab99b7b36ef658b89ff7dcb",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4RightConvexity",
+      "upstream_path": "Targets/Section4RightConvexity.lean",
+      "upstream_sha256": "55b7eb0719d206409ec916d4f77077d660bbedea022ce31fff000504024b700a",
+      "adapted_sha256": "55b7eb0719d206409ec916d4f77077d660bbedea022ce31fff000504024b700a",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4RightDerivative",
+      "upstream_path": "Targets/Section4RightDerivative.lean",
+      "upstream_sha256": "e4180114faea02a42caa3dfa3f38bbf5f9e07bcf03ecb21258a754695cc52161",
+      "adapted_sha256": "e4180114faea02a42caa3dfa3f38bbf5f9e07bcf03ecb21258a754695cc52161",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4RightFactor",
+      "upstream_path": "Targets/Section4RightFactor.lean",
+      "upstream_sha256": "98405ade370d77945c8b23c3c0775de8f4e2aef92d2f8defee53d353eefef2d8",
+      "adapted_sha256": "98405ade370d77945c8b23c3c0775de8f4e2aef92d2f8defee53d353eefef2d8",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4RightInsertedScheme",
+      "upstream_path": "Targets/Section4RightInsertedScheme.lean",
+      "upstream_sha256": "6d011d484a6c2460274cc794db6d176277759af228add047f3775d0941a92799",
+      "adapted_sha256": "6d011d484a6c2460274cc794db6d176277759af228add047f3775d0941a92799",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4RightMassDerivative",
+      "upstream_path": "Targets/Section4RightMassDerivative.lean",
+      "upstream_sha256": "37be680f0d4e749b36a226975a7ee0fc0c434bf97698f6d53c85c9788b96f78b",
+      "adapted_sha256": "37be680f0d4e749b36a226975a7ee0fc0c434bf97698f6d53c85c9788b96f78b",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4RightMassSecond",
+      "upstream_path": "Targets/Section4RightMassSecond.lean",
+      "upstream_sha256": "f5fd29c0926918f69326c03ed2f2f00e413ef3324633d6ae4c14d224503898b3",
+      "adapted_sha256": "f5fd29c0926918f69326c03ed2f2f00e413ef3324633d6ae4c14d224503898b3",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4RightOptimality",
+      "upstream_path": "Targets/Section4RightOptimality.lean",
+      "upstream_sha256": "d75016fe845f078fd9575cbc6f72d61202604a4b7a273b40c851106bfec795f7",
+      "adapted_sha256": "d75016fe845f078fd9575cbc6f72d61202604a4b7a273b40c851106bfec795f7",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4RightUPrime",
+      "upstream_path": "Targets/Section4RightUPrime.lean",
+      "upstream_sha256": "a6454f94aafd708e63648d73b715ad44cafc2fd310e6017fa6799a6a92e756c6",
+      "adapted_sha256": "a6454f94aafd708e63648d73b715ad44cafc2fd310e6017fa6799a6a92e756c6",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4RightVarianceBaseline",
+      "upstream_path": "Targets/Section4RightVarianceBaseline.lean",
+      "upstream_sha256": "0e6cc68ea4e26c41aa8f6275a7f98902abf97f3f8e99428b4ee9323fa1e4e6cb",
+      "adapted_sha256": "0e6cc68ea4e26c41aa8f6275a7f98902abf97f3f8e99428b4ee9323fa1e4e6cb",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4RightVarianceFactor",
+      "upstream_path": "Targets/Section4RightVarianceFactor.lean",
+      "upstream_sha256": "bee5c8fdd80388dd68b6213763b7e51fffa84b1ea52d8686921f2f88d7484efe",
+      "adapted_sha256": "bee5c8fdd80388dd68b6213763b7e51fffa84b1ea52d8686921f2f88d7484efe",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4RightVariation",
+      "upstream_path": "Targets/Section4RightVariation.lean",
+      "upstream_sha256": "160ad973388aadf1d70870a8f4fc5a08201db2c72a5dc67e44fa5500d48e593f",
+      "adapted_sha256": "160ad973388aadf1d70870a8f4fc5a08201db2c72a5dc67e44fa5500d48e593f",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4SignedGaussianFactor",
+      "upstream_path": "Targets/Section4SignedGaussianFactor.lean",
+      "upstream_sha256": "7008e0165e7f36d2ff855bd8ea254dfba9995599032f49738dd9fb1a4e029054",
+      "adapted_sha256": "7008e0165e7f36d2ff855bd8ea254dfba9995599032f49738dd9fb1a4e029054",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4SignedHessianBound",
+      "upstream_path": "Targets/Section4SignedHessianBound.lean",
+      "upstream_sha256": "c43dd4d0dc17988abaf44541be209cafff75875f692cc9931cad66f49a8f9392",
+      "adapted_sha256": "c43dd4d0dc17988abaf44541be209cafff75875f692cc9931cad66f49a8f9392",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4SignedSlopeBound",
+      "upstream_path": "Targets/Section4SignedSlopeBound.lean",
+      "upstream_sha256": "7732d63602c52dc5bdc1b8ff619809aea0e6eaf319f5124302507d85120a4fc6",
+      "adapted_sha256": "7732d63602c52dc5bdc1b8ff619809aea0e6eaf319f5124302507d85120a4fc6",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4SplitDerivative",
+      "upstream_path": "Targets/Section4SplitDerivative.lean",
+      "upstream_sha256": "ec0d54261d4e3c86bd46caf0aa2177de500697615ba0dff0de8d95f38aa80a9c",
+      "adapted_sha256": "ec0d54261d4e3c86bd46caf0aa2177de500697615ba0dff0de8d95f38aa80a9c",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4SplitMonotone",
+      "upstream_path": "Targets/Section4SplitMonotone.lean",
+      "upstream_sha256": "34b67bc29f48eb3c1f1130bb2ca2f4b18a6cbf239e55a2fb687033d17b3d855e",
+      "adapted_sha256": "34b67bc29f48eb3c1f1130bb2ca2f4b18a6cbf239e55a2fb687033d17b3d855e",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4SquaredSlopeDerivative",
+      "upstream_path": "Targets/Section4SquaredSlopeDerivative.lean",
+      "upstream_sha256": "0580c643e33227af9377a56eaede529693b5c07c8cf8731f00405988c84ca61a",
+      "adapted_sha256": "0580c643e33227af9377a56eaede529693b5c07c8cf8731f00405988c84ca61a",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4Stationarity",
+      "upstream_path": "Targets/Section4Stationarity.lean",
+      "upstream_sha256": "d94d4bfa50e7f9cc9b7dc70a15c4c47a12301daaf41226e714e3a374adae4ad6",
+      "adapted_sha256": "d94d4bfa50e7f9cc9b7dc70a15c4c47a12301daaf41226e714e3a374adae4ad6",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4StationarityInterior",
+      "upstream_path": "Targets/Section4StationarityInterior.lean",
+      "upstream_sha256": "d07ace42f54b9ef1d55cc0bd9b28429340f68ed69a5e0ee1f9c6968d888976fb",
+      "adapted_sha256": "cb38c287b1bef7369e7ce62d09a518c4bba72caa2dc9fcbc697bce02389f1bf2",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4StationarityReduction",
+      "upstream_path": "Targets/Section4StationarityReduction.lean",
+      "upstream_sha256": "8a9f6f1f69af3f6d90102c5db18bcf4962d8c08f3e1cc9592c03bb9157707453",
+      "adapted_sha256": "8a9f6f1f69af3f6d90102c5db18bcf4962d8c08f3e1cc9592c03bb9157707453",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4StationarityTerminal",
+      "upstream_path": "Targets/Section4StationarityTerminal.lean",
+      "upstream_sha256": "3d2aa000341b078bb1a76edf6014822890907d49a0f07f2daf590c130e6a6e09",
+      "adapted_sha256": "3d2aa000341b078bb1a76edf6014822890907d49a0f07f2daf590c130e6a6e09",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4TerminalFactors",
+      "upstream_path": "Targets/Section4TerminalFactors.lean",
+      "upstream_sha256": "c2f35ce071312ad33a758bd07173367feba6e8fc7db26226649242aa7c5d31ec",
+      "adapted_sha256": "c2f35ce071312ad33a758bd07173367feba6e8fc7db26226649242aa7c5d31ec",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4ThirdVariation",
+      "upstream_path": "Targets/Section4ThirdVariation.lean",
+      "upstream_sha256": "5e6fe9ea316d5b84fee98f947c0fd98e428ffa6070265e429c307dda24ad62db",
+      "adapted_sha256": "5e6fe9ea316d5b84fee98f947c0fd98e428ffa6070265e429c307dda24ad62db",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4UBounds",
+      "upstream_path": "Targets/Section4UBounds.lean",
+      "upstream_sha256": "f673efb51c2e6a249f6b1ca579188d45c590f62cc7e02e05147dda25b9d1c8ea",
+      "adapted_sha256": "f673efb51c2e6a249f6b1ca579188d45c590f62cc7e02e05147dda25b9d1c8ea",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4UEndpoints",
+      "upstream_path": "Targets/Section4UEndpoints.lean",
+      "upstream_sha256": "43f02bde85fd605903fc904d291c5a7f77937db49c25abc235a588ac934023f6",
+      "adapted_sha256": "43f02bde85fd605903fc904d291c5a7f77937db49c25abc235a588ac934023f6",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4UPrime",
+      "upstream_path": "Targets/Section4UPrime.lean",
+      "upstream_sha256": "8da3201fdd54a731cb36cac896af8305c915b998375e3b8de18cabefa9ede1a9",
+      "adapted_sha256": "8da3201fdd54a731cb36cac896af8305c915b998375e3b8de18cabefa9ede1a9",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4USecond",
+      "upstream_path": "Targets/Section4USecond.lean",
+      "upstream_sha256": "5d3411705f45a82144d8901d48c5d096a3ade4d50a27528ed37fbe27ed15023e",
+      "adapted_sha256": "5d3411705f45a82144d8901d48c5d096a3ade4d50a27528ed37fbe27ed15023e",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4Variance",
+      "upstream_path": "Targets/Section4Variance.lean",
+      "upstream_sha256": "10fa591d44e287225ef1f10df4e85ba7ce8330117a087d60fe635891deb5925e",
+      "adapted_sha256": "10fa591d44e287225ef1f10df4e85ba7ce8330117a087d60fe635891deb5925e",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4VarianceFactor",
+      "upstream_path": "Targets/Section4VarianceFactor.lean",
+      "upstream_sha256": "a96c99523b63b339c4c55ecfa815ff0d906bc2bba4322a71a430f537f0c780a9",
+      "adapted_sha256": "a96c99523b63b339c4c55ecfa815ff0d906bc2bba4322a71a430f537f0c780a9",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4VarianceFactorContinuity",
+      "upstream_path": "Targets/Section4VarianceFactorContinuity.lean",
+      "upstream_sha256": "73272ea84727feb0b5e003167de0bb64fd62d264c1f13655f8f17496e2e325ae",
+      "adapted_sha256": "73272ea84727feb0b5e003167de0bb64fd62d264c1f13655f8f17496e2e325ae",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4ZeroOverlap",
+      "upstream_path": "Targets/Section4ZeroOverlap.lean",
+      "upstream_sha256": "34efc0c9705f2e146df057f62f0654d3d7b920a30c13725f86047bd3bbc0646c",
+      "adapted_sha256": "34efc0c9705f2e146df057f62f0654d3d7b920a30c13725f86047bd3bbc0646c",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4ZeroOverlapCurvature",
+      "upstream_path": "Targets/Section4ZeroOverlapCurvature.lean",
+      "upstream_sha256": "9b39708ff106007477e58525dc1b6da3cbb63a26985a640bf869ae9865736508",
+      "adapted_sha256": "9b39708ff106007477e58525dc1b6da3cbb63a26985a640bf869ae9865736508",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section4ZeroOverlapVariation",
+      "upstream_path": "Targets/Section4ZeroOverlapVariation.lean",
+      "upstream_sha256": "577eaaec8712a05a89dd14342fa79e54f3d08d5ac475f9dff8a9cade583699cc",
+      "adapted_sha256": "577eaaec8712a05a89dd14342fa79e54f3d08d5ac475f9dff8a9cade583699cc",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5AdjacentBoundary",
+      "upstream_path": "Targets/Section5AdjacentBoundary.lean",
+      "upstream_sha256": "5bcea616db184dd07070715045858f2959406145d2bd349ff1aac14d8eab0d7f",
+      "adapted_sha256": "5bcea616db184dd07070715045858f2959406145d2bd349ff1aac14d8eab0d7f",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5AdjacentCompact",
+      "upstream_path": "Targets/Section5AdjacentCompact.lean",
+      "upstream_sha256": "a1d0d3b90efa953b27ed269bf2b189adac801ddd8f16b4e95923c056f6269656",
+      "adapted_sha256": "a1d0d3b90efa953b27ed269bf2b189adac801ddd8f16b4e95923c056f6269656",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5AdjacentDeficit",
+      "upstream_path": "Targets/Section5AdjacentDeficit.lean",
+      "upstream_sha256": "b8ed5e22c1911c5382f940fe9801a561a99cf95705bc8de17765cc6d9d2c6791",
+      "adapted_sha256": "b8ed5e22c1911c5382f940fe9801a561a99cf95705bc8de17765cc6d9d2c6791",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5AdjacentScalar",
+      "upstream_path": "Targets/Section5AdjacentScalar.lean",
+      "upstream_sha256": "8fce392b53a3683fec0bab63ecaf62279a7e2c6512edae7b5c19e74a85b39f6b",
+      "adapted_sha256": "8fce392b53a3683fec0bab63ecaf62279a7e2c6512edae7b5c19e74a85b39f6b",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5AdjacentScalarFamily",
+      "upstream_path": "Targets/Section5AdjacentScalarFamily.lean",
+      "upstream_sha256": "0b40604f5250a4faeb3f9fa6833b68dfc4633d321c9412013312e7415a77d7eb",
+      "adapted_sha256": "0b40604f5250a4faeb3f9fa6833b68dfc4633d321c9412013312e7415a77d7eb",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5AdjacentStationaryCompact",
+      "upstream_path": "Targets/Section5AdjacentStationaryCompact.lean",
+      "upstream_sha256": "950b4fc36a853d3701b4c4dd299c784f73b0d1ba06ff5eae314c8262eba5a736",
+      "adapted_sha256": "950b4fc36a853d3701b4c4dd299c784f73b0d1ba06ff5eae314c8262eba5a736",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5AdjacentStrict",
+      "upstream_path": "Targets/Section5AdjacentStrict.lean",
+      "upstream_sha256": "356aad05f0b12f6ab6bb82d8c0548a69ec07dbf283a2b41087ab0b417e8153cb",
+      "adapted_sha256": "356aad05f0b12f6ab6bb82d8c0548a69ec07dbf283a2b41087ab0b417e8153cb",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5AdjacentStrictCompact",
+      "upstream_path": "Targets/Section5AdjacentStrictCompact.lean",
+      "upstream_sha256": "587ca8fa0c4df657608393cff3e7c5889107203e34752f59827bfa34e66aeab7",
+      "adapted_sha256": "587ca8fa0c4df657608393cff3e7c5889107203e34752f59827bfa34e66aeab7",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5CompactTube",
+      "upstream_path": "Targets/Section5CompactTube.lean",
+      "upstream_sha256": "d9cad991fba457044fd1a8b885b9a008f6ce03d2fd64d3a41b423cfc890ac0e2",
+      "adapted_sha256": "d9cad991fba457044fd1a8b885b9a008f6ce03d2fd64d3a41b423cfc890ac0e2",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5CompactWitness",
+      "upstream_path": "Targets/Section5CompactWitness.lean",
+      "upstream_sha256": "25500fc9564e366b98fd6fc08ee8d63fc925cfa43731290f4b841513852b6223",
+      "adapted_sha256": "25500fc9564e366b98fd6fc08ee8d63fc925cfa43731290f4b841513852b6223",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5ConcreteNegativeAway",
+      "upstream_path": "Targets/Section5ConcreteNegativeAway.lean",
+      "upstream_sha256": "73e47ff7d88b9e476aec89c39d75713d09f452cf1a1264ec6af51b99a6b54df8",
+      "adapted_sha256": "73e47ff7d88b9e476aec89c39d75713d09f452cf1a1264ec6af51b99a6b54df8",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5ConditionedInitialInterpolation",
+      "upstream_path": "Targets/Section5ConditionedInitialInterpolation.lean",
+      "upstream_sha256": "5970abb86fdb6906780567bfafd828a4323bb48bd0b0292c9ed645d2d966decd",
+      "adapted_sha256": "5970abb86fdb6906780567bfafd828a4323bb48bd0b0292c9ed645d2d966decd",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5CovarianceIdentity",
+      "upstream_path": "Targets/Section5CovarianceIdentity.lean",
+      "upstream_sha256": "ce6d1f328cb797007099526ae73e13f1a613a407284f0183562b261282d00da9",
+      "adapted_sha256": "ce6d1f328cb797007099526ae73e13f1a613a407284f0183562b261282d00da9",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5FarCompact",
+      "upstream_path": "Targets/Section5FarCompact.lean",
+      "upstream_sha256": "69227216ec4c3c4a7a4e85b164023034e4bf5c8dd0ae21ca5cf7b86c02be6d4b",
+      "adapted_sha256": "69227216ec4c3c4a7a4e85b164023034e4bf5c8dd0ae21ca5cf7b86c02be6d4b",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5FarLeft",
+      "upstream_path": "Targets/Section5FarLeft.lean",
+      "upstream_sha256": "57340e061bfee3d767368e4a465f4b967e287b87581442ad1c0083dcb57dbdf9",
+      "adapted_sha256": "57340e061bfee3d767368e4a465f4b967e287b87581442ad1c0083dcb57dbdf9",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5FarRight",
+      "upstream_path": "Targets/Section5FarRight.lean",
+      "upstream_sha256": "2e43912d35de0e1df6437568d4fcea71fb993feade6cfc15dab217f4cd132601",
+      "adapted_sha256": "2e43912d35de0e1df6437568d4fcea71fb993feade6cfc15dab217f4cd132601",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5FiniteCompactCover",
+      "upstream_path": "Targets/Section5FiniteCompactCover.lean",
+      "upstream_sha256": "167c9977ca21820d203d236743d32d3f93668368b0a345711252dd1927bd7711",
+      "adapted_sha256": "167c9977ca21820d203d236743d32d3f93668368b0a345711252dd1927bd7711",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5FiniteGapCover",
+      "upstream_path": "Targets/Section5FiniteGapCover.lean",
+      "upstream_sha256": "b40e67c22d169e71b556bdc6859dd5c8c1c875b9576a4d334a6daab70e834d3f",
+      "adapted_sha256": "b40e67c22d169e71b556bdc6859dd5c8c1c875b9576a4d334a6daab70e834d3f",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5InitialLeft",
+      "upstream_path": "Targets/Section5InitialLeft.lean",
+      "upstream_sha256": "1860cd513354dea420763e06bc2d7e70b949e92943883c42dd98c3ee3607a6a2",
+      "adapted_sha256": "1860cd513354dea420763e06bc2d7e70b949e92943883c42dd98c3ee3607a6a2",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5InitialSigned",
+      "upstream_path": "Targets/Section5InitialSigned.lean",
+      "upstream_sha256": "474886bab564a06942e25fe51b0ed9d06f3406c3721471d7237e49bc2fe9fc14",
+      "adapted_sha256": "474886bab564a06942e25fe51b0ed9d06f3406c3721471d7237e49bc2fe9fc14",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5InterleavedBound",
+      "upstream_path": "Targets/Section5InterleavedBound.lean",
+      "upstream_sha256": "c0f5072f94f5ad1d74989fb6f26740899521ca716b9412841b562e4f1be6c68d",
+      "adapted_sha256": "c0f5072f94f5ad1d74989fb6f26740899521ca716b9412841b562e4f1be6c68d",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5InterleavedCompact",
+      "upstream_path": "Targets/Section5InterleavedCompact.lean",
+      "upstream_sha256": "af1ee0d3d994c45b9f4f731efcfbebef71e6a00afeb9f509ea7e109f9ea1f607",
+      "adapted_sha256": "af1ee0d3d994c45b9f4f731efcfbebef71e6a00afeb9f509ea7e109f9ea1f607",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5InterleavedContinuity",
+      "upstream_path": "Targets/Section5InterleavedContinuity.lean",
+      "upstream_sha256": "d52d5705075fc829c6816019f3ec480827fd597d59b155ba433974c165e281f2",
+      "adapted_sha256": "d52d5705075fc829c6816019f3ec480827fd597d59b155ba433974c165e281f2",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5InterleavedCovariance",
+      "upstream_path": "Targets/Section5InterleavedCovariance.lean",
+      "upstream_sha256": "2f71e90b6fffd8c9bd72be238265d63d59d79cc9fc07c17cb1dd29d4aec33981",
+      "adapted_sha256": "2f71e90b6fffd8c9bd72be238265d63d59d79cc9fc07c17cb1dd29d4aec33981",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5InterleavedEndpoint",
+      "upstream_path": "Targets/Section5InterleavedEndpoint.lean",
+      "upstream_sha256": "62bd6dd4357d130fbe455a7cb6ecbef682cd89c46015abf40afa65ff229b5b04",
+      "adapted_sha256": "62bd6dd4357d130fbe455a7cb6ecbef682cd89c46015abf40afa65ff229b5b04",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5InterleavedMajorant",
+      "upstream_path": "Targets/Section5InterleavedMajorant.lean",
+      "upstream_sha256": "488bfa85d7a1eb37803ae3da3434533ce0d0b3a703cf52a3af32a32065df5556",
+      "adapted_sha256": "488bfa85d7a1eb37803ae3da3434533ce0d0b3a703cf52a3af32a32065df5556",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5InterleavedMassPair",
+      "upstream_path": "Targets/Section5InterleavedMassPair.lean",
+      "upstream_sha256": "bcae95e2f6aeca4cff706dd20547ae54aaf7dcb91908c997d4303927900d4075",
+      "adapted_sha256": "bcae95e2f6aeca4cff706dd20547ae54aaf7dcb91908c997d4303927900d4075",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5InterleavedNegative",
+      "upstream_path": "Targets/Section5InterleavedNegative.lean",
+      "upstream_sha256": "b4e31d0fa6b3fe215899cf529ff88a0ce7110dd2bdc21e167e8c187b5c9bc5b0",
+      "adapted_sha256": "b4e31d0fa6b3fe215899cf529ff88a0ce7110dd2bdc21e167e8c187b5c9bc5b0",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5InterleavedOffDiagonal",
+      "upstream_path": "Targets/Section5InterleavedOffDiagonal.lean",
+      "upstream_sha256": "d23ba59c6afa9fe797dc92e938e6f8d54835c941572d075dccb28ef89898a4fc",
+      "adapted_sha256": "d23ba59c6afa9fe797dc92e938e6f8d54835c941572d075dccb28ef89898a4fc",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5InterleavedOffDiagonalBound",
+      "upstream_path": "Targets/Section5InterleavedOffDiagonalBound.lean",
+      "upstream_sha256": "1c912b034ff9c8cef63410972bd8f566d8afe307bbcc94cf083266042cdcd39c",
+      "adapted_sha256": "1c912b034ff9c8cef63410972bd8f566d8afe307bbcc94cf083266042cdcd39c",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5InterleavedOverlaps",
+      "upstream_path": "Targets/Section5InterleavedOverlaps.lean",
+      "upstream_sha256": "b249742097dca15885cc003b7e6cf348482d4e8e975fb4358ffccab9edbedefb",
+      "adapted_sha256": "b249742097dca15885cc003b7e6cf348482d4e8e975fb4358ffccab9edbedefb",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5InterleavedPressure",
+      "upstream_path": "Targets/Section5InterleavedPressure.lean",
+      "upstream_sha256": "d2108c8f2117aa3971224051e7b464cf96974732152adf2d6c64aa0e0c7da5e4",
+      "adapted_sha256": "d2108c8f2117aa3971224051e7b464cf96974732152adf2d6c64aa0e0c7da5e4",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5InterleavedRightCompact",
+      "upstream_path": "Targets/Section5InterleavedRightCompact.lean",
+      "upstream_sha256": "b4d343bc32cd52a46abaf6b7ff498ef52adace8f2276c3fda32a02e17faf951c",
+      "adapted_sha256": "b4d343bc32cd52a46abaf6b7ff498ef52adace8f2276c3fda32a02e17faf951c",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5InterleavedScalarContinuity",
+      "upstream_path": "Targets/Section5InterleavedScalarContinuity.lean",
+      "upstream_sha256": "fc0eeeea264b0701062725da39a39274ef0d38070b593d1b6222c14f2e07a2b6",
+      "adapted_sha256": "c14698087a33d4194d7b24c8c90ce1498dff1abc9781493b24b28ebe068f29e2",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5InterleavedScalarCore",
+      "upstream_path": "Targets/Section5InterleavedScalarCore.lean",
+      "upstream_sha256": "3b8c4581ac82bf6411e6b9380bac18d6c8adcd33dab6d7be8126df67fbff7857",
+      "adapted_sha256": "4c85caa714c05c5798dde1adff56bdf7e94ec0ed0c84c9c7aa6707394e591515",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5InterleavedStrict",
+      "upstream_path": "Targets/Section5InterleavedStrict.lean",
+      "upstream_sha256": "45b7e3ffa8aadfaf8a6244ba6e220000de36b7968e4b83b205e1b599bd6e649f",
+      "adapted_sha256": "45b7e3ffa8aadfaf8a6244ba6e220000de36b7968e4b83b205e1b599bd6e649f",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5InterleavedTimeZero",
+      "upstream_path": "Targets/Section5InterleavedTimeZero.lean",
+      "upstream_sha256": "ef548f195dccfb79fc1042393413dc0741b75c7eb208e5cb38a6d96cb175cedd",
+      "adapted_sha256": "ef548f195dccfb79fc1042393413dc0741b75c7eb208e5cb38a6d96cb175cedd",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5InterleavedZero",
+      "upstream_path": "Targets/Section5InterleavedZero.lean",
+      "upstream_sha256": "20888001ef33f02673f1ba9b4f71be948993eaa62d638b6ba49522f21aa8216b",
+      "adapted_sha256": "20888001ef33f02673f1ba9b4f71be948993eaa62d638b6ba49522f21aa8216b",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5Interleaving",
+      "upstream_path": "Targets/Section5Interleaving.lean",
+      "upstream_sha256": "64f83c0b64818bc99ba8412895ce27ee23b62ec3b97c4761cf73e193130916da",
+      "adapted_sha256": "64f83c0b64818bc99ba8412895ce27ee23b62ec3b97c4761cf73e193130916da",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5InterleavingFilter",
+      "upstream_path": "Targets/Section5InterleavingFilter.lean",
+      "upstream_sha256": "b3a87c2c59d0d75ddc44231f7387e0e3537416bd820a1ec2f6439eeba8b52035",
+      "adapted_sha256": "027e37238a6b2ebb98303335be9300cb0257ca50bf412c015c88328664ad4892",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5InterpolationBound",
+      "upstream_path": "Targets/Section5InterpolationBound.lean",
+      "upstream_sha256": "bdbfa89f80ac6bc14bb85ad9ee2c72af8839fa706292a233c0bb1a0e8a8cdb47",
+      "adapted_sha256": "bdbfa89f80ac6bc14bb85ad9ee2c72af8839fa706292a233c0bb1a0e8a8cdb47",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5InterpolationContinuity",
+      "upstream_path": "Targets/Section5InterpolationContinuity.lean",
+      "upstream_sha256": "ee8028d8d135118b0668e2a205e03e6fd18531bbb6a37e34da754f7b59396898",
+      "adapted_sha256": "ee8028d8d135118b0668e2a205e03e6fd18531bbb6a37e34da754f7b59396898",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5InterpolationPath",
+      "upstream_path": "Targets/Section5InterpolationPath.lean",
+      "upstream_sha256": "152d820ffb6de099f665f30a83f4b90d4a0e2419397e1438b7fab3e638fe164f",
+      "adapted_sha256": "152d820ffb6de099f665f30a83f4b90d4a0e2419397e1438b7fab3e638fe164f",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5LambdaUPrime",
+      "upstream_path": "Targets/Section5LambdaUPrime.lean",
+      "upstream_sha256": "60205ec339877ce9a9cce960a7bbb169b26d28b171076905160e0151c7f0e87f",
+      "adapted_sha256": "60205ec339877ce9a9cce960a7bbb169b26d28b171076905160e0151c7f0e87f",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5LeftOffDiagonalInterpolation",
+      "upstream_path": "Targets/Section5LeftOffDiagonalInterpolation.lean",
+      "upstream_sha256": "a3d2414a091b169786272da90139aad64228ba58fadc317ca82be84497208267",
+      "adapted_sha256": "a3d2414a091b169786272da90139aad64228ba58fadc317ca82be84497208267",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5LeftOffDiagonalTube",
+      "upstream_path": "Targets/Section5LeftOffDiagonalTube.lean",
+      "upstream_sha256": "ceef9bbb72f4b0f27dc7edc909ab93ba9cffbbf58b4387d8c3c894d3c79acb57",
+      "adapted_sha256": "ceef9bbb72f4b0f27dc7edc909ab93ba9cffbbf58b4387d8c3c894d3c79acb57",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5LeftUniform",
+      "upstream_path": "Targets/Section5LeftUniform.lean",
+      "upstream_sha256": "1c93356db5bfa5cfb9582dd6dd17c4a3b8111b811913574e521d091d12341441",
+      "adapted_sha256": "1c93356db5bfa5cfb9582dd6dd17c4a3b8111b811913574e521d091d12341441",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5LocalCompactCover",
+      "upstream_path": "Targets/Section5LocalCompactCover.lean",
+      "upstream_sha256": "0dc77517449056d5969d059860e88dae8a6b76f91e378ad83ac702a25ad79b3e",
+      "adapted_sha256": "0dc77517449056d5969d059860e88dae8a6b76f91e378ad83ac702a25ad79b3e",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5LocalLeft",
+      "upstream_path": "Targets/Section5LocalLeft.lean",
+      "upstream_sha256": "a27dcb6edc07d5cb3ceeff6dac18409bae40db4cf02cb064cc9dbe47d2fc06bf",
+      "adapted_sha256": "a27dcb6edc07d5cb3ceeff6dac18409bae40db4cf02cb064cc9dbe47d2fc06bf",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5LocalReducedAssembly",
+      "upstream_path": "Targets/Section5LocalReducedAssembly.lean",
+      "upstream_sha256": "5077e94316218d4a2d7bcef2b33a02cabaf401e16c4f18d50446a082fdece9a4",
+      "adapted_sha256": "5077e94316218d4a2d7bcef2b33a02cabaf401e16c4f18d50446a082fdece9a4",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5LocalRight",
+      "upstream_path": "Targets/Section5LocalRight.lean",
+      "upstream_sha256": "ea23fa829618cfdda4ffab15048f202f5df8a4af3a96b4502d964b42da334ec2",
+      "adapted_sha256": "ea23fa829618cfdda4ffab15048f202f5df8a4af3a96b4502d964b42da334ec2",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5MixedCascade",
+      "upstream_path": "Targets/Section5MixedCascade.lean",
+      "upstream_sha256": "f68e0ed2333634b192c500712105272397cbc8e70e977f24702cc3905011fe08",
+      "adapted_sha256": "f68e0ed2333634b192c500712105272397cbc8e70e977f24702cc3905011fe08",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5MixedReflection",
+      "upstream_path": "Targets/Section5MixedReflection.lean",
+      "upstream_sha256": "6bb2e5bf0de7309e76ca2b0d439d4e6edca2c2ea2ce3deeb45c4930beb4c3a30",
+      "adapted_sha256": "6bb2e5bf0de7309e76ca2b0d439d4e6edca2c2ea2ce3deeb45c4930beb4c3a30",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5NegativeAwayAssembly",
+      "upstream_path": "Targets/Section5NegativeAwayAssembly.lean",
+      "upstream_sha256": "cc0efabfbd674acfb244e63127f595a19d285c7de3f13941ac6dd404231b65e5",
+      "adapted_sha256": "cc0efabfbd674acfb244e63127f595a19d285c7de3f13941ac6dd404231b65e5",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5NegativeCompact",
+      "upstream_path": "Targets/Section5NegativeCompact.lean",
+      "upstream_sha256": "42cd76abe023ff66ed59ab259183e30c65b5ffffb09e1bc2cf165f9e31d31ad7",
+      "adapted_sha256": "42cd76abe023ff66ed59ab259183e30c65b5ffffb09e1bc2cf165f9e31d31ad7",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5NegativeInitialAssembly",
+      "upstream_path": "Targets/Section5NegativeInitialAssembly.lean",
+      "upstream_sha256": "656e9d78bab6aab0c784b04bb3e489064a61668212af73d37c903bc4bcbcf8d2",
+      "adapted_sha256": "656e9d78bab6aab0c784b04bb3e489064a61668212af73d37c903bc4bcbcf8d2",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5NegativeInitialBeyondCompact",
+      "upstream_path": "Targets/Section5NegativeInitialBeyondCompact.lean",
+      "upstream_sha256": "ef0bc43d31bd3082c0838fd8025ee23e46940e48f9ce74c4cd7da71d7266171f",
+      "adapted_sha256": "ef0bc43d31bd3082c0838fd8025ee23e46940e48f9ce74c4cd7da71d7266171f",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5NegativeInitialCompact",
+      "upstream_path": "Targets/Section5NegativeInitialCompact.lean",
+      "upstream_sha256": "1427b9a572ee8adb6a5e44326c9383be2824b97e0d508150b282e94d02c56716",
+      "adapted_sha256": "1427b9a572ee8adb6a5e44326c9383be2824b97e0d508150b282e94d02c56716",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5NegativeInitialTerminalCompact",
+      "upstream_path": "Targets/Section5NegativeInitialTerminalCompact.lean",
+      "upstream_sha256": "d7d868072ce3d3423cd133bb1888c96e89a81bb64e8c8249acaa8c3697f47517",
+      "adapted_sha256": "d7d868072ce3d3423cd133bb1888c96e89a81bb64e8c8249acaa8c3697f47517",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5NegativeTerminal",
+      "upstream_path": "Targets/Section5NegativeTerminal.lean",
+      "upstream_sha256": "5bdd41211ef4991fe01aed4e683cae298256f9cdcc9a7e448b5dd001b47d6001",
+      "adapted_sha256": "5bdd41211ef4991fe01aed4e683cae298256f9cdcc9a7e448b5dd001b47d6001",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5NegativeTerminalCompact",
+      "upstream_path": "Targets/Section5NegativeTerminalCompact.lean",
+      "upstream_sha256": "37f6a6499bc0ed3bcdb5e01549642dfe2b93f118683016486189aae475d50c69",
+      "adapted_sha256": "37f6a6499bc0ed3bcdb5e01549642dfe2b93f118683016486189aae475d50c69",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5OffDiagonalAlgebra",
+      "upstream_path": "Targets/Section5OffDiagonalAlgebra.lean",
+      "upstream_sha256": "726c3f1a71c32725432361bd7b5f0726dd9c9a7270b136ae2a6cd8e277fe656c",
+      "adapted_sha256": "726c3f1a71c32725432361bd7b5f0726dd9c9a7270b136ae2a6cd8e277fe656c",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5OutsideIntervals",
+      "upstream_path": "Targets/Section5OutsideIntervals.lean",
+      "upstream_sha256": "08c5d5e654db24eb4426dfd953889fce729841ace1a859c9e4fa264d5e406bf4",
+      "adapted_sha256": "08c5d5e654db24eb4426dfd953889fce729841ace1a859c9e4fa264d5e406bf4",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5PairScalarComparison",
+      "upstream_path": "Targets/Section5PairScalarComparison.lean",
+      "upstream_sha256": "34a891771a96e590bd511fe2326472e2b5b63630180432ea344e972f3c1566a8",
+      "adapted_sha256": "34a891771a96e590bd511fe2326472e2b5b63630180432ea344e972f3c1566a8",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5PhysicalAwayCompact",
+      "upstream_path": "Targets/Section5PhysicalAwayCompact.lean",
+      "upstream_sha256": "6b23510e4cc5920cc55cb4de65420ce71accb5401d616ba12435ba7084602f9e",
+      "adapted_sha256": "6b23510e4cc5920cc55cb4de65420ce71accb5401d616ba12435ba7084602f9e",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5PhysicalNeighborOffDiagonalTube",
+      "upstream_path": "Targets/Section5PhysicalNeighborOffDiagonalTube.lean",
+      "upstream_sha256": "37a2d3b8c08d00bf700b91de363461046f648b9cb5f1e3f017a8d1a9cd025b72",
+      "adapted_sha256": "37a2d3b8c08d00bf700b91de363461046f648b9cb5f1e3f017a8d1a9cd025b72",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5PhysicalNeighborWitness",
+      "upstream_path": "Targets/Section5PhysicalNeighborWitness.lean",
+      "upstream_sha256": "78fd2909046437c8a1c2133ce081886d9f5dde555f26f598e9a68e34e77ebc3f",
+      "adapted_sha256": "78fd2909046437c8a1c2133ce081886d9f5dde555f26f598e9a68e34e77ebc3f",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5PositiveAwayAssembly",
+      "upstream_path": "Targets/Section5PositiveAwayAssembly.lean",
+      "upstream_sha256": "549923956b3d19d73ba657d2755079781e62107a2b35806c2f8ac6fa82a3e8ca",
+      "adapted_sha256": "549923956b3d19d73ba657d2755079781e62107a2b35806c2f8ac6fa82a3e8ca",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5PositiveAwayComplete",
+      "upstream_path": "Targets/Section5PositiveAwayComplete.lean",
+      "upstream_sha256": "f64ea9e889c9fcf4e38f64d77b447a84e564b401f224bc455fefb1b5674a0e7f",
+      "adapted_sha256": "f64ea9e889c9fcf4e38f64d77b447a84e564b401f224bc455fefb1b5674a0e7f",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5PositiveAwayCompleteCases",
+      "upstream_path": "Targets/Section5PositiveAwayCompleteCases.lean",
+      "upstream_sha256": "615e28cb310e963c39aa62bf66442cbca60a03d90751b2c48a28c00ac3b6452a",
+      "adapted_sha256": "615e28cb310e963c39aa62bf66442cbca60a03d90751b2c48a28c00ac3b6452a",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5PositiveAwayConcreteAdapter",
+      "upstream_path": "Targets/Section5PositiveAwayConcreteAdapter.lean",
+      "upstream_sha256": "6985db6740db46a057670e337d76db084c58d8569d5dc0683528c3e5c64cbcec",
+      "adapted_sha256": "6985db6740db46a057670e337d76db084c58d8569d5dc0683528c3e5c64cbcec",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5PositiveAwayImmediateLeft",
+      "upstream_path": "Targets/Section5PositiveAwayImmediateLeft.lean",
+      "upstream_sha256": "0725fb8060660c1e990514269e2b2366fc4d80bfa25a86f5ca7f21a5ea217de3",
+      "adapted_sha256": "0725fb8060660c1e990514269e2b2366fc4d80bfa25a86f5ca7f21a5ea217de3",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5PositiveAwayInitialRight",
+      "upstream_path": "Targets/Section5PositiveAwayInitialRight.lean",
+      "upstream_sha256": "ae0c05da8d24cb9f50c283cfe6588da417f6e9841e0634775658725f7aed422c",
+      "adapted_sha256": "ae0c05da8d24cb9f50c283cfe6588da417f6e9841e0634775658725f7aed422c",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5PositiveAwayLeftAssembly",
+      "upstream_path": "Targets/Section5PositiveAwayLeftAssembly.lean",
+      "upstream_sha256": "0a0a21ebdccbedb70e7b217a27b110645e5d3d8b79b5a98e13d4359c3ab15e1d",
+      "adapted_sha256": "0a0a21ebdccbedb70e7b217a27b110645e5d3d8b79b5a98e13d4359c3ab15e1d",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5PositiveAwayNearLast",
+      "upstream_path": "Targets/Section5PositiveAwayNearLast.lean",
+      "upstream_sha256": "debc9b546deadb4db3e1953d6a99121500f9b5fcf7450d6a136e3320d7024515",
+      "adapted_sha256": "debc9b546deadb4db3e1953d6a99121500f9b5fcf7450d6a136e3320d7024515",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5PositiveAwayOuterPieces",
+      "upstream_path": "Targets/Section5PositiveAwayOuterPieces.lean",
+      "upstream_sha256": "645a1e84acf73919574ec1de59838203a09871ec559c3e8015fdd1a56f327581",
+      "adapted_sha256": "645a1e84acf73919574ec1de59838203a09871ec559c3e8015fdd1a56f327581",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5PositiveAwayPhysicalCore",
+      "upstream_path": "Targets/Section5PositiveAwayPhysicalCore.lean",
+      "upstream_sha256": "3aef774110e058a4886ade3b114ff56f2327697a7ce6164b49200144f9bb6f79",
+      "adapted_sha256": "3aef774110e058a4886ade3b114ff56f2327697a7ce6164b49200144f9bb6f79",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5PositiveAwayRightAssembly",
+      "upstream_path": "Targets/Section5PositiveAwayRightAssembly.lean",
+      "upstream_sha256": "b1d0a3ef81bed018345ba9ece0ebaa17fe7d737dc736537f1785f8b2aabddd11",
+      "adapted_sha256": "b1d0a3ef81bed018345ba9ece0ebaa17fe7d737dc736537f1785f8b2aabddd11",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5PositiveAwayTerminalTube",
+      "upstream_path": "Targets/Section5PositiveAwayTerminalTube.lean",
+      "upstream_sha256": "7498c34cf7dcd72b2dd8fb9bbfd5132fb8651aacf2312f6edb227e14dd4ec377",
+      "adapted_sha256": "7498c34cf7dcd72b2dd8fb9bbfd5132fb8651aacf2312f6edb227e14dd4ec377",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5PressureDerivative",
+      "upstream_path": "Targets/Section5PressureDerivative.lean",
+      "upstream_sha256": "eb9c8111833c19ee196c754e7ee509cb14001ba1889dfc137bb782aa5c393a89",
+      "adapted_sha256": "eb9c8111833c19ee196c754e7ee509cb14001ba1889dfc137bb782aa5c393a89",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5PressureGain",
+      "upstream_path": "Targets/Section5PressureGain.lean",
+      "upstream_sha256": "92eb17624b24b1b96fda775683d11f6386cbe6c5018bbb29c1d81bb5cd78f012",
+      "adapted_sha256": "92eb17624b24b1b96fda775683d11f6386cbe6c5018bbb29c1d81bb5cd78f012",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5QuadraticAssembly",
+      "upstream_path": "Targets/Section5QuadraticAssembly.lean",
+      "upstream_sha256": "f98cece0c51d8cad9e97263cd659585431b8a6fd23f3c4881cd5b6bfb0862e81",
+      "adapted_sha256": "f98cece0c51d8cad9e97263cd659585431b8a6fd23f3c4881cd5b6bfb0862e81",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5RegionalAssembly",
+      "upstream_path": "Targets/Section5RegionalAssembly.lean",
+      "upstream_sha256": "175ee097f770335f1682ff481e8efcb183b1387d0057f01fe6d209507b281e6d",
+      "adapted_sha256": "175ee097f770335f1682ff481e8efcb183b1387d0057f01fe6d209507b281e6d",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5ReplicaDerivative",
+      "upstream_path": "Targets/Section5ReplicaDerivative.lean",
+      "upstream_sha256": "97c07959b15f492ec8876ff729f6b7168b1d3827a09498f999150b8e0f2e4cc5",
+      "adapted_sha256": "97c07959b15f492ec8876ff729f6b7168b1d3827a09498f999150b8e0f2e4cc5",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5RetainedSignedInitialLambda",
+      "upstream_path": "Targets/Section5RetainedSignedInitialLambda.lean",
+      "upstream_sha256": "1a0a1b92ee3febbf8aa0bebc015c0260d6532eab78b6bff613a3dd57584ad8a4",
+      "adapted_sha256": "1a0a1b92ee3febbf8aa0bebc015c0260d6532eab78b6bff613a3dd57584ad8a4",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5RetainedSignedSlope",
+      "upstream_path": "Targets/Section5RetainedSignedSlope.lean",
+      "upstream_sha256": "8cfee4c7ca9243b82e4f2b832ba638bf52f2dcdbdecd73b93581e4f3de60e605",
+      "adapted_sha256": "8cfee4c7ca9243b82e4f2b832ba638bf52f2dcdbdecd73b93581e4f3de60e605",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5RightBoundary",
+      "upstream_path": "Targets/Section5RightBoundary.lean",
+      "upstream_sha256": "c9622f02647b1038f146b55ba397788e4d02a253fe2076c7231545828a9e718d",
+      "adapted_sha256": "c9622f02647b1038f146b55ba397788e4d02a253fe2076c7231545828a9e718d",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5RightLambdaFactor",
+      "upstream_path": "Targets/Section5RightLambdaFactor.lean",
+      "upstream_sha256": "178ef99d53c080d69f2ded413b504498c6598ecff5f29f6aeecd99c1cfe0c64d",
+      "adapted_sha256": "178ef99d53c080d69f2ded413b504498c6598ecff5f29f6aeecd99c1cfe0c64d",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5RightMassGain",
+      "upstream_path": "Targets/Section5RightMassGain.lean",
+      "upstream_sha256": "7b2bf9665776e35a3b792e89c83c385e8cf584900770cdb84804fa971f82da74",
+      "adapted_sha256": "7b2bf9665776e35a3b792e89c83c385e8cf584900770cdb84804fa971f82da74",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5RightOffDiagonal",
+      "upstream_path": "Targets/Section5RightOffDiagonal.lean",
+      "upstream_sha256": "242e335f3d8e76fe06baa79814c90e204f5020a1e66ebb24670a1a0aff8169c3",
+      "adapted_sha256": "242e335f3d8e76fe06baa79814c90e204f5020a1e66ebb24670a1a0aff8169c3",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5RightOffDiagonalInterpolation",
+      "upstream_path": "Targets/Section5RightOffDiagonalInterpolation.lean",
+      "upstream_sha256": "d675441d1175afbd57b519e254bb3b0598fb9470d6dcb8754981ff7fa5034e05",
+      "adapted_sha256": "d675441d1175afbd57b519e254bb3b0598fb9470d6dcb8754981ff7fa5034e05",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5RightPhysicalNeighborTube",
+      "upstream_path": "Targets/Section5RightPhysicalNeighborTube.lean",
+      "upstream_sha256": "4f7c4ef29bb63b622ff5f59d09c41f5ac2efe97f9e88cef3e216a3d9e7786e98",
+      "adapted_sha256": "4f7c4ef29bb63b622ff5f59d09c41f5ac2efe97f9e88cef3e216a3d9e7786e98",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5RightPhysicalNeighborWitness",
+      "upstream_path": "Targets/Section5RightPhysicalNeighborWitness.lean",
+      "upstream_sha256": "d37520e7d45e1aaae05d1ee1ff3631e54dedd6e6280362aacc5766262c330157",
+      "adapted_sha256": "d37520e7d45e1aaae05d1ee1ff3631e54dedd6e6280362aacc5766262c330157",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5RightPressureGain",
+      "upstream_path": "Targets/Section5RightPressureGain.lean",
+      "upstream_sha256": "b573796843137e431337a6282a2291019aa8d38524b2265e531d29710b6cbf3c",
+      "adapted_sha256": "b573796843137e431337a6282a2291019aa8d38524b2265e531d29710b6cbf3c",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5RightScalarGain",
+      "upstream_path": "Targets/Section5RightScalarGain.lean",
+      "upstream_sha256": "5434553209e99ca659cfbad8cb69b2b69db83936ee149440fb7e7155ecc104d3",
+      "adapted_sha256": "5434553209e99ca659cfbad8cb69b2b69db83936ee149440fb7e7155ecc104d3",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5RightUniform",
+      "upstream_path": "Targets/Section5RightUniform.lean",
+      "upstream_sha256": "681b478b99f366407b544ac7c1aa41739ba8e6fb4bfc8c240a47f1ddf386d615",
+      "adapted_sha256": "681b478b99f366407b544ac7c1aa41739ba8e6fb4bfc8c240a47f1ddf386d615",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5ScalarComparisonCompact",
+      "upstream_path": "Targets/Section5ScalarComparisonCompact.lean",
+      "upstream_sha256": "61ab74bc82d61977f9a8d0b4eced7676f713f21765a26f58b778f56f9c33f711",
+      "adapted_sha256": "61ab74bc82d61977f9a8d0b4eced7676f713f21765a26f58b778f56f9c33f711",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5ScalarComparisonContinuity",
+      "upstream_path": "Targets/Section5ScalarComparisonContinuity.lean",
+      "upstream_sha256": "f484df2d1909ea82e8e54483536ad416d2297c27ffc3af47e05bf31233f71a61",
+      "adapted_sha256": "f484df2d1909ea82e8e54483536ad416d2297c27ffc3af47e05bf31233f71a61",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5ScalarComparisonWitness",
+      "upstream_path": "Targets/Section5ScalarComparisonWitness.lean",
+      "upstream_sha256": "69217465d5447b051e11297b0b6f0cd60d3ca5b243077b760641981f57af1cf6",
+      "adapted_sha256": "69217465d5447b051e11297b0b6f0cd60d3ca5b243077b760641981f57af1cf6",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5ScalarEqualityOrder",
+      "upstream_path": "Targets/Section5ScalarEqualityOrder.lean",
+      "upstream_sha256": "5777685f286033cd92a309b35cc37379f25a87d5f74cb83b0472fc5471e1452f",
+      "adapted_sha256": "5777685f286033cd92a309b35cc37379f25a87d5f74cb83b0472fc5471e1452f",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5ScalarIdentification",
+      "upstream_path": "Targets/Section5ScalarIdentification.lean",
+      "upstream_sha256": "62c45f43be0f46250872a7d4869272594462b6daa0b9c7f6dacc668e44ba845f",
+      "adapted_sha256": "62c45f43be0f46250872a7d4869272594462b6daa0b9c7f6dacc668e44ba845f",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5SignCrossing",
+      "upstream_path": "Targets/Section5SignCrossing.lean",
+      "upstream_sha256": "ad94ed5e1d2de5d5593ae0bd529bf4cce2489ba36b009b0d714d7eac3e55f92f",
+      "adapted_sha256": "ad94ed5e1d2de5d5593ae0bd529bf4cce2489ba36b009b0d714d7eac3e55f92f",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5SignedAwayAssembly",
+      "upstream_path": "Targets/Section5SignedAwayAssembly.lean",
+      "upstream_sha256": "be067ad465e90fd50eac10b73b22a8b0a63f9fd1dd00aef72202740fca7931a3",
+      "adapted_sha256": "be067ad465e90fd50eac10b73b22a8b0a63f9fd1dd00aef72202740fca7931a3",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5SignedCascadeFlip",
+      "upstream_path": "Targets/Section5SignedCascadeFlip.lean",
+      "upstream_sha256": "5e33af566ee5024a5b83326528fc4edc81a8f402b832d7396effd38750ddeaf6",
+      "adapted_sha256": "5e33af566ee5024a5b83326528fc4edc81a8f402b832d7396effd38750ddeaf6",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5SignedInitialConditioning",
+      "upstream_path": "Targets/Section5SignedInitialConditioning.lean",
+      "upstream_sha256": "89b65d621ba76ecdb3b94f210193ab4b5bfc92019f5fe3dfcf6745f4fc3946d0",
+      "adapted_sha256": "89b65d621ba76ecdb3b94f210193ab4b5bfc92019f5fe3dfcf6745f4fc3946d0",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5SignedInitialEndpoint",
+      "upstream_path": "Targets/Section5SignedInitialEndpoint.lean",
+      "upstream_sha256": "92ba283c43b32241f838fd90da789d2f5d4d43f65970ac3ae44b9ddd290efca4",
+      "adapted_sha256": "92ba283c43b32241f838fd90da789d2f5d4d43f65970ac3ae44b9ddd290efca4",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5SignedInitialInterpolation",
+      "upstream_path": "Targets/Section5SignedInitialInterpolation.lean",
+      "upstream_sha256": "e2054e15eb72825ef04b7351af4c89f3fddf9929e0e43cf4d096f1ec807ad539",
+      "adapted_sha256": "e2054e15eb72825ef04b7351af4c89f3fddf9929e0e43cf4d096f1ec807ad539",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5SignedInitialLambda",
+      "upstream_path": "Targets/Section5SignedInitialLambda.lean",
+      "upstream_sha256": "37e45c2683255fd00e015e75b95d8f7e1985451503da8aa02e6321a303affe8b",
+      "adapted_sha256": "37e45c2683255fd00e015e75b95d8f7e1985451503da8aa02e6321a303affe8b",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5SignedInitialOffDiagonal",
+      "upstream_path": "Targets/Section5SignedInitialOffDiagonal.lean",
+      "upstream_sha256": "6f6fff6be34300c84d054573aef3ed9bef128c61bb1495cb10bdb40fcb1620bb",
+      "adapted_sha256": "6f6fff6be34300c84d054573aef3ed9bef128c61bb1495cb10bdb40fcb1620bb",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5SignedInitialOffDiagonalEndpoint",
+      "upstream_path": "Targets/Section5SignedInitialOffDiagonalEndpoint.lean",
+      "upstream_sha256": "ba0e3b2f4f8c2fdc8e02f33e8d97085e8376e4390e211f871c9dc42f86cf3adf",
+      "adapted_sha256": "ba0e3b2f4f8c2fdc8e02f33e8d97085e8376e4390e211f871c9dc42f86cf3adf",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5Smallness",
+      "upstream_path": "Targets/Section5Smallness.lean",
+      "upstream_sha256": "4ed8089d8e9605f40c1543c70c210f79c0edefbe059707814458e8038a437ff8",
+      "adapted_sha256": "4ed8089d8e9605f40c1543c70c210f79c0edefbe059707814458e8038a437ff8",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5StableSortFilter",
+      "upstream_path": "Targets/Section5StableSortFilter.lean",
+      "upstream_sha256": "18064c1dd29a3422c297515e16895774603f9a2be59e628b4a0ed08d5c555101",
+      "adapted_sha256": "18064c1dd29a3422c297515e16895774603f9a2be59e628b4a0ed08d5c555101",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5TaggedVelocity",
+      "upstream_path": "Targets/Section5TaggedVelocity.lean",
+      "upstream_sha256": "b4c9ac5d2e64fb6ca0302c29b6592cf85acbf06fbca130947c7fafd4b59854dd",
+      "adapted_sha256": "b4c9ac5d2e64fb6ca0302c29b6592cf85acbf06fbca130947c7fafd4b59854dd",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5TerminalCompact",
+      "upstream_path": "Targets/Section5TerminalCompact.lean",
+      "upstream_sha256": "6e459ce3e7d7042a6b79c8689e37f67a1c47a841ca1b4287f3cef834f9ec123d",
+      "adapted_sha256": "6e459ce3e7d7042a6b79c8689e37f67a1c47a841ca1b4287f3cef834f9ec123d",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5TerminalLambda",
+      "upstream_path": "Targets/Section5TerminalLambda.lean",
+      "upstream_sha256": "95528cddc7853ce0bfd5d7042fded7880398b3efc587662820e9bf7fe1c7e6a7",
+      "adapted_sha256": "95528cddc7853ce0bfd5d7042fded7880398b3efc587662820e9bf7fe1c7e6a7",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5TerminalPadding",
+      "upstream_path": "Targets/Section5TerminalPadding.lean",
+      "upstream_sha256": "22af9740628ab2dc24425b4b366065252c78632300a217edbaaf78c78f97385c",
+      "adapted_sha256": "22af9740628ab2dc24425b4b366065252c78632300a217edbaaf78c78f97385c",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5Theorem24Assembly",
+      "upstream_path": "Targets/Section5Theorem24Assembly.lean",
+      "upstream_sha256": "00bc66236ede4c5b86a841a4fd86bb91a088aba8980a4ea626fb8e3061c53f99",
+      "adapted_sha256": "00bc66236ede4c5b86a841a4fd86bb91a088aba8980a4ea626fb8e3061c53f99",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5Theorem24FinalAssembly",
+      "upstream_path": "Targets/Section5Theorem24FinalAssembly.lean",
+      "upstream_sha256": "0c095f31ae3cd2e029c731284055bbae8f83659a8755d3e3d4a3dfd808c263fc",
+      "adapted_sha256": "0c095f31ae3cd2e029c731284055bbae8f83659a8755d3e3d4a3dfd808c263fc",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5UniformLocalRadius",
+      "upstream_path": "Targets/Section5UniformLocalRadius.lean",
+      "upstream_sha256": "47fa4c5ce5eeeb3854c17efecfd57d4c2f7cc714733d24f8cec7f2dcf150cccf",
+      "adapted_sha256": "47fa4c5ce5eeeb3854c17efecfd57d4c2f7cc714733d24f8cec7f2dcf150cccf",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5VarianceFaces",
+      "upstream_path": "Targets/Section5VarianceFaces.lean",
+      "upstream_sha256": "7aa9a5464804c81152f0590c3298e4046d55540a5984916219b72dd6421d8831",
+      "adapted_sha256": "7aa9a5464804c81152f0590c3298e4046d55540a5984916219b72dd6421d8831",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5ZeroInitialNegative",
+      "upstream_path": "Targets/Section5ZeroInitialNegative.lean",
+      "upstream_sha256": "b17370a7c1d3ce002359a6e46afd83ac7fcef14f1a20728fb5a7a3743f592454",
+      "adapted_sha256": "b17370a7c1d3ce002359a6e46afd83ac7fcef14f1a20728fb5a7a3743f592454",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.Section5ZeroInitialReflection",
+      "upstream_path": "Targets/Section5ZeroInitialReflection.lean",
+      "upstream_sha256": "079a816d588e123123167c737d42f1ad7df3d92a8fc58cd27aba1a35380dc2f5",
+      "adapted_sha256": "079a816d588e123123167c737d42f1ad7df3d92a8fc58cd27aba1a35380dc2f5",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.TalagrandConvergence",
+      "upstream_path": "Targets/TalagrandConvergence.lean",
+      "upstream_sha256": "f0da90fd0a571739f91621f628bbfd4c608382bce2c6f722c2519e273009d962",
+      "adapted_sha256": "f0da90fd0a571739f91621f628bbfd4c608382bce2c6f722c2519e273009d962",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.TalagrandCore",
+      "upstream_path": "Targets/TalagrandCore.lean",
+      "upstream_sha256": "ecbd96b7a814bba741ba26a65eefc92627c1748a316bd6ee62a1e72cbbbdf105",
+      "adapted_sha256": "9c26b09eb291d511381e3de6cc23aa2cee113e86c72a704e77386f6a8bba0a00",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.TalagrandFinal",
+      "upstream_path": "Targets/TalagrandFinal.lean",
+      "upstream_sha256": "a4916b03b43e490db365e1cc9dd208d57a1ec2ea19ffb9006cf41aa58b689bff",
+      "adapted_sha256": "a4916b03b43e490db365e1cc9dd208d57a1ec2ea19ffb9006cf41aa58b689bff",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.TalagrandLambdaGain",
+      "upstream_path": "Targets/TalagrandLambdaGain.lean",
+      "upstream_sha256": "86b45b9aaf5fe5dc1d6212fc2e5608795e04cf2cdc1b7aa33d9ffc60b066df0c",
+      "adapted_sha256": "86b45b9aaf5fe5dc1d6212fc2e5608795e04cf2cdc1b7aa33d9ffc60b066df0c",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.TalagrandOverlapTail",
+      "upstream_path": "Targets/TalagrandOverlapTail.lean",
+      "upstream_sha256": "eb4314f3d44940c0b6a947e56897d037f4813b45ee7445bb9460f9b3d8b04143",
+      "adapted_sha256": "eb4314f3d44940c0b6a947e56897d037f4813b45ee7445bb9460f9b3d8b04143",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.TalagrandProposition25",
+      "upstream_path": "Targets/TalagrandProposition25.lean",
+      "upstream_sha256": "fbc47ab7950f6c5ed87a77aaba021da44d56b7c6dc45f235f249934f52df20cc",
+      "adapted_sha256": "fbc47ab7950f6c5ed87a77aaba021da44d56b7c6dc45f235f249934f52df20cc",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.TalagrandRightInterpolation",
+      "upstream_path": "Targets/TalagrandRightInterpolation.lean",
+      "upstream_sha256": "1389504fdf5d59373f2c31e4870111a9362058f0799e1523d493c91dcde911e3",
+      "adapted_sha256": "1389504fdf5d59373f2c31e4870111a9362058f0799e1523d493c91dcde911e3",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.TalagrandRightZero",
+      "upstream_path": "Targets/TalagrandRightZero.lean",
+      "upstream_sha256": "5515bbc9f96523c783d0657d4987f319c06405c18ebedf78d636d44fe84440cc",
+      "adapted_sha256": "5515bbc9f96523c783d0657d4987f319c06405c18ebedf78d636d44fe84440cc",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.TalagrandSecondInterpolation",
+      "upstream_path": "Targets/TalagrandSecondInterpolation.lean",
+      "upstream_sha256": "67ff6da2f1da6674fe86e8c202561429fccf48c56a867d44b9d668ff076c5381",
+      "adapted_sha256": "67ff6da2f1da6674fe86e8c202561429fccf48c56a867d44b9d668ff076c5381",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.TalagrandSection5",
+      "upstream_path": "Targets/TalagrandSection5.lean",
+      "upstream_sha256": "91d263c7733c73c02839015c857980b56364edd969457e699c8983a81dff70d8",
+      "adapted_sha256": "91d263c7733c73c02839015c857980b56364edd969457e699c8983a81dff70d8",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.TalagrandSection5Zero",
+      "upstream_path": "Targets/TalagrandSection5Zero.lean",
+      "upstream_sha256": "1406127f16425c7d601780799f5d211b3ea77f705a816ea4067478e084be49e9",
+      "adapted_sha256": "1406127f16425c7d601780799f5d211b3ea77f705a816ea4067478e084be49e9",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.TalagrandTheorem22Integration",
+      "upstream_path": "Targets/TalagrandTheorem22Integration.lean",
+      "upstream_sha256": "7aeb1b2785c5cbc94b1739739d8ac7f66cd2c041a2345d5170f40c7667693843",
+      "adapted_sha256": "7aeb1b2785c5cbc94b1739739d8ac7f66cd2c041a2345d5170f40c7667693843",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    },
+    {
+      "module": "Targets.TalagrandTheorem24",
+      "upstream_path": "Targets/TalagrandTheorem24.lean",
+      "upstream_sha256": "72a9a3f3683d001ee35e3c9e33c711765dfe745cdfa495224e80d291ab58f47d",
+      "adapted_sha256": "72a9a3f3683d001ee35e3c9e33c711765dfe745cdfa495224e80d291ab58f47d",
+      "upstream_repository": "https://github.com/qiangwu2/ParisiFormula"
+    }
+  ],
+  "adaptations": [
+    {
+      "module": "Lemmas.Cavity.Estimates",
+      "changes": [
+        "replaced 18 native_decide occurrences with kernel decide"
+      ]
+    },
+    {
+      "module": "Lemmas.Cavity.Interpolation",
+      "changes": [
+        "replaced 1 native_decide occurrences with kernel decide"
+      ]
+    },
+    {
+      "module": "Targets.Milestones",
+      "changes": [
+        "removed off-path unfinished declaration \u03a6_monotoneOn",
+        "removed off-path unfinished declaration free_entropy_tendsto",
+        "removed off-path unfinished declaration parisiFunctional_lipschitz"
+      ]
+    }
+  ],
+  "audit_status": "passed: full imported critical dependency closure, standard three Lean axioms only",
+  "upstream_validation": {
+    "command": "lake build Targets.TalagrandFinal Targets.GuerraAudit",
+    "toolchain": "leanprover/lean4:v4.32.1",
+    "mathlib": "520045ab14e26149ee970e2e617ca04b09bde5d6",
+    "exit_code": 0,
+    "jobs": 8990,
+    "log": "parisi-4321-build.log",
+    "critical_axioms": {
+      "SpinGlass.Targets.parisi_formula": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "SpinGlass.Targets.talagrand_theorem_2_2": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "upstream_full_GuerraAudit": "passed"
+  },
+  "compatibility_changes": [
+    {
+      "module": "Lemmas.AT.PsiContinuity",
+      "patch": "COMPATIBILITY.patch",
+      "upstream_sha256": "ee1c62548b37f01b899f5fc69b08fac8c14254112e763fac5e0c0ab79565a7e9",
+      "adapted_sha256": "034a2e38b8b8cf6e31961319700dd34f083d8261bc81ca66869a41a28935bc8f"
+    },
+    {
+      "module": "Lemmas.Cavity.Estimates",
+      "patch": "COMPATIBILITY.patch",
+      "upstream_sha256": "1c367f366b6a8f0a1d18a7155a916fce80b9698a978748a73882d9e6d601cafe",
+      "adapted_sha256": "e55cb3846626cefadff8861e0578f97b8c244edc5a45689d74a29d378251f458"
+    },
+    {
+      "module": "Lemmas.Cavity.Interpolation",
+      "patch": "COMPATIBILITY.patch",
+      "upstream_sha256": "16c25e6f9639758b812200b4fda40df98f6a39c4fc9b1d43963498c8b08ab4db",
+      "adapted_sha256": "cf820200c40c4be5687e126659e0dbb65f99c48e47aa8efde60d6d7d2bba70a1"
+    },
+    {
+      "module": "Lemmas.Concentration.Transport",
+      "patch": "COMPATIBILITY.patch",
+      "upstream_sha256": "d5bbde76d4dedd7d616a78a8949d82833c51dd38b666d84f97b42dfca709f604",
+      "adapted_sha256": "f2eafb39092c41bce70e799012ad6bb92ede074ddba7c99e3629d9a811c9a801"
+    },
+    {
+      "module": "Lemmas.Concentration.Weak",
+      "patch": "COMPATIBILITY.patch",
+      "upstream_sha256": "3e35c8688bc7945c449d62102a5d9e97fdadef827e193278702500b15e94b527",
+      "adapted_sha256": "05184db78dac42895c0e1c7e4154f167c4166dcce2f20db4810d1e420a080944"
+    },
+    {
+      "module": "Lemmas.Gaussian.CanonicalModel",
+      "patch": "COMPATIBILITY.patch",
+      "upstream_sha256": "4e31f934fd03659cc3a3c4744b76c539b8a5e44efe3cb4bb4f33290ad9cd228a",
+      "adapted_sha256": "0a2d65602d5f19105d3362c1f0cbe69cffb0aa14be8b0752002df89fd501fc4b"
+    },
+    {
+      "module": "Lemmas.Gaussian.ConcreteModel",
+      "patch": "COMPATIBILITY.patch",
+      "upstream_sha256": "1c3b700337cb3c09c0ad39ff6613a95d736f48711a615ade68b1594631c7f279",
+      "adapted_sha256": "2e37aaa4b54f8a9007dbc33913ab7b56e7c545f8bc77a030d0b02cdc6bf3b6d1"
+    },
+    {
+      "module": "Lemmas.GuerraTalagrand.Bound.Endpoint",
+      "patch": "COMPATIBILITY.patch",
+      "upstream_sha256": "c6dddc7dfa4901c864c593167a91347772c35a5f284c9d411a94111a5900d7f9",
+      "adapted_sha256": "12353774ee2c20f990f0778ff7bfc09004130f363e8bc4dbe3830061f1aa34eb"
+    },
+    {
+      "module": "Lemmas.GuerraTalagrand.Bound.HalfEndpoint",
+      "patch": "COMPATIBILITY.patch",
+      "upstream_sha256": "1f7913a1a47db3a33180f8c69c1dd38d41f6564fd4f01b1f3fd0452ff60eb217",
+      "adapted_sha256": "4dae7315a5609dd53e63ada227ca43943ce9a0cef90f5c20b4b4819624246980"
+    },
+    {
+      "module": "Lemmas.GuerraTalagrand.Flatness.Core",
+      "patch": "COMPATIBILITY.patch",
+      "upstream_sha256": "76b3767b761bbc25f1264a25c187909a2a93cd2039d6afb544f70ec484c313d8",
+      "adapted_sha256": "c71ba77aa3713e3e076d3f47e2b09eedff12a0f82067d39745b597d178d8b28b"
+    },
+    {
+      "module": "Lemmas.Price.Cosh",
+      "patch": "COMPATIBILITY.patch",
+      "upstream_sha256": "69a03d30506974901e4c76e5a30fd8407b2f20cfd25609cac7b14fd412982a20",
+      "adapted_sha256": "f29946f86f3a6fa234cb727daf1b24dd2dd857dcc79365f144ab5b114147cc3d"
+    },
+    {
+      "module": "Lemmas.Price.Gaussian",
+      "patch": "COMPATIBILITY.patch",
+      "upstream_sha256": "fce8d03b1b5c8ee46347b703511b43be68c7b0468e57ef2cbe51d44c2dc605d7",
+      "adapted_sha256": "a1ed122dc03ed242683ade26033c57e66782587922cdd349940babf83586c19f"
+    },
+    {
+      "module": "Lemmas.SpinGlass.GaussianIntegrationByParts",
+      "patch": "COMPATIBILITY.patch",
+      "upstream_sha256": "f31dbb439282fc09d164cd18939950a93528c145fe4a6bbd10572fea6f27079b",
+      "adapted_sha256": "bc76b96ee6cb132d1f78023e8d7886a60921d1c40362eaeb07b0512ef45b351e"
+    },
+    {
+      "module": "Lemmas.SpinGlass.Gaussian_IBP_Hilbert",
+      "patch": "COMPATIBILITY.patch",
+      "upstream_sha256": "2b7aae09e9937a9c2416b5867d2008c4be678c5aab8d61715562691d4c26df7d",
+      "adapted_sha256": "040e9ff96247766166fdafaaae648e0db42ae201a226bb42f5d0c610c39d76fd"
+    },
+    {
+      "module": "Lemmas.SpinGlass.Replicas",
+      "patch": "COMPATIBILITY.patch",
+      "upstream_sha256": "ebd51eb282004a5d8e0e2acc72b05bd29e1e416d2ba73d1d6666e8547127f94f",
+      "adapted_sha256": "93c1a1fbd6c93fb14adc68dfe64bb6d6907b5815a62ffcf67983dd84db5ba45a"
+    },
+    {
+      "module": "Lemmas.SpinGlass.gaussian_concentration",
+      "patch": "COMPATIBILITY.patch",
+      "upstream_sha256": "95e3058d48178b18fef85baef8d45ab16796f4a91a5d3d2a98a1513d6ccb4bab",
+      "adapted_sha256": "04d7e42befd4e6ae636cbbb1ab8d3d32e9a290255d6bbe8e47550de852ba5e34"
+    },
+    {
+      "module": "ParisiFormula.AnnealedBound",
+      "patch": "COMPATIBILITY.patch",
+      "upstream_sha256": "11d619e5cada5e20b22c90fbb170aca161587d8bba9a01685a72b4af8f79b314",
+      "adapted_sha256": "abd3302582e59466333524ba14ce7f2dfbd420a1b92e2c8b0bef95f57ae0f6f0"
+    },
+    {
+      "module": "ParisiFormula.GuerraToninelli",
+      "patch": "COMPATIBILITY.patch",
+      "upstream_sha256": "d453a124d5dfe433bca8d2f2179622fb14c967e145d69683678f2749b03748b0",
+      "adapted_sha256": "00b4e0cc101b31e8a27eff94a2a8ce869bdddd4f96bd114ae00a6b566ad59d1a"
+    },
+    {
+      "module": "Targets.CascadeDerivPi",
+      "patch": "COMPATIBILITY.patch",
+      "upstream_sha256": "e917fc04a84428ecd1e2c080616d528fb1634a1c7acf95fff41d0030ccef26be",
+      "adapted_sha256": "d24080ffb8ee1e04d81219256a116e9832ea1c43a54a5d5cb73ad1213404974e"
+    },
+    {
+      "module": "Targets.CoupledConcentration",
+      "patch": "COMPATIBILITY.patch",
+      "upstream_sha256": "d1acae02fc7a723a6659ec192f191dc03e3e429023ba9590b7b6817599bf62b5",
+      "adapted_sha256": "4320fb50aae7ea45e942e7c162483bf6184c7f692b40e7d67603368c4224ba43"
+    },
+    {
+      "module": "Targets.CoupledGaussianLaw",
+      "patch": "COMPATIBILITY.patch",
+      "upstream_sha256": "8b24b8f9b25abc400917ba1a043ce94e539a61b23f78f3dfba07a901ef7de7a2",
+      "adapted_sha256": "19deeb868b261278979aadcc852bc6059b3b273073b10460ccf64d7f75d1069f"
+    },
+    {
+      "module": "Targets.Milestones",
+      "patch": "COMPATIBILITY.patch",
+      "upstream_sha256": "36eb4a7354403c41e4c88d152a511f3e2a2c89222dfdfebf6334fd31ceea34d8",
+      "adapted_sha256": "e78428e745d04cd2c2d104c5b1b9198ad4c879e797b517fee08f7406808fe98c"
+    },
+    {
+      "module": "Targets.RSBMassPiSemigroup",
+      "patch": "COMPATIBILITY.patch",
+      "upstream_sha256": "6d05eae58d814fff0d2b080af5acc984e1d29896be546084460078bf843211da",
+      "adapted_sha256": "94c0d3a7f54a33f20bc77c53761d3bf12efbf5e6a22bec9100295814b0d1b776"
+    },
+    {
+      "module": "Targets.RSBSchemeOverlapReduction",
+      "patch": "COMPATIBILITY.patch",
+      "upstream_sha256": "13e874fca9a0c205184c457f17e67a101eb5af901ecafe1abd172d2c9f455451",
+      "adapted_sha256": "5ab36378d39791b8b7639a3667d73bb82a0a18f716bd67087610e516f7227100"
+    },
+    {
+      "module": "Targets.RSBZeroMassPiSemigroup",
+      "patch": "COMPATIBILITY.patch",
+      "upstream_sha256": "4f364a832d91565aade09e28f306174bd7a1b3f46b318039b14c46249b32084d",
+      "adapted_sha256": "327b935078c5e6ee9c2154a5218b65ab3599e06fd7e4d465a02dec1ec7007e53"
+    },
+    {
+      "module": "Targets.Section4StationarityInterior",
+      "patch": "COMPATIBILITY.patch",
+      "upstream_sha256": "d07ace42f54b9ef1d55cc0bd9b28429340f68ed69a5e0ee1f9c6968d888976fb",
+      "adapted_sha256": "cb38c287b1bef7369e7ce62d09a518c4bba72caa2dc9fcbc697bce02389f1bf2"
+    },
+    {
+      "module": "Targets.Section5InterleavedScalarContinuity",
+      "patch": "COMPATIBILITY.patch",
+      "upstream_sha256": "fc0eeeea264b0701062725da39a39274ef0d38070b593d1b6222c14f2e07a2b6",
+      "adapted_sha256": "c14698087a33d4194d7b24c8c90ce1498dff1abc9781493b24b28ebe068f29e2"
+    },
+    {
+      "module": "Targets.Section5InterleavedScalarCore",
+      "patch": "COMPATIBILITY.patch",
+      "upstream_sha256": "3b8c4581ac82bf6411e6b9380bac18d6c8adcd33dab6d7be8126df67fbff7857",
+      "adapted_sha256": "4c85caa714c05c5798dde1adff56bdf7e94ec0ed0c84c9c7aa6707394e591515"
+    },
+    {
+      "module": "Targets.Section5InterleavingFilter",
+      "patch": "COMPATIBILITY.patch",
+      "upstream_sha256": "b3a87c2c59d0d75ddc44231f7387e0e3537416bd820a1ec2f6439eeba8b52035",
+      "adapted_sha256": "027e37238a6b2ebb98303335be9300cb0257ca50bf412c015c88328664ad4892"
+    },
+    {
+      "module": "Targets.TalagrandCore",
+      "patch": "COMPATIBILITY.patch",
+      "upstream_sha256": "ecbd96b7a814bba741ba26a65eefc92627c1748a316bd6ee62a1e72cbbbdf105",
+      "adapted_sha256": "9c26b09eb291d511381e3de6cc23aa2cee113e86c72a704e77386f6a8bba0a00"
+    }
+  ],
+  "target_validation": {
+    "command": "lake build Targets.TalagrandFinal Lemmas.Gaussian.ConcreteModel SpinGlassFoundations.Audit",
+    "toolchain": "leanprover/lean4:v4.34.1",
+    "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+    "exit_code": 0,
+    "jobs": 9284,
+    "log": "parisi-434-build13.log",
+    "critical_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "rejecting_transitive_axiom_audit": "passed"
+  }
+}

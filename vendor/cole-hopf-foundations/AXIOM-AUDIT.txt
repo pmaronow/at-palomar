@@ -1,0 +1,9 @@
+ℹ [3218/3218] Built Common.ColeHopfAudit (5.1s)
+info: Common/ColeHopfAudit.lean:16:0: 'ColeHopfFoundation.ProbabilityTheory.hasDerivAt_coleHopf_var'' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Common/ColeHopfAudit.lean:17:0: 'ColeHopfFoundation.ProbabilityTheory.hasDerivAt_coleHopf' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Common/ColeHopfAudit.lean:18:0: 'ColeHopfFoundation.ProbabilityTheory.abs_coleHopf_sub_le_of_lipschitz' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+Build completed successfully (3218 jobs).
